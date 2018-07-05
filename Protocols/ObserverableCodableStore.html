@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ObserverableCodableStore Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/ObserverableCodableStore" class="dashAnchor"></a>
+    <a title="ObserverableCodableStore Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">CodableStoreKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/SvenTiigi/CodableStoreKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">CodableStoreKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ObserverableCodableStore Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore.html">CodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Engine.html">– Engine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONEncoder.html">JSONEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/PropertyListEncoder.html">PropertyListEncoder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Decoderable.html">Decoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ReadableCodableStore.html">ReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ReadableCodableStoreEngine.html">ReadableCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WriteableCodableStore.html">WriteableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WriteableCodableStoreEngine.html">WriteableCodableStoreEngine</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:15CodableStoreKit5Codera">Coder</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ObserverableCodableStore</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ObserverableCodableStore</span></code></pre>
+
+                </div>
+              </div>
+            <p>The ObserverableCodableStore Protocol</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit012ObserverableaB0P6Object"></a>
+                    <a name="//apple_ref/swift/Alias/Object" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit012ObserverableaB0P6Object">Object</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The associatedtype BaseCodableStoreable Object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit012ObserverableaB0P14ObserveHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/ObserveHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit012ObserverableaB0P14ObserveHandlera">ObserveHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Observe Handler Typealias closure</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">ObserveHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ObserverableCodableStore.html#/s:15CodableStoreKit012ObserverableaB0P6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit012ObserverableaB0P7observeAA0daB12Subscription_p6Object_2IDQZ10identifier_yAA0aB0C12ObserveEventOyAFQz_Gc7handlertF"></a>
+                    <a name="//apple_ref/swift/Method/observe(identifier:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit012ObserverableaB0P7observeAA0daB12Subscription_p6Object_2IDQZ10identifier_yAA0aB0C12ObserveEventOyAFQz_Gc7handlertF">observe(identifier:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe Object with Identifier</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ObserverableCodableStore.html#/s:15CodableStoreKit012ObserverableaB0P6Object">Object</a></span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/ObserverableCodableStore.html#/s:15CodableStoreKit012ObserverableaB0P14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Object identifier to observe</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit012ObserverableaB0P7observeAA0daB12Subscription_p6ObjectQz_yAA0aB0C12ObserveEventOyAG_Gc7handlertF"></a>
+                    <a name="//apple_ref/swift/Method/observe(_:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit012ObserverableaB0P7observeAA0daB12Subscription_p6ObjectQz_yAA0aB0C12ObserveEventOyAG_Gc7handlertF">observe(_:handler:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe Object</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Observe Object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ObserverableCodableStore.html#/s:15CodableStoreKit012ObserverableaB0P6Object">Object</a></span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/ObserverableCodableStore.html#/s:15CodableStoreKit012ObserverableaB0P14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Object to observe</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit012ObserverableaB0P7observeAA0daB12Subscription_pSb6ObjectQzc5where_yAA0aB0C12ObserveEventOyAG_Gc7handlertF"></a>
+                    <a name="//apple_ref/swift/Method/observe(where:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit012ObserverableaB0P7observeAA0daB12Subscription_pSb6ObjectQzc5where_yAA0aB0C12ObserveEventOyAG_Gc7handlertF">observe(where:handler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe Object where filter matches</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Protocols/ObserverableCodableStore.html#/s:15CodableStoreKit012ObserverableaB0P6Object">Object</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Object Filter</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright 2018 Sven Tiigi</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

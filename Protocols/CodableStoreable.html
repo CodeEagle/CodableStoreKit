@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CodableStoreable Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/CodableStoreable" class="dashAnchor"></a>
+    <a title="CodableStoreable Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">CodableStoreKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/SvenTiigi/CodableStoreKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">CodableStoreKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CodableStoreable Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore.html">CodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Engine.html">– Engine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONEncoder.html">JSONEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/PropertyListEncoder.html">PropertyListEncoder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Decoderable.html">Decoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ReadableCodableStore.html">ReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ReadableCodableStoreEngine.html">ReadableCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WriteableCodableStore.html">WriteableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WriteableCodableStoreEngine.html">WriteableCodableStoreEngine</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:15CodableStoreKit5Codera">Coder</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>CodableStoreable</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodableStoreable</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>The CodableStoreable Protocol</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CodableStoreable%20Convenience%20Writeable%20Functions"></a>
+                <a name="//apple_ref/swift/Section/CodableStoreable Convenience Writeable Functions" class="dashAnchor"></a>
+                <a href="#/CodableStoreable%20Convenience%20Writeable%20Functions">
+                  <h3 class="section-name">CodableStoreable Convenience Writeable Functions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE4savexAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetKF"></a>
+                    <a name="//apple_ref/swift/Method/save(container:engine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE4savexAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetKF">save(container:engine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save Object</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If saving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+          <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer. Default value <code>.init</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSystem</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The saved object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE6deletexAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetKF"></a>
+                    <a name="//apple_ref/swift/Method/delete(container:engine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE6deletexAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetKF">delete(container:engine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete Object</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If deleting fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+            <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer. Default value <code>.init</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSystem</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The deleted object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CodableStoreable%20Convenience%20Readable%20Functions"></a>
+                <a name="//apple_ref/swift/Section/CodableStoreable Convenience Readable Functions" class="dashAnchor"></a>
+                <a href="#/CodableStoreable%20Convenience%20Readable%20Functions">
+                  <h3 class="section-name">CodableStoreable Convenience Readable Functions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE3getx2IDQz10identifier_AA0aB9ContainerV9containerAA0aB0C6EngineOyx_G6enginetKFZ"></a>
+                    <a name="//apple_ref/swift/Method/get(identifier:container:engine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE3getx2IDQz10identifier_AA0aB9ContainerV9containerAA0aB0C6EngineOyx_G6enginetKFZ">get(identifier:container:engine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve Object via Identifier</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If retrieving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span>
+                <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer. Default value <code>.init</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSystem</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The retrieved object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE13getCollectionSayxGAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetKFZ"></a>
+                    <a name="//apple_ref/swift/Method/getCollection(container:engine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE13getCollectionSayxGAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetKFZ">getCollection(container:engine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve all Objects in Collection</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If retrieving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">getCollection</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                          <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="k">Self</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer. Default value <code>.init</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSystem</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The retrieved Objects</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE6existsSbAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetF"></a>
+                    <a name="//apple_ref/swift/Method/exists(container:engine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE6existsSbAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6enginetF">exists(container:engine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if Object exists</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+            <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer. Default value <code>.init</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSystem</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Boolean if Object exists</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE6existsSb2IDQz10identifier_AA0aB9ContainerV9containerAA0aB0C6EngineOyx_G6enginetFZ"></a>
+                    <a name="//apple_ref/swift/Method/exists(identifier:container:engine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE6existsSb2IDQz10identifier_AA0aB9ContainerV9containerAA0aB0C6EngineOyx_G6enginetFZ">exists(identifier:container:engine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if Object with Identifer exists</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span>
+                   <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                   <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer. Default value <code>.init</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSystem</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Boolean if Object exists</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CodableStoreable%20Convenience%20Observable%20Functions"></a>
+                <a name="//apple_ref/swift/Section/CodableStoreable Convenience Observable Functions" class="dashAnchor"></a>
+                <a href="#/CodableStoreable%20Convenience%20Observable%20Functions">
+                  <h3 class="section-name">CodableStoreable Convenience Observable Functions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/ObserveHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Observe Handler Typealias closure</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">ObserveHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE7observeAA012ObserverableaB12Subscription_p2IDQz10identifier_yAA0aB0C12ObserveEventOyx_Gc7handlertFZ"></a>
+                    <a name="//apple_ref/swift/Method/observe(identifier:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE7observeAA012ObserverableaB12Subscription_p2IDQz10identifier_yAA0aB0C12ObserveEventOyx_Gc7handlertFZ">observe(identifier:handler:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe Object with Identifier</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/CodableStoreable.html#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Object identifier to observe</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE7observeAA012ObserverableaB12Subscription_pyAA0aB0C12ObserveEventOyx_Gc7handler_tF"></a>
+                    <a name="//apple_ref/swift/Method/observe(handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE7observeAA012ObserverableaB12Subscription_pyAA0aB0C12ObserveEventOyx_Gc7handler_tF">observe(handler:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe Object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/CodableStoreable.html#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Object to observe</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE7observeAA012ObserverableaB12Subscription_pSbxc5where_yAA0aB0C12ObserveEventOyx_Gc7handlertFZ"></a>
+                    <a name="//apple_ref/swift/Method/observe(where:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE7observeAA012ObserverableaB12Subscription_pSbxc5where_yAA0aB0C12ObserveEventOyx_Gc7handlertFZ">observe(where:handler:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe Object where filter matches</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">,</span>
+                    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/CodableStoreable.html#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Object Filter</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright 2018 Sven Tiigi</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

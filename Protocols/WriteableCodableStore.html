@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WriteableCodableStore Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/WriteableCodableStore" class="dashAnchor"></a>
+    <a title="WriteableCodableStore Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">CodableStoreKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/SvenTiigi/CodableStoreKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">CodableStoreKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        WriteableCodableStore Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore.html">CodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Engine.html">– Engine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONEncoder.html">JSONEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/PropertyListEncoder.html">PropertyListEncoder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Decoderable.html">Decoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ReadableCodableStore.html">ReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ReadableCodableStoreEngine.html">ReadableCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WriteableCodableStore.html">WriteableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WriteableCodableStoreEngine.html">WriteableCodableStoreEngine</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:15CodableStoreKit5Codera">Coder</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>WriteableCodableStore</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WriteableCodableStore</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/WriteableCodableStoreEngine.html">WriteableCodableStoreEngine</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>The WriteableCodableStore Protocol</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit09WriteableaB0P6delete6ObjectQzAFKF"></a>
+                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit09WriteableaB0P6delete6ObjectQzAFKF">delete(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete Object</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If deleting fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The objects to delete</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The deleted object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit09WriteableaB0P4saves10DictionaryVy6Object_2IDQZs5Error_pSgGSayAGQzGF"></a>
+                    <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit09WriteableaB0P4saves10DictionaryVy6Object_2IDQZs5Error_pSgGSayAGQzGF">save(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save Objects</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>objects</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The objects to save</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Dictionary of saved objects with id and optional Error</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit09WriteableaB0P6deletes10DictionaryVy6Object_2IDQZs5Error_pSgGSayAGQzGF"></a>
+                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit09WriteableaB0P6deletes10DictionaryVy6Object_2IDQZs5Error_pSgGSayAGQzGF">delete(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete Objects</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>objects</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The objects to delete</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Dictionary of deleted objects with id and optional Error</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit09WriteableaB0P6deletes10DictionaryVy6Object_2IDQZs5Error_pSgGAI11identifiersd_tF"></a>
+                    <a name="//apple_ref/swift/Method/delete(identifiers:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit09WriteableaB0P6deletes10DictionaryVy6Object_2IDQZs5Error_pSgGAI11identifiersd_tF">delete(identifiers:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete Objects via IDs</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifiers</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The objects identifiers</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Dictionary of deleted objects with id and optional Error</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit09WriteableaB0P16deleteCollections10DictionaryVy6Object_2IDQZs5Error_pSgGyKF"></a>
+                    <a name="//apple_ref/swift/Method/deleteCollection()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit09WriteableaB0P16deleteCollections10DictionaryVy6Object_2IDQZs5Error_pSgGyKF">deleteCollection()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete the Collection</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If collection can&rsquo;t be retrieved
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">deleteCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Dictionary of deleted objects with id and optional Error</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright 2018 Sven Tiigi</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
