@@ -1,7 +1,7 @@
 # Work in Progress 👷‍♂️
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableStoreKitLogo.png" alt="CodableStoreKitLogo">
+<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableStoreKitLogo.jpg" alt="CodableStoreKitLogo">
 </p>
 
 <p align="center">
