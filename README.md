@@ -152,7 +152,7 @@ That's it 🙌 head over to the Advanced section to explore the full capabilitie
 After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
 
 ### Container
-`CodableStoreKit` is based on a `Container-Collection-Architecture` which will be explained in the upcoming sections. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
+`CodableStoreKit` is based on a `Container-Collection-Architecture`. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
 
 ```swift
 // Initialize a custom CodableStoreContainer
