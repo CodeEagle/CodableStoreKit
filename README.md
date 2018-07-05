@@ -151,12 +151,8 @@ That's it 🙌 head over to the Advanced section to explore the full capabilitie
 ## Advanced
 After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
 
-### Architecture
-
-`CodableStoreKit` is based on a `Container-Collection-Architecture` which will be explained in the upcoming sections.
-
-#### Container
-A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
+### Container
+`CodableStoreKit` is based on a `Container-Collection-Architecture` which will be explained in the upcoming sections. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
 
 ```swift
 // Initialize a custom CodableStoreContainer
@@ -173,7 +169,7 @@ In summary a Container allows you to persist Collections in different encapsulat
    <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
 </p>
 
-#### Collection
+### Collection
 
 A Collection can be defined as a typealias for all structs and classes which are conform to the `CodableStoreable` protocol. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. 
 
