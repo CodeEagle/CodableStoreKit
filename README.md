@@ -41,7 +41,7 @@
 CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, watchOS and tvOS.
 <br/>
 It allows you to simply persist, retrieve and observe your Codable structs and classes.
-<p/>
+</p>
 
 ## Features
 
