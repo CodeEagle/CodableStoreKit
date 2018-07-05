@@ -259,7 +259,7 @@ extension User: CodableStoreable {}
 
 In order to retrieve callbacks when a certain object has been saved or deleted in a Container you can make use of the aforementioned `observe` functions. When you invoke the `oberserve` API you will retrieve a `ObserverableCodableStoreSubscription` in order to unsubscribe and avoid memory leaks.
 
-```
+```swift
 // Initialize a CodableStore
 let codableStore = CodableStore<User>()
 
