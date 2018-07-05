@@ -124,7 +124,7 @@
             <h1 id='work-in-progress' class='heading'>Work in Progress 👷‍♂️</h1>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableStoreKitLogo.png" alt="CodableStoreKitLogo">
+<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableStoreKitLogo.jpg" alt="CodableStoreKitLogo">
 </p>
 
 <p align="center">
@@ -143,10 +143,13 @@
    <a href="http://cocoapods.org/pods/CodableStoreKit">
       <img src="https://img.shields.io/cocoapods/p/CodableStoreKit.svg?style=flat" alt="Platform">
    </a>
+   <a href="https://github.com/apple/swift-package-manager">
+      <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="SPM">
+   </a> 
    <br/>
    <a href="https://codeclimate.com/github/SvenTiigi/CodableStoreKit/maintainability">
-        <img src="https://api.codeclimate.com/v1/badges/3ebe590866dd344de148/maintainability" alt="Maintainability">
-    </a>
+      <img src="https://api.codeclimate.com/v1/badges/3ebe590866dd344de148/maintainability" alt="Maintainability">
+   </a>
    <a href="https://sventiigi.github.io/CodableStoreKit">
       <img src="https://github.com/SvenTiigi/CodableStoreKit/blob/gh-pages/badge.svg" alt="Documentation">
    </a>
@@ -157,111 +160,154 @@
 
 <p><br/></p>
 
-<p><p align="center">
+<p align="center">
 CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, watchOS and tvOS.
 <br/>
 It allows you to simply persist, retrieve and observe your Codable structs and classes.
-<p/></p>
-<h2 id='installation' class='heading'>Installation</h2>
-<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+<p/>
 
-<p>CodableStoreKit is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
-it, simply add the following line to your Podfile:</p>
-<pre class="highlight shell"><code>pod <span class="s1">'CodableStoreKit'</span>, <span class="s1">'~&gt; 1.0.0'</span>
-</code></pre>
-<h3 id='carthage' class='heading'>Carthage</h3>
+## Features
 
-<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.</p>
+- [x] Easily persist and retrieve Codable types 💾
+- [x] Observe save and delete events 🕶
+- [x] Container-Collection-Architecture 📦
 
-<p>To integrate CodableStoreKit into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
-<pre class="highlight plaintext"><code>github "SvenTiigi/CodableStoreKit" ~&gt; 1.0.0
-</code></pre>
+## Installation
 
-<p>Run <code>carthage update --platform iOS</code> to build the framework and drag the built <code>CodableStoreKit.framework</code> into your Xcode project. </p>
+### CocoaPods
 
-<p>On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in <a href="https://github.com/Carthage/Carthage/blob/master/README.md">Carthage Getting started Step 4, 5 and 6</a></p>
-<h3 id='manually' class='heading'>Manually</h3>
+CodableStoreKit is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
-<p>If you prefer not to use any of the aforementioned dependency managers, you can integrate CodableStoreKit into your project manually. Simply drag the <code>Sources</code> Folder into your Xcode project.</p>
-<h2 id='usage' class='heading'>Usage</h2>
+&ldquo;`bash
+pod &lsquo;CodableStoreKit&rsquo;, &lsquo;~> 1.0.0&rsquo;
+&rdquo;`
 
-<p>Step one extend your Codable structs or classes with the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol</p>
-<pre class="highlight swift"><code><span class="c1">/// The User Struct</span>
-<span class="kd">struct</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">Codable</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span>
-    <span class="k">let</span> <span class="nv">firstName</span><span class="p">:</span> <span class="kt">String</span>
-    <span class="k">let</span> <span class="nv">lastName</span><span class="p">:</span> <span class="kt">String</span>
-<span class="p">}</span>
+### Carthage
 
-<span class="c1">// MARK: - CodableStoreable</span>
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
-<span class="kd">extension</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">CodableStoreable</span> <span class="p">{</span>
+To integrate CodableStoreKit into your Xcode project using Carthage, specify it in your `Cartfile`:
 
-    <span class="c1">/// The CodableStore unique identifier KeyPath</span>
-    <span class="kd">static</span> <span class="k">var</span> <span class="nv">codableStoreIdentifier</span><span class="p">:</span> <span class="kt">KeyPath</span><span class="o">&lt;</span><span class="kt">User</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">\</span><span class="kt">User</span><span class="o">.</span><span class="n">id</span>
-    <span class="p">}</span>
+&ldquo;`ogdl
+github &quot;SvenTiigi/CodableStoreKit&rdquo; ~> 1.0.0
+&ldquo;`
 
-<span class="p">}</span>
-</code></pre>
+Run `carthage update &ndash;platform` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
 
-<p>Secondly initialize a specific <code><a href="Classes/CodableStore.html">CodableStore</a></code> based on the type you want to persist</p>
-<pre class="highlight swift"><code><span class="c1">// Initialize a User CodableStore</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">()</span>
-</code></pre>
+On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in [Carthage Getting started Step 4, 5 and 6](https://github.com/Carthage/Carthage/blob/master/README.md)
 
-<p>Now you are good to go to <code>save</code>, <code>delete</code>, <code>get</code> and <code>observe</code> a User</p>
-<pre class="highlight swift"><code><span class="c1">// Initialize User</span>
-<span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="kt">User</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"42"</span><span class="p">,</span> <span class="nv">firstName</span><span class="p">:</span> <span class="s">"Mr."</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"Robot"</span><span class="p">)</span>
+### Swift Package Manager
 
-<span class="c1">// Save / Update</span>
-<span class="k">try</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">save</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. Once you have your Swift package set up, adding CodableStoreKit as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
-<span class="c1">// Delete</span>
-<span class="k">try</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+&rdquo;`swift
+dependencies: [
+    .package(url: &ldquo;https://github.com/SvenTiigi/CodableStoreKit.git&rdquo;, from: &ldquo;1.0.0&rdquo;)
+]
+&ldquo;`
 
-<span class="c1">// Get</span>
-<span class="k">let</span> <span class="nv">retrievedUser</span> <span class="o">=</span> <span class="k">try</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"42"</span><span class="p">)</span>
+### Manually
 
-<span class="c1">// Observe</span>
-<span class="n">codableStore</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="k">in</span>
-    <span class="c1">// Evaluate if the Event is .saved or .deleted</span>
-<span class="p">}</span>
-</code></pre>
+If you prefer not to use any of the aforementioned dependency managers, you can integrate CodableStoreKit into your project manually. Simply drag the `Sources` Folder into your Xcode project.
 
-<p>Finish 🙌 head over to the Advanced section to explore in depth the full capabilities of the <code>CodableStoreKit</code></p>
-<h2 id='advanced' class='heading'>Advanced</h2>
+## Usage
 
-<p>The Advanced section will explain all capabilities of the <code>CodableStoreKit</code> in depth.</p>
-<h3 id='architecture' class='heading'>Architecture</h3>
+Step one make your Codable structs or classes conform to the `CodableStoreable` protocol.
 
-<p><code>CodableStoreKit</code> is based on a <code>Container-Collection-Architecture</code></p>
+&rdquo;`swift
+/// The User Struct
+struct User: Codable {
+    let id: String
+    let firstName: String
+    let lastName: String
+}
 
-<p><img align="right" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Container.png" alt="Container-Collection-Architecture" width=360></p>
-<h4 id='container' class='heading'>Container</h4>
+// MARK: - CodableStoreable
 
-<p>A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> and pass it to a <code><a href="Classes/CodableStore.html">CodableStore</a></code> in order to encapsulate your collections.</p>
-<pre class="highlight swift"><code><span class="c1">// Initialize a custom CodableStoreContainer</span>
-<span class="k">let</span> <span class="nv">apiV1Container</span> <span class="o">=</span> <span class="kt">CodableStoreContainer</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"APIv1"</span><span class="p">)</span>
+extension User: CodableStoreable {
 
-<span class="c1">// Pass it to the CodableStore initializer</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="n">apiV1Container</span><span class="p">)</span>
-</code></pre>
+    /// The CodableStore unique identifier KeyPath
+    static var codableStoreIdentifier: KeyPath<User, String> {
+        return \User.id
+    }
+    
+}
+&ldquo;`
 
-<blockquote>
-<p>In default the <code><a href="Classes/CodableStore.html">CodableStore</a></code> will use a default <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> with the name <q>Default</q>.</p>
-</blockquote>
-<h4 id='collection' class='heading'>Collection</h4>
+Secondly initialize a specific `CodableStore` based on the type you want to persist.
 
-<p>A Collection can be defined as a typealias for all structs and classes which are conform to the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. </p>
+&rdquo;`swift
+// Initialize a User CodableStore
+let codableStore = CodableStore<User>()
+&ldquo;`
 
-<p>If you wish to supply a custom Collection name you can do it in the following way.</p>
+Now you are good to go to `save`, `delete`, `get` and `observe`.
+
+&rdquo;`swift
+// Initialize User
+let user = User(id: &ldquo;42&rdquo;, firstName: &ldquo;Mr.&rdquo;, lastName: &ldquo;Robot&rdquo;)
+
+// Save / Update
+try codableStore.save(user)
+
+// Delete
+try codableStore.delete(user)
+
+// Get
+let retrievedUser = try codableStore.get(identifier: &ldquo;42&rdquo;)
+
+// Observe
+codableStore.observe(user) { (event) in
+    switch event {
+    case .saved(let object, let container):
+        break
+    case .deleted(let object, let container):
+        break
+    }
+}
+&ldquo;`
+> A full list of available API&rsquo;s can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
+
+That&rsquo;s it 🙌 head over to the Advanced section to explore the full capabilities of the `CodableStoreKit`.
+
+## Advanced
+After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
+
+### Container
+`CodableStoreKit` is based on a `Container-Collection-Architecture`. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
+
+&rdquo;`swift
+// Initialize a custom CodableStoreContainer
+let apiV1Container = CodableStoreContainer(name: &ldquo;APIv1Container&rdquo;)
+
+// Pass it to the CodableStore initializer
+let codableStore = CodableStore<User>(container: apiV1Container)
+&ldquo;`
+> In default the `CodableStore` will use a default `CodableStoreContainer` with the name &quot;Default&rdquo;.
+
+In summary a Container allows you to persist Collections in different encapsulated sections. Those Collections can be the same but can also be uniquely associated to a specific container.
+
+<p align="center">
+   <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
+</p>
+<h3 id='collection' class='heading'>Collection</h3>
+
+<p>A Collection can be defined as a typealias for all structs and classes which are conform to the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol. Inside a Collection the actual Data will be stored.</p>
+
+<p align="center">
+   <img width="550" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Collection.jpg" alt="Containers">
+</p>
+
+<p>In default you have nothing to configure to use Collections as those are internal details. The identifer of a Collection is defined as a String. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. If you wish to supply a custom Collection name you can do it in the following way.</p>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">User</span> <span class="p">{</span>
+
     <span class="c1">/// The CodableStore collection name</span>
     <span class="kd">static</span> <span class="k">var</span> <span class="nv">codableStoreCollectionName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
         <span class="c1">// In Default: return String(describing: type(of: self))</span>
         <span class="k">return</span> <span class="s">"MyCustomUserCollectionName"</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 </code></pre>
 <h3 id='engine' class='heading'>Engine</h3>
@@ -294,14 +340,6 @@ it, simply add the following line to your Podfile:</p>
 
 <span class="c1">// Delete in different Engine</span>
 <span class="k">try</span> <span class="n">user</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
-
-<span class="c1">// Exists</span>
-<span class="k">let</span> <span class="nv">exists</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="nf">exists</span><span class="p">()</span>
-
-<span class="c1">// Observe</span>
-<span class="n">user</span><span class="o">.</span><span class="n">observe</span> <span class="p">{</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="k">in</span>
-    <span class="c1">// Evaluate if the Event is .saved or .deleted</span>
-<span class="p">}</span>
 </code></pre>
 
 <p>As well as static functions on your type which is conform to the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol.</p>
@@ -313,14 +351,10 @@ it, simply add the following line to your Podfile:</p>
 
 <span class="c1">// Get Users collection</span>
 <span class="k">let</span> <span class="nv">allUsers</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">User</span><span class="o">.</span><span class="nf">getCollection</span><span class="p">()</span>
-
-<span class="c1">// Observe with filter</span>
-<span class="kt">User</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="nv">where</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">lastName</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"Robot"</span><span class="p">)</span> <span class="p">})</span> <span class="p">{</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="k">in</span>
-    <span class="c1">// Evaluate if the Event is .saved or .deleted</span>
-<span class="p">}</span>
 </code></pre>
+<h3 id='basecodablestoreable' class='heading'>BaseCodableStoreable</h3>
 
-<p>If you don&rsquo;t want those convenience functions on your type you can <em>downgrade</em> the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol to the <code><a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></code> protocol which removes the availability of those functions but still remains the conformance to use it with a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
+<p>If you want to suppress those convenience functions on your type you can <em>downgrade</em> the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol to the <code><a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></code> protocol which removes the availability of those functions but still remains the conformance to use it with a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
 <pre class="highlight swift"><code><span class="c1">// Without convience functions on type</span>
 <span class="kd">extension</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">BaseCodableStoreable</span> <span class="p">{}</span>
 
@@ -328,6 +362,42 @@ it, simply add the following line to your Podfile:</p>
 <span class="kd">extension</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">CodableStoreable</span> <span class="p">{}</span>
 </code></pre>
 <h3 id='observation' class='heading'>Observation</h3>
+
+<p>In order to retrieve callbacks when a certain object has been saved or deleted in a Container you can make use of the aforementioned <code>observe</code> functions. When you invoke the <code>oberserve</code> API you will retrieve a <code><a href="Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></code> in order to unsubscribe and avoid memory leaks.</p>
+<pre class="highlight swift"><code><span class="c1">// Initialize a CodableStore</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">()</span>
+
+<span class="c1">// Observe an Store Subscription</span>
+<span class="k">let</span> <span class="nv">subscription</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="nv">where</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">lastName</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"Robot"</span><span class="p">)</span> <span class="p">})</span> <span class="p">{</span> <span class="n">event</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">event</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">saved</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">):</span>
+        <span class="k">break</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">deleted</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">):</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Manually invoke unsubscribe</span>
+<span class="n">subscription</span><span class="o">.</span><span class="nf">unsubscribe</span><span class="p">()</span>
+</code></pre>
+
+<p>Or you can use the <code><a href="Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a></code> in order to automatically unsubscribe.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MyCustomClass</span> <span class="p">{</span>
+
+    <span class="c1">/// The SubscriptionBag</span>
+    <span class="k">let</span> <span class="nv">subscriptionBag</span> <span class="o">=</span> <span class="kt">ObserverableCodableStoreSubscriptionBag</span><span class="p">()</span>
+
+    <span class="c1">/// Designated Initializer</span>
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Observe User with Identifier and dispose it by SubscriptionBag</span>
+        <span class="kt">User</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"42"</span><span class="p">)</span> <span class="p">{</span> <span class="n">event</span> <span class="k">in</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span> <span class="n">subscriptionBag</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
 <h2 id='contributing' class='heading'>Contributing</h2>
 
 <p>Contributions are very welcome 🙌 🤓</p>
