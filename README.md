@@ -128,7 +128,7 @@ The Advanced section will explain all capabilities of the `CodableStoreKit` in d
 
 `CodableStoreKit` is based on a `Container-Collection-Architecture`
 
-<img style="float:right" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Container.png" alt="Container-Collection-Architecture" width=360>
+<img align="right" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Container.png" alt="Container-Collection-Architecture" width=360>
 
 
 #### Container
