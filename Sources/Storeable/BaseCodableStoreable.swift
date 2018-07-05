@@ -44,7 +44,7 @@ public extension BaseCodableStoreable {
     }
     
     /// The CodeableStore Identifier Value
-    var codableStoreIdentifierValue: ID {
+    internal var codableStoreIdentifierValue: ID {
         return self[keyPath: Self.codableStoreIdentifier]
     }
     
