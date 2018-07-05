@@ -171,9 +171,13 @@ In summary a Container allows you to persist Collections in different encapsulat
 
 ### Collection
 
-A Collection can be defined as a typealias for all structs and classes which are conform to the `CodableStoreable` protocol. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. 
+A Collection can be defined as a typealias for all structs and classes which are conform to the `CodableStoreable` protocol. Inside a Collection the actual Data will be stored.
 
-If you wish to supply a custom Collection name you can do it in the following way.
+<p align="center">
+   <img width="550" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Collection.jpg" alt="Containers">
+</p>
+
+In default you have nothing to configure to use Collections as those are internal details. The identifer of a Collection is defined as a String. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. If you wish to supply a custom Collection name you can do it in the following way.
 
 ```swift
 extension User {
