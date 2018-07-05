@@ -43,6 +43,12 @@ CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, w
 It allows you to simply persist, retrieve and observe your Codable structs and classes.
 <p/>
 
+## Features
+
+- [x] Easily persist and retrieve Codable types 💾
+- [x] Observe save and delete events 🕶
+- [x] Container-Collection-Architecture 📦
+
 ## Installation
 
 ### CocoaPods
@@ -234,7 +240,7 @@ User.observe(where: { $0.lastName.contains("Robot") }) { (event) in
 }
 ```
 
-If you don't want those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those functions but still remains the conformance to use it with a `CodableStore`.
+If you ''''t want those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those functions but still remains the conformance to use it with a `CodableStore`.
 
 ```swift
 // Without convience functions on type
