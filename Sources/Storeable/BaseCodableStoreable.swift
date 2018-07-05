@@ -18,7 +18,7 @@ public protocol BaseCodableStoreable: Codable {
     associatedtype ID: Hashable
     // swiftlint:enable type_name
     
-    /// The CodableStore unique identifier Key Path
+    /// The CodableStore unique identifier KeyPath
     static var codableStoreIdentifier: KeyPath<Self, ID> { get }
     
     /// The CodableStore collection name
