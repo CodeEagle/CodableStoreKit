@@ -17,3 +17,4 @@ exclude_patterns:
   - "*.md"
   - "*.podspec"
   - "*.xcodeproj"
+  - "Package.swift"
