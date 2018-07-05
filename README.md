@@ -32,6 +32,8 @@
    </a>
 </p>
 
+<br/>
+
 <p align="center">
 CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, watchOS and tvOS.
 <br/>
