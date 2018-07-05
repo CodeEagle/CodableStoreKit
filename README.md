@@ -90,7 +90,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 ## Usage
 
-Step one extend your Codable structs or classes with the `CodableStoreable` protocol
+Step one make your Codable structs or classes conform to the `CodableStoreable` protocol.
 
 ```swift
 /// The User Struct
@@ -112,14 +112,14 @@ extension User: CodableStoreable {
 }
 ```
 
-Secondly initialize a specific `CodableStore` based on the type you want to persist
+Secondly initialize a specific `CodableStore` based on the type you want to persist.
 
 ```swift
 // Initialize a User CodableStore
 let codableStore = CodableStore<User>()
 ```
 
-Now you are good to go to `save`, `delete`, `get` and `observe` a User
+Now you are good to go to `save`, `delete`, `get` and `observe`.
 
 ```swift
 // Initialize User
@@ -136,11 +136,16 @@ let retrievedUser = try codableStore.get(identifier: "42")
 
 // Observe
 codableStore.observe(user) { (event) in
-    // Evaluate if the Event is .saved or .deleted
+    switch event {
+    case .saved(let object, let container):
+        break
+    case .deleted(let object, let container):
+        break
+    }
 }
 ```
 
-Finish 🙌 head over to the Advanced section to explore in depth the full capabilities of the `CodableStoreKit`
+That's it 🙌 head over to the Advanced section to explore the full capabilities of the `CodableStoreKit`.
 
 ## Advanced
 The Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
@@ -240,7 +245,7 @@ User.observe(where: { $0.lastName.contains("Robot") }) { (event) in
 }
 ```
 
-If you ''''t want those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those functions but still remains the conformance to use it with a `CodableStore`.
+If you want to suppress those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those functions but still remains the conformance to use it with a `CodableStore`.
 
 ```swift
 // Without convience functions on type
@@ -251,6 +256,46 @@ extension User: CodableStoreable {}
 ```
 
 ### Observation
+
+In order to retrieve callbacks when a certain object has been saved or deleted in a Container you can make use of the aforementioned `observe` functions. When you invoke the `oberserve` API you will retrieve a `ObserverableCodableStoreSubscription` in order to unsubscribe and avoid memory leaks.
+
+```
+// Initialize a CodableStore
+let codableStore = CodableStore<User>()
+
+// Observe an Store Subscription
+let subscription = codableStore.observe(identifier: "42") { event in
+    switch event {
+    case .saved(let object, let container):
+        break
+    case .deleted(let object, let container):
+        break
+    }
+}
+
+// Manually invoke unsubscribe
+subscription.unsubscribe()
+```
+
+Or you can use the `ObserverableCodableStoreSubscriptionBag` in order to automatically unsubscribe.
+
+```swift
+class MyCustomClass {
+
+    /// The SubscriptionBag
+    let subscriptionBag = ObserverableCodableStoreSubscriptionBag()
+
+    /// Designated Initializer
+    init() {
+        // Observe User with Identifier and dispose it by SubscriptionBag
+        User.observe(identifier: "42") { event in
+            print(event)
+        }.disposed(by: self. subscriptionBag)
+    }
+
+}
+
+```
 
 ## Contributing
 Contributions are very welcome 🙌 🤓
