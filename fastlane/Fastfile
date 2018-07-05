@@ -1,0 +1,46 @@
+fastlane_version "2.89.0"
+
+default_platform :ios
+
+platform :ios do
+
+  desc "Release a new version of CodableStoreKit"
+  lane :release do |options|
+    ensure_git_status_clean
+    ensure_git_branch(branch: 'master')
+    test
+    version = version_bump_podspec(path: "CodableStoreKit.podspec", version_number: options[:version])
+    increment_version_number(version_number: version)
+    git_commit(
+      path: ["CodableStoreKit.podspec"],
+      message: "[CodableStoreKit Release 🚀] Bump to #{version}"
+    )
+    add_git_tag(tag: version)
+    push_git_tags()
+    push_to_git_remote()
+    pod_push()
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan(
+      project: "CodableStoreKit.xcodeproj",
+      scheme: "CodableStoreKit-iOS",
+      clean: true,
+      code_coverage: true
+    )
+    pod_lib_lint
+  end
+
+  desc "Runs coverage"
+  lane :coverage do
+    slather(
+      proj: "CodableStoreKit.xcodeproj",
+      scheme: "CodableStoreKit-iOS",
+      travis: true,
+      cobertura_xml: true,
+      ignore: ["Tests/*"]
+    )
+  end
+  
+end
