@@ -70,7 +70,7 @@ To integrate CodableStoreKit into your Xcode project using Carthage, specify it 
 github "SvenTiigi/CodableStoreKit" ~> 1.0.0
 ```
 
-Run `carthage update --platform iOS` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
+Run `carthage update --platform` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
 
 On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in [Carthage Getting started Step 4, 5 and 6](https://github.com/Carthage/Carthage/blob/master/README.md)
 
