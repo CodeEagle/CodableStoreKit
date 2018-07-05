@@ -201,18 +201,20 @@ extension FileManagerCodeableStoreEngine {
 
     /// Clear Directories if Needed
     func clearDirectoriesIfNeeded() {
-        // Delete Collection Directory if no Item is available
-        if let collectionURL = try? self.getCollectionURL(),
-            let collectionPaths = try? self.fileManager.contentsOfDirectory(atPath: collectionURL.path),
-            collectionPaths.isEmpty {
-            try? self.fileManager.removeItem(at: collectionURL)
+        // Initialize delete if empty closure
+        let deleteIfEmpty = { [weak self] (url: URL) in
+            // Verify paths at url is empty
+            if let paths = try? self?.fileManager
+                .contentsOfDirectory(atPath: url.path),
+                paths?.isEmpty == true {
+                // Remove item at url
+                try? self?.fileManager.removeItem(at: url)
+            }
         }
-        // Dlete Container Directory if no Collection Directory is available
-        if let containerURL = try? self.getContainerURL(),
-            let containerPaths = try? self.fileManager.contentsOfDirectory(atPath: containerURL.path),
-            containerPaths.isEmpty {
-            try? self.fileManager.removeItem(at: containerURL)
-        }
+        // Delete Collection-Directory if Empty
+        (try? self.getCollectionURL()).flatMap(deleteIfEmpty)
+        // Delete Container-Directory if Empty
+        (try? self.getContainerURL()).flatMap(deleteIfEmpty)        
     }
     
 }
