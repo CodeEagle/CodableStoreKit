@@ -144,15 +144,16 @@ codableStore.observe(user) { (event) in
     }
 }
 ```
+> A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
 That's it 🙌 head over to the Advanced section to explore the full capabilities of the `CodableStoreKit`.
 
 ## Advanced
-The Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
+After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
 
 ### Architecture
 
-`CodableStoreKit` is based on a `Container-Collection-Architecture`
+`CodableStoreKit` is based on a `Container-Collection-Architecture` which will be explained in the upcoming sections.
 
 <img align="right" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Container.png" alt="Container-Collection-Architecture" width=360>
 
@@ -177,11 +178,13 @@ If you wish to supply a custom Collection name you can do it in the following wa
 
 ```swift
 extension User {
+
     /// The CodableStore collection name
     static var codableStoreCollectionName: String {
         // In Default: return String(describing: type(of: self))
         return "MyCustomUserCollectionName"
     }
+    
 }
 ```
 
@@ -217,14 +220,6 @@ try user.delete()
 
 // Delete in different Engine
 try user.delete(engine: .inMemory)
-
-// Exists
-let exists = user.exists()
-
-// Observe
-user.observe { (event) in
-    // Evaluate if the Event is .saved or .deleted
-}
 ```
 
 As well as static functions on your type which is conform to the `CodableStoreable` protocol.
@@ -238,12 +233,9 @@ let retrievedUser = try User.get(identifier: "42", container: myContainer)
 
 // Get Users collection
 let allUsers = try User.getCollection()
-
-// Observe with filter
-User.observe(where: { $0.lastName.contains("Robot") }) { (event) in
-    // Evaluate if the Event is .saved or .deleted
-}
 ```
+
+### BaseCodableStoreable
 
 If you want to suppress those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those functions but still remains the conformance to use it with a `CodableStore`.
 
@@ -264,7 +256,7 @@ In order to retrieve callbacks when a certain object has been saved or deleted i
 let codableStore = CodableStore<User>()
 
 // Observe an Store Subscription
-let subscription = codableStore.observe(identifier: "42") { event in
+let subscription = codableStore.observe(where: { $0.lastName.contains("Robot") }) { event in
     switch event {
     case .saved(let object, let container):
         break
