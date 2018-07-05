@@ -22,8 +22,8 @@
    </a>
    <br/>
    <a href="https://codeclimate.com/github/SvenTiigi/CodableStoreKit/maintainability">
-      <img src="https://api.codeclimate.com/v1/badges/e1a0a92affd3c0d0f402/maintainability" />
-   </a>
+		<img src="https://api.codeclimate.com/v1/badges/3ebe590866dd344de148/maintainability" alt="Maintainability">
+	</a>
    <a href="https://sventiigi.github.io/CodableStoreKit">
       <img src="https://github.com/SvenTiigi/CodableStoreKit/blob/gh-pages/badge.svg" alt="Documentation">
    </a>
