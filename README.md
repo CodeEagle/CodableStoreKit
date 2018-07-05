@@ -1,4 +1,6 @@
-<h1 align="center">CodableStoreKit [WIP]</h1>
+<p align="center">
+<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableStoreLogo.png" alt="CodableStoreKitLogo">
+</p>
 
 <p align="center">
 `CodableStoreKit` is a lightweight Codable Persistence Framework for iOS, macOS, watchOS and tvOS.
@@ -96,7 +98,7 @@ The Advanced section will explain all capabilities of the `CodableStoreKit` in d
 
 `CodableStoreKit` is based on a `Container-Collection-Architecture`
 
-<img style="float:right" src="./Container.png" width=360>
+<img style="float:right" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Container.png" alt="Container-Collection-Architecture" width=360>
 
 
 #### Container
