@@ -20,10 +20,13 @@
    <a href="http://cocoapods.org/pods/CodableStoreKit">
       <img src="https://img.shields.io/cocoapods/p/CodableStoreKit.svg?style=flat" alt="Platform">
    </a>
+   <a href="https://github.com/apple/swift-package-manager">
+      <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="SPM">
+   </a>	
    <br/>
    <a href="https://codeclimate.com/github/SvenTiigi/CodableStoreKit/maintainability">
-		<img src="https://api.codeclimate.com/v1/badges/3ebe590866dd344de148/maintainability" alt="Maintainability">
-	</a>
+      <img src="https://api.codeclimate.com/v1/badges/3ebe590866dd344de148/maintainability" alt="Maintainability">
+   </a>
    <a href="https://sventiigi.github.io/CodableStoreKit">
       <img src="https://github.com/SvenTiigi/CodableStoreKit/blob/gh-pages/badge.svg" alt="Documentation">
    </a>
@@ -64,6 +67,16 @@ github "SvenTiigi/CodableStoreKit" ~> 1.0.0
 Run `carthage update --platform iOS` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
 
 On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in [Carthage Getting started Step 4, 5 and 6](https://github.com/Carthage/Carthage/blob/master/README.md)
+
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. Once you have your Swift package set up, adding CodableStoreKit as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/SvenTiigi/CodableStoreKit.git", from: "1.0.0")
+]
+```
 
 ### Manually
 
