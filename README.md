@@ -70,7 +70,7 @@ To integrate CodableStoreKit into your Xcode project using Carthage, specify it 
 github "SvenTiigi/CodableStoreKit" ~> 1.0.0
 ```
 
-Run `carthage update --platform iOS` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
+Run `carthage update --platform` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
 
 On your application targets’ “Build Phases” settings tab, click the “+” icon and choose “New Run Script Phase” and add the Framework path as mentioned in [Carthage Getting started Step 4, 5 and 6](https://github.com/Carthage/Carthage/blob/master/README.md)
 
@@ -151,30 +151,33 @@ That's it 🙌 head over to the Advanced section to explore the full capabilitie
 ## Advanced
 After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
 
-### Architecture
-
-`CodableStoreKit` is based on a `Container-Collection-Architecture` which will be explained in the upcoming sections.
-
-<img align="right" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Container.png" alt="Container-Collection-Architecture" width=360>
-
-
-#### Container
-A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
+### Container
+`CodableStoreKit` is based on a `Container-Collection-Architecture`. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
 
 ```swift
 // Initialize a custom CodableStoreContainer
-let apiV1Container = CodableStoreContainer(name: "APIv1")
+let apiV1Container = CodableStoreContainer(name: "APIv1Container")
 
 // Pass it to the CodableStore initializer
 let codableStore = CodableStore<User>(container: apiV1Container)
 ```
 > In default the `CodableStore` will use a default `CodableStoreContainer` with the name "Default".
 
-#### Collection
+In summary a Container allows you to persist Collections in different encapsulated sections. Those Collections can be the same but can also be uniquely associated to a specific container.
 
-A Collection can be defined as a typealias for all structs and classes which are conform to the `CodableStoreable` protocol. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. 
+<p align="center">
+   <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
+</p>
 
-If you wish to supply a custom Collection name you can do it in the following way.
+### Collection
+
+A Collection can be defined as a typealias for all structs and classes which are conform to the `CodableStoreable` protocol. Inside a Collection the actual Data will be stored.
+
+<p align="center">
+   <img width="550" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Collection.jpg" alt="Containers">
+</p>
+
+In default you have nothing to configure to use Collections as those are internal details. The identifer of a Collection is defined as a String. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. If you wish to supply a custom Collection name you can do it in the following way.
 
 ```swift
 extension User {
