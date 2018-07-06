@@ -46,7 +46,7 @@ It allows you to simply persist, retrieve and observe your Codable structs and c
 <br/>
 
 <p align="center">
-   <img width="82%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
+   <img width="65%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
    <br/><br/>
 </p>
 
@@ -150,9 +150,6 @@ codableStore.observe(user) { (event) in
         break
     }
 }
-
-// Or use the convenience functions from CodeableStoreable
-try user.save()
 ```
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
