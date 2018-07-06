@@ -43,7 +43,7 @@ CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, w
 It allows you to simply persist, retrieve and observe your Codable structs and classes.
 </p>
 
-<br/><br/>
+<br/>
 
 <p align="center">
    <img width="82%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
