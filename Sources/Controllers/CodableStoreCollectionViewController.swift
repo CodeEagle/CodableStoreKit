@@ -59,17 +59,6 @@ open class CodableStoreCollectionViewController<Object: BaseCodableStoreable>: U
         self.collectionView?.reloadData()
     }
     
-    // MARK: UICollectionViewDataSource
-    
-    open override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    open override func collectionView(_ collectionView: UICollectionView,
-                                      numberOfItemsInSection section: Int) -> Int {
-        return self.objects.count
-    }
-    
 }
 
 #endif

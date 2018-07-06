@@ -57,17 +57,6 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
         self.tableView.reloadData()
     }
     
-    // MARK: UITableViewDataSource
-    
-    open override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    open override func tableView(_ tableView: UITableView,
-                                 numberOfRowsInSection section: Int) -> Int {
-        return self.objects.count
-    }
-    
 }
 
 #endif
