@@ -47,7 +47,7 @@ It allows you to simply persist, retrieve and observe your Codable structs and c
 
 - [x] Easily persist and retrieve Codable types 💾
 - [x] Observe save and delete events 🕶
-- [x] Container-Collection-Architecture 📦
+- [x] Engine-Container-Collection-Architecture 📦
 
 ## Installation
 
@@ -149,10 +149,26 @@ codableStore.observe(user) { (event) in
 That's it 🙌 head over to the Advanced section to explore the full capabilities of the `CodableStoreKit`.
 
 ## Advanced
-After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth.
+After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth. `CodableStoreKit` is based on a `Engine-Container-Collection-Architecture`.
+
+### Engine
+
+The `CodableStoreEngine` is the main component which saves, delete and fetches Codable Data from and in an Container. You can decide which Engine-Implementation should be used when initializing a `CodableStore`.
+
+```swift
+// FileSystem Engine which uses the FileManager-API
+let codableStore = CodableStore<User>(engine: .fileSystem)
+
+// InMemory Engine
+let codableStore = CodableStore<User>(engine: .inMemory)
+
+// A custom CodableStoreEngine
+let codableStore = CodableStore<User>(engine: .custom(myCustomEngine))
+```
+> In default the `.fileSystem` Engine will be used
 
 ### Container
-`CodableStoreKit` is based on a `Container-Collection-Architecture`. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
+A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
 
 ```swift
 // Initialize a custom CodableStoreContainer
@@ -190,22 +206,6 @@ extension User {
     
 }
 ```
-
-### Engine
-
-The `CodableStoreEngine` is the main component which saves, delete and fetches Codable Data from an Container. You can decide which Engine-Implementation should be used when initializing a `CodableStore`.
-
-```swift
-// FileSystem Engine which uses the FileManager-API
-let codableStore = CodableStore<User>(engine: .fileSystem)
-
-// InMemory Engine
-let codableStore = CodableStore<User>(engine: .inMemory)
-
-// A custom CodableStoreEngine
-let codableStore = CodableStore<User>(engine: .custom(myCustomEngine))
-```
-> In default the `.fileSystem` Engine will be used
 
 ### CodableStoreable
 
