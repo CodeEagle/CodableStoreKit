@@ -32,6 +32,9 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore.html">CodableStore</a>
               </li>
               <li class="nav-group-task">
@@ -39,6 +42,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreViewController.html">CodableStoreViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
@@ -60,10 +72,10 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+                <a href="../Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
@@ -73,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -99,6 +114,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
@@ -196,12 +220,25 @@
                     <a name="//apple_ref/swift/Method/first(where:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:15CodableStoreKit08ReadableaB0P5first6ObjectQzSgSbAFc5where_tKF">first(where:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
+                        <p>Retrieve first Object matching Filter</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If retrieving fails
+
+</div>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
                         <p>Retrieve first Object matching Filter</p>
 <div class="aside aside-throws">
     <p class="aside-title">Throws</p>
@@ -251,12 +288,20 @@
                     <a name="//apple_ref/swift/Method/exists(identifier:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:15CodableStoreKit08ReadableaB0P6existsSb6Object_2IDQZ10identifier_tF">exists(identifier:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
+                        <p>Check if Object with Identifier exists</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
                         <p>Check if Object with Identifier exists</p>
 
                       </div>
@@ -301,12 +346,20 @@
                     <a name="//apple_ref/swift/Method/exists(_:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:15CodableStoreKit08ReadableaB0P6existsSb6ObjectQzF">exists(_:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
+                        <p>Check if Object exists</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
                         <p>Check if Object exists</p>
 
                       </div>

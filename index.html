@@ -31,6 +31,9 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/CodableStore.html">CodableStore</a>
               </li>
               <li class="nav-group-task">
@@ -38,6 +41,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CodableStoreViewController.html">CodableStoreViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
@@ -59,10 +71,10 @@
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+                <a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+                <a href="Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/CodableStoreable.html">CodableStoreable</a>
@@ -72,6 +84,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -98,6 +113,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a>
@@ -165,12 +189,19 @@ CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, w
 <br/>
 It allows you to simply persist, retrieve and observe your Codable structs and classes.
 </p>
+
+<p><br/></p>
+
+<p align="center">
+   <img width="65%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
+   <br/><br/>
+</p>
 <h2 id='features' class='heading'>Features</h2>
 
 <ul>
 <li>[x] Easily persist and retrieve Codable types 💾</li>
 <li>[x] Observe save and delete events 🕶</li>
-<li>[x] Container-Collection-Architecture 📦</li>
+<li>[x] Engine-Container-Collection-Architecture 📦</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
@@ -258,10 +289,26 @@ it, simply add the following line to your Podfile:</p>
 <p>That&rsquo;s it 🙌 head over to the Advanced section to explore the full capabilities of the <code>CodableStoreKit</code>.</p>
 <h2 id='advanced' class='heading'>Advanced</h2>
 
-<p>After the first usage description the Advanced section will explain all capabilities of the <code>CodableStoreKit</code> in depth.</p>
+<p>After the first usage description the Advanced section will explain all capabilities of the <code>CodableStoreKit</code> in depth. <code>CodableStoreKit</code> is based on a <code>Engine-Container-Collection-Architecture</code>.</p>
+<h3 id='engine' class='heading'>Engine</h3>
+
+<p>The <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> is the main component which saves, delete and fetches Codable Data from and in an Container. You can decide which Engine-Implementation should be used when initializing a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
+<pre class="highlight swift"><code><span class="c1">// FileSystem Engine which uses the FileManager-API</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span>
+
+<span class="c1">// InMemory Engine</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
+
+<span class="c1">// A custom CodableStoreEngine</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="n">myCustomEngine</span><span class="p">))</span>
+</code></pre>
+
+<blockquote>
+<p>In default the <code>.fileSystem</code> Engine will be used</p>
+</blockquote>
 <h3 id='container' class='heading'>Container</h3>
 
-<p><code>CodableStoreKit</code> is based on a <code>Container-Collection-Architecture</code>. A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> and pass it to a <code><a href="Classes/CodableStore.html">CodableStore</a></code> in order to encapsulate your collections.</p>
+<p>A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> and pass it to a <code><a href="Classes/CodableStore.html">CodableStore</a></code> in order to encapsulate your collections.</p>
 <pre class="highlight swift"><code><span class="c1">// Initialize a custom CodableStoreContainer</span>
 <span class="k">let</span> <span class="nv">apiV1Container</span> <span class="o">=</span> <span class="kt">CodableStoreContainer</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"APIv1Container"</span><span class="p">)</span>
 
@@ -297,22 +344,6 @@ it, simply add the following line to your Podfile:</p>
 
 <span class="p">}</span>
 </code></pre>
-<h3 id='engine' class='heading'>Engine</h3>
-
-<p>The <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> is the main component which saves, delete and fetches Codable Data from an Container. You can decide which Engine-Implementation should be used when initializing a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
-<pre class="highlight swift"><code><span class="c1">// FileSystem Engine which uses the FileManager-API</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span>
-
-<span class="c1">// InMemory Engine</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
-
-<span class="c1">// A custom CodableStoreEngine</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="n">myCustomEngine</span><span class="p">))</span>
-</code></pre>
-
-<blockquote>
-<p>In default the <code>.fileSystem</code> Engine will be used</p>
-</blockquote>
 <h3 id='codablestoreable' class='heading'>CodableStoreable</h3>
 
 <p>When making a type conform to the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol you can access convenience functions directly on an instance of your type in order to save, delete, get and observe.</p>

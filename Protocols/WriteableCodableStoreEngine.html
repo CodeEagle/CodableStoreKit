@@ -32,6 +32,9 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore.html">CodableStore</a>
               </li>
               <li class="nav-group-task">
@@ -39,6 +42,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreViewController.html">CodableStoreViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
@@ -60,10 +72,10 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+                <a href="../Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
@@ -73,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -101,6 +116,15 @@
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
               </li>
             </ul>
@@ -124,7 +148,7 @@
             <h1>WriteableCodableStoreEngine</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WriteableCodableStoreEngine</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WriteableCodableStoreEngine</span></code></pre>
 
                 </div>
               </div>
@@ -134,6 +158,33 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit09WriteableaB6EngineP6Object"></a>
+                    <a name="//apple_ref/swift/Alias/Object" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit09WriteableaB6EngineP6Object">Object</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The associatedtype BaseCodableStoreable Object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -160,7 +211,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+<span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt"><a href="../Protocols/WriteableCodableStoreEngine.html#/s:15CodableStoreKit09WriteableaB6EngineP6Object">Object</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/WriteableCodableStoreEngine.html#/s:15CodableStoreKit09WriteableaB6EngineP6Object">Object</a></span></code></pre>
 
                         </div>
                       </div>
@@ -216,7 +267,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt"><a href="../Protocols/WriteableCodableStoreEngine.html#/s:15CodableStoreKit09WriteableaB6EngineP6Object">Object</a></span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/WriteableCodableStoreEngine.html#/s:15CodableStoreKit09WriteableaB6EngineP6Object">Object</a></span></code></pre>
 
                         </div>
                       </div>

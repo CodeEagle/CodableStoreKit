@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CodableStoreContainer Structure Reference</title>
+    <title>CodableStoreTableViewController Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/CodableStoreContainer" class="dashAnchor"></a>
-    <a title="CodableStoreContainer Structure Reference"></a>
+    <a name="//apple_ref/swift/Class/CodableStoreTableViewController" class="dashAnchor"></a>
+    <a title="CodableStoreTableViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">CodableStoreKit Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">CodableStoreKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CodableStoreContainer Structure Reference
+        CodableStoreTableViewController Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -145,14 +145,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CodableStoreContainer</h1>
+            <h1>CodableStoreTableViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CodableStoreContainer</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">CodableStoreTableViewController</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">UITableViewController</span><span class="p">,</span> <span class="kt"><a href="../Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a></span> <span class="k">where</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
 
                 </div>
               </div>
-            <p>The CodableStoreContainer</p>
+            <p>The CodableStoreTableViewController</p>
 
           </section>
           <section class="section task-group-section">
@@ -168,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerV4nameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerV4nameSSvp">name</a>
+                    <a name="/s:15CodableStoreKit0aB19TableViewControllerC07codableB0AA0aB0CyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/codableStore" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB19TableViewControllerC07codableB0AA0aB0CyxGvp">codableStore</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -178,14 +178,68 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Container Name</p>
+                        <p>The CodableStore</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">codableStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB19TableViewControllerC7objectsSayxGvp"></a>
+                    <a name="//apple_ref/swift/Property/objects" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB19TableViewControllerC7objectsSayxGvp">objects</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The collection objects</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB19TableViewControllerC15subscriptionBagAA012Observerableab12SubscriptionH0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/subscriptionBag" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB19TableViewControllerC15subscriptionBagAA012Observerableab12SubscriptionH0Cvp">subscriptionBag</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SubscriptionBag</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">subscriptionBag</span><span class="p">:</span> <span class="kt"><a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a></span></code></pre>
 
                         </div>
                       </div>
@@ -206,9 +260,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerVACSS4name_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(name:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerVACSS4name_tcfc">init(name:)</a>
+                    <a name="/s:15CodableStoreKit0aB19TableViewControllerCACyxGAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6engineSC07UITableE5StyleO5styletcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(container:engine:style:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB19TableViewControllerCACyxGAA0aB9ContainerV9container_AA0aB0C6EngineOyx_G6engineSC07UITableE5StyleO5styletcfc">init(container:engine:style:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -223,7 +277,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
+            <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">,</span>
+            <span class="nv">style</span><span class="p">:</span> <span class="kt">UITableViewStyle</span> <span class="o">=</span> <span class="o">.</span><span class="n">plain</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -234,12 +290,36 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>name</em>
+                                <em>container</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The name</p>
+                                  <p>The CodableStoreContainer. Default value <code>.default</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine. Default value <code>.fileSyste</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>style</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The UITableViewStyle. Default value <code>.plain</code></p>
                                 </div>
                               </td>
                             </tr>
@@ -249,23 +329,12 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/DefaultCodableStoreContainer"></a>
-                <a name="//apple_ref/swift/Section/DefaultCodableStoreContainer" class="dashAnchor"></a>
-                <a href="#/DefaultCodableStoreContainer">
-                  <h3 class="section-name">DefaultCodableStoreContainer</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerV7defaultACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerV7defaultACvpZ">default</a>
+                    <a name="/s:15CodableStoreKit0aB19TableViewControllerCACyxGSgSo7NSCoderC5coder_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB19TableViewControllerCACyxGSgSo7NSCoderC5coder_tcfc">init(coder:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -273,14 +342,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The DefaultCodableStoreContainer</p>
+                        <p>Initializer with Coder always returns nil</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="kt">CodableStoreContainer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -291,19 +360,19 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/ExpressibleByStringLiteral"></a>
-                <a name="//apple_ref/swift/Section/ExpressibleByStringLiteral" class="dashAnchor"></a>
-                <a href="#/ExpressibleByStringLiteral">
-                  <h3 class="section-name">ExpressibleByStringLiteral</h3>
+                <a name="/CodableStoreControllerable"></a>
+                <a name="//apple_ref/swift/Section/CodableStoreControllerable" class="dashAnchor"></a>
+                <a href="#/CodableStoreControllerable">
+                  <h3 class="section-name">CodableStoreControllerable</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerV17StringLiteralTypea"></a>
-                    <a name="//apple_ref/swift/Alias/StringLiteralType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerV17StringLiteralTypea">StringLiteralType</a>
+                    <a name="/s:15CodableStoreKit0aB19TableViewControllerC16objectsDidUpdateyAA0aB0C12ObserveEventOyx_G5event_tF"></a>
+                    <a name="//apple_ref/swift/Method/objectsDidUpdate(event:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB19TableViewControllerC16objectsDidUpdateyAA0aB0C12ObserveEventOyx_G5event_tF">objectsDidUpdate(event:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,41 +380,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The String Literal Type</p>
+                        <p>Object did update with event</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">StringLiteralType</span> <span class="o">=</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerVACSS13stringLiteral_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(stringLiteral:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerVACSS13stringLiteral_tcfc">init(stringLiteral:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializer with String Value</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">stringLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">objectsDidUpdate</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -356,139 +398,17 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>value</em>
+                                <em>event</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The String Value</p>
+                                  <p>The ObserveEvent</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/ExpressibleByIntegerLiteral"></a>
-                <a name="//apple_ref/swift/Section/ExpressibleByIntegerLiteral" class="dashAnchor"></a>
-                <a href="#/ExpressibleByIntegerLiteral">
-                  <h3 class="section-name">ExpressibleByIntegerLiteral</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerV18IntegerLiteralTypea"></a>
-                    <a name="//apple_ref/swift/Alias/IntegerLiteralType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerV18IntegerLiteralTypea">IntegerLiteralType</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The Integer Literal Type</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">IntegerLiteralType</span> <span class="o">=</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerVACSi14integerLiteral_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(integerLiteral:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerVACSi14integerLiteral_tcfc">init(integerLiteral:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializer with Integer Value which will be converted to a String</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">integerLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>value</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Integer Value</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/CustomStringConvertible"></a>
-                <a name="//apple_ref/swift/Section/CustomStringConvertible" class="dashAnchor"></a>
-                <a href="#/CustomStringConvertible">
-                  <h3 class="section-name">CustomStringConvertible</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB9ContainerV11descriptionSSvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB9ContainerV11descriptionSSvp">description</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>String representation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>

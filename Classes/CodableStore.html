@@ -32,6 +32,9 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore.html">CodableStore</a>
               </li>
               <li class="nav-group-task">
@@ -39,6 +42,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreViewController.html">CodableStoreViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
@@ -60,10 +72,10 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+                <a href="../Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
@@ -73,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -99,6 +114,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
@@ -134,6 +158,44 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C9containerAA0aB9ContainerVvp"></a>
+                    <a name="//apple_ref/swift/Property/container" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C9containerAA0aB9ContainerVvp">container</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Container</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
                 <a name="/Initializer"></a>
                 <a name="//apple_ref/swift/Section/Initializer" class="dashAnchor"></a>
                 <a href="#/Initializer">
@@ -161,7 +223,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
             <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore/Engine.html">Engine</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -243,19 +305,19 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/WriteableCodableStore"></a>
-                <a name="//apple_ref/swift/Section/WriteableCodableStore" class="dashAnchor"></a>
-                <a href="#/WriteableCodableStore">
-                  <h3 class="section-name">WriteableCodableStore</h3>
+                <a name="/CodableStore%20ACL%20Properties"></a>
+                <a name="//apple_ref/swift/Section/CodableStore ACL Properties" class="dashAnchor"></a>
+                <a href="#/CodableStore%20ACL%20Properties">
+                  <h3 class="section-name">CodableStore ACL Properties</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB0C4savexxKF"></a>
-                    <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C4savexxKF">save(_:)</a>
+                    <a name="/s:15CodableStoreKit0aB0C09writeableaB0AA012AnyWriteableaB0VyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/writeableCodableStore" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C09writeableaB0AA012AnyWriteableaB0VyxGvp">writeableCodableStore</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -263,10 +325,129 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Save Object</p>
+                        <p>WriteableCodableStore (Write-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">writeableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C08readableaB0AA011AnyReadableaB0VyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/readableCodableStore" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C08readableaB0AA011AnyReadableaB0VyxGvp">readableCodableStore</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ReadableCodableStore (Read-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">readableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C010observableaB0AA015AnyObserverableaB0CyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/observableCodableStore" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C010observableaB0AA015AnyObserverableaB0CyxGvp">observableCodableStore</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ObservableCodableStore (Observe-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">observableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C011migrateableaB0AA014AnyMigrateableaB0VyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/migrateableCodableStore" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C011migrateableaB0AA014AnyMigrateableaB0VyxGvp">migrateableCodableStore</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>MigrateableCodableStore (Migrate-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">migrateableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/MigrateableCodableStore"></a>
+                <a name="//apple_ref/swift/Section/MigrateableCodableStore" class="dashAnchor"></a>
+                <a href="#/MigrateableCodableStore">
+                  <h3 class="section-name">MigrateableCodableStore</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C7migrates10DictionaryVy2IDQzs5Error_pSgGAA0aB9ContainerV02toH0_AC6EngineOyx_G02inJ0tKF"></a>
+                    <a name="//apple_ref/swift/Method/migrate(toContainer:inEngine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C7migrates10DictionaryVy2IDQzs5Error_pSgGAA0aB9ContainerV02toH0_AC6EngineOyx_G02inJ0tKF">migrate(toContainer:inEngine:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Migrate current Collection data to another Container in a specific Engine</p>
 <div class="aside aside-throws">
     <p class="aside-title">Throws</p>
-    If saving fails
+    If migration fails
 
 </div>
 
@@ -276,7 +457,8 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">migrate</span><span class="p">(</span><span class="n">toContainer</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span><span class="p">,</span>
+                    <span class="n">inEngine</span> <span class="nv">engine</span><span class="p">:</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;.</span><span class="kt"><a href="../Classes/CodableStore/Engine.html">Engine</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
 
                         </div>
                       </div>
@@ -287,63 +469,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>object</em>
+                                <em>container</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The object to save</p>
+                                  <p>The CodableStoreContainer</p>
                                 </div>
                               </td>
                             </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The saved object</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C4saves10DictionaryVy2IDQzs5Error_pSgGSayxGF"></a>
-                    <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C4saves10DictionaryVy2IDQzs5Error_pSgGSayxGF">save(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Save Objects</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
                             <tr>
                               <td>
                                 <code>
-                                <em>objects</em>
+                                <em>engine</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The objects to save</p>
+                                  <p>The Engine</p>
                                 </div>
                               </td>
                             </tr>
@@ -353,569 +496,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Dictionary of saved objects with id and optional Error</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6deletexxKF"></a>
-                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6deletexxKF">delete(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Delete Object</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If deleting fails
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>object</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The objects to delete</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The deleted object</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6deletes10DictionaryVy2IDQzs5Error_pSgGSayxGF"></a>
-                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6deletes10DictionaryVy2IDQzs5Error_pSgGSayxGF">delete(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Delete Objects</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt">Object</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>objects</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The objects to delete</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Dictionary of deleted objects with id and optional Error</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6deletex2IDQz10identifier_tKF"></a>
-                    <a name="//apple_ref/swift/Method/delete(identifier:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6deletex2IDQz10identifier_tKF">delete(identifier:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Delete Object via ID</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If deleting fails
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>identifier</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The object identifier</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The deleted object</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6deletes10DictionaryVy2IDQzs5Error_pSgGAH11identifiersd_tF"></a>
-                    <a name="//apple_ref/swift/Method/delete(identifiers:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6deletes10DictionaryVy2IDQzs5Error_pSgGAH11identifiersd_tF">delete(identifiers:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Delete Objects via IDs</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifiers</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>identifier</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The objects identifiers</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Dictionary of deleted objects with id and optional Error</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C16deleteCollections10DictionaryVy2IDQzs5Error_pSgGyKF"></a>
-                    <a name="//apple_ref/swift/Method/deleteCollection()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C16deleteCollections10DictionaryVy2IDQzs5Error_pSgGyKF">deleteCollection()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Delete the Collection</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If collection can&rsquo;t be retrieved
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Dictionary of deleted objects with id and optional Error</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/ReadableCodableStore"></a>
-                <a name="//apple_ref/swift/Section/ReadableCodableStore" class="dashAnchor"></a>
-                <a href="#/ReadableCodableStore">
-                  <h3 class="section-name">ReadableCodableStore</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C3getx2IDQz10identifier_tKF"></a>
-                    <a name="//apple_ref/swift/Method/get(identifier:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C3getx2IDQz10identifier_tKF">get(identifier:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Retrieve Object via ID</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If retrieving fails
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>identifier</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The identifier</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The corresponding Object</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C13getCollectionSayxGyKF"></a>
-                    <a name="//apple_ref/swift/Method/getCollection()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C13getCollectionSayxGyKF">getCollection()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Retrieve all Objects in Collection</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If retrieving fails
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The Objects in the Collection</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C3getSayxGSbxc5where_tKF"></a>
-                    <a name="//apple_ref/swift/Method/get(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C3getSayxGSbxc5where_tKF">get(where:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Retrieve Objects with Filter</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If retrieving fails
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="p">(</span><span class="kt">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>filter</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Filter</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>An array of matching objects</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C5firstxSgSbxc5where_tKF"></a>
-                    <a name="//apple_ref/swift/Method/first(where:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C5firstxSgSbxc5where_tKF">first(where:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Retrieve first Object matching Filter</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    If retrieving fails
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">first</span><span class="p">(</span><span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="p">(</span><span class="kt">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>filter</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Filter</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The matching Object</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6existsSb2IDQz10identifier_tF"></a>
-                    <a name="//apple_ref/swift/Method/exists(identifier:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6existsSb2IDQz10identifier_tF">exists(identifier:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Check if Object with Identifier exists</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>identifier</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Identifier</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Boolean if Object exists</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6existsSbxF"></a>
-                    <a name="//apple_ref/swift/Method/exists(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6existsSbxF">exists(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Check if Object exists</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>object</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Object</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Boolean if Object exists</p>
                       </div>
                     </section>
                   </div>
@@ -1121,6 +701,323 @@
                           <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ObserveEvent</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/ReadableCodableStore"></a>
+                <a name="//apple_ref/swift/Section/ReadableCodableStore" class="dashAnchor"></a>
+                <a href="#/ReadableCodableStore">
+                  <h3 class="section-name">ReadableCodableStore</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C3getx2IDQz10identifier_tKF"></a>
+                    <a name="//apple_ref/swift/Method/get(identifier:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C3getx2IDQz10identifier_tKF">get(identifier:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve Object via ID</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If retrieving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The corresponding Object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C13getCollectionSayxGyKF"></a>
+                    <a name="//apple_ref/swift/Method/getCollection()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C13getCollectionSayxGyKF">getCollection()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve all Objects in Collection</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If retrieving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Objects in the Collection</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C3getSayxGSbxc5where_tKF"></a>
+                    <a name="//apple_ref/swift/Method/get(where:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C3getSayxGSbxc5where_tKF">get(where:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve Objects with Filter</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If retrieving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="p">(</span><span class="kt">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Filter</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of matching objects</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/WriteableCodableStore"></a>
+                <a name="//apple_ref/swift/Section/WriteableCodableStore" class="dashAnchor"></a>
+                <a href="#/WriteableCodableStore">
+                  <h3 class="section-name">WriteableCodableStore</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C4savexxKF"></a>
+                    <a name="//apple_ref/swift/Method/save(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C4savexxKF">save(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save Object</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If saving fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object to save</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The saved object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C6deletex2IDQz10identifier_tKF"></a>
+                    <a name="//apple_ref/swift/Method/delete(identifier:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C6deletex2IDQz10identifier_tKF">delete(identifier:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete Object via ID</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If deleting fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object identifier</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The deleted object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C16deleteCollections10DictionaryVy2IDQzs5Error_pSgGyKF"></a>
+                    <a name="//apple_ref/swift/Method/deleteCollection()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C16deleteCollections10DictionaryVy2IDQzs5Error_pSgGyKF">deleteCollection()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete the Collection</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If collection can&rsquo;t be retrieved
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Dictionary of deleted objects with id and optional Error</p>
                       </div>
                     </section>
                   </div>

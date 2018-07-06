@@ -32,6 +32,9 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore.html">CodableStore</a>
               </li>
               <li class="nav-group-task">
@@ -39,6 +42,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStoreViewController.html">CodableStoreViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
@@ -60,10 +72,10 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+                <a href="../Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
@@ -73,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -99,6 +114,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a>
@@ -170,7 +194,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+<span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
           <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
@@ -242,7 +266,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+<span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
             <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
@@ -325,7 +349,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span>
-                <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
                 <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
@@ -408,7 +432,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">getCollection</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">getCollection</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
                           <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="k">Self</span><span class="p">]</span></code></pre>
 
                         </div>
@@ -474,7 +498,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
             <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
@@ -541,7 +565,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">exists</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span>
-                   <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+                   <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
                    <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span> <span class="o">=</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>

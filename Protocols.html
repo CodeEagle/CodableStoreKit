@@ -32,6 +32,9 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/CodableStore.html">CodableStore</a>
               </li>
               <li class="nav-group-task">
@@ -39,6 +42,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CodableStoreViewController.html">CodableStoreViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/ObserverableCodableStoreSubscriptionBag.html">ObserverableCodableStoreSubscriptionBag</a>
@@ -60,10 +72,10 @@
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a>
+                <a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a>
+                <a href="Protocols/CodableStoreControllerable.html">CodableStoreControllerable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/CodableStoreable.html">CodableStoreable</a>
@@ -73,6 +85,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Encoderable.html">Encoderable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -99,6 +114,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a>
@@ -128,19 +152,19 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Encoderable"></a>
-                <a name="//apple_ref/swift/Section/Encoderable" class="dashAnchor"></a>
-                <a href="#/Encoderable">
-                  <h3 class="section-name">Encoderable</h3>
+                <a name="/CodableStoreControllerable"></a>
+                <a name="//apple_ref/swift/Section/CodableStoreControllerable" class="dashAnchor"></a>
+                <a href="#/CodableStoreControllerable">
+                  <h3 class="section-name">CodableStoreControllerable</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit11EncoderableP"></a>
-                    <a name="//apple_ref/swift/Protocol/Encoderable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit11EncoderableP">Encoderable</a>
+                    <a name="/s:15CodableStoreKit0aB14ControllerableP"></a>
+                    <a name="//apple_ref/swift/Protocol/CodableStoreControllerable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerableP">CodableStoreControllerable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -148,93 +172,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Encoderable Protocol</p>
+                        <p>The CodableStoreControllerable Protocol</p>
 
-                        <a href="Protocols/Encoderable.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/CodableStoreControllerable.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Encoderable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Decoderable"></a>
-                <a name="//apple_ref/swift/Section/Decoderable" class="dashAnchor"></a>
-                <a href="#/Decoderable">
-                  <h3 class="section-name">Decoderable</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit11DecoderableP"></a>
-                    <a name="//apple_ref/swift/Protocol/Decoderable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit11DecoderableP">Decoderable</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The Decoderable Protocol</p>
-
-                        <a href="Protocols/Decoderable.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Decoderable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/BaseCodableStoreableEngine"></a>
-                <a name="//apple_ref/swift/Section/BaseCodableStoreableEngine" class="dashAnchor"></a>
-                <a href="#/BaseCodableStoreableEngine">
-                  <h3 class="section-name">BaseCodableStoreableEngine</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit04BaseaB6EngineP"></a>
-                    <a name="//apple_ref/swift/Protocol/BaseCodableStoreEngine" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit04BaseaB6EngineP">BaseCodableStoreEngine</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The BaseCodableStoreEngine Protocol</p>
-
-                        <a href="Protocols/BaseCodableStoreEngine.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BaseCodableStoreEngine</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodableStoreControllerable</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                         </div>
                       </div>
@@ -273,7 +219,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WriteableCodableStoreEngine</span> <span class="p">:</span> <span class="kt"><a href="Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">WriteableCodableStoreEngine</span></code></pre>
 
                         </div>
                       </div>
@@ -312,7 +258,46 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ReadableCodableStoreEngine</span> <span class="p">:</span> <span class="kt"><a href="Protocols/BaseCodableStoreEngine.html">BaseCodableStoreEngine</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ReadableCodableStoreEngine</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/MigrateableCodableStore"></a>
+                <a name="//apple_ref/swift/Section/MigrateableCodableStore" class="dashAnchor"></a>
+                <a href="#/MigrateableCodableStore">
+                  <h3 class="section-name">MigrateableCodableStore</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit011MigrateableaB0P"></a>
+                    <a name="//apple_ref/swift/Protocol/MigrateableCodableStore" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit011MigrateableaB0P">MigrateableCodableStore</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The MigrateableCodableStore Protocol</p>
+
+                        <a href="Protocols/MigrateableCodableStore.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MigrateableCodableStore</span></code></pre>
 
                         </div>
                       </div>
@@ -547,6 +532,84 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodableStoreable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Encoderable"></a>
+                <a name="//apple_ref/swift/Section/Encoderable" class="dashAnchor"></a>
+                <a href="#/Encoderable">
+                  <h3 class="section-name">Encoderable</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit11EncoderableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Encoderable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit11EncoderableP">Encoderable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Encoderable Protocol</p>
+
+                        <a href="Protocols/Encoderable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Encoderable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Decoderable"></a>
+                <a name="//apple_ref/swift/Section/Decoderable" class="dashAnchor"></a>
+                <a href="#/Decoderable">
+                  <h3 class="section-name">Decoderable</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit11DecoderableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Decoderable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit11DecoderableP">Decoderable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Decoderable Protocol</p>
+
+                        <a href="Protocols/Decoderable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Decoderable</span></code></pre>
 
                         </div>
                       </div>
