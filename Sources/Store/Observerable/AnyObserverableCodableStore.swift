@@ -11,27 +11,26 @@ import Foundation
 // MARK: - AnyObserverableCodableStore
 
 /// The AnyObservableCodableStore 
-class AnyObserverableCodableStore<Object: BaseCodableStoreable> {
+public class AnyObserverableCodableStore<Object: BaseCodableStoreable> {
     
     // MARK: Properties
     
-    /// The Thread-Safe Locked Observable Handlers based on Object Identifier
-    let identifierStore: Locked<[String: (id: Object.ID, handler: (CodableStore<Object>.ObserveEvent) -> Void)]>
+    /// The Observe Handler Typealias closure
+    public typealias ObserveHandler = (CodableStore<Object>.ObserveEvent) -> Void
     
-    /// The Thread-Safe Locked Observable Handlers based on Object Filter
-    let filterStore: Locked<[String: (filter: (Object) -> Bool, handler: (CodableStore<Object>.ObserveEvent) -> Void)]>
+    /// The Thread-Safe Locked Observable Handlers
+    let store: Locked<[String: (mode: HandlerObserveMode, handler: ObserveHandler)]>
     
     /// Boolean if Stores are empty
     var isEmpty: Bool {
-        return self.identifierStore.value.isEmpty && self.filterStore.value.isEmpty
+        return self.store.value.isEmpty
     }
     
     // MARK: Initializer
     
     /// Designated Initializer
     init() {
-        self.identifierStore = Locked(.init())
-        self.filterStore = .init(.init())
+        self.store = .init(.init())
     }
     
     // MARK: Handler Identifier Generation
@@ -46,7 +45,7 @@ class AnyObserverableCodableStore<Object: BaseCodableStoreable> {
     
 }
 
-// MARK: Observer API
+// MARK: - Observer API
 
 extension AnyObserverableCodableStore {
     
@@ -57,13 +56,29 @@ extension AnyObserverableCodableStore {
     ///   - event: The Event
     func next(identifier: Object.ID, event: CodableStore<Object>.ObserveEvent) {
         // Emit Event to all matching IdentifierStore Handlers
-        self.identifierStore.value.values
-            .filter { $0.id == identifier }
-            .forEach { $0.handler(event) }
-        // Emit Event to all matching FilterStore Handlers
-        self.filterStore.value.values
-            .filter { $0.filter(event.object) }
-            .forEach { $0.handler(event) }
+        self.store.value.values
+            // Filter values
+            .filter {
+                // Switch on mode
+                switch $0.mode {
+                case .identifier(let objectIdentifier):
+                    // Return if identifier matches
+                    return objectIdentifier == identifier
+                case .filter(let filter):
+                    // Return if filter matches
+                    return filter(event.object)
+                }
+            }
+            // Map to Handler
+            .map { $0.handler }
+            // For Each Handler
+            .forEach { handler in
+                // Dispatch on Main Thread
+                DispatchQueue.main.async {
+                    // Invoke Handler with Event
+                    handler(event)
+                }
+        }
     }
     
     /// Emit next ObservableCodableStoreEvent with Object
@@ -92,17 +107,13 @@ extension AnyObserverableCodableStore: ObserverableCodableStore {
     ///   - handler: The Observe Handler
     /// - Returns: Observable Subscription
     @discardableResult
-    func observe(identifier: Object.ID,
-                 handler: @escaping (CodableStore<Object>.ObserveEvent) -> Void) -> ObserverableCodableStoreSubscription {
-        // Initialize Handler Identifier
-        let handlerIdentifier = self.getHandlerIdentifier()
-        // Set handler to store
-        self.identifierStore.value[handlerIdentifier] = (identifier, handler)
-        // Return Subscription
-        return Subscription(dispose: { [weak self] in
-            // Remove Handler from Store
-            self?.identifierStore.value.removeValue(forKey: handlerIdentifier)
-        })
+    public func observe(identifier: Object.ID,
+                        handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
+        // Handle Observe with identifier and return Subscription
+        return self.handleObserve(
+            mode: .identifier(identifier),
+            handler: handler
+        )
     }
     
     /// Observe Object where filter matches
@@ -112,16 +123,31 @@ extension AnyObserverableCodableStore: ObserverableCodableStore {
     ///   - handler: The Observe Handler
     /// - Returns: Observable Subscription
     @discardableResult
-    func observe(where filter: @escaping (Object) -> Bool,
-                 handler: @escaping (CodableStore<Object>.ObserveEvent) -> Void) -> ObserverableCodableStoreSubscription {
+    public func observe(where filter: @escaping (Object) -> Bool,
+                        handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
+        // Handle Observe with filter and return Subscription
+        return self.handleObserve(
+            mode: .filter(filter),
+            handler: handler
+        )
+    }
+    
+    /// Handle an Observe with an either an Identifier or Filter
+    ///
+    /// - Parameters:
+    ///   - mode: The HandlerObserveMode
+    ///   - handler: The Observe Handler
+    /// - Returns: Observable Subscription
+    func handleObserve(mode: HandlerObserveMode,
+                       handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
         // Initialize Handler Identifier
         let handlerIdentifier = self.getHandlerIdentifier()
-        // Set handler to store
-        self.filterStore.value[handlerIdentifier] = (filter, handler)
+        // Set handler to store with mode
+        self.store.value[handlerIdentifier] = (mode, handler)
         // Return Subscription
         return Subscription(dispose: { [weak self] in
             // Remove Handler from Store
-            self?.filterStore.value.removeValue(forKey: handlerIdentifier)
+            self?.store.value.removeValue(forKey: handlerIdentifier)
         })
     }
     
@@ -148,11 +174,27 @@ extension AnyObserverableCodableStore {
             self.dispose = dispose
         }
         
+        // MARK: API
+        
         /// Unsubscribe Observable
         func unsubscribe() {
             self.dispose()
         }
         
+    }
+    
+}
+
+// MARK: - HandlerObserveMode
+
+extension AnyObserverableCodableStore {
+    
+    /// The HandlerObserveMode
+    enum HandlerObserveMode {
+        /// Identifier
+        case identifier(Object.ID)
+        /// Filter
+        case filter((Object) -> Bool)
     }
     
 }

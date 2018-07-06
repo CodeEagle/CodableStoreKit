@@ -24,7 +24,7 @@ class FileManagerCodeableStoreEngine<Object: BaseCodableStoreable> {
     /// - Parameters:
     ///   - container: The Container
     ///   - fileManager: The FileManager
-    init(container: CodableStoreContainer = .init(),
+    init(container: CodableStoreContainer = .default,
          fileManager: FileManager = .default) {
         self.container = container
         self.fileManager = fileManager

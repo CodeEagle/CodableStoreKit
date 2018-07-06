@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - AnyCodableStoreEngine (Type-Erased-Wrapper Pattern)
+// MARK: - AnyCodableStoreEngine (Type-Erasure)
 
 /// The Type-Erased CodableStoreEngine Wrapper
 public struct AnyCodableStoreEngine<Object: BaseCodableStoreable> {

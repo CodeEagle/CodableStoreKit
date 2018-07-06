@@ -13,20 +13,13 @@ import Foundation
 /// The CodableStoreEngine Typealias
 public typealias CodableStoreEngine = WriteableCodableStoreEngine & ReadableCodableStoreEngine
 
-// MARK: - BaseCodableStoreableEngine
-
-/// The BaseCodableStoreEngine Protocol
-public protocol BaseCodableStoreEngine {
-    
-    /// The associatedtype BaseCodableStoreable Object
-    associatedtype Object: BaseCodableStoreable
-    
-}
-
 // MARK: - WriteableCodableStoreEngine
 
 /// The WriteableCodableStoreEngine Protocol
-public protocol WriteableCodableStoreEngine: BaseCodableStoreEngine {
+public protocol WriteableCodableStoreEngine {
+    
+    /// The associatedtype BaseCodableStoreable Object
+    associatedtype Object: BaseCodableStoreable
     
     /// Save Object
     ///
@@ -44,12 +37,18 @@ public protocol WriteableCodableStoreEngine: BaseCodableStoreEngine {
     @discardableResult
     func delete(identifier: Object.ID) throws -> Object
     
+    // TODO: Should an Engine be able to delete a whole Container?
+    // func delete(container: CodableStoreContainer) throws
+    
 }
 
 // MARK: - ReadableCodableStoreEngine
 
 /// The ReadableCodableStoreEngine
-public protocol ReadableCodableStoreEngine: BaseCodableStoreEngine {
+public protocol ReadableCodableStoreEngine {
+    
+    /// The associatedtype BaseCodableStoreable Object
+    associatedtype Object: BaseCodableStoreable
     
     /// Retrieve Object via ID
     ///

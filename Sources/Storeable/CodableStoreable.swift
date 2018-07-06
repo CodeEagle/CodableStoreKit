@@ -36,7 +36,7 @@ public extension CodableStoreable {
     /// - Returns: The saved object
     /// - Throws: If saving fails
     @discardableResult
-    func save(container: CodableStoreContainer = .init(),
+    func save(container: CodableStoreContainer = .default,
               engine: CodableStore<Self>.Engine = .fileSystem) throws -> Self {
         return try Self.codableStore(container, engine).save(self)
     }
@@ -49,7 +49,7 @@ public extension CodableStoreable {
     /// - Returns: The deleted object
     /// - Throws: If deleting fails
     @discardableResult
-    func delete(container: CodableStoreContainer = .init(),
+    func delete(container: CodableStoreContainer = .default,
                 engine: CodableStore<Self>.Engine = .fileSystem) throws -> Self {
         return try Self.codableStore(container, engine).delete(self)
     }
@@ -69,7 +69,7 @@ public extension CodableStoreable {
     /// - Returns: The retrieved object
     /// - Throws: If retrieving fails
     static func get(identifier: Self.ID,
-                    container: CodableStoreContainer = .init(),
+                    container: CodableStoreContainer = .default,
                     engine: CodableStore<Self>.Engine = .fileSystem) throws -> Self {
         return try Self.codableStore(container, engine).get(identifier: identifier)
     }
@@ -81,7 +81,7 @@ public extension CodableStoreable {
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: The retrieved Objects
     /// - Throws: If retrieving fails
-    static func getCollection(container: CodableStoreContainer = .init(),
+    static func getCollection(container: CodableStoreContainer = .default,
                               engine: CodableStore<Self>.Engine = .fileSystem) throws -> [Self] {
         return try Self.codableStore(container, engine).getCollection()
     }
@@ -92,7 +92,7 @@ public extension CodableStoreable {
     ///   - container: The CodableStoreContainer. Default value `.init`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: Boolean if Object exists
-    func exists(container: CodableStoreContainer = .init(),
+    func exists(container: CodableStoreContainer = .default,
                 engine: CodableStore<Self>.Engine = .fileSystem) -> Bool {
         return Self.codableStore(container, engine).exists(self)
     }
@@ -105,7 +105,7 @@ public extension CodableStoreable {
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: Boolean if Object exists
     static func exists(identifier: Self.ID,
-                       container: CodableStoreContainer = .init(),
+                       container: CodableStoreContainer = .default,
                        engine: CodableStore<Self>.Engine = .fileSystem) -> Bool {
         return Self.codableStore(container, engine).exists(identifier: identifier)
     }

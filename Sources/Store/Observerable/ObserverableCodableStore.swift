@@ -49,6 +49,13 @@ public protocol ObserverableCodableStore {
     func observe(where filter: @escaping (Object) -> Bool,
                  handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription
     
+    /// Observe the Collection
+    ///
+    /// - Parameter handler: The Observe Handler
+    /// - Returns: Observable Subscription
+    @discardableResult
+    func observeCollection(handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription
+    
 }
 
 // MARK: - ObserverableCodableStore Default Implementation
@@ -68,28 +75,14 @@ extension ObserverableCodableStore {
         return self.observe(identifier: object.codableStoreIdentifierValue, handler: handler)
     }
     
-}
-
-// MARK: - CodableStore.ObserveEvent
-
-public extension CodableStore {
-    
-    /// The ObserveEvent
-    enum ObserveEvent {
-        /// Object has been saved in Container
-        case saved(Object, CodableStoreContainer)
-        /// Object has been deleted in Container
-        case deleted(Object, CodableStoreContainer)
-        
-        /// The Object
-        var object: Object {
-            switch self {
-            case .saved(let object, _):
-                return object
-            case .deleted(let object, _):
-                return object
-            }
-        }
+    /// Observe the Collection
+    ///
+    /// - Parameter handler: The Observe Handler
+    /// - Returns: Observable Subscription
+    @discardableResult
+    public func observeCollection(handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
+        // Return observe with filter which always evaluates true
+        return self.observe(where: { _ in true }, handler: handler)
     }
     
 }
@@ -132,6 +125,11 @@ public class ObserverableCodableStoreSubscriptionBag {
     
     /// The Subscriptions
     private let subscriptions: Locked<[ObserverableCodableStoreSubscription]>
+    
+    /// Boolean if SubscriptionBag is empty
+    public var isEmpty: Bool {
+        return self.subscriptions.value.isEmpty
+    }
     
     // MARK: Initializer
     

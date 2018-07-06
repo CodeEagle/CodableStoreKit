@@ -16,7 +16,7 @@ public struct CodableStoreContainer: Codable, Equatable, Hashable {
     // MARK: Properties
     
     /// The Container Name
-    var name: String
+    public var name: String
     
     /// The Full-Qualified-Name
     var fullQualifiedName: String {
@@ -27,10 +27,19 @@ public struct CodableStoreContainer: Codable, Equatable, Hashable {
     
     /// Designated Initializer
     ///
-    /// - Parameter name: The name. Default value `Default`
-    public init(name: String = "Default") {
+    /// - Parameter name: The name
+    public init(name: String) {
         self.name = name
     }
+}
+
+// MARK: - DefaultCodableStoreContainer
+
+public extension CodableStoreContainer {
+    
+    /// The DefaultCodableStoreContainer
+    static var `default` = CodableStoreContainer(name: "Default")
+    
 }
 
 // MARK: - ExpressibleByStringLiteral

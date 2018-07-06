@@ -40,3 +40,43 @@ public protocol ReadableCodableStore: ReadableCodableStoreEngine {
     func exists(_ object: Object) -> Bool
     
 }
+
+// MARK: - ReadableCodableStore Default Implementation
+
+extension ReadableCodableStore {
+    
+    /// Retrieve first Object matching Filter
+    ///
+    /// - Parameter filter: The Filter
+    /// - Returns: The matching Object
+    /// - Throws: If retrieving fails
+    public func first(where filter: (Object) -> Bool) throws -> Object? {
+        // Return first matching object
+        return try self.get(where: filter).first
+    }
+    
+    /// Check if Object with Identifier exists
+    ///
+    /// - Parameter identifier: The Identifier
+    /// - Returns: Boolean if Object exists
+    public func exists(identifier: Object.ID) -> Bool {
+        do {
+            // Try to retrieve object with identifier
+            _ = try self.get(identifier: identifier)
+            // Object exists
+            return true
+        } catch {
+            // Object doesn't exists
+            return false
+        }
+    }
+    
+    /// Check if Object exists
+    ///
+    /// - Parameter object: The Object
+    /// - Returns: Boolean if Object exists
+    public func exists(_ object: Object) -> Bool {
+        return self.exists(identifier: object.codableStoreIdentifierValue)
+    }
+    
+}

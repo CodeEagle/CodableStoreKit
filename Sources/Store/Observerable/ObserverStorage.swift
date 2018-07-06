@@ -19,6 +19,8 @@ class ObserverStorage {
     static let sharedInstance = ObserverStorage()
     
     /// The Thread Safe Observers Array
+    /// As we are dealing with heterogeneous generic Elements
+    /// The observers Array is declared as type Any
     private var observers: Locked<[Any]>
     
     // MARK: Initializer
