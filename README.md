@@ -119,14 +119,14 @@ extension User: CodableStoreable {
 }
 ```
 
-Secondly initialize a specific `CodableStore` based on the type you want to persist.
+Secondly initialize a specific `CodableStore` based on the type you want to operate on.
 
 ```swift
 // Initialize a User CodableStore
 let codableStore = CodableStore<User>()
 ```
 
-Now you are good to go to `save`, `delete`, `get` and `observe`.
+Now you are good to go to persist, retrieve and observe your CodableStoreable type.
 
 ```swift
 // Initialize User
@@ -140,6 +140,9 @@ try codableStore.delete(user)
 
 // Get
 let retrievedUser = try codableStore.get(identifier: "42")
+
+// Exists
+let userExists = codableStore.exists(user)
 
 // Observe
 codableStore.observe(user) { (event) in
@@ -156,37 +159,50 @@ codableStore.observe(user) { (event) in
 That's it 🙌 head over to the Advanced section to explore the full capabilities of the `CodableStoreKit`.
 
 ## Advanced
-After the first usage description the Advanced section will explain all capabilities of the `CodableStoreKit` in depth. `CodableStoreKit` is based on a `Engine-Container-Collection-Architecture`.
+The Advanced section will explain all capabilities of the `CodableStoreKit` in depth. 
+
+### Engine-Container-Collection-Architecture
+
+The `CodableStoreKit` is based on an `Engine-Container-Collection-Architecture`.
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
+</p>
+
+The architecture allows a `CodableStore` to use different Engine-Implementations which are persisting data in a unique way. For instance the `InMemoryCodableStoreEngine` stores data in an instance property and the `FileManagerCodableStoreEngine` persist the data in the Filesystem. Each `Engine` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `Engine`. A `Collection` can be described as a group of related object types.
+
+Best of all you can configure the `Engine-Container-Collection-Architecture` to your needs 🙌
 
 ### Engine
 
-The `CodableStoreEngine` is the main component which saves, delete and fetches Codable Data from and in an Container. You can decide which Engine-Implementation should be used when initializing a `CodableStore`.
+You can pass the `CodableStoreEngine` that should be used of a `CodableStore` by simply passing it to the `initializer`.
 
 ```swift
-// FileSystem Engine which uses the FileManager-API
+// Use the FileSystem Engine
 let codableStore = CodableStore<User>(engine: .fileSystem)
 
-// InMemory Engine
+// Use the InMemory Engine (perfect for development or testing phase)
 let codableStore = CodableStore<User>(engine: .inMemory)
 
-// A custom CodableStoreEngine
+// Or use your own CodableStoreEngine
 let codableStore = CodableStore<User>(engine: .custom(myCustomEngine))
 ```
-> In default the `.fileSystem` Engine will be used
+> ☝️ In default the `.fileSystem` Engine will be used
 
 ### Container
-A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom `CodableStoreContainer` and pass it to a `CodableStore` in order to encapsulate your collections.
+
+To decide which `Container` should be used when persisting or retrieving Codables you can pass a `CodableStoreContainer` to the `initializer` of a `CodableStore`.
 
 ```swift
 // Initialize a custom CodableStoreContainer
 let apiV1Container = CodableStoreContainer(name: "APIv1Container")
 
 // Pass it to the CodableStore initializer
-let codableStore = CodableStore<User>(container: apiV1Container)
+let codableStore = CodableStore<User>(container: apiV1Container, engine: .fileSystem)
 ```
-> In default the `CodableStore` will use a default `CodableStoreContainer` with the name "Default".
+> ☝️ In default the `.default` `CodableStoreContainer` will be used with the name "Default"
 
-In summary a Container allows you to persist Collections in different encapsulated sections. Those Collections can be the same but can also be uniquely associated to a specific container.
+Different Containers comes handy when you want to store your Codable-Models which are retrieved via a versioned `JSON-API` in an encapsulated area inside an engine. Or you want to store some test data beside productiv data.
 
 <p align="center">
    <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
@@ -194,13 +210,17 @@ In summary a Container allows you to persist Collections in different encapsulat
 
 ### Collection
 
-A Collection can be defined as a typealias for all structs and classes which are conform to the `CodableStoreable` protocol. Inside a Collection the actual Data will be stored.
+As mentioned before a `Collection` is a group of realted object types. This means every struct or class that is conform to the `CodableStoreable`/`BaseCodableStoreable` protocol is a `Collection`. Therefore a `Collection` is identified via a name. In default the name of a `Collection` is the name of the type.
 
-<p align="center">
-   <img width="550" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Collection.jpg" alt="Containers">
-</p>
+```swift
+// A User struct
+struct User: CodableStoreable {}
 
-In default you have nothing to configure to use Collections as those are internal details. The identifer of a Collection is defined as a String. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. If you wish to supply a custom Collection name you can do it in the following way.
+// Print the CodableStore Collection-Name
+print(User.codableStoreCollectionName) // User.Type
+```
+
+If you wish to supply a custom `Collection` name you can override the static `codableStoreCollectionName` property.
 
 ```swift
 extension User {
@@ -245,16 +265,33 @@ let retrievedUser = try User.get(identifier: "42", container: myContainer)
 let allUsers = try User.getCollection()
 ```
 
-### BaseCodableStoreable
-
-If you want to suppress those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those functions but still remains the conformance to use it with a `CodableStore`.
+Last but not least convenience functions are also available on `CodableStoreable` Arrays.
 
 ```swift
-// Without convience functions on type
+// User Array
+var users: [User] = .init()
+
+// Save all Users
+users.save()
+
+// Delete all Users
+users.delete()
+```
+
+### BaseCodableStoreable
+
+If you want to suppress those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those aforementioned functions but still remains the conformance to use it with a `CodableStore`.
+
+```swift
+// try user.save() ✅ (available)
+extension User: CodableStoreable {}
+
+// try user.save() ❌ (unavailable)
 extension User: BaseCodableStoreable {}
 
-// With convience functions
-extension User: CodableStoreable {}
+// But both CodableStoreable and BaseCodableStoreable 
+// can be used with a CodableStore 👌
+let codableStore = CodableStore<User>()
 ```
 
 ### Observation
@@ -265,7 +302,7 @@ In order to retrieve callbacks when a certain object has been saved or deleted i
 // Initialize a CodableStore
 let codableStore = CodableStore<User>()
 
-// Observe an Store Subscription
+// Observe save and delete of Users where lastName contains "Robot"
 let subscription = codableStore.observe(where: { $0.lastName.contains("Robot") }) { event in
     switch event {
     case .saved(let object, let container):
@@ -292,7 +329,10 @@ class MyCustomClass {
         // Observe User with Identifier and dispose it by SubscriptionBag
         User.observe(identifier: "42") { event in
             print(event)
-        }.disposed(by: self. subscriptionBag)
+        }.disposed(
+            // Automatically unsubscribe on deinit
+            by: self. subscriptionBag
+        )
     }
 
 }
