@@ -98,8 +98,8 @@ public extension CodableStore {
         return self.observer
     }
     
-    /// MigrateableCodableStore (Migrate-Only)
-    public var migrateableCodableStore: AnyMigrateableCodableStore<Object> {
+    /// CopyableCodableStore (Copy-Only)
+    public var copyableCodableStore: AnyCopyableCodableStore<Object> {
         return .init(self)
     }
     
