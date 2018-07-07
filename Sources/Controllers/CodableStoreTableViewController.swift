@@ -18,8 +18,8 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
     /// The CodableStore
     open var codableStore: CodableStore<Object>
     
-    /// The collection objects
-    open var objects: [Object]
+    /// The CodableStoreables
+    open var codableStoreables: [Object]
     
     /// The SubscriptionBag
     open var subscriptionBag: ObserverableCodableStoreSubscriptionBag
@@ -36,7 +36,7 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
                 engine: CodableStore<Object>.Engine = .fileSystem,
                 style: UITableViewStyle = .plain) {
         self.codableStore = .init(container: container, engine: engine)
-        self.objects = .init()
+        self.codableStoreables = .init()
         self.subscriptionBag = .init()
         super.init(style: style)
         self.subscribeCollectionUpdates()
@@ -49,10 +49,10 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
     
     // MARK: CodableStoreControllerable
     
-    /// Object did update with event
+    /// CodableStoreables did update with observe event
     ///
     /// - Parameter event: The ObserveEvent
-    open func objectsDidUpdate(event: CodableStore<Object>.ObserveEvent) {
+    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent) {
         // Reload Data
         self.tableView.reloadData()
     }

@@ -19,20 +19,41 @@ public protocol CodableStoreControllerable: class {
     /// The CodableStore
     var codableStore: CodableStore<Object> { get }
     
-    /// The collection objects
-    var objects: [Object] { get set }
+    /// The CodableStoreables
+    var codableStoreables: [Object] { get set }
     
     /// The SubscriptionBag
     var subscriptionBag: ObserverableCodableStoreSubscriptionBag { get }
     
-    /// Object did update with event
+    /// CodableStoreables will update with observe event
     ///
     /// - Parameter event: The ObserveEvent
-    func objectsDidUpdate(event: CodableStore<Object>.ObserveEvent)
+    func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent)
+    
+    /// CodableStoreables did update with observe event
+    ///
+    /// - Parameter event: The ObserveEvent
+    func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent)
     
 }
 
-// MARK: - CodableStoreControllerable Subscribe
+// MARK: - CodableStoreControllerable Default Implementation
+
+extension CodableStoreControllerable {
+    
+    /// CodableStoreables will update with observe event
+    ///
+    /// - Parameter event: The ObserveEvent
+    public func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent) {}
+    
+    /// CodableStoreables did update with observe event
+    ///
+    /// - Parameter event: The ObserveEvent
+    public func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent) {}
+    
+}
+
+// MARK: - CodableStoreControllerable Funtions
 
 extension CodableStoreControllerable {
     
@@ -45,7 +66,7 @@ extension CodableStoreControllerable {
         }
         // Initialize objects with Collection
         (try? self.codableStore.getCollection()).flatMap { [weak self] in
-            self?.objects = $0
+            self?.codableStoreables = $0
         }
         // Observe Collection and disposed by SubscriptionBag
         self.codableStore.observeCollection { [weak self] event in
@@ -59,27 +80,29 @@ extension CodableStoreControllerable {
                 // Collection is unavailable
                 return
             }
-            // Set objects
-            weakSelf.objects = objects
+            // Invoke CodableStoreables will update
+            weakSelf.codableStoreablesWillUpdate(event: event)
+            // Set CodableStoreables
+            weakSelf.codableStoreables = objects
             // Invoke objects did update with event
-            weakSelf.objectsDidUpdate(event: event)
+            weakSelf.codableStoreablesDidUpdate(event: event)
         }.disposed(
             by: self.subscriptionBag
         )
     }
     
-    /// Retrieve Object at Index
+    /// Retrieve CodableStoreable at Index
     ///
     /// - Parameter index: The Index
-    /// - Returns: Object at Index if index is contained in indices
-    public func object(at index: Int) -> Object? {
+    /// - Returns: CodableStoreable at Index if index is contained in indices
+    public func codableStoreable(at index: Int) -> Object? {
         // Verfiy index is contained in indices
-        guard self.objects.indices.contains(index) else {
+        guard self.codableStoreables.indices.contains(index) else {
             // Index out of bounds return nil
             return nil
         }
-        // Return object at index
-        return self.objects[index]
+        // Return CodableStoreable at index
+        return self.codableStoreables[index]
     }
     
 }
