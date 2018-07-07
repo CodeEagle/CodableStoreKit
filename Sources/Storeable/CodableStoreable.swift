@@ -13,7 +13,7 @@ import Foundation
 /// The CodableStoreable Protocol
 public protocol CodableStoreable: BaseCodableStoreable {}
 
-// MARK: - CodableStoreable Convenience Writeable Functions
+// MARK: - Writeable Convenience Functions
 
 public extension CodableStoreable {
     
@@ -56,7 +56,7 @@ public extension CodableStoreable {
     
 }
 
-// MARK: - CodableStoreable Convenience Readable Functions
+// MARK: - Readable Convenience Functions
 
 public extension CodableStoreable {
     
@@ -112,7 +112,7 @@ public extension CodableStoreable {
     
 }
 
-// MARK: - CodableStoreable Convenience Observable Functions
+// MARK: - Observable Convenience Functions
 
 public extension CodableStoreable {
     
