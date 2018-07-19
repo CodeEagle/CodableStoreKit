@@ -27,22 +27,22 @@ open class CodableStore<Object: BaseCodableStoreable> {
     // MARK: ACL Properties
     
     /// WriteableCodableStore (Write-Only)
-    open var writeableCodableStore: AnyWriteableCodableStore<Object> {
+    open var writeable: AnyWriteableCodableStore<Object> {
         return .init(self)
     }
     
     /// ReadableCodableStore (Read-Only)
-    open var readableCodableStore: AnyReadableCodableStore<Object> {
+    open var readable: AnyReadableCodableStore<Object> {
         return .init(self)
     }
     
     /// ObservableCodableStore (Observe-Only)
-    open var observableCodableStore: AnyObserverableCodableStore<Object> {
+    open var observable: AnyObserverableCodableStore<Object> {
         return self.observer
     }
     
     /// CopyableCodableStore (Copy-Only)
-    open var copyableCodableStore: AnyCopyableCodableStore<Object> {
+    open var copyable: AnyCopyableCodableStore<Object> {
         return .init(self)
     }
     
