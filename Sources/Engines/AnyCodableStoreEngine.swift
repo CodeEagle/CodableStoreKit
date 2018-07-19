@@ -32,7 +32,7 @@ public struct AnyCodableStoreEngine<Object: BaseCodableStoreable> {
     /// Designated Initializer
     ///
     /// - Parameter engine: The CodableStoreEngine
-    init<T: CodableStoreEngine>(_ engine: T) where T.Object == Object {
+    public init<T: CodableStoreEngine>(_ engine: T) where T.Object == Object {
         self.saveClosure = {
             try engine.save($0)
         }
