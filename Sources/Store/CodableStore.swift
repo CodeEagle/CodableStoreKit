@@ -11,7 +11,7 @@ import Foundation
 // MARK: - CodableStore
 
 /// The CodableStore
-public class CodableStore<Object: BaseCodableStoreable> {
+open class CodableStore<Object: BaseCodableStoreable> {
     
     // MARK: Properties
     
@@ -24,6 +24,28 @@ public class CodableStore<Object: BaseCodableStoreable> {
     /// The Observer
     let observer: AnyObserverableCodableStore<Object>
     
+    // MARK: ACL Properties
+    
+    /// WriteableCodableStore (Write-Only)
+    open var writeableCodableStore: AnyWriteableCodableStore<Object> {
+        return .init(self)
+    }
+    
+    /// ReadableCodableStore (Read-Only)
+    open var readableCodableStore: AnyReadableCodableStore<Object> {
+        return .init(self)
+    }
+    
+    /// ObservableCodableStore (Observe-Only)
+    open var observableCodableStore: AnyObserverableCodableStore<Object> {
+        return self.observer
+    }
+    
+    /// CopyableCodableStore (Copy-Only)
+    open var copyableCodableStore: AnyCopyableCodableStore<Object> {
+        return .init(self)
+    }
+    
     // MARK: Initializer
 
     /// Designated Initializer
@@ -35,7 +57,9 @@ public class CodableStore<Object: BaseCodableStoreable> {
                 engine: Engine = .fileSystem) {
         self.container = container
         self.engine = engine.get(container: container)
-        self.observer = ObserverStorage.sharedInstance.getObserver(objectType: Object.self)
+        self.observer = ObserverStorage
+            .sharedInstance
+            .getObserver(objectType: Object.self)
     }
     
     /// Deinit
@@ -44,20 +68,6 @@ public class CodableStore<Object: BaseCodableStoreable> {
         ObserverStorage
             .sharedInstance
             .clearObserveUsage(objectType: Object.self)
-    }
-    
-}
-
-// MARK: - CodableStore.Result
-
-public extension CodableStore {
-    
-    /// The CodableStore Result
-    enum Result {
-        /// Success with Object
-        case success(Object)
-        /// Failure with identifier and Error
-        case failure(Object.ID, Error)
     }
     
 }
@@ -93,28 +103,16 @@ public extension CodableStore {
 
 }
 
-// MARK: - CodableStore ACL Properties
+// MARK: - CodableStore.Result
 
 public extension CodableStore {
     
-    /// WriteableCodableStore (Write-Only)
-    public var writeableCodableStore: AnyWriteableCodableStore<Object> {
-        return .init(self)
-    }
-    
-    /// ReadableCodableStore (Read-Only)
-    public var readableCodableStore: AnyReadableCodableStore<Object> {
-        return .init(self)
-    }
-    
-    /// ObservableCodableStore (Observe-Only)
-    public var observableCodableStore: AnyObserverableCodableStore<Object> {
-        return self.observer
-    }
-    
-    /// CopyableCodableStore (Copy-Only)
-    public var copyableCodableStore: AnyCopyableCodableStore<Object> {
-        return .init(self)
+    /// The CodableStore Result
+    enum Result {
+        /// Success with Object
+        case success(Object)
+        /// Failure with identifier and Error
+        case failure(Object.ID, Error)
     }
     
 }
