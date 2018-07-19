@@ -22,7 +22,7 @@ public struct AnyWriteableCodableStore<Object: BaseCodableStoreable> {
     private let deleteIdentifierClosure: (Object.ID) throws -> Object
     
     /// The delete collection closure
-    private let deleteCollectionClosure: () throws -> [Object.ID: Error?]
+    private let deleteCollectionClosure: () throws -> [CodableStore<Object>.Result]
     
     // MARK: Initializer
     
@@ -69,10 +69,10 @@ extension AnyWriteableCodableStore: WriteableCodableStore {
     
     /// Delete the Collection
     ///
-    /// - Returns: Dictionary of deleted objects with id and optional Error
+    /// - Returns: CodableStore Result Array
     /// - Throws: If collection can't be retrieved
     @discardableResult
-    public func deleteCollection() throws -> [Object.ID: Error?] {
+    public func deleteCollection() throws -> [CodableStore<Object>.Result] {
         return try self.deleteCollectionClosure()
     }
     

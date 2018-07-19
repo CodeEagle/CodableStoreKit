@@ -173,10 +173,10 @@ extension Array where Element: CodableStoreable {
     /// - Parameters:
     ///   - container: The CodableStoreContainer. Default value `.init`
     ///   - engine: The Engine. Default value `.fileSystem`
-    /// - Returns: The saved Element with ID and optional Error
+    /// - Returns: CodableStore Result Array
     @discardableResult
     func save(container: CodableStoreContainer,
-              engine: CodableStore<Element>.Engine = .fileSystem) -> [Element.ID: Error?] {
+              engine: CodableStore<Element>.Engine = .fileSystem) -> [CodableStore<Element>.Result] {
         return CodableStore(container: container, engine: engine).save(self)
     }
     
@@ -185,10 +185,10 @@ extension Array where Element: CodableStoreable {
     /// - Parameters:
     ///   - container: The CodableStoreContainer. Default value `.init`
     ///   - engine: The Engine. Default value `.fileSystem`
-    /// - Returns: The deleted Element with ID and optional Error
+    /// - Returns: CodableStore Result Array
     @discardableResult
     func delete(container: CodableStoreContainer,
-                engine: CodableStore<Element>.Engine = .fileSystem) -> [Element.ID: Error?] {
+                engine: CodableStore<Element>.Engine = .fileSystem) -> [CodableStore<Element>.Result] {
         return CodableStore(container: container, engine: engine).delete(self)
     }
     

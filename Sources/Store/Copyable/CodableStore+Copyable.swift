@@ -17,11 +17,11 @@ extension CodableStore: CopyableCodableStore {
     /// - Parameters:
     ///   - codableStore: The target CodableStore to insert data
     ///   - filter: The optional Filter
-    /// - Returns: Dictionary of saved objects with id and optional Error
+    /// - Returns: CodableStore Result Array
     /// - Throws: If copying fails
     @discardableResult
     public func copy(toStore codableStore: CodableStore<Object>,
-                     where filter: ((Object) -> Bool)?) throws -> [Object.ID: Error?] {
+                     where filter: ((Object) -> Bool)?) throws -> [CodableStore<Object>.Result] {
         // Try to retrieve current Collection
         let collection = try self.getCollection()
         // Try to save current collection in CodableStore

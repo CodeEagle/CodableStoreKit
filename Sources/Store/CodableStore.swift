@@ -48,6 +48,20 @@ public class CodableStore<Object: BaseCodableStoreable> {
     
 }
 
+// MARK: - CodableStore.Result
+
+public extension CodableStore {
+    
+    /// The CodableStore Result
+    enum Result {
+        /// Success with Object
+        case success(Object)
+        /// Failure with identifier and Error
+        case failure(Object.ID, Error)
+    }
+    
+}
+
 // MARK: - CodableStore.Engine
 
 public extension CodableStore {

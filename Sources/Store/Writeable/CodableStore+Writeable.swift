@@ -44,10 +44,10 @@ extension CodableStore: WriteableCodableStore {
     
     /// Delete the Collection
     ///
-    /// - Returns: Dictionary of deleted objects with id and optional Error
+    /// - Returns: CodableStore Result Array
     /// - Throws: If collection can't be retrieved
     @discardableResult
-    public func deleteCollection() throws -> [Object.ID: Error?] {
+    public func deleteCollection() throws -> [CodableStore<Object>.Result] {
         // Try to Retrieve Collection
         let collection = try self.getCollection()
         // Return self delete the collection

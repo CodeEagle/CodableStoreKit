@@ -22,23 +22,23 @@ public protocol CopyableCodableStore {
     ///   - container: The CodableStoreContainer
     ///   - engine: The Engine
     ///   - filter: The optional Filter
-    /// - Returns: Dictionary of saved objects with id and optional Error
+    /// - Returns: CodableStore Result Array
     /// - Throws: If copying fails
     @discardableResult
     func copy(toContainer container: CodableStoreContainer,
               inEngine engine: CodableStore<Object>.Engine,
-              where filter: ((Object) -> Bool)?) throws -> [Object.ID: Error?]
+              where filter: ((Object) -> Bool)?) throws -> [CodableStore<Object>.Result]
     
     /// Copy the current Collection data to another CodableStore
     ///
     /// - Parameters:
     ///   - codableStore: The target CodableStore to insert data
     ///   - filter: The optional Filter
-    /// - Returns: Dictionary of saved objects with id and optional Error
+    /// - Returns: CodableStore Result Array
     /// - Throws: If copying fails
     @discardableResult
     func copy(toStore codableStore: CodableStore<Object>,
-              where filter: ((Object) -> Bool)?) throws -> [Object.ID: Error?]
+              where filter: ((Object) -> Bool)?) throws -> [CodableStore<Object>.Result]
     
 }
 
@@ -52,12 +52,12 @@ extension CopyableCodableStore {
     ///   - container: The CodableStoreContainer
     ///   - engine: The Engine
     ///   - filter: The optional Filter
-    /// - Returns: Dictionary of saved objects with id and optional Error
+    /// - Returns: CodableStore Result Array
     /// - Throws: If copying fails
     @discardableResult
     public func copy(toContainer container: CodableStoreContainer,
                      inEngine engine: CodableStore<Object>.Engine,
-                     where filter: ((Object) -> Bool)?) throws -> [Object.ID: Error?] {
+                     where filter: ((Object) -> Bool)?) throws -> [CodableStore<Object>.Result] {
         // Initialize a CodableStore for current Collection with given Container in Engine
         let codableStore = CodableStore<Object>(container: container, engine: engine)
         // Return try to copy to CodableStore with optional filter
