@@ -27,13 +27,19 @@ public protocol CodableStoreControllerable: class {
     
     /// CodableStoreables will update with observe event
     ///
-    /// - Parameter event: The ObserveEvent
-    func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent)
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The current CodableStoreables before update
+    func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
+                                     codableStoreables: [Object])
     
     /// CodableStoreables did update with observe event
     ///
-    /// - Parameter event: The ObserveEvent
-    func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent)
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The updated CodableStoreables
+    func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+                                    codableStoreables: [Object])
     
 }
 
@@ -43,13 +49,19 @@ extension CodableStoreControllerable {
     
     /// CodableStoreables will update with observe event
     ///
-    /// - Parameter event: The ObserveEvent
-    public func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent) {}
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The current CodableStoreables before update
+    public func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
+                                            codableStoreables: [Object]) {}
     
     /// CodableStoreables did update with observe event
     ///
-    /// - Parameter event: The ObserveEvent
-    public func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent) {}
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The updated CodableStoreables
+    public func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+                                           codableStoreables: [Object]) {}
     
 }
 
@@ -81,11 +93,13 @@ extension CodableStoreControllerable {
                 return
             }
             // Invoke CodableStoreables will update
-            weakSelf.codableStoreablesWillUpdate(event: event)
+            weakSelf.codableStoreablesWillUpdate(event: event,
+                                                 codableStoreables: weakSelf.codableStoreables)
             // Set CodableStoreables
             weakSelf.codableStoreables = objects
             // Invoke objects did update with event
-            weakSelf.codableStoreablesDidUpdate(event: event)
+            weakSelf.codableStoreablesDidUpdate(event: event,
+                                                codableStoreables: objects)
         }.disposed(
             by: self.subscriptionBag
         )

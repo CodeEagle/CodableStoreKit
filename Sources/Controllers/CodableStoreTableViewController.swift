@@ -51,8 +51,11 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
     
     /// CodableStoreables did update with observe event
     ///
-    /// - Parameter event: The ObserveEvent
-    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent) {
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The updated CodableStoreables
+    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+                                         codableStoreables: [Object]) {
         // Reload Data
         self.tableView.reloadData()
     }

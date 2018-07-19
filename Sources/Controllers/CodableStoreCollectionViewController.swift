@@ -53,8 +53,11 @@ open class CodableStoreCollectionViewController<Object: BaseCodableStoreable>: U
     
     /// CodableStoreables did update with observe event
     ///
-    /// - Parameter event: The ObserveEvent
-    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent) {
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The updated CodableStoreables
+    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+                                         codableStoreables: [Object]) {
         // Reload Data
         self.collectionView?.reloadData()
     }
