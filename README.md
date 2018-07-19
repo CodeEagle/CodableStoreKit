@@ -189,6 +189,34 @@ let codableStore = CodableStore<User>(engine: .custom(myCustomEngine))
 ```
 > ☝️ In default the `.fileSystem` Engine will be used
 
+#### Custom Engine
+
+If you wish to define your own `CodableStoreEngine` you have to declare your Engine with a generic object type which is at least conform to the `BaseCodableStoreable` protocol. You have to do so to satisfy the associatedtype of the `CodableStoreEngine` protocol.
+
+```swift
+class MyEngine<Object: BaseCodableStoreable>: CodableStoreEngine {
+    
+    func get(identifier: Object.ID) throws -> Object {}
+    
+    func getCollection() throws -> [Object] {}
+    
+    func save(_ object: Object) throws -> Object {}
+    
+    func delete(identifier: Object.ID) throws -> Object {}
+    
+}
+```
+
+After you implemented the four functions `get`, `getCollection`, `save` and `delete` you can pass your own `CodableStoreEngine` to a `CodableStore` by wrapping it in an `AnyCodableStoreEngine` which is a type erasure struct.
+
+```swift
+// Initialize your Engine with an AnyCodableStoreEngine
+let myEngine = AnyCodableStoreEngine<User>(MyEngine())
+
+// Initialize a CodableStore with a custom Engine
+let codableStore = CodableStore<User>(engine: .custom(myEngine))
+```
+
 ### Container
 
 To decide which `Container` should be used when persisting or retrieving Codables you can pass a `CodableStoreContainer` to the `initializer` of a `CodableStore`.
@@ -233,6 +261,22 @@ extension User {
     
 }
 ```
+
+### Encoder & Decoder
+
+According to the `codableStoreCollectionName` you can override the specific `Encoder` and `Decoder` which should be used when serializing and deserializing data.
+
+```swift
+extension User {
+
+    /// The CodableStore Coder
+    static var codableStoreCoder: Coder {
+        return (JSONEncoder(), JSONDecoder())
+    }
+    
+}
+```
+> ☝️ In default the `JSONEncoder` and `JSONDecoder` will be used
 
 ### CodableStoreable
 
@@ -338,6 +382,30 @@ class MyCustomClass {
 }
 
 ```
+
+### Access-Control
+
+In default a `CodableStore` enables you to access all functions to write, read, observe and copy data. If you wish to use a `CodableStore` in write-only or read-only mode you can make use of the `ACL` properties.
+
+```swift
+let codableStore = CodableStore<User>()
+
+// Write-Only CodableStore
+let writeableCodableStore = codableStore.writeable
+
+// Read-Only CodableStore
+let readableCodableStore = codableStore.readable
+
+// Observe-Only CodableStore
+let observableCodableStore = codableStore.observable
+
+// Copy-Only CodableStore
+let copyableCodableStore = codableStore.copyable
+```
+
+### CodableStoreController
+
+...
 
 ## Contributing
 Contributions are very welcome 🙌 🤓
