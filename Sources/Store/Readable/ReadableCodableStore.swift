@@ -60,15 +60,7 @@ extension ReadableCodableStore {
     /// - Parameter identifier: The Identifier
     /// - Returns: Boolean if Object exists
     public func exists(identifier: Object.ID) -> Bool {
-        do {
-            // Try to retrieve object with identifier
-            _ = try self.get(identifier: identifier)
-            // Object exists
-            return true
-        } catch {
-            // Object doesn't exists
-            return false
-        }
+        return (try? self.get(identifier: identifier)) != nil
     }
     
     /// Check if Object exists
