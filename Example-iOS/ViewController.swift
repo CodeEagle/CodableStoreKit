@@ -27,7 +27,7 @@ class ViewController: CodableStoreTableViewController<User> {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let user = self.object(at: indexPath.row)
+        let user = self.codableStoreable(at: indexPath.row)
         cell.textLabel?.text = user?.firstName
         cell.detailTextLabel?.text = user?.lastName
         return cell
@@ -38,7 +38,7 @@ class ViewController: CodableStoreTableViewController<User> {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.objects.count
+        return self.codableStoreables.count
     }
 
 }
