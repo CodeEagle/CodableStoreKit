@@ -262,7 +262,7 @@ extension User {
 }
 ```
 
-### Encoder & Decoder
+#### Encoder & Decoder
 
 According to the `codableStoreCollectionName` you can override the specific `Encoder` and `Decoder` which should be used when serializing and deserializing data.
 
