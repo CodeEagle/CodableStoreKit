@@ -13,9 +13,9 @@ import Foundation
 /// The CodableStoreable Protocol
 public protocol CodableStoreable: BaseCodableStoreable {}
 
-// MARK: - Writeable Convenience Functions
+// MARK: - Private Container Builder
 
-public extension CodableStoreable {
+private extension CodableStoreable {
     
     /// Build CodableStore with Container and Engine
     ///
@@ -27,6 +27,12 @@ public extension CodableStoreable {
                                      _ engine: CodableStore<Self>.Engine) -> CodableStore<Self> {
         return .init(container: container, engine: engine)
     }
+    
+}
+
+// MARK: - Writeable Convenience Functions
+
+public extension CodableStoreable {
     
     /// Save Object
     ///
@@ -126,7 +132,8 @@ public extension CodableStoreable {
     ///   - handler: The Observe Handler
     /// - Returns: Observable Subscription
     @discardableResult
-    static func observe(identifier: Self.ID, handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
+    static func observe(identifier: Self.ID,
+                        handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
         return ObserverStorage
             .sharedInstance
             .getObserver(objectType: Self.self)
