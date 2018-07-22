@@ -405,7 +405,26 @@ let copyableCodableStore = codableStore.copyable
 ```
 
 ### CodableStoreController
-A `CodableStoreController` is available in three variants `CodableStoreViewController`, `CodableStoreTableViewController` and `CodableStoreCollectionViewController`. The Controllers automatically observe the Collection type you pass to generic interface like `<User>` and will call the two lifecycle functions `codableStoreablesWillUpdate` and `codableStoreablesDidUpdate`. Accessing `self.codableStoreables` will return the whole Collection of the specific type. Furthermore, the Observation will be disposed as soon as the Controller gets deallocated.
+A `CodableStoreController` is available in three variants.
+
+| CodableStoreController | Description |
+| ------------- | ------------- |
+| `CodableStoreViewController ` | Subclass of `UIViewController` |
+| `CodableStoreTableViewController ` | Subclass of `UITableViewController` |
+| `CodableStoreCollectionViewController ` | Subclass of `UICollectionViewController` |
+
+When using a `CodableStoreController` you can make use of the pre-defined observation implementation on the `CodableStoreable` type you specify in the generic interface like `<User>`. As soon as the Controller gets deallocated the observation will be disposed 👌
+
+A `CodableStoreController` will invoke the following two lifecycle functions.
+
+| Lifecycle | Description |
+| ------------- | ------------- |
+| `codableStoreablesWillUpdate ` | CodableStoreable Objects will update |
+| `codableStoreablesDidUpdate ` | CodableStoreables Objects did update |
+
+In default the `CodableStoreTableViewController` and `CodableStoreCollectionViewController` will use the did update function to trigger `reloadData()` but you can add your own logic to those lifecycles as well. Furthermore, to access the CodableStoreable objects based on the generic interface type you can simply use the instance property `self.codableStoreables` or `self.codableStoreable(at: index)`.
+
+The following example code shows an implementation to show all Users firstName in a UILabel which will get updated on the `codableStoreablesDidUpdate` lifecycle.
 
 ```swift
 class UserListViewController: CodableStoreViewController<User> {
@@ -439,7 +458,6 @@ class UserListViewController: CodableStoreViewController<User> {
     
 }
 ```
-> Example Code to display all Users first name in UILabel and updates automatically on changes
 
 ## Contributing
 Contributions are very welcome 🙌 🤓
