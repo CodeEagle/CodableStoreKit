@@ -160,19 +160,19 @@ try user.save()
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
 ## Advanced
-The Advanced section will explain all features and capabilities of `CodableStoreKit` in detail 🙌
+The Advanced section will explain all features and capabilities of `CodableStoreKit` like the architecture, observation, access-control and many more in detail 🙌
 
 ### Engine-Container-Collection-Architecture
 
-The `CodableStoreKit` is based on an `Engine-Container-Collection-Architecture (ECCA)`.
+Beginning with an important part of the `CodableStoreKit` the `Engine-Container-Collection-Architecture (ECCA)`. The architecture allows a `CodableStore` to use different Engine-Implementations which are persisting data in a unique way. For instance the `InMemoryCodableStoreEngine` stores data in an instance property and the `FileManagerCodableStoreEngine` persist the data in the Filesystem.
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
 </p>
 
-The architecture allows a `CodableStore` to use different Engine-Implementations which are persisting data in a unique way. For instance the `InMemoryCodableStoreEngine` stores data in an instance property and the `FileManagerCodableStoreEngine` persist the data in the Filesystem. Each `Engine` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `Engine`. A `Collection` can be described as a group of related object types.
+Each `Engine` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `Engine`. A `Collection` can be described as a group of related object types.
 
-Best of all you can configure the `Engine-Container-Collection-Architecture` to your needs 🙌
+> Best of all you can configure the `Engine-Container-Collection-Architecture` to your needs 🙌
 
 ### Engine
 
