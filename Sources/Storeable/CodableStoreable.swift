@@ -169,6 +169,16 @@ public extension CodableStoreable {
             .observe(where: filter, handler: handler)
     }
     
+    /// Observe the Collection
+    ///
+    /// - Parameter handler: The Observe Handler
+    /// - Returns: Observable Subscription
+    @discardableResult
+    static func observeCollection(handler: @escaping ObserveHandler) -> ObserverableCodableStoreSubscription {
+        // Return observe with filter which always evaluates true
+        return self.observe(where: { _ in true }, handler: handler)
+    }
+    
 }
 
 // MARK: - Copyable Convenience Functions
