@@ -36,6 +36,11 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
                 engine: CodableStore<Object>.Engine = .fileSystem,
                 style: UITableViewStyle = .plain) {
         self.codableStore = .init(container: container, engine: engine)
+        if let codableStoreables = try? self.codableStore.getCollection() {
+            self.codableStoreables = codableStoreables
+        } else {
+            self.codableStoreables = .init()
+        }
         self.codableStoreables = .init()
         self.subscriptionBag = .init()
         super.init(style: style)
@@ -48,6 +53,14 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
     }
     
     // MARK: CodableStoreControllerable
+    
+    /// CodableStoreables will update with observe event
+    ///
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The current CodableStoreables before update
+    open func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
+                                          codableStoreables: [Object]) {}
     
     /// CodableStoreables did update with observe event
     ///

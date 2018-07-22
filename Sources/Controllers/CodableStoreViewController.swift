@@ -34,7 +34,11 @@ open class CodableStoreViewController<Object: BaseCodableStoreable>: UIViewContr
     public init(container: CodableStoreContainer = .default,
                 engine: CodableStore<Object>.Engine = .fileSystem) {
         self.codableStore = .init(container: container, engine: engine)
-        self.codableStoreables = .init()
+        if let codableStoreables = try? self.codableStore.getCollection() {
+            self.codableStoreables = codableStoreables
+        } else {
+            self.codableStoreables = .init()
+        }
         self.subscriptionBag = .init()
         super.init(nibName: nil, bundle: nil)
         self.subscribeCollectionUpdates()
@@ -44,6 +48,24 @@ open class CodableStoreViewController<Object: BaseCodableStoreable>: UIViewContr
     public required init?(coder aDecoder: NSCoder) {
         return nil
     }
+    
+    // MARK: CodableStoreControllerable
+    
+    /// CodableStoreables will update with observe event
+    ///
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The current CodableStoreables before update
+    open func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
+                                          codableStoreables: [Object]) {}
+    
+    /// CodableStoreables did update with observe event
+    ///
+    /// - Parameters:
+    ///   - event: The ObserveEvent
+    ///   - codableStoreables: The updated CodableStoreables
+    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+                                         codableStoreables: [Object]) {}
     
 }
 

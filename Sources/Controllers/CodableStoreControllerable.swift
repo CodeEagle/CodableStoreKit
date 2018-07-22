@@ -43,28 +43,6 @@ public protocol CodableStoreControllerable: class {
     
 }
 
-// MARK: - CodableStoreControllerable Default Implementation
-
-extension CodableStoreControllerable {
-    
-    /// CodableStoreables will update with observe event
-    ///
-    /// - Parameters:
-    ///   - event: The ObserveEvent
-    ///   - codableStoreables: The current CodableStoreables before update
-    public func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
-                                            codableStoreables: [Object]) {}
-    
-    /// CodableStoreables did update with observe event
-    ///
-    /// - Parameters:
-    ///   - event: The ObserveEvent
-    ///   - codableStoreables: The updated CodableStoreables
-    public func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
-                                           codableStoreables: [Object]) {}
-    
-}
-
 // MARK: - CodableStoreControllerable Funtions
 
 extension CodableStoreControllerable {
