@@ -164,7 +164,7 @@ The Advanced section will explain all features and capabilities of `CodableStore
 
 ### Engine-Container-Collection-Architecture
 
-The `CodableStoreKit` is based on an `Engine-Container-Collection-Architecture`.
+The `CodableStoreKit` is based on an `Engine-Container-Collection-Architecture (ECCA)`.
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
