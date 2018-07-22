@@ -37,9 +37,6 @@ public protocol WriteableCodableStoreEngine {
     @discardableResult
     func delete(identifier: Object.ID) throws -> Object
     
-    // TODO: Should an Engine be able to delete a whole Container?
-    // func delete(container: CodableStoreContainer) throws
-    
 }
 
 // MARK: - ReadableCodableStoreEngine
