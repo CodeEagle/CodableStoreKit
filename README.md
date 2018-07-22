@@ -147,9 +147,9 @@ let userExists = codableStore.exists(user)
 // Observe
 codableStore.observe(user) { (event) in
     switch event {
-    case .saved(let object, let container):
+    case .saved(let object, let container, let engine):
         break
-    case .deleted(let object, let container):
+    case .deleted(let object, let container, let engine):
         break
     }
 }
