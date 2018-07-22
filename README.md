@@ -153,6 +153,9 @@ codableStore.observe(user) { (event) in
         break
     }
 }
+
+// Or use the convenience functions on your CodableStoreable type
+try user.save()
 ```
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
@@ -230,7 +233,7 @@ let codableStore = CodableStore<User>(container: apiV1Container, engine: .fileSy
 ```
 > ☝️ In default the `.default` `CodableStoreContainer` will be used with the name "Default"
 
-Different Containers comes handy when you want to store your Codable-Models which are retrieved via a versioned `JSON-API` in an encapsulated area inside an engine. Or you want to store some test data beside productiv data.
+Different Containers comes handy when you want to store your Codable-Models which are retrieved via a versioned `JSON-API` in an encapsulated area inside an engine. Or you want to store some encapsulated test data beside productiv data.
 
 <p align="center">
    <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
@@ -349,9 +352,9 @@ let codableStore = CodableStore<User>()
 // Observe save and delete of Users where lastName contains "Robot"
 let subscription = codableStore.observe(where: { $0.lastName.contains("Robot") }) { event in
     switch event {
-    case .saved(let object, let container):
+    case .saved(object: let object, container: let container, engine: let engine):
         break
-    case .deleted(let object, let container):
+    case .deleted(object: let object, container: let container, engine: let engine):
         break
     }
 }
@@ -370,8 +373,8 @@ class MyCustomClass {
 
     /// Designated Initializer
     init() {
-        // Observe User with Identifier and dispose it by SubscriptionBag
-        User.observe(identifier: "42") { event in
+        // Observe all Users and dispose it by SubscriptionBag
+        User.observeCollection { event in
             print(event)
         }.disposed(
             // Automatically unsubscribe on deinit
