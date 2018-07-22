@@ -194,18 +194,20 @@ If you wish to define your own `CodableStoreEngine` you have to declare your Eng
 ```swift
 class MyEngine<Object: BaseCodableStoreable>: CodableStoreEngine {
     
-    func get(identifier: Object.ID) throws -> Object {}
-    
-    func getCollection() throws -> [Object] {}
-    
+    @discardableResult
     func save(_ object: Object) throws -> Object {}
     
+    @discardableResult
     func delete(identifier: Object.ID) throws -> Object {}
+    
+    func get(identifier: Object.ID) throws -> Object {}
+    
+    func getCollection() throws -> [Object]
     
 }
 ```
 
-After you implemented the four functions `get`, `getCollection`, `save` and `delete` you can pass your own `CodableStoreEngine` to a `CodableStore` by wrapping it in an `AnyCodableStoreEngine` which is a type erasure struct.
+After you implemented the four functions `save`, `delete`, `get` and `getCollection` you can pass your own `CodableStoreEngine` to a `CodableStore` by wrapping it in an `AnyCodableStoreEngine` which is a type erasure struct.
 
 ```swift
 // Initialize your Engine with an AnyCodableStoreEngine
