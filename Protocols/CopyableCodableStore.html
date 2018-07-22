@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MigrateableCodableStore Protocol Reference</title>
+    <title>CopyableCodableStore Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/MigrateableCodableStore" class="dashAnchor"></a>
-    <a title="MigrateableCodableStore Protocol Reference"></a>
+    <a name="//apple_ref/swift/Protocol/CopyableCodableStore" class="dashAnchor"></a>
+    <a title="CopyableCodableStore Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">CodableStoreKit Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">CodableStoreKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        MigrateableCodableStore Protocol Reference
+        CopyableCodableStore Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -39,6 +39,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/CodableStore/Engine.html">– Engine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Result.html">– Result</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
@@ -81,13 +84,13 @@
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/CopyableCodableStore.html">CopyableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Decoderable.html">Decoderable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -116,7 +119,7 @@
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+                <a href="../Structs/AnyCopyableCodableStore.html">AnyCopyableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
@@ -145,14 +148,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>MigrateableCodableStore</h1>
+            <h1>CopyableCodableStore</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MigrateableCodableStore</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CopyableCodableStore</span></code></pre>
 
                 </div>
               </div>
-            <p>The MigrateableCodableStore Protocol</p>
+            <p>The CopyableCodableStore Protocol</p>
 
           </section>
           <section class="section task-group-section">
@@ -161,9 +164,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit011MigrateableaB0P6Object"></a>
+                    <a name="/s:15CodableStoreKit08CopyableaB0P6Object"></a>
                     <a name="//apple_ref/swift/Alias/Object" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit011MigrateableaB0P6Object">Object</a>
+                    <a class="token" href="#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -188,20 +191,33 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit011MigrateableaB0P7migrates10DictionaryVy6Object_2IDQZs5Error_pSgGAA0aB9ContainerV02toJ0_AA0aB0C6EngineOyAGQz_G02inL0tKF"></a>
-                    <a name="//apple_ref/swift/Method/migrate(toContainer:inEngine:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit011MigrateableaB0P7migrates10DictionaryVy6Object_2IDQZs5Error_pSgGAA0aB9ContainerV02toJ0_AA0aB0C6EngineOyAGQz_G02inL0tKF">migrate(toContainer:inEngine:)</a>
+                    <a name="/s:15CodableStoreKit08CopyableaB0P4copySayAA0aB0C6ResultOy6ObjectQz_GGAA0aB9ContainerV02toH0_AF6EngineOyAJ_G02inJ0SbAJcSg5wheretKF"></a>
+                    <a name="//apple_ref/swift/Method/copy(toContainer:inEngine:where:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit08CopyableaB0P4copySayAA0aB0C6ResultOy6ObjectQz_GGAA0aB9ContainerV02toH0_AF6EngineOyAJ_G02inJ0SbAJcSg5wheretKF">copy(toContainer:inEngine:where:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Migrate current Collection data to another Container in a specific Engine</p>
+                        <p>Copy the current Collection data to another Container in a specific Engine</p>
 <div class="aside aside-throws">
     <p class="aside-title">Throws</p>
-    If migration fails
+    If copying fails
+
+</div>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Copy the current Collection data to another Container in a specific Engine</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If copying fails
 
 </div>
 
@@ -211,7 +227,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="nf">migrate</span><span class="p">(</span><span class="n">toContainer</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span><span class="p">,</span> <span class="n">inEngine</span> <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/MigrateableCodableStore.html#/s:15CodableStoreKit011MigrateableaB0P6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">Engine</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Protocols/MigrateableCodableStore.html#/s:15CodableStoreKit011MigrateableaB0P6Object">Object</a></span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+<span class="kd">func</span> <span class="nf">copy</span><span class="p">(</span><span class="n">toContainer</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span><span class="p">,</span> <span class="n">inEngine</span> <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CopyableCodableStore.html#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">Engine</span><span class="p">,</span> <span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Protocols/CopyableCodableStore.html#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CopyableCodableStore.html#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">Result</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -243,12 +259,92 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional Filter</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Dictionary of saved objects with id and optional Error</p>
+                        <p>CodableStore Result Array</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit08CopyableaB0P4copySayAA0aB0C6ResultOy6ObjectQz_GGAFyAJG02toB0_SbAJcSg5wheretKF"></a>
+                    <a name="//apple_ref/swift/Method/copy(toStore:where:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit08CopyableaB0P4copySayAA0aB0C6ResultOy6ObjectQz_GGAFyAJG02toB0_SbAJcSg5wheretKF">copy(toStore:where:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Copy the current Collection data to another CodableStore</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If copying fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">copy</span><span class="p">(</span><span class="n">toStore</span> <span class="nv">codableStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CopyableCodableStore.html#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Protocols/CopyableCodableStore.html#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CopyableCodableStore.html#/s:15CodableStoreKit08CopyableaB0P6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">Result</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>codableStore</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The target CodableStore to insert data</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>filter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional Filter</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>CodableStore Result Array</p>
                       </div>
                     </section>
                   </div>

@@ -41,6 +41,9 @@
                 <a href="../Classes/CodableStore/Engine.html">– Engine</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Result.html">– Result</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
               </li>
               <li class="nav-group-task">
@@ -81,13 +84,13 @@
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/CopyableCodableStore.html">CopyableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Decoderable.html">Decoderable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -116,7 +119,7 @@
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+                <a href="../Structs/AnyCopyableCodableStore.html">AnyCopyableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
@@ -158,10 +161,10 @@
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/CodableStoreable%20Convenience%20Writeable%20Functions"></a>
-                <a name="//apple_ref/swift/Section/CodableStoreable Convenience Writeable Functions" class="dashAnchor"></a>
-                <a href="#/CodableStoreable%20Convenience%20Writeable%20Functions">
-                  <h3 class="section-name">CodableStoreable Convenience Writeable Functions</h3>
+                <a name="/Writeable%20Convenience%20Functions"></a>
+                <a name="//apple_ref/swift/Section/Writeable Convenience Functions" class="dashAnchor"></a>
+                <a href="#/Writeable%20Convenience%20Functions">
+                  <h3 class="section-name">Writeable Convenience Functions</h3>
                 </a>
               </div>
               <ul>
@@ -313,10 +316,10 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/CodableStoreable%20Convenience%20Readable%20Functions"></a>
-                <a name="//apple_ref/swift/Section/CodableStoreable Convenience Readable Functions" class="dashAnchor"></a>
-                <a href="#/CodableStoreable%20Convenience%20Readable%20Functions">
-                  <h3 class="section-name">CodableStoreable Convenience Readable Functions</h3>
+                <a name="/Readable%20Convenience%20Functions"></a>
+                <a name="//apple_ref/swift/Section/Readable Convenience Functions" class="dashAnchor"></a>
+                <a href="#/Readable%20Convenience%20Functions">
+                  <h3 class="section-name">Readable Convenience Functions</h3>
                 </a>
               </div>
               <ul>
@@ -624,10 +627,10 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/CodableStoreable%20Convenience%20Observable%20Functions"></a>
-                <a name="//apple_ref/swift/Section/CodableStoreable Convenience Observable Functions" class="dashAnchor"></a>
-                <a href="#/CodableStoreable%20Convenience%20Observable%20Functions">
-                  <h3 class="section-name">CodableStoreable Convenience Observable Functions</h3>
+                <a name="/Observable%20Convenience%20Functions"></a>
+                <a name="//apple_ref/swift/Section/Observable Convenience Functions" class="dashAnchor"></a>
+                <a href="#/Observable%20Convenience%20Functions">
+                  <h3 class="section-name">Observable Convenience Functions</h3>
                 </a>
               </div>
               <ul>
@@ -685,7 +688,8 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/CodableStoreable.html#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">observe</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span>
+                    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/CodableStoreable.html#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
 
                         </div>
                       </div>
@@ -856,6 +860,143 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE17observeCollectionAA012ObserverableaB12Subscription_pyAA0aB0C12ObserveEventOyx_Gc7handler_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/observeCollection(handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE17observeCollectionAA012ObserverableaB12Subscription_pyAA0aB0C12ObserveEventOyx_Gc7handler_tFZ">observeCollection(handler:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Observe the Collection</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">observeCollection</span><span class="p">(</span><span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Protocols/CodableStoreable.html#/s:15CodableStoreKit0A9StoreablePAAE14ObserveHandlera">ObserveHandler</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/ObserverableCodableStoreSubscription.html">ObserverableCodableStoreSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Observe Handler</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Observable Subscription</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Copyable%20Convenience%20Functions"></a>
+                <a name="//apple_ref/swift/Section/Copyable Convenience Functions" class="dashAnchor"></a>
+                <a href="#/Copyable%20Convenience%20Functions">
+                  <h3 class="section-name">Copyable Convenience Functions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0A9StoreablePAAE4copyxAA0aB9ContainerV02toF0_AA0aB0C6EngineOyx_G02inH0tKF"></a>
+                    <a name="//apple_ref/swift/Method/copy(toContainer:inEngine:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0A9StoreablePAAE4copyxAA0aB9ContainerV02toF0_AA0aB0C6EngineOyx_G02inH0tKF">copy(toContainer:inEngine:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Copy the CodableStoreable to another Container and Engine</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    If copying fails
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">copy</span><span class="p">(</span><span class="n">toContainer</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span><span class="p">,</span>
+          <span class="n">inEngine</span> <span class="nv">engine</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;.</span><span class="kt">Engine</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>container</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The CodableStoreContainer</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>engine</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Engine</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The copied CodableStoreable</p>
                       </div>
                     </section>
                   </div>

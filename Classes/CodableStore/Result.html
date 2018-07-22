@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Engine Enumeration Reference</title>
+    <title>Result Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/Engine" class="dashAnchor"></a>
-    <a title="Engine Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Enum/Result" class="dashAnchor"></a>
+    <a title="Result Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">CodableStoreKit Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">CodableStoreKit Reference</a>
         <img id="carat" src="../../img/carat.png" />
-        Engine Enumeration Reference
+        Result Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -148,14 +148,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Engine</h1>
+            <h1>Result</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Engine</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Result</span></code></pre>
 
                 </div>
               </div>
-            <p>The Engine</p>
+            <p>The CodableStore Result</p>
 
           </section>
           <section class="section task-group-section">
@@ -164,9 +164,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB0C6EngineO10fileSystemAEyx_GAGmAA04BaseA9StoreableRzlF"></a>
-                    <a name="//apple_ref/swift/Element/fileSystem" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6EngineO10fileSystemAEyx_GAGmAA04BaseA9StoreableRzlF">fileSystem</a>
+                    <a name="/s:15CodableStoreKit0aB0C6ResultO7successAEyx_GxcAGmAA04BaseA9StoreableRzlF"></a>
+                    <a name="//apple_ref/swift/Element/success" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C6ResultO7successAEyx_GxcAGmAA04BaseA9StoreableRzlF">success</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -174,14 +174,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>FileSystem</p>
+                        <p>Success with Object</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">fileSystem</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">success</span><span class="p">(</span><span class="kt">Object</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -191,9 +191,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB0C6EngineO8inMemoryAEyx_GAGmAA04BaseA9StoreableRzlF"></a>
-                    <a name="//apple_ref/swift/Element/inMemory" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6EngineO8inMemoryAEyx_GAGmAA04BaseA9StoreableRzlF">inMemory</a>
+                    <a name="/s:15CodableStoreKit0aB0C6ResultO7failureAEyx_G2IDQz_s5Error_ptcAGmAA04BaseA9StoreableRzlF"></a>
+                    <a name="//apple_ref/swift/Element/failure" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C6ResultO7failureAEyx_G2IDQz_s5Error_ptcAGmAA04BaseA9StoreableRzlF">failure</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -201,41 +201,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>InMemory</p>
+                        <p>Failure with identifier and Error</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">inMemory</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C6EngineO6customAEyx_GAA03AnyabD0VyxGcAGmAA04BaseA9StoreableRzlF"></a>
-                    <a name="//apple_ref/swift/Element/custom" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C6EngineO6customAEyx_GAA03AnyabD0VyxGcAGmAA04BaseA9StoreableRzlF">custom</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Supply custom CodableStoreEngine</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">custom</span><span class="p">(</span><span class="kt"><a href="../../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

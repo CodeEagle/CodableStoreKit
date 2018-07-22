@@ -41,6 +41,9 @@
                 <a href="../Classes/CodableStore/Engine.html">– Engine</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Result.html">– Result</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
               </li>
               <li class="nav-group-task">
@@ -81,13 +84,13 @@
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/CopyableCodableStore.html">CopyableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Decoderable.html">Decoderable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -116,7 +119,7 @@
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+                <a href="../Structs/AnyCopyableCodableStore.html">AnyCopyableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
@@ -215,9 +218,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB14ControllerableP7objectsSay6ObjectQzGvp"></a>
-                    <a name="//apple_ref/swift/Property/objects" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerableP7objectsSay6ObjectQzGvp">objects</a>
+                    <a name="/s:15CodableStoreKit0aB14ControllerableP17codableStoreablesSay6ObjectQzGvp"></a>
+                    <a name="//apple_ref/swift/Property/codableStoreables" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerableP17codableStoreablesSay6ObjectQzGvp">codableStoreables</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -225,14 +228,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The collection objects</p>
+                        <p>The CodableStoreables</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">objects</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">codableStoreables</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -269,9 +272,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB14ControllerableP16objectsDidUpdateyAA0aB0C12ObserveEventOy6ObjectQz_G5event_tF"></a>
-                    <a name="//apple_ref/swift/Method/objectsDidUpdate(event:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerableP16objectsDidUpdateyAA0aB0C12ObserveEventOy6ObjectQz_G5event_tF">objectsDidUpdate(event:)</a>
+                    <a name="/s:15CodableStoreKit0aB14ControllerableP27codableStoreablesWillUpdateyAA0aB0C12ObserveEventOy6ObjectQz_G5event_SayAJG0eF0tF"></a>
+                    <a name="//apple_ref/swift/Method/codableStoreablesWillUpdate(event:codableStoreables:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerableP27codableStoreablesWillUpdateyAA0aB0C12ObserveEventOy6ObjectQz_G5event_SayAJG0eF0tF">codableStoreablesWillUpdate(event:codableStoreables:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -279,14 +282,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Object did update with event</p>
+                        <p>CodableStoreables will update with observe event</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">objectsDidUpdate</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">codableStoreablesWillUpdate</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">,</span> <span class="nv">codableStoreables</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -306,6 +309,76 @@
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>codableStoreables</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current CodableStoreables before update</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB14ControllerableP26codableStoreablesDidUpdateyAA0aB0C12ObserveEventOy6ObjectQz_G5event_SayAJG0eF0tF"></a>
+                    <a name="//apple_ref/swift/Method/codableStoreablesDidUpdate(event:codableStoreables:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerableP26codableStoreablesDidUpdateyAA0aB0C12ObserveEventOy6ObjectQz_G5event_SayAJG0eF0tF">codableStoreablesDidUpdate(event:codableStoreables:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>CodableStoreables did update with observe event</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">codableStoreablesDidUpdate</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/CodableStore.html">CodableStore</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">,</span> <span class="nv">codableStoreables</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>event</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ObserveEvent</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>codableStoreables</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The updated CodableStoreables</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -316,19 +389,19 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/CodableStoreControllerable%20Subscribe"></a>
-                <a name="//apple_ref/swift/Section/CodableStoreControllerable Subscribe" class="dashAnchor"></a>
-                <a href="#/CodableStoreControllerable%20Subscribe">
-                  <h3 class="section-name">CodableStoreControllerable Subscribe</h3>
+                <a name="/CodableStoreControllerable%20Funtions"></a>
+                <a name="//apple_ref/swift/Section/CodableStoreControllerable Funtions" class="dashAnchor"></a>
+                <a href="#/CodableStoreControllerable%20Funtions">
+                  <h3 class="section-name">CodableStoreControllerable Funtions</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB14ControllerablePAAE6object6ObjectQzSgSi2at_tF"></a>
-                    <a name="//apple_ref/swift/Method/object(at:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerablePAAE6object6ObjectQzSgSi2at_tF">object(at:)</a>
+                    <a name="/s:15CodableStoreKit0aB14ControllerablePAAE16codableStoreable6ObjectQzSgSi2at_tF"></a>
+                    <a name="//apple_ref/swift/Method/codableStoreable(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB14ControllerablePAAE16codableStoreable6ObjectQzSgSi2at_tF">codableStoreable(at:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -339,14 +412,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieve Object at Index</p>
+                        <p>Retrieve CodableStoreable at Index</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">object</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">codableStoreable</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/CodableStoreControllerable.html#/s:15CodableStoreKit0aB14ControllerableP6Object">Object</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -371,7 +444,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Object at Index if index is contained in indices</p>
+                        <p>CodableStoreable at Index if index is contained in indices</p>
                       </div>
                     </section>
                   </div>

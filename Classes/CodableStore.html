@@ -41,6 +41,9 @@
                 <a href="../Classes/CodableStore/Engine.html">– Engine</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/CodableStore/Result.html">– Result</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
               </li>
               <li class="nav-group-task">
@@ -81,13 +84,13 @@
                 <a href="../Protocols/CodableStoreable.html">CodableStoreable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/CopyableCodableStore.html">CopyableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Decoderable.html">Decoderable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Encoderable.html">Encoderable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -116,7 +119,7 @@
                 <a href="../Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+                <a href="../Structs/AnyCopyableCodableStore.html">AnyCopyableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
@@ -148,7 +151,7 @@
             <h1>CodableStore</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></span></code></pre>
 
                 </div>
               </div>
@@ -186,6 +189,125 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/ACL%20Properties"></a>
+                <a name="//apple_ref/swift/Section/ACL Properties" class="dashAnchor"></a>
+                <a href="#/ACL%20Properties">
+                  <h3 class="section-name">ACL Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C9writeableAA012AnyWriteableaB0VyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/writeable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C9writeableAA012AnyWriteableaB0VyxGvp">writeable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>WriteableCodableStore (Write-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">writeable</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C8readableAA011AnyReadableaB0VyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/readable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C8readableAA011AnyReadableaB0VyxGvp">readable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ReadableCodableStore (Read-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">readable</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C10observableAA015AnyObserverableaB0CyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/observable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C10observableAA015AnyObserverableaB0CyxGvp">observable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ObservableCodableStore (Observe-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">observable</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:15CodableStoreKit0aB0C8copyableAA011AnyCopyableaB0VyxGvp"></a>
+                    <a name="//apple_ref/swift/Property/copyable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C8copyableAA011AnyCopyableaB0VyxGvp">copyable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>CopyableCodableStore (Copy-Only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">copyable</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyCopyableCodableStore.html">AnyCopyableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -305,19 +427,19 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/CodableStore%20ACL%20Properties"></a>
-                <a name="//apple_ref/swift/Section/CodableStore ACL Properties" class="dashAnchor"></a>
-                <a href="#/CodableStore%20ACL%20Properties">
-                  <h3 class="section-name">CodableStore ACL Properties</h3>
+                <a name="/CodableStore.Result"></a>
+                <a name="//apple_ref/swift/Section/CodableStore.Result" class="dashAnchor"></a>
+                <a href="#/CodableStore.Result">
+                  <h3 class="section-name">CodableStore.Result</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB0C09writeableaB0AA012AnyWriteableaB0VyxGvp"></a>
-                    <a name="//apple_ref/swift/Property/writeableCodableStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C09writeableaB0AA012AnyWriteableaB0VyxGvp">writeableCodableStore</a>
+                    <a name="/s:15CodableStoreKit0aB0C6ResultO"></a>
+                    <a name="//apple_ref/swift/Enum/Result" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C6ResultO">Result</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -325,95 +447,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>WriteableCodableStore (Write-Only)</p>
+                        <p>The CodableStore Result</p>
 
+                        <a href="../Classes/CodableStore/Result.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">writeableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyWriteableCodableStore.html">AnyWriteableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C08readableaB0AA011AnyReadableaB0VyxGvp"></a>
-                    <a name="//apple_ref/swift/Property/readableCodableStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C08readableaB0AA011AnyReadableaB0VyxGvp">readableCodableStore</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>ReadableCodableStore (Read-Only)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">readableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C010observableaB0AA015AnyObserverableaB0CyxGvp"></a>
-                    <a name="//apple_ref/swift/Property/observableCodableStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C010observableaB0AA015AnyObserverableaB0CyxGvp">observableCodableStore</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>ObservableCodableStore (Observe-Only)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">observableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyObserverableCodableStore.html">AnyObserverableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:15CodableStoreKit0aB0C011migrateableaB0AA014AnyMigrateableaB0VyxGvp"></a>
-                    <a name="//apple_ref/swift/Property/migrateableCodableStore" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C011migrateableaB0AA014AnyMigrateableaB0VyxGvp">migrateableCodableStore</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>MigrateableCodableStore (Migrate-Only)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">migrateableCodableStore</span><span class="p">:</span> <span class="kt"><a href="../Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a></span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Result</span></code></pre>
 
                         </div>
                       </div>
@@ -424,19 +466,19 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/MigrateableCodableStore"></a>
-                <a name="//apple_ref/swift/Section/MigrateableCodableStore" class="dashAnchor"></a>
-                <a href="#/MigrateableCodableStore">
-                  <h3 class="section-name">MigrateableCodableStore</h3>
+                <a name="/CopyableCodableStore"></a>
+                <a name="//apple_ref/swift/Section/CopyableCodableStore" class="dashAnchor"></a>
+                <a href="#/CopyableCodableStore">
+                  <h3 class="section-name">CopyableCodableStore</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB0C7migrates10DictionaryVy2IDQzs5Error_pSgGAA0aB9ContainerV02toH0_AC6EngineOyx_G02inJ0tKF"></a>
-                    <a name="//apple_ref/swift/Method/migrate(toContainer:inEngine:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C7migrates10DictionaryVy2IDQzs5Error_pSgGAA0aB9ContainerV02toH0_AC6EngineOyx_G02inJ0tKF">migrate(toContainer:inEngine:)</a>
+                    <a name="/s:15CodableStoreKit0aB0C4copySayAC6ResultOyx_GGACyxG02toB0_SbxcSg5wheretKF"></a>
+                    <a name="//apple_ref/swift/Method/copy(toStore:where:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C4copySayAC6ResultOyx_GGACyxG02toB0_SbxcSg5wheretKF">copy(toStore:where:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -444,10 +486,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Migrate current Collection data to another Container in a specific Engine</p>
+                        <p>Copy the current Collection data to another CodableStore</p>
 <div class="aside aside-throws">
     <p class="aside-title">Throws</p>
-    If migration fails
+    If copying fails
 
 </div>
 
@@ -457,8 +499,8 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">migrate</span><span class="p">(</span><span class="n">toContainer</span> <span class="nv">container</span><span class="p">:</span> <span class="kt"><a href="../Structs/CodableStoreContainer.html">CodableStoreContainer</a></span><span class="p">,</span>
-                    <span class="n">inEngine</span> <span class="nv">engine</span><span class="p">:</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;.</span><span class="kt"><a href="../Classes/CodableStore/Engine.html">Engine</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">copy</span><span class="p">(</span><span class="n">toStore</span> <span class="nv">codableStore</span><span class="p">:</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span><span class="p">,</span>
+                 <span class="k">where</span> <span class="nv">filter</span><span class="p">:</span> <span class="p">((</span><span class="kt">Object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;.</span><span class="kt"><a href="../Classes/CodableStore/Result.html">Result</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -469,24 +511,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>container</em>
+                                <em>codableStore</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The CodableStoreContainer</p>
+                                  <p>The target CodableStore to insert data</p>
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td>
                                 <code>
-                                <em>engine</em>
+                                <em>filter</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The Engine</p>
+                                  <p>The optional Filter</p>
                                 </div>
                               </td>
                             </tr>
@@ -495,7 +537,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Dictionary of saved objects with id and optional Error</p>
+                        <p>CodableStore Result Array</p>
                       </div>
                     </section>
                   </div>
@@ -988,9 +1030,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15CodableStoreKit0aB0C16deleteCollections10DictionaryVy2IDQzs5Error_pSgGyKF"></a>
+                    <a name="/s:15CodableStoreKit0aB0C16deleteCollectionSayAC6ResultOyx_GGyKF"></a>
                     <a name="//apple_ref/swift/Method/deleteCollection()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15CodableStoreKit0aB0C16deleteCollections10DictionaryVy2IDQzs5Error_pSgGyKF">deleteCollection()</a>
+                    <a class="token" href="#/s:15CodableStoreKit0aB0C16deleteCollectionSayAC6ResultOyx_GGyKF">deleteCollection()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1011,13 +1053,13 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Error</span><span class="p">?]</span></code></pre>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;.</span><span class="kt"><a href="../Classes/CodableStore/Result.html">Result</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Dictionary of deleted objects with id and optional Error</p>
+                        <p>CodableStore Result Array</p>
                       </div>
                     </section>
                   </div>

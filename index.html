@@ -40,6 +40,9 @@
                 <a href="Classes/CodableStore/Engine.html">– Engine</a>
               </li>
               <li class="nav-group-task">
+                <a href="Classes/CodableStore/Result.html">– Result</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/CodableStore/ObserveEvent.html">– ObserveEvent</a>
               </li>
               <li class="nav-group-task">
@@ -80,13 +83,13 @@
                 <a href="Protocols/CodableStoreable.html">CodableStoreable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/CopyableCodableStore.html">CopyableCodableStore</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Decoderable.html">Decoderable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Encoderable.html">Encoderable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/MigrateableCodableStore.html">MigrateableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/ObserverableCodableStore.html">ObserverableCodableStore</a>
@@ -115,7 +118,7 @@
                 <a href="Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/AnyMigrateableCodableStore.html">AnyMigrateableCodableStore</a>
+                <a href="Structs/AnyCopyableCodableStore.html">AnyCopyableCodableStore</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/AnyReadableCodableStore.html">AnyReadableCodableStore</a>
@@ -193,7 +196,7 @@ It allows you to simply persist, retrieve and observe your Codable structs and c
 <p><br/></p>
 
 <p align="center">
-   <img width="65%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
+   <img width="70%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
    <br/><br/>
 </p>
 <h2 id='features' class='heading'>Features</h2>
@@ -253,12 +256,12 @@ it, simply add the following line to your Podfile:</p>
 <span class="p">}</span>
 </code></pre>
 
-<p>Secondly initialize a specific <code><a href="Classes/CodableStore.html">CodableStore</a></code> based on the type you want to persist.</p>
+<p>Secondly initialize a specific <code><a href="Classes/CodableStore.html">CodableStore</a></code> based on the type you want to operate on.</p>
 <pre class="highlight swift"><code><span class="c1">// Initialize a User CodableStore</span>
 <span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">()</span>
 </code></pre>
 
-<p>Now you are good to go to <code>save</code>, <code>delete</code>, <code>get</code> and <code>observe</code>.</p>
+<p>Now you are good to go to persist, retrieve and observe your CodableStoreable type.</p>
 <pre class="highlight swift"><code><span class="c1">// Initialize User</span>
 <span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="kt">User</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s">"42"</span><span class="p">,</span> <span class="nv">firstName</span><span class="p">:</span> <span class="s">"Mr."</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"Robot"</span><span class="p">)</span>
 
@@ -271,69 +274,110 @@ it, simply add the following line to your Podfile:</p>
 <span class="c1">// Get</span>
 <span class="k">let</span> <span class="nv">retrievedUser</span> <span class="o">=</span> <span class="k">try</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"42"</span><span class="p">)</span>
 
+<span class="c1">// Exists</span>
+<span class="k">let</span> <span class="nv">userExists</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">exists</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+
 <span class="c1">// Observe</span>
 <span class="n">codableStore</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="n">user</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">event</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nf">saved</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">):</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">saved</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">,</span> <span class="k">let</span> <span class="nv">engine</span><span class="p">):</span>
         <span class="k">break</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nf">deleted</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">):</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">deleted</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">,</span> <span class="k">let</span> <span class="nv">engine</span><span class="p">):</span>
         <span class="k">break</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Or use the convenience functions on your CodableStoreable type 😎</span>
+<span class="k">try</span> <span class="n">user</span><span class="o">.</span><span class="nf">save</span><span class="p">()</span>
 </code></pre>
 
 <blockquote>
 <p>A full list of available API&rsquo;s can be found <a href="https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html">here</a></p>
 </blockquote>
-
-<p>That&rsquo;s it 🙌 head over to the Advanced section to explore the full capabilities of the <code>CodableStoreKit</code>.</p>
 <h2 id='advanced' class='heading'>Advanced</h2>
 
-<p>After the first usage description the Advanced section will explain all capabilities of the <code>CodableStoreKit</code> in depth. <code>CodableStoreKit</code> is based on a <code>Engine-Container-Collection-Architecture</code>.</p>
+<p>The Advanced section will explain all features and capabilities of <code>CodableStoreKit</code> like the architecture, observation, access-control and many more in detail 🙌</p>
+<h3 id='engine-container-collection-architecture' class='heading'>Engine-Container-Collection-Architecture</h3>
+
+<p>Beginning with an important part of the <code>CodableStoreKit</code> the <code>Engine-Container-Collection-Architecture (ECCA)</code>. The architecture allows a <code><a href="Classes/CodableStore.html">CodableStore</a></code> to use different Engine-Implementations which are persisting data in a unique way. For instance the <code>InMemoryCodableStoreEngine</code> stores data in an instance property and the <code>FileManagerCodableStoreEngine</code> persist the data in the Filesystem.</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
+</p>
+
+<p>Each <code>Engine</code> can manage multiple <code>Containers</code> which allows you to store the same or different type of a Collection in an encapsulated section inside an <code>Engine</code>. A <code>Collection</code> can be described as a group of related object types.</p>
+
+<blockquote>
+<p>Best of all you can configure the <code>Engine-Container-Collection-Architecture</code> to your needs 🙌</p>
+</blockquote>
 <h3 id='engine' class='heading'>Engine</h3>
 
-<p>The <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> is the main component which saves, delete and fetches Codable Data from and in an Container. You can decide which Engine-Implementation should be used when initializing a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
-<pre class="highlight swift"><code><span class="c1">// FileSystem Engine which uses the FileManager-API</span>
+<p>You can pass the <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> that should be used of a <code><a href="Classes/CodableStore.html">CodableStore</a></code> by simply passing it to the <code>initializer</code>.</p>
+<pre class="highlight swift"><code><span class="c1">// Use the FileSystem Engine</span>
 <span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span>
 
-<span class="c1">// InMemory Engine</span>
+<span class="c1">// Use the InMemory Engine (perfect for development or testing phase)</span>
 <span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">inMemory</span><span class="p">)</span>
-
-<span class="c1">// A custom CodableStoreEngine</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="n">myCustomEngine</span><span class="p">))</span>
 </code></pre>
 
 <blockquote>
-<p>In default the <code>.fileSystem</code> Engine will be used</p>
+<p>☝️ In default the <code>.fileSystem</code> Engine will be used</p>
 </blockquote>
+<h4 id='custom-engine' class='heading'>Custom Engine</h4>
+
+<p>If you wish to define your own <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> you have to declare your Engine with a generic object type which is at least conform to the <code><a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></code> protocol. You have to do so to satisfy the associatedtype of the <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> protocol.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MyEngine</span><span class="o">&lt;</span><span class="kt">Object</span><span class="p">:</span> <span class="kt">BaseCodableStoreable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">CodableStoreEngine</span> <span class="p">{</span>
+
+    <span class="kd">@discardableResult</span>
+    <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">Object</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span> <span class="p">{}</span>
+
+    <span class="kd">@discardableResult</span>
+    <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span> <span class="p">{}</span>
+
+    <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="kt">Object</span><span class="o">.</span><span class="kt">ID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Object</span> <span class="p">{}</span>
+
+    <span class="kd">func</span> <span class="nf">getCollection</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Object</span><span class="p">]</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p>After you implemented the four functions <code>save</code>, <code>delete</code>, <code>get</code> and <code>getCollection</code> you can pass your own <code><a href="Typealiases.html#/s:15CodableStoreKit0aB6Enginea">CodableStoreEngine</a></code> to a <code><a href="Classes/CodableStore.html">CodableStore</a></code> by wrapping it in an <code><a href="Structs/AnyCodableStoreEngine.html">AnyCodableStoreEngine</a></code> which is a type erasure struct.</p>
+<pre class="highlight swift"><code><span class="c1">// Initialize your Engine with an AnyCodableStoreEngine</span>
+<span class="k">let</span> <span class="nv">myEngine</span> <span class="o">=</span> <span class="kt">AnyCodableStoreEngine</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">MyEngine</span><span class="p">())</span>
+
+<span class="c1">// Initialize a CodableStore with a custom Engine</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="n">myEngine</span><span class="p">))</span>
+</code></pre>
 <h3 id='container' class='heading'>Container</h3>
 
-<p>A Container is defined as a place to store and retrieve Collections in an encapsulated way. You can initialize a custom <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> and pass it to a <code><a href="Classes/CodableStore.html">CodableStore</a></code> in order to encapsulate your collections.</p>
+<p>To decide which <code>Container</code> should be used when persisting or retrieving Codables you can pass a <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> to the <code>initializer</code> of a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
 <pre class="highlight swift"><code><span class="c1">// Initialize a custom CodableStoreContainer</span>
 <span class="k">let</span> <span class="nv">apiV1Container</span> <span class="o">=</span> <span class="kt">CodableStoreContainer</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"APIv1Container"</span><span class="p">)</span>
 
 <span class="c1">// Pass it to the CodableStore initializer</span>
-<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="n">apiV1Container</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">container</span><span class="p">:</span> <span class="n">apiV1Container</span><span class="p">,</span> <span class="nv">engine</span><span class="p">:</span> <span class="o">.</span><span class="n">fileSystem</span><span class="p">)</span>
 </code></pre>
 
 <blockquote>
-<p>In default the <code><a href="Classes/CodableStore.html">CodableStore</a></code> will use a default <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> with the name <q>Default</q>.</p>
+<p>☝️ In default the <code>.default</code> <code><a href="Structs/CodableStoreContainer.html">CodableStoreContainer</a></code> will be used with the name <q>Default</q></p>
 </blockquote>
 
-<p>In summary a Container allows you to persist Collections in different encapsulated sections. Those Collections can be the same but can also be uniquely associated to a specific container.</p>
+<p>Different Containers comes handy when you want to store your Codable-Models which are retrieved via a versioned <code>JSON-API</code> in an encapsulated area inside an engine. Or you want to store some encapsulated test data beside productiv data.</p>
 
 <p align="center">
    <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
 </p>
 <h3 id='collection' class='heading'>Collection</h3>
 
-<p>A Collection can be defined as a typealias for all structs and classes which are conform to the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol. Inside a Collection the actual Data will be stored.</p>
+<p>As mentioned before a <code>Collection</code> is a group of realted object types. This means every struct or class that is conform to the <code>CodableStoreable</code>/<code>BaseCodableStoreable</code> protocol is a <code>Collection</code>. Therefore a <code>Collection</code> is identified via a name. In default the name of a <code>Collection</code> is the name of the type.</p>
+<pre class="highlight swift"><code><span class="c1">// A User struct</span>
+<span class="kd">struct</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">CodableStoreable</span> <span class="p">{}</span>
 
-<p align="center">
-   <img width="550" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Collection.jpg" alt="Containers">
-</p>
+<span class="c1">// Print the CodableStore Collection-Name</span>
+<span class="nf">print</span><span class="p">(</span><span class="kt">User</span><span class="o">.</span><span class="n">codableStoreCollectionName</span><span class="p">)</span> <span class="c1">// User.Type</span>
+</code></pre>
 
-<p>In default you have nothing to configure to use Collections as those are internal details. The identifer of a Collection is defined as a String. CodableStoreKit already supplied a default implementation to return a Collection name based on the name of the type. If you wish to supply a custom Collection name you can do it in the following way.</p>
+<p>If you wish to supply a custom <code>Collection</code> name you can override the static <code>codableStoreCollectionName</code> property.</p>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">User</span> <span class="p">{</span>
 
     <span class="c1">/// The CodableStore collection name</span>
@@ -344,6 +388,22 @@ it, simply add the following line to your Podfile:</p>
 
 <span class="p">}</span>
 </code></pre>
+<h4 id='encoder-amp-decoder' class='heading'>Encoder &amp; Decoder</h4>
+
+<p>According to the <code>codableStoreCollectionName</code> you can override the specific <code>Encoder</code> and <code>Decoder</code> which should be used when serializing and deserializing data.</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">User</span> <span class="p">{</span>
+
+    <span class="c1">/// The CodableStore Coder</span>
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">codableStoreCoder</span><span class="p">:</span> <span class="kt">Coder</span> <span class="p">{</span>
+        <span class="nf">return</span> <span class="p">(</span><span class="kt">JSONEncoder</span><span class="p">(),</span> <span class="kt">JSONDecoder</span><span class="p">())</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>☝️ In default the <code>JSONEncoder</code> and <code>JSONDecoder</code> will be used</p>
+</blockquote>
 <h3 id='codablestoreable' class='heading'>CodableStoreable</h3>
 
 <p>When making a type conform to the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol you can access convenience functions directly on an instance of your type in order to save, delete, get and observe.</p>
@@ -370,14 +430,29 @@ it, simply add the following line to your Podfile:</p>
 <span class="c1">// Get Users collection</span>
 <span class="k">let</span> <span class="nv">allUsers</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">User</span><span class="o">.</span><span class="nf">getCollection</span><span class="p">()</span>
 </code></pre>
+
+<p>Last but not least convenience functions are also available on <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> Arrays.</p>
+<pre class="highlight swift"><code><span class="c1">// User Array</span>
+<span class="k">var</span> <span class="nv">users</span><span class="p">:</span> <span class="p">[</span><span class="kt">User</span><span class="p">]</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+
+<span class="c1">// Save all Users</span>
+<span class="n">users</span><span class="o">.</span><span class="nf">save</span><span class="p">()</span>
+
+<span class="c1">// Delete all Users</span>
+<span class="n">users</span><span class="o">.</span><span class="nf">delete</span><span class="p">()</span>
+</code></pre>
 <h3 id='basecodablestoreable' class='heading'>BaseCodableStoreable</h3>
 
-<p>If you want to suppress those convenience functions on your type you can <em>downgrade</em> the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol to the <code><a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></code> protocol which removes the availability of those functions but still remains the conformance to use it with a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
-<pre class="highlight swift"><code><span class="c1">// Without convience functions on type</span>
+<p>If you want to suppress those convenience functions on your type you can <em>downgrade</em> the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> protocol to the <code><a href="Protocols/BaseCodableStoreable.html">BaseCodableStoreable</a></code> protocol which removes the availability of those aforementioned functions but still remains the conformance to use it with a <code><a href="Classes/CodableStore.html">CodableStore</a></code>.</p>
+<pre class="highlight swift"><code><span class="c1">// try user.save() ✅ (available)</span>
+<span class="kd">extension</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">CodableStoreable</span> <span class="p">{}</span>
+
+<span class="c1">// try user.save() ❌ (unavailable)</span>
 <span class="kd">extension</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">BaseCodableStoreable</span> <span class="p">{}</span>
 
-<span class="c1">// With convience functions</span>
-<span class="kd">extension</span> <span class="kt">User</span><span class="p">:</span> <span class="kt">CodableStoreable</span> <span class="p">{}</span>
+<span class="c1">// But both CodableStoreable and BaseCodableStoreable </span>
+<span class="c1">// can be used with a CodableStore 👌</span>
+<span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">()</span>
 </code></pre>
 <h3 id='observation' class='heading'>Observation</h3>
 
@@ -385,12 +460,12 @@ it, simply add the following line to your Podfile:</p>
 <pre class="highlight swift"><code><span class="c1">// Initialize a CodableStore</span>
 <span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">()</span>
 
-<span class="c1">// Observe an Store Subscription</span>
+<span class="c1">// Observe save and delete of Users where lastName contains "Robot"</span>
 <span class="k">let</span> <span class="nv">subscription</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="nv">where</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">lastName</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"Robot"</span><span class="p">)</span> <span class="p">})</span> <span class="p">{</span> <span class="n">event</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">event</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nf">saved</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">):</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">saved</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span> <span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="nv">container</span><span class="p">:</span> <span class="k">let</span> <span class="nv">container</span><span class="p">,</span> <span class="nv">engine</span><span class="p">:</span> <span class="k">let</span> <span class="nv">engine</span><span class="p">):</span>
         <span class="k">break</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nf">deleted</span><span class="p">(</span><span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="k">let</span> <span class="nv">container</span><span class="p">):</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">deleted</span><span class="p">(</span><span class="nv">object</span><span class="p">:</span> <span class="k">let</span> <span class="nv">object</span><span class="p">,</span> <span class="nv">container</span><span class="p">:</span> <span class="k">let</span> <span class="nv">container</span><span class="p">,</span> <span class="nv">engine</span><span class="p">:</span> <span class="k">let</span> <span class="nv">engine</span><span class="p">):</span>
         <span class="k">break</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -407,14 +482,112 @@ it, simply add the following line to your Podfile:</p>
 
     <span class="c1">/// Designated Initializer</span>
     <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// Observe User with Identifier and dispose it by SubscriptionBag</span>
-        <span class="kt">User</span><span class="o">.</span><span class="nf">observe</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"42"</span><span class="p">)</span> <span class="p">{</span> <span class="n">event</span> <span class="k">in</span>
+        <span class="c1">// Observe all Users and dispose it by SubscriptionBag</span>
+        <span class="kt">User</span><span class="o">.</span><span class="n">observeCollection</span> <span class="p">{</span> <span class="n">event</span> <span class="k">in</span>
             <span class="nf">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span> <span class="n">subscriptionBag</span><span class="p">)</span>
+        <span class="p">}</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span>
+            <span class="c1">// Automatically unsubscribe on deinit</span>
+            <span class="nv">by</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span> <span class="n">subscriptionBag</span>
+        <span class="p">)</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 
+</code></pre>
+<h3 id='access-control' class='heading'>Access-Control</h3>
+
+<p>In default a <code><a href="Classes/CodableStore.html">CodableStore</a></code> enables you to access all functions to write, read, observe and copy data. If you wish to use a <code><a href="Classes/CodableStore.html">CodableStore</a></code> in write-only or read-only mode you can make use of the <code>ACL</code> properties.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">codableStore</span> <span class="o">=</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span><span class="p">()</span>
+
+<span class="c1">// Write-Only CodableStore</span>
+<span class="k">let</span> <span class="nv">writeableCodableStore</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="n">writeable</span>
+
+<span class="c1">// Read-Only CodableStore</span>
+<span class="k">let</span> <span class="nv">readableCodableStore</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="n">readable</span>
+
+<span class="c1">// Observe-Only CodableStore</span>
+<span class="k">let</span> <span class="nv">observableCodableStore</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="n">observable</span>
+
+<span class="c1">// Copy-Only CodableStore</span>
+<span class="k">let</span> <span class="nv">copyableCodableStore</span> <span class="o">=</span> <span class="n">codableStore</span><span class="o">.</span><span class="n">copyable</span>
+</code></pre>
+<h3 id='codablestorecontroller' class='heading'>CodableStoreController</h3>
+
+<p>A <code>CodableStoreController</code> is available in three variants.</p>
+
+<table><thead>
+<tr>
+<th>CodableStoreController</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code><a href="Classes/CodableStoreViewController.html">CodableStoreViewController</a></code></td>
+<td>Subclass of <code>UIViewController</code></td>
+</tr>
+<tr>
+<td><code><a href="Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a></code></td>
+<td>Subclass of <code>UITableViewController</code></td>
+</tr>
+<tr>
+<td><code><a href="Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a></code></td>
+<td>Subclass of <code>UICollectionViewController</code></td>
+</tr>
+</tbody></table>
+
+<p>When using a <code>CodableStoreController</code> you can make use of the pre-defined observation implementation on the <code><a href="Protocols/CodableStoreable.html">CodableStoreable</a></code> type you specify in the generic interface like <code>&lt;User&gt;</code>. As soon as the Controller gets deallocated the observation will be disposed 👌</p>
+
+<p>A <code>CodableStoreController</code> will invoke the following two lifecycle functions.</p>
+
+<table><thead>
+<tr>
+<th>Lifecycle</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>codableStoreablesWillUpdate</code></td>
+<td>CodableStoreable Objects will update</td>
+</tr>
+<tr>
+<td><code>codableStoreablesDidUpdate</code></td>
+<td>CodableStoreables Objects did update</td>
+</tr>
+</tbody></table>
+
+<p>In default the <code><a href="Classes/CodableStoreTableViewController.html">CodableStoreTableViewController</a></code> and <code><a href="Classes/CodableStoreCollectionViewController.html">CodableStoreCollectionViewController</a></code> will use the did update function to trigger <code>reloadData()</code> but you can add your own logic to those lifecycles as well. Furthermore, to access the CodableStoreable objects based on the generic interface type you can simply use the instance property <code>self.codableStoreables</code> or <code>self.codableStoreable(at: index)</code>.</p>
+
+<p>The following example code shows an implementation to show all Users firstName in a UILabel which will get updated on the <code>codableStoreablesDidUpdate</code> lifecycle.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">UserListViewController</span><span class="p">:</span> <span class="kt">CodableStoreViewController</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="c1">/// Map Users to firstName list</span>
+    <span class="k">let</span> <span class="nv">toFirstNames</span><span class="p">:</span> <span class="p">([</span><span class="kt">User</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nv">$0</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">firstName</span> <span class="p">}</span><span class="o">.</span><span class="nf">joined</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// The Label to display all Users firstname</span>
+    <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">label</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">label</span> <span class="o">=</span> <span class="kt">UILabel</span><span class="p">()</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="nf">toFirstNames</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">codableStoreables</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">numberOfLines</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">lineBreakMode</span> <span class="o">=</span> <span class="o">.</span><span class="n">byWordWrapping</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="o">.</span><span class="n">center</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+        <span class="k">return</span> <span class="n">label</span>
+    <span class="p">}()</span>
+
+    <span class="c1">/// Replace View with Label</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">loadView</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">view</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">label</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// Did updated Users</span>
+    <span class="kd">func</span> <span class="nf">codableStoreablesDidUpdate</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt">CodableStore</span><span class="o">&lt;</span><span class="kt">User</span><span class="o">&gt;.</span><span class="kt">ObserveEvent</span><span class="p">,</span>
+                                    <span class="nv">codableStoreables</span><span class="p">:</span> <span class="p">[</span><span class="kt">User</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="nf">toFirstNames</span><span class="p">(</span><span class="n">codableStoreables</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
 </code></pre>
 <h2 id='contributing' class='heading'>Contributing</h2>
 
