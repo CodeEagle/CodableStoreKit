@@ -171,6 +171,25 @@ public extension CodableStoreable {
     
 }
 
+// MARK: - Copyable Convenience Functions
+
+public extension CodableStoreable {
+    
+    /// Copy the CodableStoreable to another Container and Engine
+    ///
+    /// - Parameters:
+    ///   - container: The CodableStoreContainer
+    ///   - engine: The Engine
+    /// - Returns: The copied CodableStoreable
+    /// - Throws: If copying fails
+    @discardableResult
+    func copy(toContainer container: CodableStoreContainer,
+              inEngine engine: CodableStore<Self>.Engine) throws -> Self {
+        return try Self.codableStore(container, engine).save(self)
+    }
+    
+}
+
 // MARK: - CodableStoreable Array Convenience Functions
 
 extension Array where Element: CodableStoreable {
