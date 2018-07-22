@@ -22,7 +22,11 @@ extension CodableStore: WriteableCodableStore {
         // Try to save Object in Engine
         let object =  try self.engine.save(object)
         // Emit Observer with save event
-        self.observer.next(object, event: .saved(object, self.container))
+        self.observer.next(object, event: .saved(
+            object: object,
+            container: self.container,
+            engine: self.engine
+        ))
         // Return saved object
         return object
     }
@@ -37,7 +41,11 @@ extension CodableStore: WriteableCodableStore {
         // Try to delete Object in Engine via Identifier
         let object = try self.engine.delete(identifier: identifier)
         // Emit observer with delete event
-        self.observer.next(object, event: .deleted(object, self.container))
+        self.observer.next(object, event: .deleted(
+            object: object,
+            container: self.container,
+            engine: self.engine
+        ))
         // Return deleted object
         return object
     }
