@@ -407,8 +407,41 @@ let copyableCodableStore = codableStore.copyable
 ```
 
 ### CodableStoreController
+A `CodableStoreController` is available in three variants `CodableStoreViewController`, `CodableStoreTableViewController` and `CodableStoreCollectionViewController`. The Controllers automatically observe the Collection type you pass to generic interface like `<User>` and will call the two lifecycle functions `codableStoreablesWillUpdate` and `codableStoreablesDidUpdate`. Accessing `self.codableStoreables` will return the whole Collection of the specific type. Furthermore, the Observation will be disposed as soon as the Controller gets deallocated.
 
-...
+```swift
+class UserListViewController: CodableStoreViewController<User> {
+    
+    /// Map Users to firstName list
+    let toFirstNames: ([User]) -> String = {
+        $0.map { $0.firstName }.joined(separator: "\n")
+    }
+
+    /// The Label to display all Users firstname
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.text = self.toFirstNames(self.codableStoreables)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        return label
+    }()
+    
+    /// Replace View with Label
+    override func loadView() {
+        self.view = self.label
+    }
+    
+    /// Did updated Users
+    func codableStoreablesDidUpdate(event: CodableStore<User>.ObserveEvent,
+                                    codableStoreables: [User]) {
+        self.label.text = self.toFirstNames(codableStoreables)
+    }
+    
+}
+```
+> Example Code to display all Users first name in UILabel and updates automatically on changes
 
 ## Contributing
 Contributions are very welcome 🙌 🤓
