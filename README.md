@@ -153,6 +153,9 @@ codableStore.observe(user) { (event) in
         break
     }
 }
+
+// Or use the convenience functions on your CodableStoreable type
+try user.save()
 ```
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
