@@ -154,15 +154,13 @@ codableStore.observe(user) { (event) in
     }
 }
 
-// Or use the convenience functions on your CodableStoreable type
+// Or use the convenience functions on your CodableStoreable type 😎
 try user.save()
 ```
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
-That's it 🙌 head over to the Advanced section to explore the full capabilities of the `CodableStoreKit`.
-
 ## Advanced
-The Advanced section will explain all capabilities of the `CodableStoreKit` in depth. 
+The Advanced section will explain all features and capabilities of `CodableStoreKit` in detail 🙌
 
 ### Engine-Container-Collection-Architecture
 
