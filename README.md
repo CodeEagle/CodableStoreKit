@@ -184,9 +184,6 @@ let codableStore = CodableStore<User>(engine: .fileSystem)
 
 // Use the InMemory Engine (perfect for development or testing phase)
 let codableStore = CodableStore<User>(engine: .inMemory)
-
-// Or use your own CodableStoreEngine
-let codableStore = CodableStore<User>(engine: .custom(myCustomEngine))
 ```
 > ☝️ In default the `.fileSystem` Engine will be used
 
