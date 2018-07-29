@@ -429,15 +429,9 @@ The following example code shows an implementation to show all Users firstName i
 ```swift
 class UserListViewController: CodableStoreViewController<User> {
     
-    /// Map Users to firstName list
-    let toFirstNames: ([User]) -> String = {
-        $0.map { $0.firstName }.joined(separator: "\n")
-    }
-
     /// The Label to display all Users firstname
     lazy var label: UILabel = {
         let label = UILabel()
-        label.text = self.toFirstNames(self.codableStoreables)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
@@ -453,7 +447,7 @@ class UserListViewController: CodableStoreViewController<User> {
     /// Did updated Users
     func codableStoreablesDidUpdate(event: CodableStore<User>.ObserveEvent,
                                     codableStoreables: [User]) {
-        self.label.text = self.toFirstNames(codableStoreables)
+        self.label.text = codableStoreables.map { $0.firstName }.joined(separator: "\n")
     }
     
 }
