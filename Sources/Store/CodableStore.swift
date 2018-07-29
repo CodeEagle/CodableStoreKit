@@ -56,7 +56,7 @@ open class CodableStore<Object: BaseCodableStoreable> {
     public init(container: CodableStoreContainer = .default,
                 engine: Engine = .fileSystem) {
         self.container = container
-        self.engine = engine.get(container: container)
+        self.engine = engine.build(container: container)
         self.observer = ObserverStorage
             .sharedInstance
             .getObserver(objectType: Object.self)
@@ -83,20 +83,20 @@ public extension CodableStore {
         /// InMemory
         case inMemory
         /// Supply custom CodableStoreEngine
-        case custom(AnyCodableStoreEngine<Object>)
+        case custom((CodableStoreContainer) -> AnyCodableStoreEngine<Object>)
         
-        /// Retrieve Engine as AnyCodableStoreEngine
+        /// Build Engine as AnyCodableStoreEngine
         ///
         /// - Parameter container: The CodableStoreContainer
         /// - Returns: AnyCodableStoreEngine<Object>
-        func get(container: CodableStoreContainer) -> AnyCodableStoreEngine<Object> {
+        func build(container: CodableStoreContainer) -> AnyCodableStoreEngine<Object> {
             switch self {
             case .fileSystem:
                 return .init(FileManagerCodeableStoreEngine(container: container))
             case .inMemory:
                 return .init(InMemoryCodableStoreEngine(container: container))
-            case .custom(let engine):
-                return engine
+            case .custom(let customEngine):
+                return customEngine(container)
             }
         }
     }
