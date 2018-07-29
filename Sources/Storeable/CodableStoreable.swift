@@ -13,18 +13,18 @@ import Foundation
 /// The CodableStoreable Protocol
 public protocol CodableStoreable: BaseCodableStoreable {}
 
-// MARK: - Private Container Builder
+// MARK: - CodableStore Builder
 
-private extension CodableStoreable {
+public extension CodableStoreable {
     
     /// Build CodableStore with Container and Engine
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer
-    ///   - engine: The Engine
+    ///   - container: The CodableStoreContainer Default value `.default`
+    ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: CodableStore
-    private static func codableStore(_ container: CodableStoreContainer,
-                                     _ engine: CodableStore<Self>.Engine) -> CodableStore<Self> {
+    static func codableStore(_ container: CodableStoreContainer = .default,
+                             _ engine: CodableStore<Self>.Engine = .fileSystem) -> CodableStore<Self> {
         return .init(container: container, engine: engine)
     }
     
@@ -37,7 +37,7 @@ public extension CodableStoreable {
     /// Save Object
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer. Default value `.init`
+    ///   - container: The CodableStoreContainer. Default value `.default`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: The saved object
     /// - Throws: If saving fails
@@ -50,7 +50,7 @@ public extension CodableStoreable {
     /// Delete Object
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer. Default value `.init`
+    ///   - container: The CodableStoreContainer. Default value `.default`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: The deleted object
     /// - Throws: If deleting fails
@@ -70,7 +70,7 @@ public extension CodableStoreable {
     ///
     /// - Parameters:
     ///   - identifier: The Identifier
-    ///   - container: The CodableStoreContainer. Default value `.init`
+    ///   - container: The CodableStoreContainer. Default value `.default`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: The retrieved object
     /// - Throws: If retrieving fails
@@ -83,7 +83,7 @@ public extension CodableStoreable {
     /// Retrieve all Objects in Collection
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer. Default value `.init`
+    ///   - container: The CodableStoreContainer. Default value `.default`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: The retrieved Objects
     /// - Throws: If retrieving fails
@@ -95,7 +95,7 @@ public extension CodableStoreable {
     /// Check if Object exists
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer. Default value `.init`
+    ///   - container: The CodableStoreContainer. Default value `.default`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: Boolean if Object exists
     func exists(container: CodableStoreContainer = .default,
@@ -107,7 +107,7 @@ public extension CodableStoreable {
     ///
     /// - Parameters:
     ///   - identifier: The Identifier
-    ///   - container: The CodableStoreContainer. Default value `.init`
+    ///   - container: The CodableStoreContainer. Default value `.default`
     ///   - engine: The Engine. Default value `.fileSystem`
     /// - Returns: Boolean if Object exists
     static func exists(identifier: Self.ID,
@@ -202,7 +202,7 @@ public extension CodableStoreable {
 
 // MARK: - CodableStoreable Array Convenience Functions
 
-extension Array where Element: CodableStoreable {
+extension Sequence where Element: CodableStoreable {
     
     /// Save Objects in Array
     ///
@@ -213,7 +213,7 @@ extension Array where Element: CodableStoreable {
     @discardableResult
     func save(container: CodableStoreContainer,
               engine: CodableStore<Element>.Engine = .fileSystem) -> [CodableStore<Element>.Result] {
-        return CodableStore(container: container, engine: engine).save(self)
+        return CodableStore(container: container, engine: engine).save(Array(self))
     }
     
     /// Delete Objets in Array
@@ -225,7 +225,7 @@ extension Array where Element: CodableStoreable {
     @discardableResult
     func delete(container: CodableStoreContainer,
                 engine: CodableStore<Element>.Engine = .fileSystem) -> [CodableStore<Element>.Result] {
-        return CodableStore(container: container, engine: engine).delete(self)
+        return CodableStore(container: container, engine: engine).delete(Array(self))
     }
     
 }
