@@ -203,7 +203,7 @@ class MyEngine<Object: BaseCodableStoreable>: CodableStoreEngine {
     
     func get(identifier: Object.ID) throws -> Object {}
     
-    func getCollection() throws -> [Object]
+    func getCollection() throws -> [Object] {}
     
 }
 ```
