@@ -11,7 +11,7 @@ import Foundation
 // MARK: - FileManagerCodeableStoreEngine
 
 /// The FileManagerCodeableStoreEngine
-class FileManagerCodeableStoreEngine<Object: BaseCodableStoreable> {
+class FileManagerCodeableStoreEngine<Object: BaseCodableStoreable>: InitializableCodableStoreEngine {
     
     /// The CodableStoreContainer
     let container: CodableStoreContainer
@@ -28,6 +28,11 @@ class FileManagerCodeableStoreEngine<Object: BaseCodableStoreable> {
          fileManager: FileManager = .default) {
         self.container = container
         self.fileManager = fileManager
+    }
+    
+    required init(container: CodableStoreContainer) {
+        self.container = container
+        self.fileManager = .default
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 // MARK: - InMemoryCodableStoreEngine
 
 /// The InMemoryCodableStoreEngine
-class InMemoryCodableStoreEngine<Object: BaseCodableStoreable> {
+class InMemoryCodableStoreEngine<Object: BaseCodableStoreable>: InitializableCodableStoreEngine {
 
     /// The CodableStoreContaner
     let container: CodableStoreContainer
@@ -19,7 +19,7 @@ class InMemoryCodableStoreEngine<Object: BaseCodableStoreable> {
     /// Designated Initializer
     ///
     /// - Parameter container: The CodableStoreContainer
-    init(container: CodableStoreContainer = .default) {
+    required init(container: CodableStoreContainer = .default) {
         self.container = container
     }
     

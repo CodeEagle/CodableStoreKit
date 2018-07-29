@@ -63,7 +63,9 @@ class ObserverStorage {
         }
         // Remove Observer
         self.observers.mutate { (observers) in
-            observers = observers.filter { !($0 is AnyObserverableCodableStore<Object>) }
+            observers = observers.filter {
+                !($0 is AnyObserverableCodableStore<Object>)
+            }
         }
     }
     

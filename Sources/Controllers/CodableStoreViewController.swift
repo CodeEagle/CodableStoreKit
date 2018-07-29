@@ -54,17 +54,17 @@ open class CodableStoreViewController<Object: BaseCodableStoreable>: UIViewContr
     /// CodableStoreables will update with observe event
     ///
     /// - Parameters:
-    ///   - event: The ObserveEvent
+    ///   - event: The CodableStoreControllerEvent
     ///   - codableStoreables: The current CodableStoreables before update
-    open func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
+    open func codableStoreablesWillUpdate(event: CodableStoreControllerEvent<Object>,
                                           codableStoreables: [Object]) {}
     
     /// CodableStoreables did update with observe event
     ///
     /// - Parameters:
-    ///   - event: The ObserveEvent
+    ///   - event: The CodableStoreControllerEvent
     ///   - codableStoreables: The updated CodableStoreables
-    open func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+    open func codableStoreablesDidUpdate(event: CodableStoreControllerEvent<Object>,
                                          codableStoreables: [Object]) {}
     
 }

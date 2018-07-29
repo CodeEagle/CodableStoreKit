@@ -35,18 +35,11 @@ class UsersViewController: CodableStoreViewController<User>, UITableViewDataSour
         self.addPullUpController(self.createUserPullUpController)
     }
     
+    
     /// ViewDidLayoutSubViews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.tableView.frame = self.view.frame
-    }
-    
-    // MARK: CodableStoreViewController-Lifecycle
-    
-    override func codableStoreablesDidUpdate(event: CodableStore<User>.ObserveEvent,
-                                             codableStoreables: [User]) {
-        // Reload Data
-        self.tableView.reloadData()
     }
     
     // MARK: UITableViewDataSource

@@ -11,9 +11,15 @@ import Foundation
 // MARK: - AnyCodableStoreEngine (Type-Erasure)
 
 /// The Type-Erased CodableStoreEngine Wrapper
-public struct AnyCodableStoreEngine<Object: BaseCodableStoreable> {
+public struct AnyCodableStoreEngine<Object: BaseCodableStoreable>: InitializableCodableStoreEngine {
     
     // MARK: Properties
+    
+    public var container: CodableStoreContainer {
+        return self.containerClosure()
+    }
+    
+    private let containerClosure: () -> CodableStoreContainer
     
     /// The save closure
     private let saveClosure: (Object) throws -> Object
@@ -33,6 +39,9 @@ public struct AnyCodableStoreEngine<Object: BaseCodableStoreable> {
     ///
     /// - Parameter engine: The CodableStoreEngine
     public init<T: CodableStoreEngine>(_ engine: T) where T.Object == Object {
+        self.containerClosure = {
+            engine.container
+        }
         self.saveClosure = {
             try engine.save($0)
         }
@@ -45,6 +54,10 @@ public struct AnyCodableStoreEngine<Object: BaseCodableStoreable> {
         self.getCollectionClosure = {
             try engine.getCollection()
         }
+    }
+    
+    public init(container: CodableStoreContainer) {
+        fatalError()
     }
     
 }

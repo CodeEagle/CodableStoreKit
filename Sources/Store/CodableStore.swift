@@ -16,7 +16,9 @@ open class CodableStore<Object: BaseCodableStoreable> {
     // MARK: Properties
     
     /// The Container
-    public let container: CodableStoreContainer
+    public var container: CodableStoreContainer {
+        return self.engine.container
+    }
     
     /// The Engine
     let engine: AnyCodableStoreEngine<Object>
@@ -47,21 +49,44 @@ open class CodableStore<Object: BaseCodableStoreable> {
     }
     
     // MARK: Initializer
-
+    
     /// Designated Initializer
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer. Default value `Default Container`
-    ///   - engine: The Engine. Default value `.fileSystem`
-    public init(container: CodableStoreContainer = .default,
-                engine: Engine = .fileSystem) {
-        self.container = container
-        self.engine = engine.build(container: container)
+    ///   - engine: The CodableStoreEngine
+    public init<Engine: CodableStoreEngine>(engine: Engine) where Engine.Object == Object {
+        self.engine = AnyCodableStoreEngine<Object>(engine)
         self.observer = ObserverStorage
             .sharedInstance
             .getObserver(objectType: Object.self)
     }
-    
+
+    /// Convenience Initializer with Container and Engine
+    ///
+    /// - Parameters:
+    ///   - container: The CodableStoreContainer. Default value `Default Container`
+    ///   - engine: The Engine. Default value `.fileSystem`
+    public convenience init(container: CodableStoreContainer = .default,
+                            engine: Engine = .fileSystem) {
+        // Switch on Engine
+        switch engine {
+        case .fileSystem:
+            // Init with FileManagerCodableStoreEngine
+            self.init(
+                engine: FileManagerCodeableStoreEngine(
+                    container: container
+                )
+            )
+        case .inMemory:
+            // Init with InMemoryCodableStoreEngine
+            self.init(
+                engine: InMemoryCodableStoreEngine(
+                    container: container
+                )
+            )
+        }
+    }
+
     /// Deinit
     deinit {
         /// Clear Observer usage for Object Type
@@ -82,23 +107,6 @@ public extension CodableStore {
         case fileSystem
         /// InMemory
         case inMemory
-        /// Supply custom CodableStoreEngine
-        case custom((CodableStoreContainer) -> AnyCodableStoreEngine<Object>)
-        
-        /// Build Engine as AnyCodableStoreEngine
-        ///
-        /// - Parameter container: The CodableStoreContainer
-        /// - Returns: AnyCodableStoreEngine<Object>
-        func build(container: CodableStoreContainer) -> AnyCodableStoreEngine<Object> {
-            switch self {
-            case .fileSystem:
-                return .init(FileManagerCodeableStoreEngine(container: container))
-            case .inMemory:
-                return .init(InMemoryCodableStoreEngine(container: container))
-            case .custom(let customEngine):
-                return customEngine(container)
-            }
-        }
     }
 
 }

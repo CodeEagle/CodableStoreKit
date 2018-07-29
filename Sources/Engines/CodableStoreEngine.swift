@@ -11,7 +11,22 @@ import Foundation
 // MARK: - CodableStoreEngine
 
 /// The CodableStoreEngine Typealias
-public typealias CodableStoreEngine = WriteableCodableStoreEngine & ReadableCodableStoreEngine
+public typealias CodableStoreEngine = InitializableCodableStoreEngine & WriteableCodableStoreEngine & ReadableCodableStoreEngine
+
+// MARK: - InitializableCodableStoreEngine
+
+/// The InitializableCodableStoreEngine
+public protocol InitializableCodableStoreEngine {
+    
+    /// The Container
+    var container: CodableStoreContainer { get }
+    
+    /// Designated Initializer with CodableStoreContainer
+    ///
+    /// - Parameter container: The CodableStoreContainer
+    init(container: CodableStoreContainer)
+    
+}
 
 // MARK: - WriteableCodableStoreEngine
 

@@ -28,18 +28,62 @@ public protocol CodableStoreControllerable: class {
     /// CodableStoreables will update with observe event
     ///
     /// - Parameters:
-    ///   - event: The ObserveEvent
+    ///   - event: The CodableStoreControllerEvent
     ///   - codableStoreables: The current CodableStoreables before update
-    func codableStoreablesWillUpdate(event: CodableStore<Object>.ObserveEvent,
+    func codableStoreablesWillUpdate(event: CodableStoreControllerEvent<Object>,
                                      codableStoreables: [Object])
     
     /// CodableStoreables did update with observe event
     ///
     /// - Parameters:
-    ///   - event: The ObserveEvent
+    ///   - event: The CodableStoreControllerEvent
     ///   - codableStoreables: The updated CodableStoreables
-    func codableStoreablesDidUpdate(event: CodableStore<Object>.ObserveEvent,
+    func codableStoreablesDidUpdate(event: CodableStoreControllerEvent<Object>,
                                     codableStoreables: [Object])
+    
+}
+
+// MARK: - CodableStoreControllerEvent
+
+/// The CodableStoreControllerEvent
+public enum CodableStoreControllerEvent<Object: BaseCodableStoreable> {
+    /// Initial Load Event
+    case initial
+    /// Object has been saved in Container for Engine
+    case saved(
+        object: Object,
+        container: CodableStoreContainer,
+        engine: AnyCodableStoreEngine<Object>
+    )
+    /// Object has been deleted in Container for Engine
+    case deleted(
+        object: Object,
+        container: CodableStoreContainer,
+        engine: AnyCodableStoreEngine<Object>
+    )
+    
+    /// Initializer with optional ObserveEvent
+    ///
+    /// - Parameter observeEvent: The ObserveEvent
+    init(observeEvent: CodableStore<Object>.ObserveEvent?) {
+        // Switch on ObserveEvent
+        switch observeEvent {
+        case .some(.saved(let object, let container, let engine)):
+            self = .saved(
+                object: object,
+                container: container,
+                engine: engine
+            )
+        case .some(.deleted(let object, let container, let engine)):
+            self = .deleted(
+                object: object,
+                container: container,
+                engine: engine
+            )
+        case .none:
+            self = .initial
+        }
+    }
     
 }
 
@@ -56,30 +100,43 @@ extension CodableStoreControllerable {
         }
         // Initialize objects with Collection
         (try? self.codableStore.getCollection()).flatMap { [weak self] in
-            self?.codableStoreables = $0
+            // Update CodableStoreables
+            self?.updateCodableStoreables(event: .initial, objects: $0)
         }
         // Observe Collection and disposed by SubscriptionBag
         self.codableStore.observeCollection { [weak self] event in
-            // Verify self is available
-            guard let weakSelf = self else {
-                // Self is unavailable
-                return
-            }
             // Retrieve Collection
-            guard let objects = try? weakSelf.codableStore.getCollection() else {
-                // Collection is unavailable
-                return
+            guard let weakSelf = self,
+                let objects = try? weakSelf.codableStore.getCollection() else {
+                    // Collection is unavailable
+                    return
             }
-            // Invoke CodableStoreables will update
-            weakSelf.codableStoreablesWillUpdate(event: event,
-                                                 codableStoreables: weakSelf.codableStoreables)
-            // Set CodableStoreables
-            weakSelf.codableStoreables = objects
-            // Invoke objects did update with event
-            weakSelf.codableStoreablesDidUpdate(event: event,
-                                                codableStoreables: objects)
+            // Initialize CodableStoreControllerEvent with Observe Event
+            let event = CodableStoreControllerEvent<Object>(observeEvent: event)
+            // Update CodableStoreables
+            self?.updateCodableStoreables(event: event, objects: objects)
         }.disposed(
             by: self.subscriptionBag
+        )
+    }
+    
+    /// Update CodableStoreables with CodableStoreControllerable Lifecycle
+    ///
+    /// - Parameters:
+    ///   - event: The CodableStoreControllerEvent
+    ///   - objects: The Objects
+    private func updateCodableStoreables(event: CodableStoreControllerEvent<Object>, objects: [Object]) {
+        // Will Update
+        self.codableStoreablesWillUpdate(
+            event: event,
+            codableStoreables: self.codableStoreables
+        )
+        // Set Objects
+        self.codableStoreables = objects
+        // Did Update
+        self.codableStoreablesDidUpdate(
+            event: event,
+            codableStoreables: objects
         )
     }
     
