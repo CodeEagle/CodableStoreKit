@@ -36,7 +36,7 @@ class FileManagerCodeableStoreEngine<Object: BaseCodableStoreable>: Initializabl
     /// - Parameters:
     ///   - container: The Container
     ///   - fileManager: The FileManager. Default value `.default`
-    init(container: CodableStoreContainer = .default("FileSystem"),
+    init(container: CodableStoreContainer = .default,
          fileManager: FileManager = .default) {
         self.container = container
         self.fileManager = fileManager

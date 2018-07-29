@@ -40,14 +40,6 @@ public extension CodableStoreContainer {
     /// The DefaultCodableStoreContainer
     static var `default` = CodableStoreContainer(name: "Default")
     
-    /// Retrieve DefaultCodableStoreContainer with suffix
-    ///
-    /// - Parameter suffix: The suffix
-    /// - Returns: The default CodableStoreContainer
-    static func `default`(_ suffix: String) -> CodableStoreContainer {
-        return .init(name: "Default\(suffix)")
-    }
-    
 }
 
 // MARK: - ExpressibleByStringLiteral

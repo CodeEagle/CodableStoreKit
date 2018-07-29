@@ -23,7 +23,7 @@ class InMemoryCodableStoreEngine<Object: BaseCodableStoreable>: InitializableCod
     /// Designated Initializer
     ///
     /// - Parameter container: The CodableStoreContainer
-    required init(container: CodableStoreContainer = .default("InMemory")) {
+    required init(container: CodableStoreContainer = .default) {
         self.container = container
     }
     
