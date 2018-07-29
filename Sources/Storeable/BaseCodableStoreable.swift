@@ -43,8 +43,14 @@ public extension BaseCodableStoreable {
         return (JSONEncoder(), JSONDecoder())
     }
     
+}
+
+// MARK: - BaseCodableStoreable Identifier Value
+
+extension BaseCodableStoreable {
+    
     /// The CodeableStore Identifier Value
-    internal var codableStoreIdentifierValue: ID {
+    var codableStoreIdentifierValue: ID {
         return self[keyPath: Self.codableStoreIdentifier]
     }
     
