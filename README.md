@@ -148,9 +148,9 @@ let userExists = codableStore.exists(user)
 // Observe
 codableStore.observe(user) { (event) in
     switch event {
-    case .saved(let object, let container, let engine):
+    case .saved(let object, let container):
         break
-    case .deleted(let object, let container, let engine):
+    case .deleted(let object, let container):
         break
     }
 }
@@ -350,9 +350,9 @@ let codableStore = CodableStore<User>()
 // Observe save and delete of Users where lastName contains "Robot"
 let subscription = codableStore.observe(where: { $0.lastName.contains("Robot") }) { event in
     switch event {
-    case .saved(object: let object, container: let container, engine: let engine):
+    case .saved(object: let object, container: let container):
         break
-    case .deleted(object: let object, container: let container, engine: let engine):
+    case .deleted(object: let object, container: let container):
         break
     }
 }
