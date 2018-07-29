@@ -47,8 +47,8 @@ public protocol CodableStoreControllerable: class {
 
 /// The CodableStoreControllerEvent
 public enum CodableStoreControllerEvent<Object: BaseCodableStoreable> {
-    /// Initial Load Event
-    case initial
+    /// Default Load Event
+    case `default`
     /// Object has been saved in Container for Engine
     case saved(
         object: Object,
@@ -77,28 +77,67 @@ public enum CodableStoreControllerEvent<Object: BaseCodableStoreable> {
                 container: container
             )
         case .none:
-            self = .initial
+            self = .default
         }
     }
     
 }
 
-// MARK: - CodableStoreControllerable Funtions
+// MARK: - CodableStoreControllerable Convenience Funtions
+
+public extension CodableStoreControllerable {
+    
+    /// Reload CodableStoreables with CodableStoreControllerable-Lifecycle
+    ///
+    /// - Returns: The loaded CodableStoreables. Returns nil if loading failed
+    @discardableResult
+    public func reloadCodableStoreables() -> [Object]? {
+        let objects: [Object]
+        do {
+            // Try to load Collection
+            objects = try self.codableStore.getCollection()
+        } catch {
+            // Loading failed return error
+            return nil
+        }
+        // Update CodableStoreables with Lifecycle
+        self.updateCodableStoreables(
+            event: .default,
+            objects: objects
+        )
+        // Return loaded Objects
+        return objects
+    }
+    
+    /// Retrieve CodableStoreable at Index
+    ///
+    /// - Parameter index: The Index
+    /// - Returns: CodableStoreable at Index if index is contained in indices
+    public func codableStoreable(at index: Int) -> Object? {
+        // Verfiy index is contained in indices
+        guard self.codableStoreables.indices.contains(index) else {
+            // Index out of bounds return nil
+            return nil
+        }
+        // Return CodableStoreable at index
+        return self.codableStoreables[index]
+    }
+    
+}
+
+// MARK: - Default Setup
 
 extension CodableStoreControllerable {
     
-    /// Subscribe to Collection Updates
-    func subscribeCollectionUpdates() {
-        // Check if SubscriptionBag is not empty
-        if !self.subscriptionBag.isEmpty {
+    /// Setup CodeableStoreControllerable
+    func setup() {
+        // Verify SubscriptionBag is empty
+        guard self.subscriptionBag.isEmpty else {
             // Return out of function
             return
         }
-        // Initialize objects with Collection
-        (try? self.codableStore.getCollection()).flatMap { [weak self] in
-            // Update CodableStoreables
-            self?.updateCodableStoreables(event: .initial, objects: $0)
-        }
+        // Reload CodableStoreables
+        self.reloadCodableStoreables()
         // Observe Collection and disposed by SubscriptionBag
         self.codableStore.observeCollection { [weak self] event in
             // Retrieve Collection
@@ -112,6 +151,7 @@ extension CodableStoreControllerable {
             // Update CodableStoreables
             self?.updateCodableStoreables(event: event, objects: objects)
         }.disposed(
+            // Disposed by SubscriptionBag
             by: self.subscriptionBag
         )
     }
@@ -134,20 +174,6 @@ extension CodableStoreControllerable {
             event: event,
             codableStoreables: objects
         )
-    }
-    
-    /// Retrieve CodableStoreable at Index
-    ///
-    /// - Parameter index: The Index
-    /// - Returns: CodableStoreable at Index if index is contained in indices
-    public func codableStoreable(at index: Int) -> Object? {
-        // Verfiy index is contained in indices
-        guard self.codableStoreables.indices.contains(index) else {
-            // Index out of bounds return nil
-            return nil
-        }
-        // Return CodableStoreable at index
-        return self.codableStoreables[index]
     }
     
 }

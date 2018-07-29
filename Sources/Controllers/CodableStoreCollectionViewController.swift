@@ -38,15 +38,10 @@ open class CodableStoreCollectionViewController<Object: BaseCodableStoreable>: U
                 engine: CodableStore<Object>.Engine = .fileSystem,
                 layout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
         self.codableStore = .init(container: container, engine: engine)
-        if let codableStoreables = try? self.codableStore.getCollection() {
-            self.codableStoreables = codableStoreables
-        } else {
-            self.codableStoreables = .init()
-        }
         self.codableStoreables = .init()
         self.subscriptionBag = .init()
         super.init(collectionViewLayout: layout)
-        self.subscribeCollectionUpdates()
+        self.setup()
     }
     
     /// Initializer with Coder always returns nil

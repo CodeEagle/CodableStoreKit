@@ -36,15 +36,10 @@ open class CodableStoreTableViewController<Object: BaseCodableStoreable>: UITabl
                 engine: CodableStore<Object>.Engine = .fileSystem,
                 style: UITableViewStyle = .plain) {
         self.codableStore = .init(container: container, engine: engine)
-        if let codableStoreables = try? self.codableStore.getCollection() {
-            self.codableStoreables = codableStoreables
-        } else {
-            self.codableStoreables = .init()
-        }
         self.codableStoreables = .init()
         self.subscriptionBag = .init()
         super.init(style: style)
-        self.subscribeCollectionUpdates()
+        self.setup()
     }
     
     /// Initializer with Coder always returns nil
