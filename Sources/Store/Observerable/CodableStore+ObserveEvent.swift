@@ -37,3 +37,27 @@ public extension CodableStore {
     }
     
 }
+
+// MARK: - CustomStringConvertible
+
+extension CodableStore.ObserveEvent: CustomStringConvertible {
+    
+    /// A textual representation of this instance
+    public var description: String {
+        let objectName: (Object) -> String = {
+            return String(describing: Mirror(reflecting: $0).subjectType)
+        }
+        let eventName: String
+        let containerName: String
+        switch self {
+        case .saved(_, let container):
+            eventName = "Saved"
+            containerName = container.name
+        case .deleted(_, let container):
+            eventName = "Deleted"
+            containerName = container.name
+        }
+        return "[\(eventName)] \(objectName(self.object)) in Container: \(containerName) => \(self.object)"
+    }
+    
+}
