@@ -194,6 +194,12 @@ If you wish to define your own `CodableStoreEngine` you have to declare your Eng
 
 ```swift
 class MyEngine<Object: BaseCodableStoreable>: CodableStoreEngine {
+
+    let container: CodableStoreContainer
+    
+    required init(container: CodableStoreContainer) {
+        self.container = container
+    }
     
     @discardableResult
     func save(_ object: Object) throws -> Object {}
@@ -208,14 +214,14 @@ class MyEngine<Object: BaseCodableStoreable>: CodableStoreEngine {
 }
 ```
 
-After you implemented the four functions `save`, `delete`, `get` and `getCollection` you can pass your own `CodableStoreEngine` to a `CodableStore` by wrapping it in an `AnyCodableStoreEngine` which is a type erasure struct.
+After you implemented the four functions `save`, `delete`, `get` and `getCollection` you can pass your own `CodableStoreEngine` to a `CodableStore`.
 
 ```swift
-// Initialize your Engine with an AnyCodableStoreEngine
-let myEngine = AnyCodableStoreEngine<User>(MyEngine())
+// Initialize your Engine with a Container
+let myEngine = MyEngine(container: .default)
 
 // Initialize a CodableStore with a custom Engine
-let codableStore = CodableStore<User>(engine: .custom(myEngine))
+let codableStore = CodableStore<User>(engine: myEngine)
 ```
 
 ### Container
