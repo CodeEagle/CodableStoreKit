@@ -411,13 +411,7 @@ let copyableCodableStore = codableStore.copyable
 ```
 
 ### CodableStoreController
-A `CodableStoreController` is available in three variants.
-
-| CodableStoreController | Description |
-| ------------- | ------------- |
-| `CodableStoreViewController ` | Subclass of `UIViewController` |
-| `CodableStoreTableViewController ` | Subclass of `UITableViewController` |
-| `CodableStoreCollectionViewController ` | Subclass of `UICollectionViewController` |
+A `CodableStoreController` is available in three variants `CodableStoreViewController`, `CodableStoreTableViewController` and `CodableStoreCollectionViewController`.
 
 When using a `CodableStoreController` you can make use of the pre-defined observation implementation on the `CodableStoreable` type you specify in the generic interface like `<User>`. As soon as the Controller gets deallocated the observation will be disposed 👌
 
