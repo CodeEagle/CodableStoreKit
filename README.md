@@ -113,6 +113,7 @@ extension User: CodableStoreable {
 
     /// The CodableStore unique identifier KeyPath
     static var codableStoreIdentifier: KeyPath<User, String> {
+        // Return a KeyPath to a property which uniquely identifies a User
         return \User.id
     }
     
