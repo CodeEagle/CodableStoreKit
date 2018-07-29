@@ -54,7 +54,7 @@ open class CodableStore<Object: BaseCodableStoreable> {
     ///
     /// - Parameters:
     ///   - engine: The CodableStoreEngine
-    public init<Engine: CodableStoreEngine>(engine: Engine) where Engine.Object == Object {
+    public init<CE: CodableStoreEngine>(engine: CE) where CE.Object == Object {
         self.engine = AnyCodableStoreEngine<Object>(engine)
         self.observer = ObserverStorage
             .sharedInstance
