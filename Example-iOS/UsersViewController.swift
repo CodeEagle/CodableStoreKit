@@ -35,7 +35,6 @@ class UsersViewController: CodableStoreViewController<User>, UITableViewDataSour
         self.addPullUpController(self.createUserPullUpController)
     }
     
-    
     /// ViewDidLayoutSubViews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

@@ -17,22 +17,20 @@ public extension CodableStore {
         /// Object has been saved in Container for Engine
         case saved(
             object: Object,
-            container: CodableStoreContainer,
-            engine: AnyCodableStoreEngine<Object>
+            container: CodableStoreContainer
         )
         /// Object has been deleted in Container for Engine
         case deleted(
             object: Object,
-            container: CodableStoreContainer,
-            engine: AnyCodableStoreEngine<Object>
+            container: CodableStoreContainer
         )
         
         /// The Object
         var object: Object {
             switch self {
-            case .saved(let object, _, _):
+            case .saved(let object, _):
                 return object
-            case .deleted(let object, _, _):
+            case .deleted(let object, _):
                 return object
             }
         }

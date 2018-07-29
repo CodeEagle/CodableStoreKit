@@ -13,26 +13,33 @@ import Foundation
 /// The FileManagerCodeableStoreEngine
 class FileManagerCodeableStoreEngine<Object: BaseCodableStoreable>: InitializableCodableStoreEngine {
     
+    // MARK: - Propreties
+    
     /// The CodableStoreContainer
     let container: CodableStoreContainer
     
     /// The FileManager
     let fileManager: FileManager
     
+    // MARK: Initializer
+    
     /// Designated Initializer
     ///
-    /// - Parameters:
-    ///   - container: The Container
-    ///   - fileManager: The FileManager
-    init(container: CodableStoreContainer = .default,
-         fileManager: FileManager = .default) {
-        self.container = container
-        self.fileManager = fileManager
-    }
-    
+    /// - Parameter container: The Container
     required init(container: CodableStoreContainer) {
         self.container = container
         self.fileManager = .default
+    }
+    
+    /// Initializer with Container and FileManager
+    ///
+    /// - Parameters:
+    ///   - container: The Container
+    ///   - fileManager: The FileManager. Default value `.default`
+    init(container: CodableStoreContainer = .default("FileSystem"),
+         fileManager: FileManager = .default) {
+        self.container = container
+        self.fileManager = fileManager
     }
     
 }

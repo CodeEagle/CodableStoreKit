@@ -24,8 +24,7 @@ extension CodableStore: WriteableCodableStore {
         // Emit Observer with save event
         self.observer.next(object, event: .saved(
             object: object,
-            container: self.container,
-            engine: self.engine
+            container: self.container
         ))
         // Return saved object
         return object
@@ -43,8 +42,7 @@ extension CodableStore: WriteableCodableStore {
         // Emit observer with delete event
         self.observer.next(object, event: .deleted(
             object: object,
-            container: self.container,
-            engine: self.engine
+            container: self.container
         ))
         // Return deleted object
         return object

@@ -52,14 +52,12 @@ public enum CodableStoreControllerEvent<Object: BaseCodableStoreable> {
     /// Object has been saved in Container for Engine
     case saved(
         object: Object,
-        container: CodableStoreContainer,
-        engine: AnyCodableStoreEngine<Object>
+        container: CodableStoreContainer
     )
     /// Object has been deleted in Container for Engine
     case deleted(
         object: Object,
-        container: CodableStoreContainer,
-        engine: AnyCodableStoreEngine<Object>
+        container: CodableStoreContainer
     )
     
     /// Initializer with optional ObserveEvent
@@ -68,17 +66,15 @@ public enum CodableStoreControllerEvent<Object: BaseCodableStoreable> {
     init(observeEvent: CodableStore<Object>.ObserveEvent?) {
         // Switch on ObserveEvent
         switch observeEvent {
-        case .some(.saved(let object, let container, let engine)):
+        case .some(.saved(let object, let container)):
             self = .saved(
                 object: object,
-                container: container,
-                engine: engine
+                container: container
             )
-        case .some(.deleted(let object, let container, let engine)):
+        case .some(.deleted(let object, let container)):
             self = .deleted(
                 object: object,
-                container: container,
-                engine: engine
+                container: container
             )
         case .none:
             self = .initial

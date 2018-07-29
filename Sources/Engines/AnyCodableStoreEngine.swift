@@ -11,14 +11,16 @@ import Foundation
 // MARK: - AnyCodableStoreEngine (Type-Erasure)
 
 /// The Type-Erased CodableStoreEngine Wrapper
-public struct AnyCodableStoreEngine<Object: BaseCodableStoreable>: InitializableCodableStoreEngine {
+struct AnyCodableStoreEngine<Object: BaseCodableStoreable>: InitializableCodableStoreEngine {
     
     // MARK: Properties
     
-    public var container: CodableStoreContainer {
+    /// The Container
+    var container: CodableStoreContainer {
         return self.containerClosure()
     }
     
+    /// The Container Closure
     private let containerClosure: () -> CodableStoreContainer
     
     /// The save closure
@@ -38,7 +40,7 @@ public struct AnyCodableStoreEngine<Object: BaseCodableStoreable>: Initializable
     /// Designated Initializer
     ///
     /// - Parameter engine: The CodableStoreEngine
-    public init<T: CodableStoreEngine>(_ engine: T) where T.Object == Object {
+    init<T: CodableStoreEngine>(_ engine: T) where T.Object == Object {
         self.containerClosure = {
             engine.container
         }
@@ -56,8 +58,13 @@ public struct AnyCodableStoreEngine<Object: BaseCodableStoreable>: Initializable
         }
     }
     
-    public init(container: CodableStoreContainer) {
-        fatalError()
+    /// ⚠️ Don't init AnyCodableStoreEngine with a Container.
+    /// Use initializer with a CodableStoreEngine instead
+    @available(*, deprecated, message: "⚠️ Unable to init with Container. Use the initializer with a CodableStoreEngine")
+    init(container: CodableStoreContainer) {
+        fatalError(
+            "⚠️ AnyCodableStoreEngine can't be initialized with Container. Init with CodableStoreEngine"
+        )
     }
     
 }
@@ -72,7 +79,7 @@ extension AnyCodableStoreEngine: WriteableCodableStoreEngine {
     /// - Returns: The saved object
     /// - Throws: If saving fails
     @discardableResult
-    public func save(_ object: Object) throws -> Object {
+    func save(_ object: Object) throws -> Object {
         return try self.saveClosure(object)
     }
     
@@ -82,7 +89,7 @@ extension AnyCodableStoreEngine: WriteableCodableStoreEngine {
     /// - Returns: The deleted object
     /// - Throws: If deleting fails
     @discardableResult
-    public func delete(identifier: Object.ID) throws -> Object {
+    func delete(identifier: Object.ID) throws -> Object {
         return try self.deleteIdentifierClosure(identifier)
     }
     
@@ -97,7 +104,7 @@ extension AnyCodableStoreEngine: ReadableCodableStoreEngine {
     /// - Parameter identifier: The identifier
     /// - Returns: The corresponding Object
     /// - Throws: If retrieving fails
-    public func get(identifier: Object.ID) throws -> Object {
+    func get(identifier: Object.ID) throws -> Object {
         return try self.getClosure(identifier)
     }
     
@@ -105,7 +112,7 @@ extension AnyCodableStoreEngine: ReadableCodableStoreEngine {
     ///
     /// - Returns: The Objects in the Collection
     /// - Throws: If retrieving fails
-    public func getCollection() throws -> [Object] {
+    func getCollection() throws -> [Object] {
         return try self.getCollectionClosure()
     }
     
