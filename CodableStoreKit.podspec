@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name                      = "CodableStoreKit"
-s.version                   = "0.0.1"
+s.version                   = "1.0.0"
 s.summary                   = "Lightweight Codable Persistence Framework 💾"
 s.homepage                  = "https://github.com/SvenTiigi/CodableStoreKit"
 s.social_media_url          = 'http://twitter.com/SvenTiigi'
