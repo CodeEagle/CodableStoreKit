@@ -59,6 +59,11 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
     /// View did load
     open override func viewDidLoad() {
         super.viewDidLoad()
+        // Check if collection is available
+        if let codableStorables = try? self.codableStore.getCollection() {
+            // Set CodableStorables
+            self.codableStorables = codableStorables
+        }
         // Observe Collection
         self.codableStore.observeCollection { [weak self] event in
             // Reload CodableStorables with Event
