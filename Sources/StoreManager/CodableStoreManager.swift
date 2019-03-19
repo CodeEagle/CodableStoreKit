@@ -112,8 +112,11 @@ extension CodableStoreManager {
                 // Break out of switch as no verification is needed
                 break
             }
-            // Invoke Observer with ObservedChange Event
-            observation.observer(observedChange)
+            // Dispatch on Main Queue
+            DispatchQueue.main.async {
+                // Invoke Observer with ObservedChange Event
+                observation.observer(observedChange)
+            }
         }
     }
     
