@@ -51,7 +51,7 @@ extension ObservableCodableStore: ObservableCodableStoreProtocol {
     ///   - observer: The Observer
     /// - Returns: The CodableStoreSubscription
     @discardableResult
-    public func observe(_ identifier: Storable.Identifier,
+    public func observe(identifier: Storable.Identifier,
                         _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         return self.observeClosure(identifier, observer)
     }

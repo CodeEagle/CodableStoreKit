@@ -23,7 +23,7 @@ public protocol ObservableCodableStoreProtocol {
     ///   - observer: The Observer
     /// - Returns: The CodableStoreSubscription
     @discardableResult
-    func observe(_ identifier: Storable.Identifier,
+    func observe(identifier: Storable.Identifier,
                  _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
     
     /// Observer CodableStorable with predicate
@@ -58,7 +58,7 @@ extension ObservableCodableStoreProtocol {
     @discardableResult
     func observe(_ storable: Storable,
                  _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
-        return self.observe(storable.identifier, observer)
+        return self.observe(identifier: storable.identifier, observer)
     }
     
 }

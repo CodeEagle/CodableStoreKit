@@ -136,7 +136,7 @@ extension CodableStore: ObservableCodableStoreProtocol {
     ///   - observer: The Observer
     /// - Returns: The CodableStoreSubscription
     @discardableResult
-    public func observe(_ identifier: Storable.Identifier,
+    public func observe(identifier: Storable.Identifier,
                         _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Add Observer with Identifier Intent and return Subscription
         return CodableStoreManager.addObserver(.identifier(identifier), observer)
