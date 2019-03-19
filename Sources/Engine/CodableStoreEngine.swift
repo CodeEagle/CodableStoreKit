@@ -42,7 +42,7 @@ public protocol CodableStoreEngine {
     /// - Parameter identifier: The Ientifier
     /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
-    func get<Storable: CodableStorable>(_ identifier: Storable.Identifier,
+    func get<Storable: CodableStorable>(identifier: Storable.Identifier,
                                         in container: CodableStoreContainer) throws -> Storable
     
     /// Retrieve all CodableStorables in Collection

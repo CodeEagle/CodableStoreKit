@@ -87,7 +87,7 @@ extension FileManagerCodableStoreEngine: CodableStoreEngine {
     public func delete<Storable: CodableStorable>(_ identifier: Storable.Identifier,
                                                   in container: CodableStoreContainer) throws -> Storable {
         // Try to retrieve Storable for Identifier in Container
-        let storable: Storable = try self.get(identifier, in: container)
+        let storable: Storable = try self.get(identifier: identifier, in: container)
         // Try to retrieve Path
         let path = try self.getPath(
             type: Storable.self,
@@ -128,7 +128,7 @@ extension FileManagerCodableStoreEngine: CodableStoreEngine {
     /// - Parameter identifier: The Ientifier
     /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
-    public func get<Storable: CodableStorable>(_ identifier: Storable.Identifier,
+    public func get<Storable: CodableStorable>(identifier: Storable.Identifier,
                                                in container: CodableStoreContainer) throws -> Storable {
         // Try to retrieve Path
         let path = try self.getPath(

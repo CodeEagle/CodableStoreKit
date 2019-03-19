@@ -88,7 +88,7 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     /// - Parameter identifier: The Ientifier
     /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
-    public func get<Storable: CodableStorable>(_ identifier: Storable.Identifier,
+    public func get<Storable: CodableStorable>(identifier: Storable.Identifier,
                                                in container: CodableStoreContainer) throws -> Storable {
         guard let storable = self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation]?[identifier.stringRepresentation] as? Storable else {
             throw CodableStoreEngineError<Storable>.notFound(identifier: identifier)

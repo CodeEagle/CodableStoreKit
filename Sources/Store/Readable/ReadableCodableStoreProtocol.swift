@@ -21,7 +21,7 @@ public protocol ReadableCodableStoreProtocol {
     /// - Parameter identifier: The Ientifier
     /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
-    func get(_ identifier: Storable.Identifier) throws -> Storable
+    func get(identifier: Storable.Identifier) throws -> Storable
     
     /// Retrieve all CodableStorables in Collection
     ///
@@ -41,7 +41,7 @@ public extension ReadableCodableStoreProtocol {
     /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
     func get(_ storable: Storable) throws -> Storable {
-        return try self.get(storable.identifier)
+        return try self.get(identifier: storable.identifier)
     }
     
     /// Retrieve all CodableStorables in Collection which matches the given predicate
@@ -66,8 +66,8 @@ public extension ReadableCodableStoreProtocol {
     ///
     /// - Parameter identifier: The CodableStorable Identifier
     /// - Returns: Bool if exists
-    func exists(_ identifier: Storable.Identifier) -> Bool {
-        return (try? self.get(identifier)) == nil
+    func exists(identifier: Storable.Identifier) -> Bool {
+        return (try? self.get(identifier: identifier)) == nil
     }
     
     /// Retrieve Bool if a CodableStorable exists
@@ -75,7 +75,7 @@ public extension ReadableCodableStoreProtocol {
     /// - Parameter storable: The CodableStorable
     /// - Returns: Bool if exists
     func exists(_ storable: Storable) -> Bool {
-        return self.exists(storable.identifier)
+        return self.exists(identifier: storable.identifier)
     }
     
 }

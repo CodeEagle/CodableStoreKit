@@ -42,7 +42,7 @@ extension ReadableCodableStore: ReadableCodableStoreProtocol {
     /// - Parameter identifier: The Ientifier
     /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
-    public func get(_ identifier: Storable.Identifier) throws -> Storable {
+    public func get(identifier: Storable.Identifier) throws -> Storable {
         return try self.getClosure(identifier)
     }
     
