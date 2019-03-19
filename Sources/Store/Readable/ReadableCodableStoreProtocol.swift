@@ -53,4 +53,20 @@ public extension ReadableCodableStoreProtocol {
         return try self.getCollection().first(where: predicate)
     }
     
+    /// Retrieve Bool if a CodableStorable exists
+    ///
+    /// - Parameter identifier: The CodableStorable Identifier
+    /// - Returns: Bool if exists
+    func exists(_ identifier: Storable.Identifier) -> Bool {
+        return (try? self.get(identifier)) == nil
+    }
+    
+    /// Retrieve Bool if a CodableStorable exists
+    ///
+    /// - Parameter storable: The CodableStorable
+    /// - Returns: Bool if exists
+    func exists(_ storable: Storable) -> Bool {
+        return self.exists(storable.identifier)
+    }
+    
 }
