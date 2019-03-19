@@ -26,6 +26,10 @@ public protocol FileManagerCodableStoreEngineEncoder {
 
 extension JSONEncoder: FileManagerCodableStoreEngineEncoder {}
 
+// MARK: - PropertyListEncoder+FileManagerCodableStoreEngineEncoder
+
+extension PropertyListEncoder: FileManagerCodableStoreEngineEncoder {}
+
 // MARK: - FileManagerCodableStoreEngineDecoder
 
 /// The FileManagerCodableStoreEngineDecoder
@@ -45,3 +49,7 @@ public protocol FileManagerCodableStoreEngineDecoder {
 // MARK: - JSONDecoder+FileManagerCodableStoreEngineDecoder
 
 extension JSONDecoder: FileManagerCodableStoreEngineDecoder {}
+
+// MARK: - PropertyListDecoder+FileManagerCodableStoreEngineDecoder
+
+extension PropertyListDecoder: FileManagerCodableStoreEngineDecoder {}
