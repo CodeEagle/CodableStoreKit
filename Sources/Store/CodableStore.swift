@@ -44,28 +44,41 @@ public final class CodableStore<Storable: CodableStorable> {
     
 }
 
-// MARK: - Access-Control CodableStores
+// MARK: - AccessControl
 
 public extension CodableStore {
     
-    /// The SaveableCodableStore
-    var saveable: SaveableCodableStore<Storable> {
-        return .init(self)
+    /// The AccessControl
+    var accessControl: AccessControl {
+        return .init(codableStore: self)
     }
     
-    /// The DeletableCodableStore
-    var deletable: DeletableCodableStore<Storable> {
-        return .init(self)
-    }
-    
-    /// The ReadableCodableStore
-    var readable: ReadableCodableStore<Storable> {
-        return .init(self)
-    }
-    
-    /// The ObservableCodableStore
-    var observable: ObservableCodableStore<Storable> {
-        return .init(self)
+    /// The AccessControl
+    struct AccessControl {
+        
+        /// The CodableStore
+        let codableStore: CodableStore<Storable>
+        
+        /// The SaveableCodableStore
+        public var saveable: SaveableCodableStore<Storable> {
+            return .init(self.codableStore)
+        }
+        
+        /// The DeletableCodableStore
+        public var deletable: DeletableCodableStore<Storable> {
+            return .init(self.codableStore)
+        }
+        
+        /// The ReadableCodableStore
+        public var readable: ReadableCodableStore<Storable> {
+            return .init(self.codableStore)
+        }
+        
+        /// The ObservableCodableStore
+        public var observable: ObservableCodableStore<Storable> {
+            return .init(self.codableStore)
+        }
+        
     }
     
 }
