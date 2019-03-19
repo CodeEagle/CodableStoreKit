@@ -34,14 +34,3 @@ public extension CodableStorable {
     }
     
 }
-
-// MARK: - Identifier
-
-extension CodableStorable {
-    
-    /// The Identifier
-    var identifier: Identifier {
-        return self[keyPath: Self.codableStoreIdentifier]
-    }
-    
-}
