@@ -2,73 +2,56 @@
 //  ReadableCodableStore.swift
 //  CodableStoreKit
 //
-//  Created by Sven Tiigi on 05.07.18.
-//  Copyright © 2018 Sven Tiigi. All rights reserved.
+//  Created by Sven Tiigi on 18.03.19.
+//  Copyright © 2019 CodableStoreKit. All rights reserved.
 //
 
 import Foundation
 
 // MARK: - ReadableCodableStore
 
-/// The ReadableCodableStore Protocol
-public protocol ReadableCodableStore: ReadableCodableStoreEngine {
+/// The ReadableCodableStore
+public struct ReadableCodableStore<Storable: CodableStorable> {
     
-    /// Retrieve Objects with Filter
-    ///
-    /// - Parameter filter: The Filter
-    /// - Returns: An array of matching objects
-    /// - Throws: If retrieving fails
-    func get(where filter: (Object) -> Bool) throws -> [Object]
+    // MARK: Properties
     
-    /// Retrieve first Object matching Filter
-    ///
-    /// - Parameter filter: The Filter
-    /// - Returns: The matching Object
-    /// - Throws: If retrieving fails
-    func first(where filter: (Object) -> Bool) throws -> Object?
+    /// The get closure
+    private let getClosure: (Storable.Identifier) throws -> Storable
     
-    /// Check if Object with Identifier exists
-    ///
-    /// - Parameter identifier: The Identifier
-    /// - Returns: Boolean if Object exists
-    func exists(identifier: Object.ID) -> Bool
+    /// The getCollection closure
+    private let getCollectionClosure: () throws -> [Storable]
     
-    /// Check if Object exists
+    // MARK: Initializer
+    
+    /// Designated Initializer
     ///
-    /// - Parameter object: The Object
-    /// - Returns: Boolean if Object exists
-    func exists(_ object: Object) -> Bool
+    /// - Parameter store: The ReadableCodableStoreProtocol
+    init<Store: ReadableCodableStoreProtocol>(_ store: Store) where Store.Storable == Storable {
+        self.getClosure = store.get
+        self.getCollectionClosure = store.getCollection
+    }
     
 }
 
-// MARK: - ReadableCodableStore Default Implementation
+// MARK: - ReadableCodableStoreProtocol
 
-extension ReadableCodableStore {
+extension ReadableCodableStore: ReadableCodableStoreProtocol {
     
-    /// Retrieve first Object matching Filter
+    /// Retrieve CodableStorable via Identifier
     ///
-    /// - Parameter filter: The Filter
-    /// - Returns: The matching Object
+    /// - Parameter identifier: The Ientifier
+    /// - Returns: The corresponding CodableStorable
     /// - Throws: If retrieving fails
-    public func first(where filter: (Object) -> Bool) throws -> Object? {
-        // Return first matching object
-        return try self.get(where: filter).first
+    public func get(_ identifier: Storable.Identifier) throws -> Storable {
+        return try self.getClosure(identifier)
     }
     
-    /// Check if Object with Identifier exists
+    /// Retrieve all CodableStorables in Collection
     ///
-    /// - Parameter identifier: The Identifier
-    /// - Returns: Boolean if Object exists
-    public func exists(identifier: Object.ID) -> Bool {
-        return (try? self.get(identifier: identifier)) != nil
-    }
-    
-    /// Check if Object exists
-    ///
-    /// - Parameter object: The Object
-    /// - Returns: Boolean if Object exists
-    public func exists(_ object: Object) -> Bool {
-        return self.exists(identifier: object.codableStoreIdentifierValue)
+    /// - Returns: The CodableStorables in the Collection
+    /// - Throws: If retrieving fails
+    public func getCollection() throws -> [Storable] {
+        return try self.getCollectionClosure()
     }
     
 }

@@ -7,7 +7,6 @@ opt_in_rules: # some rules are only opt-in
   - closure_spacing
   - implicitly_unwrapped_optional
   - sorted_imports
-  - missing_docs
   - valid_docs
 
 included:
@@ -22,3 +21,4 @@ disabled_rules: # rule identifiers to exclude from running
   - identifier_name
 
 line_length: 130
+cyclomatic_complexity: 13
