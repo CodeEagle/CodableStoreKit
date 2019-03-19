@@ -26,6 +26,9 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
     /// The CodableStoreSubscriptionBag
     open var subscriptionBag: CodableStoreSubscriptionBag
     
+    /// The CodableStoreObservedChange Event
+    open var observationEvent: CodableStoreObservedChange<Storable>?
+    
     // MARK: Initializer
     
     /// Designated Initializer
@@ -59,15 +62,14 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
     /// View did load
     open override func viewDidLoad() {
         super.viewDidLoad()
-        // Check if collection is available
-        if let codableStorables = try? self.codableStore.getCollection() {
-            // Set CodableStorables
-            self.codableStorables = codableStorables
-        }
+        // Reload CodableStorables
+        self.reloadCodableStorables()
         // Observe Collection
         self.codableStore.observeCollection { [weak self] event in
-            // Reload CodableStorables with Event
-            self?.reloadCodableStorables(event: event)
+            // Set Observation event
+            self?.observationEvent = event
+            // Reload CodableStorables
+            self?.reloadCodableStorables()
         }.disposed(by: self.subscriptionBag)
     }
     
@@ -76,23 +78,23 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
     /// CodableStorables will update
     ///
     /// - Parameters:
-    ///   - event: The CodableStoreObservedChange Event
-    ///   - codableStorables: The current CodableStorables
-    open func codableStorablesWillUpdate(event: CodableStoreObservedChange<Storable>, codableStorables: [Storable]) {}
+    ///   - oldValue: The current CodableStorables
+    ///   - newValue: The new CodableStorables
+    open func codableStorablesWillUpdate(from oldValue: [Storable], to newValue: [Storable]) {}
     
     /// CodableStorables did update
     ///
     /// - Parameters:
     ///   - event: The CodableStoreObservedChange Event
     ///   - codableStorables: The updated CodableStorables
-    open func codableStorablesDidUpdate(event: CodableStoreObservedChange<Storable>, codableStorables: [Storable]) {}
+    open func codableStorablesDidUpdate(_ codableStorables: [Storable]) {}
     
     /// CodableStorables did failed to update
     ///
     /// - Parameters:
     ///   - event: The CodableStoreObservedChange Event
     ///   - error: The Error
-    open func codableStorablesUpdateFailed(event: CodableStoreObservedChange<Storable>, error: Error) {}
+    open func codableStorablesUpdateFailed(_ error: Error) {}
     
 }
 
@@ -101,9 +103,7 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
 public extension CodableStoreViewController {
     
     /// Reload CodableStorables
-    ///
-    /// - Parameter event: The CodableStoreObservedChange Event
-    final func reloadCodableStorables(event: CodableStoreObservedChange<Storable>) {
+    final func reloadCodableStorables() {
         // Declare CodableStorable Array
         let codableStorables: [Storable]
         do {
@@ -111,25 +111,16 @@ public extension CodableStoreViewController {
             codableStorables = try self.codableStore.getCollection()
         } catch {
             // CodableStoreables update failed with error
-            self.codableStorablesUpdateFailed(
-                event: event,
-                error: error
-            )
+            self.codableStorablesUpdateFailed(error)
             // Return out of functio
             return
         }
         // Invoke will update lifecycle
-        self.codableStorablesWillUpdate(
-            event: event,
-            codableStorables: self.codableStorables
-        )
+        self.codableStorablesWillUpdate(from: self.codableStorables, to: codableStorables)
         // Set CodableStorables
         self.codableStorables = codableStorables
         // Invoke did update lifecycle
-        self.codableStorablesDidUpdate(
-            event: event,
-            codableStorables: self.codableStorables
-        )
+        self.codableStorablesDidUpdate(self.codableStorables)
     }
     
 }
