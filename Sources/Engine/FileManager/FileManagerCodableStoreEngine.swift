@@ -11,7 +11,7 @@ import Foundation
 // MARK: - FileManagerCodableStoreEngine
 
 /// The FileManagerCodableStoreEngine
-public class FileManagerCodableStoreEngine {
+public final class FileManagerCodableStoreEngine {
     
     // MARK: Properties
     

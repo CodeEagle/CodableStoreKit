@@ -13,8 +13,12 @@ import Foundation
 /// The CodableStoreManager
 public final class CodableStoreManager {
     
+    // MARK: Typealias
+    
     /// The EngineProvider Typealias
     public typealias EngineProvider = (Codable.Type, CodableStoreContainer) -> CodableStoreEngine
+    
+    // MARK: Properties
     
     /// The Engine Provider
     public static var engineProvider: EngineProvider = { _, _  in
@@ -23,6 +27,11 @@ public final class CodableStoreManager {
     
     /// The Observers
     static var observers: Locked<[AnyHashable: Any]> = .init(.init())
+    
+    // MARK: Initializer
+    
+    /// Designated Initializer
+    private init() {}
     
 }
 
