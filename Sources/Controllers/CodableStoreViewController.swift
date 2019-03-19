@@ -36,7 +36,8 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
     /// - Parameters:
     ///   - engine: The optional CodableStoreEngine. Default value `nil` which will use the default CodableStoreEngine
     ///   - container: The CodableStoreContainer. Default value `default`
-    public init(engine: CodableStoreEngine? = nil, container: CodableStoreContainer = .default) {
+    public init(engine: CodableStoreEngine? = nil,
+                container: CodableStoreContainer = .default) {
         // Check if an Engine is available
         if let engine = engine {
             // Initialize CodableStore with Engine and Container
