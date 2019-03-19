@@ -1283,7 +1283,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-iOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1306,7 +1306,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-iOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1352,7 +1352,7 @@
 				INFOPLIST_FILE = Configs/CodableStoreKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-watchOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-watchOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1374,7 +1374,7 @@
 				INFOPLIST_FILE = Configs/CodableStoreKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-watchOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-watchOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1397,7 +1397,7 @@
 				INFOPLIST_FILE = Configs/CodableStoreKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-tvOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1419,7 +1419,7 @@
 				INFOPLIST_FILE = Configs/CodableStoreKit.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-tvOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -1445,7 +1445,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-macOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -1468,7 +1468,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CodableStoreKit.CodableStoreKit-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tiigi.CodableStoreKit-macOS";
 				PRODUCT_NAME = CodableStoreKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
