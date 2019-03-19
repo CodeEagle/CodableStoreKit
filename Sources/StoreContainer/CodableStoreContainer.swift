@@ -63,7 +63,20 @@ extension CodableStoreContainer: ExpressibleByIntegerLiteral {
     ///
     /// - Parameter value: The Integer Value
     public init(integerLiteral value: Int) {
-        self.name = String(describing: value)
+        self.name = .init(value)
+    }
+    
+}
+
+// MARK: - ExpressibleByFloatLiteral
+
+extension CodableStoreContainer: ExpressibleByFloatLiteral {
+    
+    /// Creates an instance initialized to the specified floating-point value.
+    ///
+    /// - Parameter value: The value to create.
+    public init(floatLiteral value: Double) {
+        self.name = .init(value)
     }
     
 }
