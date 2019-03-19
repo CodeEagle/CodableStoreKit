@@ -9,7 +9,11 @@
 import CodableStoreKit
 import UIKit
 
-class ViewController: CodableStoreViewController<User>, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource {
+    
+    let codableStore = CodableStore<User>()
+    
+    lazy var users = (try? self.codableStore.getCollection()) ?? .init()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -35,21 +39,17 @@ class ViewController: CodableStoreViewController<User>, UITableViewDataSource {
         self.view = self.tableView
     }
     
-    override func codableStorablesDidUpdate(_ codableStorables: [User]) {
-        self.tableView.reloadData()
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.codableStorables.count
+        return self.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.codableStorables[indexPath.row].identifier
+        cell.textLabel?.text = self.users[indexPath.row].identifier
         return cell
     }
 

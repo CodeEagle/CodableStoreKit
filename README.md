@@ -97,7 +97,9 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 ## Usage
 
-Step one make your Codable structs or classes conform to the `CodableStoreable` protocol.
+### Step 1
+
+Make your Codable structs or classes conform to the `CodableStoreable` protocol.
 
 ```swift
 /// The User Struct
@@ -113,24 +115,28 @@ extension User: CodableStoreable {
 
     /// The CodableStore unique identifier KeyPath
     static var codableStoreIdentifier: KeyPath<User, String> {
-        // Return a KeyPath to a property which uniquely identifies a User
-        return \User.id
+        // Return a KeyPath to a property which uniquely identifies an User
+        return \.id
     }
     
 }
 ```
 
-Secondly initialize a specific `CodableStore` based on the type you want to operate on.
+### Step 2
+
+Initialize a specific `CodableStore` based on the type you want to operate on.
 
 ```swift
 // Initialize a User CodableStore
 let codableStore = CodableStore<User>()
 ```
 
-Now you are good to go to persist, retrieve and observe your CodableStoreable type.
+### Step 3
+
+Now you are good to go to persist, retrieve and observe your CodableStoreable 😎
 
 ```swift
-// Initialize User
+// Initialize an User
 let user = User(id: "42", firstName: "Mr.", lastName: "Robot")
 
 // Save / Update
@@ -146,9 +152,10 @@ let retrievedUser = try codableStore.get(identifier: "42")
 let userExists = codableStore.exists(user)
 
 // Observe
-codableStore.observe(user) { (event) in
+codableStore.observe(user) { event in
     switch event {
     case .saved(let user, let container):
+        // 
         break
     case .deleted(let user, let container):
         break
@@ -158,19 +165,19 @@ codableStore.observe(user) { (event) in
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
 ## Advanced
-The Advanced section will explain all features and capabilities of `CodableStoreKit` like the architecture, observation, access-control and many more in detail 🙌
+The Advanced section will explain all configuration possibilities and features of the `CodableStoreKit` in detail.
 
 ### Engine-Container-Collection-Architecture
 
-Beginning with an important part of the `CodableStoreKit` the `Engine-Container-Collection-Architecture (ECCA)`. The architecture allows a `CodableStore` to use different Engine-Implementations which are persisting data in a unique way. For instance the `InMemoryCodableStoreEngine` stores data in an instance property and the `FileManagerCodableStoreEngine` persist the data in the Filesystem.
+`CodableStoreKit` is based on an `Engine-Container-Collection-Architecture (ECCA)`. 
+
+The architecture allows a `CodableStore` to use different `CodableStoreEngine` implementations wich are persisting data in their very own way. For instance the `InMemoryCodableStoreEngine` is holding the `CodableStoreable` objects in memory while a `FileManagerCodeableStoreEngine` will save all its data in the FileSystem.
 
 <p align="center">
 	<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
 </p>
 
-Each `Engine` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `Engine`. A `Collection` can be described as a group of related object types.
-
-> Best of all you can configure the `Engine-Container-Collection-Architecture` to your needs 🙌
+Each `CodableStoreEngine ` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `CodableStoreEngine `. A `Collection` can be described as a group of related object types.
 
 ### Engine
 
@@ -182,18 +189,12 @@ To decide which `Container` should be used when persisting or retrieving Codable
 
 ```swift
 // Initialize a custom CodableStoreContainer
-let apiV1Container = CodableStoreContainer(name: "APIv1Container")
+let debugContainer = CodableStoreContainer(name: "DebugContainer")
 
 // Pass it to the CodableStore initializer
-let codableStore = CodableStore<User>(container: apiV1Container)
+let codableStore = CodableStore<User>(container: debugContainer)
 ```
 > ☝️ In default the `.default` `CodableStoreContainer` will be used with the name "Default"
-
-Different Containers comes handy when you want to store your Codable-Models which are retrieved via a versioned `JSON-API` in an encapsulated area inside an engine. Or you want to store some encapsulated test data beside productiv data.
-
-<p align="center">
-   <img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Containers.jpg" alt="Containers">
-</p>
 
 ### Collection
 
@@ -221,9 +222,29 @@ extension User {
 }
 ```
 
+### Access-Control
+
+In default a `CodableStore` enables you to access all functions to save, delete, read and observe CodableStoreables. If you wish to use a `CodableStore` in delete-only or read-only mode you can make use of the `AccessControl` properties.
+
+```swift
+let codableStore = CodableStore<User>()
+
+// Save-Only CodableStore
+let saveableCodableStore = codableStore.accessControl.saveable
+
+// Delete-Only CodableStore
+let readableCodableStore = codableStore.accessControl.deletable
+
+// Read-Only CodableStore
+let readableCodableStore = codableStore.accessControl.readable
+
+// Observe-Only CodableStore
+let observableCodableStore = codableStore.accessControl.observable
+```
+
 ### Observation
 
-In order to retrieve callbacks when a certain object has been saved or deleted in a Container you can make use of the aforementioned `observe` functions. When you invoke the `oberserve` API you will retrieve a `ObserverableCodableStoreSubscription` in order to unsubscribe and avoid memory leaks.
+In order to retrieve callbacks / notifications when a certain CodableStorable type has been saved or deleted in a Container you can make use of the aforementioned `observe` functions. When you invoke the `oberserve` function you will retrieve a `CodableStoreSubscription` in order to invalidate it and avoid memory leaks.
 
 ```swift
 // Initialize a CodableStore
@@ -265,30 +286,6 @@ class MyCustomClass {
 }
 
 ```
-
-### Access-Control
-
-In default a `CodableStore` enables you to access all functions to save, delete, read and observe CodableStoreables. If you wish to use a `CodableStore` in delete-only or read-only mode you can make use of the `AccessControl` properties.
-
-```swift
-let codableStore = CodableStore<User>()
-
-// Save-Only CodableStore
-let saveableCodableStore = codableStore.accessControl.saveable
-
-// Delete-Only CodableStore
-let readableCodableStore = codableStore.accessControl.deletable
-
-// Read-Only CodableStore
-let readableCodableStore = codableStore.accessControl.readable
-
-// Observe-Only CodableStore
-let observableCodableStore = codableStore.accessControl.observable
-```
-
-### CodableStoreViewController
-
-TODO: Add Text
 
 ## Contributing
 Contributions are very welcome 🙌 🤓
