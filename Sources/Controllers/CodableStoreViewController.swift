@@ -71,7 +71,7 @@ open class CodableStoreViewController<Storable: CodableStorable>: UIViewControll
             self?.observationEvent = event
             // Reload CodableStorables
             self?.reloadCodableStorables()
-        }.disposed(by: self.subscriptionBag)
+        }.invalidate(by: self.subscriptionBag)
     }
     
     // MARK: CodableStoreViewController-Lifecycle
