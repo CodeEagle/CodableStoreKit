@@ -148,15 +148,12 @@ let userExists = codableStore.exists(user)
 // Observe
 codableStore.observe(user) { (event) in
     switch event {
-    case .saved(let object, let container):
+    case .saved(let user, let container):
         break
-    case .deleted(let object, let container):
+    case .deleted(let user, let container):
         break
     }
 }
-
-// Or use the convenience functions on your CodableStoreable type 😎
-try user.save()
 ```
 > A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
@@ -177,52 +174,7 @@ Each `Engine` can manage multiple `Containers` which allows you to store the sam
 
 ### Engine
 
-You can pass the `CodableStoreEngine` that should be used of a `CodableStore` by simply passing it to the `initializer`.
-
-```swift
-// Use the FileSystem Engine
-let codableStore = CodableStore<User>(engine: .fileSystem)
-
-// Use the InMemory Engine (perfect for development or testing phase)
-let codableStore = CodableStore<User>(engine: .inMemory)
-```
-> ☝️ In default the `.fileSystem` Engine will be used
-
-#### Custom Engine
-
-If you wish to define your own `CodableStoreEngine` you have to declare your Engine with a generic object type which is at least conform to the `BaseCodableStoreable` protocol. You have to do so to satisfy the associatedtype of the `CodableStoreEngine` protocol.
-
-```swift
-class MyEngine<Object: BaseCodableStoreable>: CodableStoreEngine {
-
-    let container: CodableStoreContainer
-    
-    required init(container: CodableStoreContainer) {
-        self.container = container
-    }
-    
-    @discardableResult
-    func save(_ object: Object) throws -> Object {}
-    
-    @discardableResult
-    func delete(identifier: Object.ID) throws -> Object {}
-    
-    func get(identifier: Object.ID) throws -> Object {}
-    
-    func getCollection() throws -> [Object] {}
-    
-}
-```
-
-After you implemented the four functions `save`, `delete`, `get` and `getCollection` you can pass your own `CodableStoreEngine` to a `CodableStore`.
-
-```swift
-// Initialize your Engine with a Container
-let myEngine = MyEngine(container: .default)
-
-// Initialize a CodableStore with a custom Engine
-let codableStore = CodableStore<User>(engine: myEngine)
-```
+TODO: Add text
 
 ### Container
 
@@ -233,7 +185,7 @@ To decide which `Container` should be used when persisting or retrieving Codable
 let apiV1Container = CodableStoreContainer(name: "APIv1Container")
 
 // Pass it to the CodableStore initializer
-let codableStore = CodableStore<User>(container: apiV1Container, engine: .fileSystem)
+let codableStore = CodableStore<User>(container: apiV1Container)
 ```
 > ☝️ In default the `.default` `CodableStoreContainer` will be used with the name "Default"
 
@@ -269,82 +221,6 @@ extension User {
 }
 ```
 
-#### Encoder & Decoder
-
-According to the `codableStoreCollectionName` you can override the specific `Encoder` and `Decoder` which should be used when serializing and deserializing data.
-
-```swift
-extension User {
-
-    /// The CodableStore Coder
-    static var codableStoreCoder: Coder {
-        return (JSONEncoder(), JSONDecoder())
-    }
-    
-}
-```
-> ☝️ In default the `JSONEncoder` and `JSONDecoder` will be used
-
-### CodableStoreable
-
-When making a type conform to the `CodableStoreable` protocol you can access convenience functions directly on an instance of your type in order to save, delete, get and observe.
-
-```swift
-// Save / Update
-try user.save()
-
-// Save in different container
-try user.save(container: myContainer)
-
-// Delete
-try user.delete()
-
-// Delete in different Engine
-try user.delete(engine: .inMemory)
-```
-
-As well as static functions on your type which is conform to the `CodableStoreable` protocol.
-
-```swift
-// Get
-let retrievedUser = try User.get(identifier: "42")
-
-// Get from different Container
-let retrievedUser = try User.get(identifier: "42", container: myContainer)
-
-// Get Users collection
-let allUsers = try User.getCollection()
-```
-
-Last but not least convenience functions are also available on `CodableStoreable` Arrays.
-
-```swift
-// User Array
-var users: [User] = .init()
-
-// Save all Users
-users.save()
-
-// Delete all Users
-users.delete()
-```
-
-### BaseCodableStoreable
-
-If you want to suppress those convenience functions on your type you can _downgrade_ the `CodableStoreable` protocol to the `BaseCodableStoreable` protocol which removes the availability of those aforementioned functions but still remains the conformance to use it with a `CodableStore`.
-
-```swift
-// try user.save() ✅ (available)
-extension User: CodableStoreable {}
-
-// try user.save() ❌ (unavailable)
-extension User: BaseCodableStoreable {}
-
-// But both CodableStoreable and BaseCodableStoreable 
-// can be used with a CodableStore 👌
-let codableStore = CodableStore<User>()
-```
-
 ### Observation
 
 In order to retrieve callbacks when a certain object has been saved or deleted in a Container you can make use of the aforementioned `observe` functions. When you invoke the `oberserve` API you will retrieve a `ObserverableCodableStoreSubscription` in order to unsubscribe and avoid memory leaks.
@@ -356,34 +232,34 @@ let codableStore = CodableStore<User>()
 // Observe save and delete of Users where lastName contains "Robot"
 let subscription = codableStore.observe(where: { $0.lastName.contains("Robot") }) { event in
     switch event {
-    case .saved(object: let object, container: let container):
+    case .saved(storable: let user, container: let container):
         break
-    case .deleted(object: let object, container: let container):
+    case .deleted(storable: let user, container: let container):
         break
     }
 }
 
-// Manually invoke unsubscribe
-subscription.unsubscribe()
+// Manually invalidate subscription
+subscription.invalidate()
 ```
 
-Or you can use the `ObserverableCodableStoreSubscriptionBag` in order to automatically unsubscribe.
+Or you can use the `CodableStoreSubscriptionBag` in order to automatically invalidate the subscription.
 
 ```swift
 class MyCustomClass {
 
-    /// The SubscriptionBag
-    let subscriptionBag = ObserverableCodableStoreSubscriptionBag()
+    /// The CodableStore
+    let codableStore = CodableStore<User>()
+
+    /// The CodableStoreSubscriptionBag
+    let subscriptionBag = CodableStoreSubscriptionBag()
 
     /// Designated Initializer
     init() {
         // Observe all Users and dispose it by SubscriptionBag
-        User.observeCollection { event in
+        self.codableStore.observeCollection { event in
             print(event)
-        }.disposed(
-            // Automatically unsubscribe on deinit
-            by: self. subscriptionBag
-        )
+        }.invalidate(by: self.subscriptionBag)
     }
 
 }
@@ -392,66 +268,27 @@ class MyCustomClass {
 
 ### Access-Control
 
-In default a `CodableStore` enables you to access all functions to write, read, observe and copy data. If you wish to use a `CodableStore` in write-only or read-only mode you can make use of the `ACL` properties.
+In default a `CodableStore` enables you to access all functions to save, delete, read and observe CodableStoreables. If you wish to use a `CodableStore` in delete-only or read-only mode you can make use of the `AccessControl` properties.
 
 ```swift
 let codableStore = CodableStore<User>()
 
-// Write-Only CodableStore
-let writeableCodableStore = codableStore.writeable
+// Save-Only CodableStore
+let saveableCodableStore = codableStore.accessControl.saveable
+
+// Delete-Only CodableStore
+let readableCodableStore = codableStore.accessControl.deletable
 
 // Read-Only CodableStore
-let readableCodableStore = codableStore.readable
+let readableCodableStore = codableStore.accessControl.readable
 
 // Observe-Only CodableStore
-let observableCodableStore = codableStore.observable
-
-// Copy-Only CodableStore
-let copyableCodableStore = codableStore.copyable
+let observableCodableStore = codableStore.accessControl.observable
 ```
 
-### CodableStoreController
-A `CodableStoreController` is available in three variants `CodableStoreViewController`, `CodableStoreTableViewController` and `CodableStoreCollectionViewController`.
+### CodableStoreViewController
 
-When using a `CodableStoreController` you can make use of the pre-defined observation implementation on the `CodableStoreable` type you specify in the generic interface like `<User>`. As soon as the Controller gets deallocated the observation will be disposed 👌
-
-A `CodableStoreController` will invoke the following two lifecycle functions.
-
-| Lifecycle | Description |
-| ------------- | ------------- |
-| `codableStoreablesWillUpdate ` | CodableStoreable Objects will update |
-| `codableStoreablesDidUpdate ` | CodableStoreables Objects did update |
-
-In default the `CodableStoreTableViewController` and `CodableStoreCollectionViewController` will use the did update function to trigger `reloadData()` but you can add your own logic to those lifecycles as well. Furthermore, to access the CodableStoreable objects based on the generic interface type you can simply use the instance property `self.codableStoreables` or `self.codableStoreable(at: index)`.
-
-The following example code shows an implementation to show all Users firstName in a UILabel which will get updated on the `codableStoreablesDidUpdate` lifecycle.
-
-```swift
-class UserListViewController: CodableStoreViewController<User> {
-    
-    /// The Label to display all Users firstname
-    lazy var label: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.textAlignment = .center
-        label.backgroundColor = .white
-        return label
-    }()
-    
-    /// Replace View with Label
-    override func loadView() {
-        self.view = self.label
-    }
-    
-    /// Did updated Users
-    func codableStoreablesDidUpdate(event: CodableStore<User>.ObserveEvent,
-                                    codableStoreables: [User]) {
-        self.label.text = codableStoreables.map { $0.firstName }.joined(separator: "\n")
-    }
-    
-}
-```
+TODO: Add Text
 
 ## Contributing
 Contributions are very welcome 🙌 🤓
