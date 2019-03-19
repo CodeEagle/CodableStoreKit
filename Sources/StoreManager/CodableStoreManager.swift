@@ -20,5 +20,14 @@ public final class CodableStoreManager {
     public static var engineProvider: EngineProvider = { _, _  in
         FileManagerCodableStoreEngine()
     }
+    static var observers: Locked<[AnyHashable: (identifier: AnyHashable, observer: Any)]> = .init(.init())
+    
+    static func emit<Storable: CodableStorable>(type: Storable.Type,
+                                                _ observedChange: CodableStoreObservedChange<Storable>) {
+        Array(self.observers.value.values)
+            .filter { $0.identifier == AnyHashable(observedChange.storable.identifier.stringRepresentation) }
+            .compactMap { $0.observer as? (CodableStoreObservedChange<Storable>) -> Void }
+            .forEach { $0(observedChange) }
+    }
     
 }

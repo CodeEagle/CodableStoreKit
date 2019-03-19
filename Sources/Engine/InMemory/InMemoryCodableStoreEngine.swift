@@ -51,7 +51,7 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
         if self.memory.value[container] == nil {
             self.memory.value[container] = .init()
         }
-        self.memory.value[container]?[storable.identifier] = storable
+        self.memory.value[container]?[storable.identifier.stringRepresentation] = storable
         return storable
     }
     
@@ -102,59 +102,6 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
             throw CodableStoreEngineError<Storable>.collectionNotFound(container: container)
         }
         return storables
-    }
-    
-}
-
-// MARK: - Locked
-
-extension InMemoryCodableStoreEngine {
-    
-    /// ThreadSafe Locked Value
-    final class Locked<Value> {
-        
-        /// The Lock fastest option (https://gist.github.com/steipete/36350a8a60693d440954b95ea6cbbafc)
-        private var lock = os_unfair_lock()
-        
-        /// The internal Value
-        private var internalValue: Value
-        
-        /// The Value
-        var value: Value {
-            get {
-                os_unfair_lock_lock(&self.lock)
-                defer {
-                    os_unfair_lock_unlock(&self.lock)
-                }
-                return self.internalValue
-            }
-            set {
-                os_unfair_lock_lock(&self.lock)
-                defer {
-                    os_unfair_lock_unlock(&self.lock)
-                }
-                self.internalValue = newValue
-            }
-        }
-        
-        /// Default initializer with Value
-        ///
-        /// - Parameter value: The Value
-        init(_ value: Value) {
-            self.internalValue = value
-        }
-        
-        /// Mutate value
-        ///
-        /// - Parameter changes: The changes closure
-        func mutate(_ changes: (inout Value) -> Void) {
-            os_unfair_lock_lock(&self.lock)
-            defer {
-                os_unfair_lock_unlock(&self.lock)
-            }
-            changes(&self.internalValue)
-        }
-        
     }
     
 }

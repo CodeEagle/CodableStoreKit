@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0DEA662240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */; };
+		3D0DEA672240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */; };
+		3D0DEA682240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */; };
+		3D0DEA692240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */; };
+		3D0DEA6B2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */; };
+		3D0DEA6C2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */; };
+		3D0DEA6D2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */; };
+		3D0DEA6E2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */; };
+		3D0DEA702240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */; };
+		3D0DEA712240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */; };
+		3D0DEA722240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */; };
+		3D0DEA732240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */; };
+		3D0DEA752240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */; };
+		3D0DEA762240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */; };
+		3D0DEA772240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */; };
+		3D0DEA782240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */; };
+		3D0DEA7A2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */; };
+		3D0DEA7B2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */; };
+		3D0DEA7C2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */; };
+		3D0DEA7D2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */; };
+		3D0DEA802240DD180011A2E5 /* Locked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA7F2240DD180011A2E5 /* Locked.swift */; };
+		3D0DEA812240DD180011A2E5 /* Locked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA7F2240DD180011A2E5 /* Locked.swift */; };
+		3D0DEA822240DD180011A2E5 /* Locked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA7F2240DD180011A2E5 /* Locked.swift */; };
+		3D0DEA832240DD180011A2E5 /* Locked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0DEA7F2240DD180011A2E5 /* Locked.swift */; };
 		3DA06C7822401CEF00BD07FD /* CodableStoreable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA06C7722401CEF00BD07FD /* CodableStoreable.swift */; };
 		3DA06C7922401CEF00BD07FD /* CodableStoreable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA06C7722401CEF00BD07FD /* CodableStoreable.swift */; };
 		3DA06C7A22401CEF00BD07FD /* CodableStoreable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA06C7722401CEF00BD07FD /* CodableStoreable.swift */; };
@@ -141,6 +165,12 @@
 		3D0DEA602240CEE20011A2E5 /* .codeclimate.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codeclimate.yml; sourceTree = SOURCE_ROOT; };
 		3D0DEA612240CEE20011A2E5 /* CodableStoreKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodableStoreKit.podspec; sourceTree = SOURCE_ROOT; };
 		3D0DEA632240D0410011A2E5 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = SOURCE_ROOT; };
+		3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableCodableStoreProtocol.swift; sourceTree = "<group>"; };
+		3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreObservedChange.swift; sourceTree = "<group>"; };
+		3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreSubscription.swift; sourceTree = "<group>"; };
+		3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableCodableStore.swift; sourceTree = "<group>"; };
+		3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreSubscriptionBag.swift; sourceTree = "<group>"; };
+		3D0DEA7F2240DD180011A2E5 /* Locked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locked.swift; sourceTree = "<group>"; };
 		3DA06C7722401CEF00BD07FD /* CodableStoreable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreable.swift; sourceTree = "<group>"; };
 		3DA06C7C22401D2A00BD07FD /* StringRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
 		3DA06C8322401E8800BD07FD /* CodableStoreContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreContainer.swift; sourceTree = "<group>"; };
@@ -257,6 +287,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3D0DEA642240D1B60011A2E5 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */,
+				3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */,
+				3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */,
+				3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */,
+				3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
+		3D0DEA7E2240DD0D0011A2E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D0DEA7F2240DD180011A2E5 /* Locked.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3DA06C8122401D9000BD07FD /* Storeable */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +323,7 @@
 				3DA06CD82240338C00BD07FD /* Saveable */,
 				3DA06CD92240339500BD07FD /* Deletable */,
 				3DA06CDA2240339E00BD07FD /* Readable */,
+				3D0DEA642240D1B60011A2E5 /* Observable */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -403,6 +454,7 @@
 				3DA06CB22240303300BD07FD /* StoreManager */,
 				3DA06C8222401E7D00BD07FD /* Store */,
 				3DA06C8822401EE100BD07FD /* Engine */,
+				3D0DEA7E2240DD0D0011A2E5 /* Extensions */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -758,6 +810,8 @@
 				3DA06CDC224033CA00BD07FD /* ReadableCodableStore.swift in Sources */,
 				3DA06CEB224038E600BD07FD /* FileManagerCodableStoreEngine.swift in Sources */,
 				3DA06CE12240352F00BD07FD /* DeletableCodableStore.swift in Sources */,
+				3D0DEA752240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */,
+				3D0DEA7A2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */,
 				3DA06CAE22402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3DA06CE6224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
 				3DA06C8A22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
@@ -765,11 +819,15 @@
 				3DA06C99224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF1224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C8F224022B300BD07FD /* CodableStore.swift in Sources */,
+				3D0DEA662240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8422401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA3224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
+				3D0DEA802240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7822401CEF00BD07FD /* CodableStoreable.swift in Sources */,
 				3DA06CB42240304200BD07FD /* CodableStoreManager.swift in Sources */,
+				3D0DEA702240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */,
 				3DA06C9E224024DB00BD07FD /* DeletableCodableStoreProtocol.swift in Sources */,
+				3D0DEA6B2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */,
 				3DA06CD4224032AE00BD07FD /* CodableStoreEngineError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,6 +847,8 @@
 				3DA06CDE224033CA00BD07FD /* ReadableCodableStore.swift in Sources */,
 				3DA06CED224038E600BD07FD /* FileManagerCodableStoreEngine.swift in Sources */,
 				3DA06CE32240352F00BD07FD /* DeletableCodableStore.swift in Sources */,
+				3D0DEA772240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */,
+				3D0DEA7C2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */,
 				3DA06CB022402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3DA06CE8224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
 				3DA06C8C22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
@@ -796,11 +856,15 @@
 				3DA06C9B224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF3224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C91224022B300BD07FD /* CodableStore.swift in Sources */,
+				3D0DEA682240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8622401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA5224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
+				3D0DEA822240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7A22401CEF00BD07FD /* CodableStoreable.swift in Sources */,
 				3DA06CB62240304200BD07FD /* CodableStoreManager.swift in Sources */,
+				3D0DEA722240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */,
 				3DA06CA0224024DB00BD07FD /* DeletableCodableStoreProtocol.swift in Sources */,
+				3D0DEA6D2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */,
 				3DA06CD6224032AE00BD07FD /* CodableStoreEngineError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -812,6 +876,8 @@
 				3DA06CDF224033CA00BD07FD /* ReadableCodableStore.swift in Sources */,
 				3DA06CEE224038E600BD07FD /* FileManagerCodableStoreEngine.swift in Sources */,
 				3DA06CE42240352F00BD07FD /* DeletableCodableStore.swift in Sources */,
+				3D0DEA782240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */,
+				3D0DEA7D2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */,
 				3DA06CB122402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3DA06CE9224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
 				3DA06C8D22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
@@ -819,11 +885,15 @@
 				3DA06C9C224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF4224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C92224022B300BD07FD /* CodableStore.swift in Sources */,
+				3D0DEA692240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8722401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA6224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
+				3D0DEA832240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7B22401CEF00BD07FD /* CodableStoreable.swift in Sources */,
 				3DA06CB72240304200BD07FD /* CodableStoreManager.swift in Sources */,
+				3D0DEA732240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */,
 				3DA06CA1224024DB00BD07FD /* DeletableCodableStoreProtocol.swift in Sources */,
+				3D0DEA6E2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */,
 				3DA06CD7224032AE00BD07FD /* CodableStoreEngineError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,6 +905,8 @@
 				3DA06CDD224033CA00BD07FD /* ReadableCodableStore.swift in Sources */,
 				3DA06CEC224038E600BD07FD /* FileManagerCodableStoreEngine.swift in Sources */,
 				3DA06CE22240352F00BD07FD /* DeletableCodableStore.swift in Sources */,
+				3D0DEA762240D5AC0011A2E5 /* ObservableCodableStore.swift in Sources */,
+				3D0DEA7B2240D7870011A2E5 /* CodableStoreSubscriptionBag.swift in Sources */,
 				3DA06CAF22402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3DA06CE7224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
 				3DA06C8B22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
@@ -842,11 +914,15 @@
 				3DA06C9A224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF2224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C90224022B300BD07FD /* CodableStore.swift in Sources */,
+				3D0DEA672240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8522401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA4224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
+				3D0DEA812240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7922401CEF00BD07FD /* CodableStoreable.swift in Sources */,
 				3DA06CB52240304200BD07FD /* CodableStoreManager.swift in Sources */,
+				3D0DEA712240D4A20011A2E5 /* CodableStoreSubscription.swift in Sources */,
 				3DA06C9F224024DB00BD07FD /* DeletableCodableStoreProtocol.swift in Sources */,
+				3D0DEA6C2240D4920011A2E5 /* CodableStoreObservedChange.swift in Sources */,
 				3DA06CD5224032AE00BD07FD /* CodableStoreEngineError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

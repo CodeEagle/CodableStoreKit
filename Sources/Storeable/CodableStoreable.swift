@@ -40,8 +40,8 @@ public extension CodableStorable {
 extension CodableStorable {
     
     /// The Identifier
-    var identifier: String {
-        return self[keyPath: Self.codableStoreIdentifier].stringRepresentation
+    var identifier: Identifier {
+        return self[keyPath: Self.codableStoreIdentifier]
     }
     
 }

@@ -63,6 +63,11 @@ public extension CodableStore {
         return .init(self)
     }
     
+    /// The ObservableCodableStore
+    var observable: ObservableCodableStore<Storable> {
+        return .init(self)
+    }
+    
 }
 
 // MARK: - SaveableCodableStoreProtocol
@@ -76,7 +81,13 @@ extension CodableStore: SaveableCodableStoreProtocol {
     /// - Throws: If saving fails
     @discardableResult
     public func save(_ storable: Storable) throws -> Storable {
-        return try self.engine.save(storable, in: self.container)
+        // Save Storable
+        let storable: Storable = try self.engine.save(storable, in: self.container)
+        CodableStoreManager.emit(
+            type: Storable.self,
+            .saved(storable: storable, container: self.container)
+        )
+        return storable
     }
     
 }
@@ -92,7 +103,12 @@ extension CodableStore: DeletableCodableStoreProtocol {
     /// - Throws: If deleting fails
     @discardableResult
     public func delete(_ identifier: Storable.Identifier) throws -> Storable {
-        return try self.engine.delete(identifier, in: self.container)
+        let storable: Storable = try self.engine.delete(identifier, in: self.container)
+        CodableStoreManager.emit(
+            type: Storable.self,
+            .deleted(storable: storable, container: self.container)
+        )
+        return storable
     }
     
     /// Delete all CodableStorables in Collection
@@ -100,7 +116,14 @@ extension CodableStore: DeletableCodableStoreProtocol {
     /// - Returns: The deleted CodableStorables
     @discardableResult
     public func deleteCollection() throws -> [Storable] {
-        return try self.engine.deleteCollection(in: self.container)
+        let storables: [Storable] = try self.engine.deleteCollection(in: self.container)
+        for storable in storables {
+            CodableStoreManager.emit(
+                type: Storable.self,
+                .deleted(storable: storable, container: self.container)
+            )
+        }
+        return storables
     }
     
 }
@@ -124,6 +147,32 @@ extension CodableStore: ReadableCodableStoreProtocol {
     /// - Throws: If retrieving fails
     public func getCollection() throws -> [Storable] {
         return try self.engine.getCollection(in: self.container)
+    }
+    
+}
+
+// MARK: - ObservableCodableStoreProtocol
+
+extension CodableStore: ObservableCodableStoreProtocol {
+    
+    /// Observe CodableStorable Identifier
+    ///
+    /// - Parameters:
+    ///   - identifier: The CodableStorable Identifier
+    ///   - observer: The Observer
+    /// - Returns: The CodableStoreSubscription
+    @discardableResult
+    public func observe(_ identifier: Storable.Identifier,
+                        _ observer: @escaping Observer) -> CodableStoreSubscription {
+        // Initialize a Key
+        let key = UUID().uuidString
+        // Store Observer for Key
+        CodableStoreManager.observers.value[key] = (identifier.stringRepresentation, observer)
+        // Return CodableStoreSubscription
+        return CodableStoreSubscription {
+            // Remove Observer for Key
+            CodableStoreManager.observers.value.removeValue(forKey: key)
+        }
     }
     
 }
