@@ -35,6 +35,15 @@ public protocol ReadableCodableStoreProtocol {
 
 public extension ReadableCodableStoreProtocol {
     
+    /// Retrieve CodableStorable via a given CodableStoreable
+    ///
+    /// - Parameter storable: The CodableStoreable
+    /// - Returns: The corresponding CodableStorable
+    /// - Throws: If retrieving fails
+    func get(_ storable: Storable) throws -> Storable {
+        return try self.get(storable.identifier)
+    }
+    
     /// Retrieve all CodableStorables in Collection which matches the given predicate
     ///
     /// - Parameter predicate: The predicate
