@@ -29,6 +29,23 @@ public protocol ObservableCodableStoreProtocol {
     func observe(_ identifier: Storable.Identifier,
                  _ observer: @escaping Observer) -> CodableStoreSubscription
     
+    /// Observer CodableStorable with predicate
+    ///
+    /// - Parameters:
+    ///   - predicate: The Predicate
+    ///   - observer: The Observer
+    /// - Returns: The CodableStoreSubscription
+    @discardableResult
+    func observe(where predicate: @escaping (Storable) -> Bool,
+                 _ observer: @escaping Observer) -> CodableStoreSubscription
+    
+    /// Observe CodableStorable Collection
+    ///
+    /// - Parameter observer: The Observer
+    /// - Returns: The CodableStoreSubscription
+    @discardableResult
+    func observeCollection(_ observer: @escaping Observer) -> CodableStoreSubscription
+    
 }
 
 // MARK: - ObservableCodableStoreProtocol Convenience Functions

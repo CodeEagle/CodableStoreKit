@@ -81,12 +81,11 @@ extension CodableStore: SaveableCodableStoreProtocol {
     /// - Throws: If saving fails
     @discardableResult
     public func save(_ storable: Storable) throws -> Storable {
-        // Save Storable
+        // Save Storable in Container
         let storable: Storable = try self.engine.save(storable, in: self.container)
-        CodableStoreManager.emit(
-            type: Storable.self,
-            .saved(storable: storable, container: self.container)
-        )
+        // Emit saved with Storable and Container
+        CodableStoreManager.emit(.saved(storable: storable, container: self.container))
+        // Return saved Storable
         return storable
     }
     
@@ -103,11 +102,11 @@ extension CodableStore: DeletableCodableStoreProtocol {
     /// - Throws: If deleting fails
     @discardableResult
     public func delete(_ identifier: Storable.Identifier) throws -> Storable {
+        // Delete Storable in Container
         let storable: Storable = try self.engine.delete(identifier, in: self.container)
-        CodableStoreManager.emit(
-            type: Storable.self,
-            .deleted(storable: storable, container: self.container)
-        )
+        // Emit deleted with Storable and Container
+        CodableStoreManager.emit(.deleted(storable: storable, container: self.container))
+        // Return deleted Storable
         return storable
     }
     
@@ -116,13 +115,14 @@ extension CodableStore: DeletableCodableStoreProtocol {
     /// - Returns: The deleted CodableStorables
     @discardableResult
     public func deleteCollection() throws -> [Storable] {
+        // Delete Collection in Container
         let storables: [Storable] = try self.engine.deleteCollection(in: self.container)
+        // For each Storable
         for storable in storables {
-            CodableStoreManager.emit(
-                type: Storable.self,
-                .deleted(storable: storable, container: self.container)
-            )
+            // Emit deleted with Storable and Container
+            CodableStoreManager.emit(.deleted(storable: storable, container: self.container))
         }
+        // Return deleted Storables
         return storables
     }
     
@@ -155,6 +155,7 @@ extension CodableStore: ReadableCodableStoreProtocol {
 
 extension CodableStore: ObservableCodableStoreProtocol {
     
+    
     /// Observe CodableStorable Identifier
     ///
     /// - Parameters:
@@ -164,15 +165,31 @@ extension CodableStore: ObservableCodableStoreProtocol {
     @discardableResult
     public func observe(_ identifier: Storable.Identifier,
                         _ observer: @escaping Observer) -> CodableStoreSubscription {
-        // Initialize a Key
-        let key = UUID().uuidString
-        // Store Observer for Key
-        CodableStoreManager.observers.value[key] = (identifier.stringRepresentation, observer)
-        // Return CodableStoreSubscription
-        return CodableStoreSubscription {
-            // Remove Observer for Key
-            CodableStoreManager.observers.value.removeValue(forKey: key)
-        }
+        // Add Observer with Identifier Intent and return Subscription
+        return CodableStoreManager.addObserver(.identifier(identifier), observer)
+    }
+    
+    /// Observer CodableStorable with predicate
+    ///
+    /// - Parameters:
+    ///   - predicate: The Predicate
+    ///   - observer: The Observer
+    /// - Returns: The CodableStoreSubscription
+    @discardableResult
+    public func observe(where predicate: @escaping (Storable) -> Bool,
+                        _ observer: @escaping (CodableStoreObservedChange<Storable>) -> Void) -> CodableStoreSubscription {
+        // Add Observer with Predicate Intent and return Subscription
+        return CodableStoreManager.addObserver(.predicate(predicate), observer)
+    }
+    
+    /// Observe CodableStorable Collection
+    ///
+    /// - Parameter observer: The Observer
+    /// - Returns: The CodableStoreSubscription
+    @discardableResult
+    public func observeCollection(_ observer: @escaping (CodableStoreObservedChange<Storable>) -> Void) -> CodableStoreSubscription {
+        // Add Observer with All Intent and return Subscription
+        return CodableStoreManager.addObserver(.all, observer)
     }
     
 }
