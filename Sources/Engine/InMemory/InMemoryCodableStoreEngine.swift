@@ -98,8 +98,9 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     /// - Returns: The CodableStorables in the Collection
     /// - Throws: If retrieving fails
     public func getCollection<Storable: CodableStorable>(in container: CodableStoreContainer) throws -> [Storable] {
-        guard let storablesDictionary = self.memory.value[container], let storables = Array(storablesDictionary.values) as? [Storable] else {
-            throw CodableStoreEngineError<Storable>.collectionNotFound(container: container)
+        guard let storablesDictionary = self.memory.value[container],
+            let storables = Array(storablesDictionary.values) as? [Storable] else {
+                throw CodableStoreEngineError<Storable>.collectionNotFound(container: container)
         }
         return storables
     }

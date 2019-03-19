@@ -16,9 +16,6 @@ public protocol ObservableCodableStoreProtocol {
     /// The Storable associatedtype which is constrainted to `CodableStorable`
     associatedtype Storable: CodableStorable
     
-    /// The Observer Typealias
-    typealias Observer = (CodableStoreObservedChange<Storable>) -> Void
-    
     /// Observe CodableStorable Identifier
     ///
     /// - Parameters:
@@ -27,7 +24,7 @@ public protocol ObservableCodableStoreProtocol {
     /// - Returns: The CodableStoreSubscription
     @discardableResult
     func observe(_ identifier: Storable.Identifier,
-                 _ observer: @escaping Observer) -> CodableStoreSubscription
+                 _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
     
     /// Observer CodableStorable with predicate
     ///
@@ -37,14 +34,14 @@ public protocol ObservableCodableStoreProtocol {
     /// - Returns: The CodableStoreSubscription
     @discardableResult
     func observe(where predicate: @escaping (Storable) -> Bool,
-                 _ observer: @escaping Observer) -> CodableStoreSubscription
+                 _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
     
     /// Observe CodableStorable Collection
     ///
     /// - Parameter observer: The Observer
     /// - Returns: The CodableStoreSubscription
     @discardableResult
-    func observeCollection(_ observer: @escaping Observer) -> CodableStoreSubscription
+    func observeCollection(_ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
     
 }
 
@@ -60,7 +57,7 @@ extension ObservableCodableStoreProtocol {
     /// - Returns: The CodableStoreSubscription
     @discardableResult
     func observe(_ storable: Storable,
-                 _ observer: @escaping Observer) -> CodableStoreSubscription {
+                 _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         return self.observe(storable.identifier, observer)
     }
     

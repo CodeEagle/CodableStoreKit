@@ -47,7 +47,7 @@ extension CodableStoreManager {
         let intent: ObserverIntent<Storable>
         
         /// The Observer
-        let observer: (CodableStoreObservedChange<Storable>) -> Void
+        let observer: CodableStoreObserver<Storable>
         
     }
     
@@ -56,17 +56,16 @@ extension CodableStoreManager {
 // MARK: - Add Observer
 
 extension CodableStoreManager {
-    
 
-    
     /// Add Observer for CodableStorable Identifier
     ///
     /// - Parameters:
     ///   - identifier: The CodableStorable Identifier
     ///   - observer: The Observer
     /// - Returns: A CodableStoreSubscription
-    static func addObserver<Storable: CodableStorable>(_ intent: ObserverIntent<Storable>,
-                                                       _ observer: @escaping (CodableStoreObservedChange<Storable>) -> Void) -> CodableStoreSubscription {
+    static func addObserver<Storable: CodableStorable>(
+        _ intent: ObserverIntent<Storable>,
+        _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Initialize a Key
         let key = UUID().uuidString
         // Store Observer for Key

@@ -179,7 +179,6 @@ extension FileManagerCodableStoreEngine: CodableStoreEngine {
 
 extension FileManagerCodableStoreEngine {
     
-
     /// Retrieve Path for Identifier and CodableStorable Type in CodableStoreContainer
     ///
     /// - Parameters:

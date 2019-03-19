@@ -8,6 +8,13 @@
 
 import Foundation
 
+// MARK: - CodableStoreObserver
+
+/// The CodableStoreObserver
+public typealias CodableStoreObserver<Storable: CodableStorable> = (CodableStoreObservedChange<Storable>) -> Void
+
+// MARK: - CodableStoreObservedChange
+
 /// The CodableStoreObservedChange
 public enum CodableStoreObservedChange<Storable: CodableStorable> {
     /// Saved CodableStorable in CodableStoreContainer
@@ -16,7 +23,7 @@ public enum CodableStoreObservedChange<Storable: CodableStorable> {
     case deleted(storable: Storable, container: CodableStoreContainer)
 }
 
-// MARK: - Computed Properties
+// MARK: - CodableStoreObservedChange Convenience Properties
 
 public extension CodableStoreObservedChange {
     
