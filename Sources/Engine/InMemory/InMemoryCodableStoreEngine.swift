@@ -8,6 +8,8 @@
 
 import Foundation
 
+// swiftlint:disable line_length
+
 // MARK: - InMemoryCodableStoreEngine
 
 /// The InMemoryCodableStoreEngine
@@ -16,9 +18,7 @@ public final class InMemoryCodableStoreEngine {
     // MARK: Typealias
     
     /// The Memory Typealis
-    public typealias Memory = [CodableStoreContainer: [AnyHashable: Any]]
-    
-    public typealias MemoryV2 = [CodableStoreContainer: [AnyHashable: [AnyHashable: Any]]]
+    public typealias Memory = [CodableStoreContainer: [AnyHashable: [AnyHashable: Any]]]
     
     // MARK: Properties
     
@@ -51,7 +51,10 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
         if self.memory.value[container] == nil {
             self.memory.value[container] = .init()
         }
-        self.memory.value[container]?[storable.identifier.stringRepresentation] = storable
+        if self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation] == nil {
+            self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation] = .init()
+        }
+        self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation]?[storable.identifier.stringRepresentation] = storable
         return storable
     }
     
@@ -63,10 +66,10 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     @discardableResult
     public func delete<Storable: CodableStorable>(_ identifier: Storable.Identifier,
                                                   in container: CodableStoreContainer) throws -> Storable {
-        guard let storable = self.memory.value[container]?[identifier.stringRepresentation] as? Storable else {
+        guard let storable = self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation]?[identifier.stringRepresentation] as? Storable else {
             throw CodableStoreEngineError<Storable>.notFound(identifier: identifier)
         }
-        self.memory.value[container]?.removeValue(forKey: identifier.stringRepresentation)
+        self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation]?.removeValue(forKey: identifier.stringRepresentation)
         return storable
     }
     
@@ -76,7 +79,7 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     @discardableResult
     public func deleteCollection<Storable: CodableStorable>(in container: CodableStoreContainer) throws -> [Storable] {
         let storables: [Storable] = try self.getCollection(in: container)
-        self.memory.value[container]?.removeAll()
+        self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation]?.removeAll()
         return storables
     }
     
@@ -87,7 +90,7 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     /// - Throws: If retrieving fails
     public func get<Storable: CodableStorable>(_ identifier: Storable.Identifier,
                                                in container: CodableStoreContainer) throws -> Storable {
-        guard let storable = self.memory.value[container]?[identifier.stringRepresentation] as? Storable else {
+        guard let storable = self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation]?[identifier.stringRepresentation] as? Storable else {
             throw CodableStoreEngineError<Storable>.notFound(identifier: identifier)
         }
         return storable
@@ -98,7 +101,7 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     /// - Returns: The CodableStorables in the Collection
     /// - Throws: If retrieving fails
     public func getCollection<Storable: CodableStorable>(in container: CodableStoreContainer) throws -> [Storable] {
-        guard let storablesDictionary = self.memory.value[container],
+        guard let storablesDictionary = self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation],
             let storables = Array(storablesDictionary.values) as? [Storable] else {
                 throw CodableStoreEngineError<Storable>.collectionNotFound(container: container)
         }
@@ -106,3 +109,5 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     }
     
 }
+
+// swiftlint:enable line_length
