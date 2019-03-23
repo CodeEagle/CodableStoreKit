@@ -42,10 +42,10 @@ public final class CodableStoreSubscription {
         self.invalidation = nil
     }
     
-    /// Invalidate by CodableStoreSubscriptionBag
+    /// Invalidated by CodableStoreSubscriptionBag
     ///
     /// - Parameter bag: The CodableStoreSubscriptionBag
-    public func invalidate(by bag: CodableStoreSubscriptionBag) {
+    public func invalidated(by bag: CodableStoreSubscriptionBag) {
         // Append self to Subscription of CodableStoreSubscriptionBag
         bag.subscriptions.append(self)
     }
