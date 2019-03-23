@@ -9,48 +9,25 @@
 import CodableStoreKit
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController {
     
     let codableStore = CodableStore<User>()
     
-    lazy var users = (try? self.codableStore.getCollection()) ?? .init()
-    
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.dataSource = self
-        return tableView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 1...10 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2 + .init(i)) {
-                self.saveRandomUser()
-            }
+        var users: [User] = .init()
+        for _ in 1...20000 {
+            users.append(.random)
         }
-    }
-    
-    func saveRandomUser() {
-        _ = try? self.codableStore.save(.random)
-    }
-    
-    override func loadView() {
-        self.view = self.tableView
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.users[indexPath.row].identifier
-        return cell
+        print("Start")
+        let startTime = Date()
+        try! self.codableStore.save(users)
+        let endTime = Date()
+        print("Saving: Elapsed Time: \(endTime.timeIntervalSince(startTime))")
+        let startTimeFetch = Date()
+        let fetchedUsers = try! self.codableStore.getCollection()
+        let endTimeFetch = Date()
+        print("Fetching: Elapsed Time: \(endTimeFetch.timeIntervalSince(startTimeFetch)) | Count: \(fetchedUsers.count)")
     }
 
 }

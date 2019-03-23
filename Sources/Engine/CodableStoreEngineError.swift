@@ -16,6 +16,4 @@ public enum CodableStoreEngineError<Storable: CodableStorable>: Error {
     case savingFailed(storable: Storable, container: CodableStoreContainer)
     /// CodableStorable not found for Identifier
     case notFound(identifier: Storable.Identifier)
-    /// CodableStorable Collection not found in Container
-    case collectionNotFound(container: CodableStoreContainer)
 }

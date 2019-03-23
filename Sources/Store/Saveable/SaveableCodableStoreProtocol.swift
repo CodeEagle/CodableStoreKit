@@ -35,6 +35,7 @@ public extension SaveableCodableStoreProtocol {
     /// - Parameter storables: The CodableStorable Objects to save
     /// - Returns: The saved CodableStorable Array
     /// - Throws: If saving fails
+    @discardableResult
     func save(_ storables: [Storable]) throws -> [Storable] {
         return try storables.map(self.save)
     }

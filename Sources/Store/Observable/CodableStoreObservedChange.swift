@@ -31,9 +31,7 @@ public extension CodableStoreObservedChange {
     var storable: Storable {
         // Switch on self
         switch self {
-        case .saved(let storable, _):
-            return storable
-        case .deleted(let storable, _):
+        case .saved(let storable, _), .deleted(let storable, _):
             return storable
         }
     }
@@ -42,9 +40,7 @@ public extension CodableStoreObservedChange {
     var container: CodableStoreContainer {
         // Switch on self
         switch self {
-        case .saved(_, let container):
-            return container
-        case .deleted(_, let container):
+        case .saved(_, let container), .deleted(_, let container):
             return container
         }
     }

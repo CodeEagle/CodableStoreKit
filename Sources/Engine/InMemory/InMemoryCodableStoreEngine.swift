@@ -103,7 +103,7 @@ extension InMemoryCodableStoreEngine: CodableStoreEngine {
     public func getCollection<Storable: CodableStorable>(in container: CodableStoreContainer) throws -> [Storable] {
         guard let storablesDictionary = self.memory.value[container]?[Storable.codableStoreCollectionName.stringRepresentation],
             let storables = Array(storablesDictionary.values) as? [Storable] else {
-                throw CodableStoreEngineError<Storable>.collectionNotFound(container: container)
+                return .init()
         }
         return storables
     }

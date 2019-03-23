@@ -64,7 +64,7 @@ CodableStoreKit is available through [CocoaPods](http://cocoapods.org). To insta
 it, simply add the following line to your Podfile:
 
 ```bash
-pod 'CodableStoreKit', '~> 1.0.0'
+pod 'CodableStoreKit'
 ```
 
 ### Carthage
@@ -74,7 +74,7 @@ pod 'CodableStoreKit', '~> 1.0.0'
 To integrate CodableStoreKit into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "SvenTiigi/CodableStoreKit" ~> 1.0.0
+github "SvenTiigi/CodableStoreKit"
 ```
 
 Run `carthage update --platform` to build the framework and drag the built `CodableStoreKit.framework` into your Xcode project. 
@@ -177,7 +177,7 @@ The architecture allows a `CodableStore` to use different `CodableStoreEngine` i
 	<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
 </p>
 
-Each `CodableStoreEngine ` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `CodableStoreEngine `. A `Collection` can be described as a group of related object types.
+Each `CodableStoreEngine` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `CodableStoreEngine `. A `Collection` can be described as a group of related object types.
 
 ### Engine
 
