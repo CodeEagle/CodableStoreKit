@@ -348,8 +348,8 @@
 			children = (
 				3DA06C8922401EEB00BD07FD /* CodableStoreEngine.swift */,
 				3DA06CD3224032AE00BD07FD /* CodableStoreEngineError.swift */,
-				3D0DEA582240B6EC0011A2E5 /* InMemory */,
 				3DA06CEF224039EC00BD07FD /* FileManager */,
+				3D0DEA582240B6EC0011A2E5 /* InMemory */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
