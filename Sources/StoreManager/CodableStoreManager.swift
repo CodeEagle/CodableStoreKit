@@ -26,7 +26,7 @@ public final class CodableStoreManager {
     }
     
     /// The Observers
-    static var observers: Locked<[AnyHashable: Any]> = .init(.init())
+    static var observers: Locked<[String: Any]> = .init(.init())
     
     // MARK: Initializer
     
@@ -80,7 +80,7 @@ extension CodableStoreManager {
         // Store Observer for Key
         self.observers.value[key] = Observation(intent: intent, observer: observer)
         // Return CodableStoreSubscription
-        return CodableStoreSubscription {
+        return .init {
             // Remove Observer for Key
             self.observers.value.removeValue(forKey: key)
         }
