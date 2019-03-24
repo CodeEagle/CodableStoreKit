@@ -21,25 +21,23 @@ public final class CodableStore<Storable: CodableStorable> {
     /// The CodableStoreContainer
     public let container: CodableStoreContainer
     
+    /// The CodableStoreManager
+    let manager: CodableStoreManager
+    
     // MARK: Initializer
-    
-    /// Designated Initializer
-    ///
-    /// - Parameter container: The CodableStoreContainer. Default value `.default`
-    public init(container: CodableStoreContainer = .default) {
-        self.engine = CodableStoreManager.engineProvider(Storable.self, container)
-        self.container = container
-    }
-    
+
     /// Designated Initializer
     ///
     /// - Parameters:
-    ///   - engine: The CodableStoreEngine
+    ///   - engine: The CodableStoreEngine. Default value `nil`
     ///   - container: The CodableStoreContainer. Default value `.default`
-    public init(engine: CodableStoreEngine,
-                container: CodableStoreContainer = .default) {
-        self.engine = engine
+    ///   - manager: The CodableStoreManager. Default value `DefaultCodableStoreManager.sharedInstance`
+    public init(engine: CodableStoreEngine? = nil,
+                container: CodableStoreContainer = .default,
+                manager: CodableStoreManager = DefaultCodableStoreManager.sharedInstance) {
+        self.engine = engine ?? manager.provideEngine(for: Storable.self, in: container)
         self.container = container
+        self.manager = manager
     }
     
 }
@@ -58,7 +56,7 @@ extension CodableStore: SaveableCodableStoreProtocol {
         // Save Storable in Container
         let storable: Storable = try self.engine.save(storable, in: self.container)
         // Emit saved with Storable and Container
-        CodableStoreManager.emit(.saved(storable: storable, container: self.container))
+        self.manager.emit(.saved(storable: storable, container: self.container))
         // Return saved Storable
         return storable
     }
@@ -79,7 +77,7 @@ extension CodableStore: DeletableCodableStoreProtocol {
         // Delete Storable in Container
         let storable: Storable = try self.engine.delete(identifier, in: self.container)
         // Emit deleted with Storable and Container
-        CodableStoreManager.emit(.deleted(storable: storable, container: self.container))
+        self.manager.emit(.deleted(storable: storable, container: self.container))
         // Return deleted Storable
         return storable
     }
@@ -94,7 +92,7 @@ extension CodableStore: DeletableCodableStoreProtocol {
         // For each Storable
         for storable in storables {
             // Emit deleted with Storable and Container
-            CodableStoreManager.emit(.deleted(storable: storable, container: self.container))
+            self.manager.emit(.deleted(storable: storable, container: self.container))
         }
         // Return deleted Storables
         return storables
@@ -139,7 +137,7 @@ extension CodableStore: ObservableCodableStoreProtocol {
     public func observe(identifier: Storable.Identifier,
                         _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Add Observer with Identifier Intent and return Subscription
-        return CodableStoreManager.addObserver(.identifier(identifier), observer)
+        return self.manager.subscribe(with: .identifier(identifier), observer)
     }
     
     /// Observer CodableStorable with predicate
@@ -152,7 +150,7 @@ extension CodableStore: ObservableCodableStoreProtocol {
     public func observe(where predicate: @escaping (Storable) -> Bool,
                         _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Add Observer with Predicate Intent and return Subscription
-        return CodableStoreManager.addObserver(.predicate(predicate), observer)
+        return self.manager.subscribe(with: .predicate(predicate), observer)
     }
     
     /// Observe CodableStorable Collection
@@ -162,7 +160,7 @@ extension CodableStore: ObservableCodableStoreProtocol {
     @discardableResult
     public func observeCollection(_ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Add Observer with All Intent and return Subscription
-        return CodableStoreManager.addObserver(.all, observer)
+        return self.manager.subscribe(with: .all, observer)
     }
     
 }

@@ -280,7 +280,7 @@ class MyCustomClass {
         // Observe all Users and dispose it by SubscriptionBag
         self.codableStore.observeCollection { event in
             print(event)
-        }.invalidate(by: self.subscriptionBag)
+        }.invalidated(by: self.subscriptionBag)
     }
 
 }
