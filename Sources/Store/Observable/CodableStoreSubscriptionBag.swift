@@ -16,11 +16,11 @@ public final class CodableStoreSubscriptionBag {
     // MARK: Properties
     
     /// The CodableStoreSubscriptions
-    var subscriptions: [CodableStoreSubscription]
+    private let subscriptions: Locked<[CodableStoreSubscription]>
     
     /// Bool if Bag is empty
     public var isEmpty: Bool {
-        return self.subscriptions.isEmpty
+        return self.subscriptions.value.isEmpty
     }
     
     // MARK: Initializer
@@ -29,7 +29,7 @@ public final class CodableStoreSubscriptionBag {
     ///
     /// - Parameter subscriptions: The CodableStoreSubscriptions. Default value `.init`
     public init(subscriptions: [CodableStoreSubscription] = .init()) {
-        self.subscriptions = subscriptions
+        self.subscriptions = .init(subscriptions)
     }
     
     /// Deinit
@@ -38,12 +38,31 @@ public final class CodableStoreSubscriptionBag {
         self.invalidate()
     }
     
+}
+
+// MARK: - Invalidate
+
+public extension CodableStoreSubscriptionBag {
+    
     /// Invalidate
-    public func invalidate() {
+    func invalidate() {
         // Invalidate each Subscription
-        self.subscriptions.forEach { $0.invalidate() }
+        self.subscriptions.value.forEach { $0.invalidate() }
         // Remove all Subscriptions
-        self.subscriptions.removeAll()
+        self.subscriptions.value.removeAll()
+    }
+    
+}
+
+// MARK: - Append
+
+extension CodableStoreSubscriptionBag {
+    
+    /// Append CodableStoreSubscription
+    ///
+    /// - Parameter subscription: The CodableStoreSubscription
+    func append(_ subscription: CodableStoreSubscription) {
+        self.subscriptions.value.append(subscription)
     }
     
 }

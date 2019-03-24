@@ -16,16 +16,7 @@ public struct ObservableCodableStore<Storable: CodableStorable> {
     // MARK: Properties
     
     /// The Observe closure
-    private let observeClosure: (Storable.Identifier, @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
-    
-    /// The Observe Predicate closure
-    private let observePredicateClosure: (
-        @escaping (Storable) -> Bool,
-        @escaping CodableStoreObserver<Storable>
-    ) -> CodableStoreSubscription
-
-    /// The Observe Collection closure
-    private let observeCollectionClosure: (@escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
+    private let observeClosure: (CodableStoreObserverIntent<Storable>, @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
 
     // MARK: Initializer
     
@@ -34,8 +25,6 @@ public struct ObservableCodableStore<Storable: CodableStorable> {
     /// - Parameter store: The ObservableCodableStoreProtocol
     init<Store: ObservableCodableStoreProtocol>(_ store: Store) where Store.Storable == Storable {
         self.observeClosure = store.observe
-        self.observePredicateClosure = store.observe
-        self.observeCollectionClosure = store.observeCollection
     }
     
 }
@@ -44,37 +33,16 @@ public struct ObservableCodableStore<Storable: CodableStorable> {
 
 extension ObservableCodableStore: ObservableCodableStoreProtocol {
     
-    /// Observe CodableStorable Identifier
+    /// Observe CodableStorable with Intent
     ///
     /// - Parameters:
-    ///   - identifier: The CodableStorable Identifier
-    ///   - observer: The Observer
+    ///   - intent: The CodableStoreObserverIntent
+    ///   - observer: The CodableStoreObserver
     /// - Returns: The CodableStoreSubscription
     @discardableResult
-    public func observe(identifier: Storable.Identifier,
+    public func observe(with intent: CodableStoreObserverIntent<Storable>,
                         _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
-        return self.observeClosure(identifier, observer)
-    }
-    
-    /// Observer CodableStorable with predicate
-    ///
-    /// - Parameters:
-    ///   - predicate: The Predicate
-    ///   - observer: The Observer
-    /// - Returns: The CodableStoreSubscription
-    @discardableResult
-    public func observe(where predicate: @escaping (Storable) -> Bool,
-                        _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
-        return self.observePredicateClosure(predicate, observer)
-    }
-    
-    /// Observe CodableStorable Collection
-    ///
-    /// - Parameter observer: The Observer
-    /// - Returns: The CodableStoreSubscription
-    @discardableResult
-    public func observeCollection(_ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
-        return self.observeCollectionClosure(observer)
+        return self.observeClosure(intent, observer)
     }
     
 }

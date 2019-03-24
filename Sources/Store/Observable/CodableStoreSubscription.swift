@@ -28,14 +28,18 @@ public final class CodableStoreSubscription {
     /// Designated Initializer
     ///
     /// - Parameter invalidation: The Invalidation closure
-    init(_ invalidation: @escaping () -> Void) {
+    public init(_ invalidation: @escaping () -> Void) {
         self.invalidation = invalidation
     }
     
-    // MARK: - API
+}
+
+// MARK: - Invalidate
+
+public extension CodableStoreSubscription {
     
     /// Invalidate Subscription
-    public func invalidate() {
+    func invalidate() {
         // Invoke Invalidation
         self.invalidation?()
         // Clear Invalidation
@@ -45,9 +49,9 @@ public final class CodableStoreSubscription {
     /// Invalidated by CodableStoreSubscriptionBag
     ///
     /// - Parameter bag: The CodableStoreSubscriptionBag
-    public func invalidated(by bag: CodableStoreSubscriptionBag) {
-        // Append self to Subscription of CodableStoreSubscriptionBag
-        bag.subscriptions.append(self)
+    func invalidated(by bag: CodableStoreSubscriptionBag) {
+        // Append self to CodableStoreSubscriptionBag
+        bag.append(self)
     }
     
 }

@@ -127,40 +127,17 @@ extension CodableStore: ReadableCodableStoreProtocol {
 
 extension CodableStore: ObservableCodableStoreProtocol {
     
-    /// Observe CodableStorable Identifier
+    /// Observe CodableStorable with Intent
     ///
     /// - Parameters:
-    ///   - identifier: The CodableStorable Identifier
-    ///   - observer: The Observer
+    ///   - intent: The CodableStoreObserverIntent
+    ///   - observer: The CodableStoreObserver
     /// - Returns: The CodableStoreSubscription
     @discardableResult
-    public func observe(identifier: Storable.Identifier,
+    public func observe(with intent: CodableStoreObserverIntent<Storable>,
                         _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Add Observer with Identifier Intent and return Subscription
-        return self.manager.subscribe(with: .identifier(identifier), observer)
-    }
-    
-    /// Observer CodableStorable with predicate
-    ///
-    /// - Parameters:
-    ///   - predicate: The Predicate
-    ///   - observer: The Observer
-    /// - Returns: The CodableStoreSubscription
-    @discardableResult
-    public func observe(where predicate: @escaping (Storable) -> Bool,
-                        _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
-        // Add Observer with Predicate Intent and return Subscription
-        return self.manager.subscribe(with: .predicate(predicate), observer)
-    }
-    
-    /// Observe CodableStorable Collection
-    ///
-    /// - Parameter observer: The Observer
-    /// - Returns: The CodableStoreSubscription
-    @discardableResult
-    public func observeCollection(_ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
-        // Add Observer with All Intent and return Subscription
-        return self.manager.subscribe(with: .all, observer)
+        return self.manager.subscribe(with: intent, observer)
     }
     
 }

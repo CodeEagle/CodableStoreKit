@@ -56,13 +56,3 @@ public protocol EmittableCodableStoreManager {
     func emit<Storable: CodableStorable>(_ observedChange: CodableStoreObservedChange<Storable>)
     
 }
-
-/// The CodableStore Observer Intent
-public enum CodableStoreObserverIntent<Storable: CodableStorable> {
-    /// Matches Identifier
-    case identifier(Storable.Identifier)
-    /// Matches Predicate
-    case predicate((Storable) -> Bool)
-    /// Matches all
-    case all
-}

@@ -126,6 +126,10 @@
 		3DEDE7F5224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F3224790A000A82833 /* DefaultCodableStoreManager.swift */; };
 		3DEDE7F6224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F3224790A000A82833 /* DefaultCodableStoreManager.swift */; };
 		3DEDE7F7224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F3224790A000A82833 /* DefaultCodableStoreManager.swift */; };
+		3DEDE7F92247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F82247944B00A82833 /* CodableStoreObserverIntent.swift */; };
+		3DEDE7FA2247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F82247944B00A82833 /* CodableStoreObserverIntent.swift */; };
+		3DEDE7FB2247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F82247944B00A82833 /* CodableStoreObserverIntent.swift */; };
+		3DEDE7FC2247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEDE7F82247944B00A82833 /* CodableStoreObserverIntent.swift */; };
 		52D6D9871BEFF229002C0205 /* CodableStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* CodableStoreKit.framework */; };
 		DD7502881C68FEDE006590AF /* CodableStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* CodableStoreKit.framework */; };
 		DD7502921C690C7A006590AF /* CodableStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* CodableStoreKit.framework */; };
@@ -224,6 +228,7 @@
 		3DE803642246AF7D00ED979D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3DE803692246B0ED00ED979D /* CodableStoreContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreContainerTests.swift; sourceTree = "<group>"; };
 		3DEDE7F3224790A000A82833 /* DefaultCodableStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCodableStoreManager.swift; sourceTree = "<group>"; };
+		3DEDE7F82247944B00A82833 /* CodableStoreObserverIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreObserverIntent.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* CodableStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* CodableStoreKit-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CodableStoreKit-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9E21BEFFF6E002C0205 /* CodableStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodableStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,6 +328,7 @@
 				3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */,
 				3D0DEA742240D5AC0011A2E5 /* ObservableCodableStore.swift */,
 				3D0DEA6A2240D4920011A2E5 /* CodableStoreObservedChange.swift */,
+				3DEDE7F82247944B00A82833 /* CodableStoreObserverIntent.swift */,
 				3D0DEA6F2240D4A20011A2E5 /* CodableStoreSubscription.swift */,
 				3D0DEA792240D7870011A2E5 /* CodableStoreSubscriptionBag.swift */,
 			);
@@ -949,6 +955,7 @@
 				3DA06CAE22402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3D0DEA9B224107B30011A2E5 /* CodableStore+AccessControl.swift in Sources */,
 				3DA06CE6224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
+				3DEDE7F92247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */,
 				3DA06C8A22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
 				3DA06C7D22401D2A00BD07FD /* StringRepresentable.swift in Sources */,
 				3DA06C99224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
@@ -992,6 +999,7 @@
 				3DA06CB022402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3D0DEA9D224107B30011A2E5 /* CodableStore+AccessControl.swift in Sources */,
 				3DA06CE8224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
+				3DEDE7FB2247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */,
 				3DA06C8C22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
 				3DA06C7F22401D2B00BD07FD /* StringRepresentable.swift in Sources */,
 				3DA06C9B224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
@@ -1024,6 +1032,7 @@
 				3DA06CB122402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3D0DEA9E224107B30011A2E5 /* CodableStore+AccessControl.swift in Sources */,
 				3DA06CE9224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
+				3DEDE7FC2247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */,
 				3DA06C8D22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
 				3DA06C8022401D2B00BD07FD /* StringRepresentable.swift in Sources */,
 				3DA06C9C224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
@@ -1056,6 +1065,7 @@
 				3DA06CAF22402CA400BD07FD /* InMemoryCodableStoreEngine.swift in Sources */,
 				3D0DEA9C224107B30011A2E5 /* CodableStore+AccessControl.swift in Sources */,
 				3DA06CE7224035C500BD07FD /* SaveableCodableStore.swift in Sources */,
+				3DEDE7FA2247944B00A82833 /* CodableStoreObserverIntent.swift in Sources */,
 				3DA06C8B22401EEB00BD07FD /* CodableStoreEngine.swift in Sources */,
 				3DA06C7E22401D2B00BD07FD /* StringRepresentable.swift in Sources */,
 				3DA06C9A224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
