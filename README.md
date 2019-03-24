@@ -55,6 +55,7 @@ It allows you to simply persist, retrieve and observe your Codable structs and c
 - [x] Easily persist and retrieve Codable types 💾
 - [x] Observe save and delete events 🕶
 - [x] Engine-Container-Collection-Architecture 📦
+- [x] Type Safety and Access-Control-System 🔒
 
 ## Installation
 
@@ -139,7 +140,7 @@ Now you are good to go to persist, retrieve and observe your CodableStoreable �
 // Initialize an User
 let user = User(id: "42", firstName: "Mr.", lastName: "Robot")
 
-// Save / Update
+// Save
 try codableStore.save(user)
 
 // Delete
@@ -148,16 +149,14 @@ try codableStore.delete(user)
 // Get
 let retrievedUser = try codableStore.get(identifier: "42")
 
-// Exists
-let userExists = codableStore.exists(user)
-
 // Observe
 codableStore.observe(user) { event in
     switch event {
     case .saved(let user, let container):
-        // 
+        // The User has been saved in Container
         break
     case .deleted(let user, let container):
+        // The User has been deleted in Container
         break
     }
 }
@@ -183,6 +182,20 @@ Each `CodableStoreEngine` can manage multiple `Containers` which allows you to s
 
 TODO: Add text
 
+If you wish you can implement your own `CodableStoreEngine`.
+
+```swift
+class MyCustomEngine: CodableStoreEngine {
+    // TODO: Implement me 👨‍💻
+}
+```
+As soon as you implemented your custom `CodableStoreEngine` you can pass it to a `CodableStore`.
+
+```swift
+// Initialize CodableStore with Custom Engine
+let codableStore = CodableStore<User>(engine: MyCustomEngine())
+```
+
 ### Container
 
 To decide which `Container` should be used when persisting or retrieving Codables you can pass a `CodableStoreContainer` to the `initializer` of a `CodableStore`.
@@ -198,12 +211,9 @@ let codableStore = CodableStore<User>(container: debugContainer)
 
 ### Collection
 
-As mentioned before a `Collection` is a group of realted object types. This means every struct or class that is conform to the `CodableStoreable`/`BaseCodableStoreable` protocol is a `Collection`. Therefore a `Collection` is identified via a name. In default the name of a `Collection` is the name of the type.
+As mentioned before a `Collection` is a group of realted object types. This means every struct or class that is conform to the `CodableStoreable` protocol is a `Collection`. Therefore a `Collection` is identified via a name. In default the name of a `Collection` is the name of the type.
 
 ```swift
-// A User struct
-struct User: CodableStoreable {}
-
 // Print the CodableStore Collection-Name
 print(User.codableStoreCollectionName) // User.Type
 ```
@@ -222,9 +232,13 @@ extension User {
 }
 ```
 
+### Manager
+
+TODO: Add Text
+
 ### Access-Control
 
-In default a `CodableStore` enables you to access all functions to save, delete, read and observe CodableStoreables. If you wish to use a `CodableStore` in delete-only or read-only mode you can make use of the `AccessControl` properties.
+A `CodableStore` enables you to access all functions to save, delete, read and observe CodableStoreables. If you wish to use a `CodableStore` in delete-only or read-only mode you can make use of the `AccessControl` properties.
 
 ```swift
 let codableStore = CodableStore<User>()
