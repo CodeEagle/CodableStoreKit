@@ -66,15 +66,15 @@ extension DefaultCodableStoreManager: EngineProvidableCodableStoreManager {
 
 extension DefaultCodableStoreManager: ObservableCodableStoreManager {
     
-    /// Subscribe with CodableStoreObserverIntent
+    /// Observe with CodableStoreObserverIntent
     ///
     /// - Parameters:
     ///   - intent: The CodableStoreObserverIntent
     ///   - observer: The CodableStoreObserver
     /// - Returns: A CodableStoreSubscription
     @discardableResult
-    public func subscribe<Storable: CodableStorable>(with intent: CodableStoreObserverIntent<Storable>,
-                                                     _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
+    public func observe<Storable: CodableStorable>(with intent: CodableStoreObserverIntent<Storable>,
+                                                   _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
         // Initialize a Key
         let key = UUID().uuidString
         // Store Observer for Key

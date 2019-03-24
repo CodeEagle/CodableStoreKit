@@ -33,15 +33,15 @@ public protocol EngineProvidableCodableStoreManager {
 /// The ObservableCodableStoreManager
 public protocol ObservableCodableStoreManager {
     
-    /// Subscribe with CodableStoreObserverIntent
+    /// Observe with CodableStoreObserverIntent
     ///
     /// - Parameters:
     ///   - intent: The CodableStoreObserverIntent
     ///   - observer: The CodableStoreObserver
     /// - Returns: A CodableStoreSubscription
     @discardableResult
-    func subscribe<Storable: CodableStorable>(with intent: CodableStoreObserverIntent<Storable>,
-                                              _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
+    func observe<Storable: CodableStorable>(with intent: CodableStoreObserverIntent<Storable>,
+                                            _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription
     
 }
 
