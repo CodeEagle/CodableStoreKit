@@ -15,8 +15,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        try! self.codableStore.deleteCollection()
         var users: [User] = .init()
-        for _ in 1...20000 {
+        for _ in 1...2000 {
             users.append(.random)
         }
         print("Start")
