@@ -24,7 +24,7 @@ public final class DefaultCodableStoreManager {
     // MARK: Initializer
     
     /// Designated Initializer
-    public init() {}
+    private init() {}
     
 }
 
