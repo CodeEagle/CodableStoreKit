@@ -29,7 +29,7 @@ public struct SaveableCodableStore<Storable: CodableStorable> {
     
 }
 
-// MARK: - DeletableCodableStoreProtocol
+// MARK: - SaveableCodableStoreProtocol
 
 extension SaveableCodableStore: SaveableCodableStoreProtocol {
     

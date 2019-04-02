@@ -28,6 +28,11 @@ public extension CodableStore {
             return .init(self.codableStore)
         }
         
+        /// The WritableCodableStore
+        public var writable: WritableCodableStore<Storable> {
+            return .init(self.codableStore)
+        }
+        
         /// The ReadableCodableStore
         public var readable: ReadableCodableStore<Storable> {
             return .init(self.codableStore)

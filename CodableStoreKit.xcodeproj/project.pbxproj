@@ -110,6 +110,14 @@
 		3DA06CF2224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA06CF0224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift */; };
 		3DA06CF3224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA06CF0224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift */; };
 		3DA06CF4224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA06CF0224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift */; };
+		3DB9B02A2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B0292253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift */; };
+		3DB9B02B2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B0292253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift */; };
+		3DB9B02C2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B0292253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift */; };
+		3DB9B02D2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B0292253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift */; };
+		3DB9B02F2253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B02E2253EC1700C7B0C6 /* WritableCodableStore.swift */; };
+		3DB9B0302253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B02E2253EC1700C7B0C6 /* WritableCodableStore.swift */; };
+		3DB9B0312253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B02E2253EC1700C7B0C6 /* WritableCodableStore.swift */; };
+		3DB9B0322253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9B02E2253EC1700C7B0C6 /* WritableCodableStore.swift */; };
 		3DE8035C2246AEFA00ED979D /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE803572246AED400ED979D /* BaseTests.swift */; };
 		3DE8035D2246AEFB00ED979D /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE803572246AED400ED979D /* BaseTests.swift */; };
 		3DE8035E2246AEFB00ED979D /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE803572246AED400ED979D /* BaseTests.swift */; };
@@ -223,6 +231,8 @@
 		3DA06CE5224035C500BD07FD /* SaveableCodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveableCodableStore.swift; sourceTree = "<group>"; };
 		3DA06CEA224038E600BD07FD /* FileManagerCodableStoreEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerCodableStoreEngine.swift; sourceTree = "<group>"; };
 		3DA06CF0224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerCodableStoreEngineCoder.swift; sourceTree = "<group>"; };
+		3DB9B0292253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritableCodableStoreProtocol.swift; sourceTree = "<group>"; };
+		3DB9B02E2253EC1700C7B0C6 /* WritableCodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritableCodableStore.swift; sourceTree = "<group>"; };
 		3DD9304B224193DF004F442B /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinuxMain.swift; path = Tests/LinuxMain.swift; sourceTree = SOURCE_ROOT; };
 		3DE803572246AED400ED979D /* BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		3DE803602246AF5400ED979D /* CodableStorableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorableTests.swift; sourceTree = "<group>"; };
@@ -361,6 +371,7 @@
 				3D0DEA9A224107B30011A2E5 /* CodableStore+AccessControl.swift */,
 				3DA06CD82240338C00BD07FD /* Saveable */,
 				3DA06CD92240339500BD07FD /* Deletable */,
+				3DB9B0282253EBCB00C7B0C6 /* Writable */,
 				3DA06CDA2240339E00BD07FD /* Readable */,
 				3D0DEA642240D1B60011A2E5 /* Observable */,
 			);
@@ -440,6 +451,15 @@
 				3DA06CF0224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift */,
 			);
 			path = FileManager;
+			sourceTree = "<group>";
+		};
+		3DB9B0282253EBCB00C7B0C6 /* Writable */ = {
+			isa = PBXGroup;
+			children = (
+				3DB9B0292253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift */,
+				3DB9B02E2253EC1700C7B0C6 /* WritableCodableStore.swift */,
+			);
+			path = Writable;
 			sourceTree = "<group>";
 		};
 		3DE8035F2246AF3500ED979D /* Storable */ = {
@@ -963,10 +983,12 @@
 				3DA06C99224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF1224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C8F224022B300BD07FD /* CodableStore.swift in Sources */,
+				3DB9B02F2253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */,
 				3D0DEA662240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8422401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA3224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
 				3DEDE7F4224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */,
+				3DB9B02A2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */,
 				3D0DEA802240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7822401CEF00BD07FD /* CodableStorable.swift in Sources */,
 				3DA06CB42240304200BD07FD /* CodableStoreManager.swift in Sources */,
@@ -1007,10 +1029,12 @@
 				3DA06C9B224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF3224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C91224022B300BD07FD /* CodableStore.swift in Sources */,
+				3DB9B0312253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */,
 				3D0DEA682240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8622401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA5224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
 				3DEDE7F6224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */,
+				3DB9B02C2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */,
 				3D0DEA822240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7A22401CEF00BD07FD /* CodableStorable.swift in Sources */,
 				3DA06CB62240304200BD07FD /* CodableStoreManager.swift in Sources */,
@@ -1040,10 +1064,12 @@
 				3DA06C9C224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF4224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C92224022B300BD07FD /* CodableStore.swift in Sources */,
+				3DB9B0322253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */,
 				3D0DEA692240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8722401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA6224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
 				3DEDE7F7224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */,
+				3DB9B02D2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */,
 				3D0DEA832240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7B22401CEF00BD07FD /* CodableStorable.swift in Sources */,
 				3DA06CB72240304200BD07FD /* CodableStoreManager.swift in Sources */,
@@ -1073,10 +1099,12 @@
 				3DA06C9A224024BF00BD07FD /* SaveableCodableStoreProtocol.swift in Sources */,
 				3DA06CF2224039FD00BD07FD /* FileManagerCodableStoreEngineCoder.swift in Sources */,
 				3DA06C90224022B300BD07FD /* CodableStore.swift in Sources */,
+				3DB9B0302253EC1700C7B0C6 /* WritableCodableStore.swift in Sources */,
 				3D0DEA672240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift in Sources */,
 				3DA06C8522401E8800BD07FD /* CodableStoreContainer.swift in Sources */,
 				3DA06CA4224024F500BD07FD /* ReadableCodableStoreProtocol.swift in Sources */,
 				3DEDE7F5224790A000A82833 /* DefaultCodableStoreManager.swift in Sources */,
+				3DB9B02B2253EBE700C7B0C6 /* WritableCodableStoreProtocol.swift in Sources */,
 				3D0DEA812240DD180011A2E5 /* Locked.swift in Sources */,
 				3DA06C7922401CEF00BD07FD /* CodableStorable.swift in Sources */,
 				3DA06CB52240304200BD07FD /* CodableStoreManager.swift in Sources */,
