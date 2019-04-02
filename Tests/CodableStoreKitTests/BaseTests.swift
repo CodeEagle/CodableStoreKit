@@ -1,21 +1,15 @@
 //
 //  BaseTests.swift
-//  TveeeKit
+//  CodableStoreKit
 //
-//  Created by Sven Tiigi on 09.04.18.
-//  Copyright © 2018 opwoco GmbH. All rights reserved.
+//  Created by Sven Tiigi on 23.03.19.
+//  Copyright © 2019 CodableStoreKit. All rights reserved.
 //
 
-import XCTest
 @testable import CodableStoreKit
+import XCTest
 
-struct User: CodableStoreable, Equatable {
-    static var codableStoreIdentifier = \User.id
-    let id: String
-    let firstName: String
-    let lastName: String
-}
-
+/// The BaseTests
 class BaseTests: XCTestCase {
     
     /// The timeout value while waiting
@@ -33,9 +27,6 @@ class BaseTests: XCTestCase {
     
     /// Random Double
     lazy var randomDouble: Double = self.generateRandomDouble()
-    
-    /// System Image
-    lazy var image: UIImage? = UIButton(type: .infoLight).image(for: .normal)
     
     /// Random User
     lazy var randomUser: User = self.generateRandomUser()
@@ -99,56 +90,9 @@ class BaseTests: XCTestCase {
     
     func generateRandomUser() -> User {
         return .init(
-            id: self.generateRandomString(),
-            firstName: self.generateRandomString(),
-            lastName: self.generateRandomString()
-        )
-    }
-    
-    func clearFilesystem() {
-        let fileManager: FileManager = .default
-        guard let directoryURL = try? fileManager.getSearchPathDirectoryURL() else {
-            return
-        }
-        guard let paths = try? fileManager.contentsOfDirectory(atPath: directoryURL.path) else {
-            return
-        }
-        paths.forEach {
-            let url = directoryURL.appendingPathComponent($0)
-            try? fileManager.removeItem(at: url)
-            print(url.path)
-        }
-    }
-    
-    func fail(message: String = "") -> Never {
-        XCTFail(message)
-        fatalError(message)
-    }
-    
-}
-
-private extension FileManager {
-    
-    /// Retrieve the SearchPathDirectory URL
-    ///
-    /// - Returns: The SearchPathDirectory URL
-    /// - Throws: If retrieving URL fails
-    func getSearchPathDirectoryURL() throws -> URL {
-        // Declare searchPathDirectory
-        let searchPathDirectory: FileManager.SearchPathDirectory
-        #if (tvOS)
-        // tvOS only offers cachesDirectory
-        searchPathDirectory = .cachesDirectory
-        #else
-        // Other Platforms allow the documentDirectory
-        searchPathDirectory = .documentDirectory
-        #endif
-        // Return SearchPathDirectory URL
-        return try self.url(
-            for: searchPathDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
+            identifier: UUID().uuidString,
+            firstName: UUID().uuidString,
+            lastName: UUID().uuidString
         )
     }
     

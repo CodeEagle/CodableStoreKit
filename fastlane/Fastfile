@@ -9,27 +9,57 @@ platform :ios do
     ensure_git_status_clean
     ensure_git_branch(branch: 'master')
     test
-    version = version_bump_podspec(path: "CodableStoreKit.podspec", version_number: options[:version])
-    increment_version_number(version_number: version)
-    git_commit(
-      path: ["CodableStoreKit.podspec"],
-      message: "[CodableStoreKit Release 🚀] Bump to #{version}"
-    )
+    version = options[:version]
+    increment(version: version)
     add_git_tag(tag: version)
     push_git_tags()
     push_to_git_remote()
     pod_push()
   end
 
-  desc "Runs all the tests"
+  desc "Increment Version"
+    lane :increment do |options|
+    version = options[:version]
+    version_bump_podspec(
+      path: "CodableStoreKit.podspec", 
+      version_number: version
+    )
+    set_info_plist_value(
+      path: "Configs/CodableStoreKit.plist", 
+      key: "CFBundleShortVersionString", 
+      value: version
+    )
+    set_info_plist_value(
+      path: "Configs/CodableStoreKit.plist", 
+      key: "CFBundleShortVersionString", 
+      value: version
+    )
+    set_info_plist_value(
+      path: "Example/Resources/Info.plist", 
+      key: "CFBundleShortVersionString", 
+      value: version
+    )
+    git_commit(
+        path: [
+          "CodableStoreKit.podspec", 
+          "Configs/CodableStoreKit.plist", 
+          "Configs/CodableStoreKit.plist", 
+          "Example/Resources/Info.plist"
+        ],
+        message: "CodableStoreKit Version #{version} 🚀"
+    )
+  end
+
+  desc "Runs Tests"
   lane :test do
+    carthage(command: "build", no_skip_current: true, cache_builds: true)
+    #pod_lib_lint
     scan(
       project: "CodableStoreKit.xcodeproj",
       scheme: "CodableStoreKit-iOS",
       clean: true,
       code_coverage: true
     )
-    pod_lib_lint
   end
 
   desc "Runs coverage"
@@ -42,5 +72,5 @@ platform :ios do
       ignore: ["Tests/*"]
     )
   end
-  
+
 end

@@ -1,9 +1,9 @@
 //
-//  UserDefaultsCodableStore.swift
+//  CodableStore.swift
 //  CodableStoreKit
 //
-//  Created by Sven Tiigi on 03.07.18.
-//  Copyright © 2018 Sven Tiigi. All rights reserved.
+//  Created by Sven Tiigi on 18.03.19.
+//  Copyright © 2019 CodableStoreKit. All rights reserved.
 //
 
 import Foundation
@@ -11,116 +11,133 @@ import Foundation
 // MARK: - CodableStore
 
 /// The CodableStore
-open class CodableStore<Object: BaseCodableStoreable> {
+public final class CodableStore<Storable: CodableStorable> {
     
     // MARK: Properties
     
-    /// The Container
-    public var container: CodableStoreContainer {
-        return self.engine.container
-    }
-    
     /// The Engine
-    let engine: AnyCodableStoreEngine<Object>
+    let engine: CodableStoreEngine
     
-    /// The Observer
-    let observer: AnyObserverableCodableStore<Object>
+    /// The CodableStoreContainer
+    public let container: CodableStoreContainer
     
-    // MARK: ACL Properties
-    
-    /// WriteableCodableStore (Write-Only)
-    open var writeable: AnyWriteableCodableStore<Object> {
-        return .init(self)
-    }
-    
-    /// ReadableCodableStore (Read-Only)
-    open var readable: AnyReadableCodableStore<Object> {
-        return .init(self)
-    }
-    
-    /// ObservableCodableStore (Observe-Only)
-    open var observable: AnyObserverableCodableStore<Object> {
-        return self.observer
-    }
-    
-    /// CopyableCodableStore (Copy-Only)
-    open var copyable: AnyCopyableCodableStore<Object> {
-        return .init(self)
-    }
+    /// The CodableStoreManager
+    let manager: CodableStoreManager
     
     // MARK: Initializer
-    
+
     /// Designated Initializer
     ///
     /// - Parameters:
-    ///   - engine: The CodableStoreEngine
-    public init<CE: CodableStoreEngine>(engine: CE) where CE.Object == Object {
-        self.engine = AnyCodableStoreEngine<Object>(engine)
-        self.observer = ObserverStorage
-            .sharedInstance
-            .getObserver(objectType: Object.self)
+    ///   - engine: The CodableStoreEngine. Default value `nil`
+    ///   - container: The CodableStoreContainer. Default value `.default`
+    ///   - manager: The CodableStoreManager. Default value `DefaultCodableStoreManager.sharedInstance`
+    public init(engine: CodableStoreEngine? = nil,
+                container: CodableStoreContainer = .default,
+                manager: CodableStoreManager = DefaultCodableStoreManager.sharedInstance) {
+        self.engine = engine ?? manager.provideEngine(for: Storable.self, in: container)
+        self.container = container
+        self.manager = manager
     }
+    
+}
 
-    /// Convenience Initializer with Container and Engine
+// MARK: - SaveableCodableStoreProtocol
+
+extension CodableStore: SaveableCodableStoreProtocol {
+    
+    /// Save CodableStorable
+    ///
+    /// - Parameter storable: The CodableStorable to save
+    /// - Returns: The saved CodableStorable
+    /// - Throws: If saving fails
+    @discardableResult
+    public func save(_ storable: Storable) throws -> Storable {
+        // Save Storable in Container
+        let storable: Storable = try self.engine.save(storable, in: self.container)
+        // Emit saved with Storable and Container
+        self.manager.emit(.saved(storable: storable, container: self.container))
+        // Return saved Storable
+        return storable
+    }
+    
+}
+
+// MARK: - DeletableCodableStoreProtocol
+
+extension CodableStore: DeletableCodableStoreProtocol {
+    
+    /// Delete CodableStorable via Identifier
+    ///
+    /// - Parameter identifier: The CodableStorable Identifier
+    /// - Returns: The deleted CodableStorable
+    /// - Throws: If deleting fails
+    @discardableResult
+    public func delete(_ identifier: Storable.Identifier) throws -> Storable {
+        // Delete Storable in Container
+        let storable: Storable = try self.engine.delete(identifier, in: self.container)
+        // Emit deleted with Storable and Container
+        self.manager.emit(.deleted(storable: storable, container: self.container))
+        // Return deleted Storable
+        return storable
+    }
+    
+    /// Delete all CodableStorables in Collection
+    ///
+    /// - Returns: The deleted CodableStorables
+    @discardableResult
+    public func deleteCollection() throws -> [Storable] {
+        // Delete Collection in Container
+        let storables: [Storable] = try self.engine.deleteCollection(in: self.container)
+        // For each Storable
+        for storable in storables {
+            // Emit deleted with Storable and Container
+            self.manager.emit(.deleted(storable: storable, container: self.container))
+        }
+        // Return deleted Storables
+        return storables
+    }
+    
+}
+
+// MARK: - ReadableCodableStoreProtocol
+
+extension CodableStore: ReadableCodableStoreProtocol {
+    
+    /// Retrieve CodableStorable via Identifier
+    ///
+    /// - Parameter identifier: The Ientifier
+    /// - Returns: The corresponding CodableStorable
+    /// - Throws: If retrieving fails
+    public func get(identifier: Storable.Identifier) throws -> Storable {
+        return try self.engine.get(identifier: identifier, in: self.container)
+    }
+    
+    /// Retrieve all CodableStorables in Collection
+    ///
+    /// - Returns: The CodableStorables in the Collection
+    /// - Throws: If retrieving fails
+    public func getCollection() throws -> [Storable] {
+        return try self.engine.getCollection(in: self.container)
+    }
+    
+}
+
+// MARK: - ObservableCodableStoreProtocol
+
+extension CodableStore: ObservableCodableStoreProtocol {
+    
+    /// Observe CodableStorable with Intent
     ///
     /// - Parameters:
-    ///   - container: The CodableStoreContainer. Default value `Default Container`
-    ///   - engine: The Engine. Default value `.fileSystem`
-    public convenience init(container: CodableStoreContainer = .default,
-                            engine: Engine = .fileSystem) {
-        // Switch on Engine
-        switch engine {
-        case .fileSystem:
-            // Init with FileManagerCodableStoreEngine
-            self.init(
-                engine: FileManagerCodeableStoreEngine(
-                    container: container
-                )
-            )
-        case .inMemory:
-            // Init with InMemoryCodableStoreEngine
-            self.init(
-                engine: InMemoryCodableStoreEngine(
-                    container: container
-                )
-            )
-        }
-    }
-
-    /// Deinit
-    deinit {
-        /// Clear Observer usage for Object Type
-        ObserverStorage
-            .sharedInstance
-            .clearObserveUsage(objectType: Object.self)
-    }
-    
-}
-
-// MARK: - CodableStore.Engine
-
-public extension CodableStore {
-    
-    /// The Engine
-    enum Engine {
-        /// FileSystem
-        case fileSystem
-        /// InMemory
-        case inMemory
-    }
-
-}
-
-// MARK: - CodableStore.Result
-
-public extension CodableStore {
-    
-    /// The CodableStore Result
-    enum Result {
-        /// Success with Object
-        case success(Object)
-        /// Failure with identifier and Error
-        case failure(Object.ID, Error)
+    ///   - intent: The CodableStoreObserverIntent
+    ///   - observer: The CodableStoreObserver
+    /// - Returns: The CodableStoreSubscription
+    @discardableResult
+    public func observe(with intent: CodableStoreObserverIntent<Storable>,
+                        _ observer: @escaping CodableStoreObserver<Storable>) -> CodableStoreSubscription {
+        // Observe with Intent and return Subscription on CodableStoreManager
+        return self.manager.observe(with: intent, observer)
     }
     
 }
