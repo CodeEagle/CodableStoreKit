@@ -245,7 +245,7 @@ extension FileManagerCodableStoreEngine {
             // Verify paths at url is empty
             if let paths = try? self?.fileManager
                 .contentsOfDirectory(atPath: url.path),
-                paths?.isEmpty == true {
+                paths.isEmpty == true {
                 // Remove item at url
                 try? self?.fileManager.removeItem(at: url)
             }
