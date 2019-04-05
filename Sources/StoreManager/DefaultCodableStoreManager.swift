@@ -18,13 +18,33 @@ public final class DefaultCodableStoreManager {
     /// The Shared Instance
     public static let sharedInstance = DefaultCodableStoreManager()
     
+    /// The EngineMode. Default value `fileSystem`
+    public static var engineMode: EngineMode = .fileSystem
+    
     /// The Observers
     var observers: Locked<[String: Any]> = .init(.init())
+    
+    /// The shared InMemoryCodableStoreEngine
+    lazy var sharedInMemoryCodableStoreEngine = InMemoryCodableStoreEngine()
     
     // MARK: Initializer
     
     /// Designated Initializer
     private init() {}
+    
+}
+
+// MARK: - EngineMode
+
+public extension DefaultCodableStoreManager {
+
+    /// The EngineMode
+    enum EngineMode: String, Codable, Equatable, Hashable, CaseIterable {
+        /// FileSystem
+        case fileSystem
+        /// InMemory
+        case inMemory
+    }
     
 }
 
@@ -57,7 +77,15 @@ extension DefaultCodableStoreManager: EngineProvidableCodableStoreManager {
     /// - Returns: A CodableStoreEngine
     public func provideEngine(for codable: Codable.Type,
                               in container: CodableStoreContainer) -> CodableStoreEngine {
-        return FileManagerCodableStoreEngine()
+        // Switch on EngineMode
+        switch DefaultCodableStoreManager.engineMode {
+        case .fileSystem:
+            // Return FileManagerCodableStoreEngine
+            return FileManagerCodableStoreEngine()
+        case .inMemory:
+            // Return shared InMemoryCodableStoreEngine
+            return self.sharedInMemoryCodableStoreEngine
+        }
     }
     
 }
