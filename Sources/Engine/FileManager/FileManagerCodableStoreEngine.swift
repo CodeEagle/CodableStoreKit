@@ -205,7 +205,7 @@ extension FileManagerCodableStoreEngine {
     func getContainerURL(container: CodableStoreContainer) throws -> URL {
         return try self.fileManager
             .getSearchPathDirectoryURL()
-            .appendingPathComponent(container.fullQualifiedName)
+            .appendingPathComponent(container.name)
     }
 
     /// Retrieve Collection URL for CollectionName and CodableStoreContainer

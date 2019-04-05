@@ -16,12 +16,7 @@ public struct CodableStoreContainer: Codable, Equatable, Hashable {
     // MARK: Properties
     
     /// The Container Name
-    public var name: String
-    
-    /// The Full-Qualified-Name
-    public var fullQualifiedName: String {
-        return "\(self.name)-CodableStoreContainer"
-    }
+    public let name: String
     
     // MARK: Initializer
     
@@ -38,7 +33,7 @@ public struct CodableStoreContainer: Codable, Equatable, Hashable {
 public extension CodableStoreContainer {
     
     /// The DefaultCodableStoreContainer
-    static var `default` = CodableStoreContainer(name: "Default")
+    static let `default` = CodableStoreContainer(name: "Default")
     
 }
 
@@ -77,17 +72,6 @@ extension CodableStoreContainer: ExpressibleByFloatLiteral {
     /// - Parameter value: The value to create.
     public init(floatLiteral value: Double) {
         self.name = .init(value)
-    }
-    
-}
-
-// MARK: - CustomStringConvertible
-
-extension CodableStoreContainer: CustomStringConvertible {
-    
-    /// String representation
-    public var description: String {
-        return self.fullQualifiedName
     }
     
 }
