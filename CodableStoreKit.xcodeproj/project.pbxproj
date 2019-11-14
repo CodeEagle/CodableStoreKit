@@ -196,7 +196,6 @@
 		3D0DEA5D2240CEE20011A2E5 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = SOURCE_ROOT; };
 		3D0DEA5E2240CEE20011A2E5 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = SOURCE_ROOT; };
 		3D0DEA5F2240CEE20011A2E5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		3D0DEA602240CEE20011A2E5 /* .codeclimate.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .codeclimate.yml; sourceTree = SOURCE_ROOT; };
 		3D0DEA612240CEE20011A2E5 /* CodableStoreKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CodableStoreKit.podspec; sourceTree = SOURCE_ROOT; };
 		3D0DEA632240D0410011A2E5 /* Fastfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = SOURCE_ROOT; };
 		3D0DEA652240D1C90011A2E5 /* ObservableCodableStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableCodableStoreProtocol.swift; sourceTree = "<group>"; };
@@ -208,7 +207,6 @@
 		3D0DEA93224100080011A2E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3D0DEA95224104E70011A2E5 /* CodableStorable+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStorable+Identifier.swift"; sourceTree = "<group>"; };
 		3D0DEA9A224107B30011A2E5 /* CodableStore+AccessControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+AccessControl.swift"; sourceTree = "<group>"; };
-		3D8B78E12253D26400AE04B7 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 		3DA06C7722401CEF00BD07FD /* CodableStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStorable.swift; sourceTree = "<group>"; };
 		3DA06C7C22401D2A00BD07FD /* StringRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
 		3DA06C8322401E8800BD07FD /* CodableStoreContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreContainer.swift; sourceTree = "<group>"; };
@@ -511,8 +509,6 @@
 				DD7502731C68FC20006590AF /* Tests */,
 				3D0DEA5B2240CEE20011A2E5 /* .gitignore */,
 				3D0DEA632240D0410011A2E5 /* Fastfile */,
-				3D8B78E12253D26400AE04B7 /* .travis.yml */,
-				3D0DEA602240CEE20011A2E5 /* .codeclimate.yml */,
 				3D0DEA5E2240CEE20011A2E5 /* .jazzy.yaml */,
 				3D0DEA5D2240CEE20011A2E5 /* .swift-version */,
 				3D0DEA592240CEE10011A2E5 /* .swiftlint.yml */,
