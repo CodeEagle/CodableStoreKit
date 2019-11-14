@@ -8,9 +8,6 @@
    <a href="https://developer.apple.com/swift/">
       <img src="https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat" alt="Swift 5.0">
    </a>
-   <a href="https://travis-ci.com/SvenTiigi/CodableStoreKit">
-      <img src="https://travis-ci.com/SvenTiigi/CodableStoreKit.svg?branch=master" alt="Build Status">
-   </a>
    <a href="http://cocoapods.org/pods/CodableStoreKit">
       <img src="https://img.shields.io/cocoapods/v/CodableStoreKit.svg?style=flat" alt="Version">
    </a>
@@ -20,13 +17,10 @@
    <a href="http://cocoapods.org/pods/CodableStoreKit">
       <img src="https://img.shields.io/cocoapods/p/CodableStoreKit.svg?style=flat" alt="Platform">
    </a>
+   <br/>
    <a href="https://github.com/apple/swift-package-manager">
       <img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="SPM">
    </a>	
-   <br/>
-   <a href="https://codeclimate.com/github/SvenTiigi/CodableStoreKit/maintainability">
-      <img src="https://api.codeclimate.com/v1/badges/3ebe590866dd344de148/maintainability" alt="Maintainability">
-   </a>
    <a href="https://sventiigi.github.io/CodableStoreKit">
       <img src="https://github.com/SvenTiigi/CodableStoreKit/blob/gh-pages/badge.svg" alt="Documentation">
    </a>
