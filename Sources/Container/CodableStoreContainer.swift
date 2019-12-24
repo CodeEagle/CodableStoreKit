@@ -1,0 +1,78 @@
+//
+//  CodableStoreContainer.swift
+//  CodableStoreKit
+//
+//  Created by Sven Tiigi on 20.11.19.
+//  Copyright © 2019 Sven Tiigi. All rights reserved.
+//
+
+import Foundation
+
+// MARK: - CodableStoreContainer
+
+/// The CodableStoreContainer
+public struct CodableStoreContainer: Codable, Equatable, Hashable {
+    
+    // MARK: Properties
+    
+    /// The Container Name
+    public let name: String
+    
+    // MARK: Initializer
+    
+    /// Designated Initializer
+    ///
+    /// - Parameter name: The name
+    public init(name: String) {
+        self.name = name
+    }
+    
+}
+
+// MARK: - Default
+
+public extension CodableStoreContainer {
+    
+    /// The DefaultCodableStoreContainer
+    static let `default`: CodableStoreContainer = "Default"
+    
+}
+
+// MARK: - ExpressibleByStringLiteral
+
+extension CodableStoreContainer: ExpressibleByStringLiteral {
+    
+    /// Initializer with String Value
+    ///
+    /// - Parameter value: The String Value
+    public init(stringLiteral value: String) {
+        self.name = value
+    }
+    
+}
+
+// MARK: - ExpressibleByIntegerLiteral
+
+extension CodableStoreContainer: ExpressibleByIntegerLiteral {
+    
+    /// Initializer with Integer Value which will be converted to a String
+    ///
+    /// - Parameter value: The Integer Value
+    public init(integerLiteral value: Int) {
+        self.name = .init(value)
+    }
+    
+}
+
+// MARK: - ExpressibleByFloatLiteral
+
+extension CodableStoreContainer: ExpressibleByFloatLiteral {
+    
+    /// Creates an instance initialized to the specified floating-point value.
+    ///
+    /// - Parameter value: The value to create.
+    public init(floatLiteral value: Double) {
+        self.name = .init(value)
+    }
+    
+}

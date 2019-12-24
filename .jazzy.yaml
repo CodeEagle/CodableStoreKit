@@ -1,0 +1,7 @@
+# CodableStoreKit document generator jazzy settings
+
+copyright: Copyright 2019 Sven Tiigi
+author: Sven Tiigi
+xcodebuild_arguments: [-target, CodableStoreKit-iOS]
+clean: true
+output: ./Documentation
