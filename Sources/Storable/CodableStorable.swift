@@ -13,8 +13,11 @@ import Foundation
 /// The CodableStorable
 public protocol CodableStorable: Codable {
     
+    /// The Identifier typealias
+    typealias Identifier = String
+    
     /// The CodableStore unique Identifier KeyPath
-    static var codableStoreIdentifier: KeyPath<Self, String> { get }
+    static var codableStoreIdentifier: KeyPath<Self, Identifier> { get }
     
     /// The CodableStore Collection Name
     static var codableStoreCollectionName: String { get }
@@ -37,7 +40,7 @@ public extension CodableStorable {
 extension CodableStorable {
     
     /// The identifier String value
-    var identifier: String {
+    var identifier: Identifier {
         self[keyPath: Self.codableStoreIdentifier]
     }
     

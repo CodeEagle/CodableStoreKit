@@ -48,8 +48,6 @@ It allows you to simply persist, retrieve and observe your Codable structs and c
 
 - [x] Easily persist and retrieve Codable types 💾
 - [x] Observe save and delete events 🕶
-- [x] Engine-Container-Collection-Architecture 📦
-- [x] Type Safety and Access-Control-System 🔒
 
 ## Installation
 
@@ -135,165 +133,23 @@ Now you are good to go to persist, retrieve and observe your CodableStoreable �
 let user = User(id: "42", firstName: "Mr.", lastName: "Robot")
 
 // Save
-try codableStore.save(user)
-
-// Delete
-try codableStore.delete(user)
+codableStore.save(user)
 
 // Get
-let retrievedUser = try codableStore.get(identifier: "42")
-
-// Observe
-codableStore.observe(user) { event in
-    switch event {
-    case .saved(let user, let container):
-        // The User has been saved in Container
-        break
-    case .deleted(let user, let container):
-        // The User has been deleted in Container
-        break
+switch codableStore.get(identifier: "42") {
+    case .success(let user):
+        print(user)
+    case .failure(let error):
+        print(error)
     }
 }
+
+// Delete
+codableStore.delete(user)
 ```
-> A full list of available API's can be found [here](https://sventiigi.github.io/CodableStoreKit/Classes/CodableStore.html)
 
 ## Advanced
 The Advanced section will explain all configuration possibilities and features of the `CodableStoreKit` in detail.
-
-### Engine-Container-Collection-Architecture
-
-`CodableStoreKit` is based on an `Engine-Container-Collection-Architecture (ECCA)`. 
-
-The architecture allows a `CodableStore` to use different `CodableStoreEngine` implementations wich are persisting data in their very own way. For instance the `InMemoryCodableStoreEngine` is holding the `CodableStoreable` objects in memory while a `FileManagerCodeableStoreEngine` will save all its data in the FileSystem.
-
-<p align="center">
-	<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/Architecture.jpg" alt="Architecture">
-</p>
-
-Each `CodableStoreEngine` can manage multiple `Containers` which allows you to store the same or different type of a Collection in an encapsulated section inside an `CodableStoreEngine `. A `Collection` can be described as a group of related object types.
-
-### Engine
-
-TODO: Add text
-
-If you wish you can implement your own `CodableStoreEngine`.
-
-```swift
-class MyCustomEngine: CodableStoreEngine {
-    // TODO: Implement me 👨‍💻
-}
-```
-As soon as you implemented your custom `CodableStoreEngine` you can pass it to a `CodableStore`.
-
-```swift
-// Initialize CodableStore with Custom Engine
-let codableStore = CodableStore<User>(engine: MyCustomEngine())
-```
-
-### Container
-
-To decide which `Container` should be used when persisting or retrieving Codables you can pass a `CodableStoreContainer` to the `initializer` of a `CodableStore`.
-
-```swift
-// Initialize a custom CodableStoreContainer
-let debugContainer = CodableStoreContainer(name: "DebugContainer")
-
-// Pass it to the CodableStore initializer
-let codableStore = CodableStore<User>(container: debugContainer)
-```
-> ☝️ In default the `.default` `CodableStoreContainer` will be used with the name "Default"
-
-### Collection
-
-As mentioned before a `Collection` is a group of realted object types. This means every struct or class that is conform to the `CodableStoreable` protocol is a `Collection`. Therefore a `Collection` is identified via a name. In default the name of a `Collection` is the name of the type.
-
-```swift
-// Print the CodableStore Collection-Name
-print(User.codableStoreCollectionName) // User.Type
-```
-
-If you wish to supply a custom `Collection` name you can override the static `codableStoreCollectionName` property.
-
-```swift
-extension User {
-
-    /// The CodableStore collection name
-    static var codableStoreCollectionName: String {
-        // In Default: return String(describing: type(of: self))
-        return "MyCustomUserCollectionName"
-    }
-    
-}
-```
-
-### Manager
-
-TODO: Add Text
-
-### Access-Control
-
-A `CodableStore` enables you to access all functions to save, delete, read and observe CodableStoreables. If you wish to use a `CodableStore` in delete-only or read-only mode you can make use of the `AccessControl` properties.
-
-```swift
-let codableStore = CodableStore<User>()
-
-// Save-Only CodableStore
-let saveableCodableStore = codableStore.accessControl.saveable
-
-// Delete-Only CodableStore
-let readableCodableStore = codableStore.accessControl.deletable
-
-// Read-Only CodableStore
-let readableCodableStore = codableStore.accessControl.readable
-
-// Observe-Only CodableStore
-let observableCodableStore = codableStore.accessControl.observable
-```
-
-### Observation
-
-In order to retrieve callbacks / notifications when a certain CodableStorable type has been saved or deleted in a Container you can make use of the aforementioned `observe` functions. When you invoke the `oberserve` function you will retrieve a `CodableStoreSubscription` in order to invalidate it and avoid memory leaks.
-
-```swift
-// Initialize a CodableStore
-let codableStore = CodableStore<User>()
-
-// Observe save and delete of Users where lastName contains "Robot"
-let subscription = codableStore.observe(where: { $0.lastName.contains("Robot") }) { event in
-    switch event {
-    case .saved(storable: let user, container: let container):
-        break
-    case .deleted(storable: let user, container: let container):
-        break
-    }
-}
-
-// Manually invalidate subscription
-subscription.invalidate()
-```
-
-Or you can use the `CodableStoreSubscriptionBag` in order to automatically invalidate the subscription.
-
-```swift
-class MyCustomClass {
-
-    /// The CodableStore
-    let codableStore = CodableStore<User>()
-
-    /// The CodableStoreSubscriptionBag
-    let subscriptionBag = CodableStoreSubscriptionBag()
-
-    /// Designated Initializer
-    init() {
-        // Observe all Users and dispose it by SubscriptionBag
-        self.codableStore.observeCollection { event in
-            print(event)
-        }.invalidated(by: self.subscriptionBag)
-    }
-
-}
-
-```
 
 ## Contributing
 Contributions are very welcome 🙌 🤓

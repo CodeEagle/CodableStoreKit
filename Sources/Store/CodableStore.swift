@@ -30,6 +30,11 @@ public struct CodableStore<Storable: CodableStorable> {
     /// The Container
     public let container: CodableStoreContainer
     
+    /// The FileSystem URL
+    public var fileSystemURL: URL? {
+        try? self.makeCollectionURL()
+    }
+    
     // MARK: Initializer
     
     /// Designated Initializer
@@ -81,7 +86,7 @@ extension CodableStore {
     
     /// Make Storable URL with identifier
     /// - Parameter identifier: The identifier value
-    func makeStorableURL(identifier: String) throws -> URL {
+    func makeStorableURL(identifier: Storable.Identifier) throws -> URL {
         // Make collection url and append identifier
         try self.makeCollectionURL().appendingPathComponent(identifier)
     }
@@ -108,7 +113,7 @@ extension CodableStore {
     func makeContainerURL() throws -> URL {
         // Declare searchPathDirectory
         let searchPathDirectory: FileManager.SearchPathDirectory
-        #if (tvOS)
+        #if os(tvOS)
         // tvOS only supports the cache directory
         searchPathDirectory = .cachesDirectory
         #else

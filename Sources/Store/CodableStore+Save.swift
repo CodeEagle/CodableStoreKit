@@ -38,7 +38,10 @@ public extension CodableStore {
         let createFileResult = self.fileManager.createFile(
             atPath: url.path,
             contents: data,
-            attributes: nil
+            attributes: [
+                .creationDate: self.getCreationDate(storable) ?? .init(),
+                .modificationDate: Date()
+            ]
         )
         // Verify creating file succeeded
         guard createFileResult else {

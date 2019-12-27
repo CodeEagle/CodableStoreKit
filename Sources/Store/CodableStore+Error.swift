@@ -29,8 +29,10 @@ public extension CodableStore {
         /// - Parameters:
         ///   - failureReason: The failure reason
         ///   - underlyingError: The optional underlying Error. Default value `nil`
-        public init(failureReason: String,
-                    underlyingError: Swift.Error? = nil) {
+        public init(
+            failureReason: String,
+            underlyingError: Swift.Error? = nil
+        ) {
             self.failureReason = failureReason
             self.underlyingError = underlyingError
         }
@@ -63,7 +65,7 @@ extension CodableStore.Error {
         )
     }
     
-    static func notFound(_ identifier: String) -> Self {
+    static func notFound(_ identifier: Storable.Identifier) -> Self {
         .init(
             failureReason: "Storable for identifier: \(identifier) doesn't exists"
         )
@@ -83,7 +85,7 @@ extension CodableStore.Error {
         )
     }
     
-    static func fileDataUnavailable(_ identifier: String) -> Self {
+    static func fileDataUnavailable(_ identifier: Storable.Identifier) -> Self {
         .init(
             failureReason: "Data for CodableStorable is not available \(identifier)"
         )
@@ -106,6 +108,13 @@ extension CodableStore.Error {
     static func nonMatchingPredicate() -> Self {
         .init(
             failureReason: "No CodableStorable found for the given predicate"
+        )
+    }
+    
+    static func encryptionFailed(_ url: URL, _ error: Error) -> Self {
+        .init(
+            failureReason: "Unable to encrypt file: \(url)",
+            underlyingError: error
         )
     }
     

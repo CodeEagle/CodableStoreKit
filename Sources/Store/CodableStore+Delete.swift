@@ -15,7 +15,7 @@ public extension CodableStore {
     /// Delete CodableStorable by identifier
     /// - Parameter identifier: The CodableStorable identifier that should be deleted
     @discardableResult
-    func delete(_ identifier: String) -> Result<Void, Error> {
+    func delete(_ identifier: Storable.Identifier) -> Result<Void, Error> {
         // Verify Storable exists for identifier
         guard self.exists(identifier) else {
             // Otherwise return failure
@@ -74,6 +74,21 @@ public extension CodableStore {
         )
         // Return success
         return .success(())
+    }
+    
+    /// Delete all CodableStorables that satisfy the given predicate
+    /// - Parameter predicate: The predicate
+    @discardableResult
+    func deleteAll(where predicate: (Storable) -> Bool) -> [Result<Void, Error>] {
+        // Retrieve all with predicate
+        switch self.getAll(where: predicate) {
+        case .success(let storables):
+            // Delete Storables
+            return self.delete(storables)
+        case .failure(let error):
+            // Return failure
+            return [.failure(error)]
+        }
     }
     
     /// Delete CodableStorables
