@@ -92,7 +92,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 
 ### Step 1
 
-Make your Codable structs or classes conform to the `CodableStoreable` protocol.
+Make your Codable structs or classes conform to the `CodableStorable` protocol.
 
 ```swift
 /// The User Struct
@@ -102,9 +102,9 @@ struct User: Codable {
     let lastName: String
 }
 
-// MARK: - CodableStoreable
+// MARK: - CodableStorable
 
-extension User: CodableStoreable {
+extension User: CodableStorable {
 
     /// The CodableStore unique identifier KeyPath
     static var codableStoreIdentifier: KeyPath<User, String> {
@@ -133,19 +133,44 @@ Now you are good to go to persist, retrieve and observe your CodableStoreable ðŸ
 let user = User(id: "42", firstName: "Mr.", lastName: "Robot")
 
 // Save
-codableStore.save(user)
+switch codableStore.save(user) {
+case .success(let user):
+    print("Saved", user)
+case .failure(let error):
+    print("Saving failed", error)
+}
 
-// Get
-switch codableStore.get(identifier: "42") {
-    case .success(let user):
-        print(user)
-    case .failure(let error):
-        print(error)
-    }
+// Retrieve by Identifier
+switch codableStore.get("42") {
+case .success(let user):
+    print("User retrieved by Identifier", user)
+case .failure(let error):
+    print("Failed to retrieve User by Identifier", error)
+}
+
+// Retrieve all
+switch codableStore.getAll() {
+case .success(let users):
+    print("Get all Users", users)
+case .failure(let error):
+    print("Retrieving all failed", error)
 }
 
 // Delete
-codableStore.delete(user)
+switch codableStore.delete(user) {
+case .success:
+    print("Deleted User")
+case .failure(let error):
+    print("Failed to delete User", error)
+}
+
+// Delete all
+switch codableStore.deleteAll() {
+case .success:
+    print("Deleted all Users")
+case .failure(let error):
+    print("Failed to delete all Users", error)
+}
 ```
 
 ## Advanced
