@@ -133,43 +133,31 @@ Now you are good to go to persist, retrieve and observe your CodableStoreable ðŸ
 let user = User(id: "42", firstName: "Mr.", lastName: "Robot")
 
 // Save
-switch codableStore.save(user) {
-case .success(let user):
-    print("Saved", user)
-case .failure(let error):
-    print("Saving failed", error)
-}
+codableStore.save(user)
 
 // Retrieve by Identifier
-switch codableStore.get("42") {
-case .success(let user):
-    print("User retrieved by Identifier", user)
-case .failure(let error):
-    print("Failed to retrieve User by Identifier", error)
-}
+let result = codableStore.get("42")
 
 // Retrieve all
-switch codableStore.getAll() {
-case .success(let users):
-    print("Get all Users", users)
-case .failure(let error):
-    print("Retrieving all failed", error)
-}
+let result = codableStore.getAll()
+
+// Exists
+let result = codableStore.exists(user)
 
 // Delete
-switch codableStore.delete(user) {
-case .success:
-    print("Deleted User")
-case .failure(let error):
-    print("Failed to delete User", error)
-}
+codableStore.delete(user)
 
 // Delete all
-switch codableStore.deleteAll() {
-case .success:
-    print("Deleted all Users")
-case .failure(let error):
-    print("Failed to delete all Users", error)
+codableStore.deleteAll()
+
+// Observe
+codableStore.observe(on: self) { event in
+    switch event {
+    case .saved:
+        break
+    case .deleted:
+        break
+    }
 }
 ```
 
