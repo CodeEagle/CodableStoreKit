@@ -71,6 +71,10 @@
 		3DA8B6FE2385E92E0011D32F /* AnyDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA8B6FC2385E92E0011D32F /* AnyDecoder.swift */; };
 		3DA8B6FF2385E92E0011D32F /* AnyDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA8B6FC2385E92E0011D32F /* AnyDecoder.swift */; };
 		3DA8B7002385E92E0011D32F /* AnyDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA8B6FC2385E92E0011D32F /* AnyDecoder.swift */; };
+		3DB334522401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */; };
+		3DB334532401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */; };
+		3DB334542401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */; };
+		3DB334552401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +161,7 @@
 		3DA8B6F12385DFFC0011D32F /* CodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStore.swift; sourceTree = "<group>"; };
 		3DA8B6F72385E92A0011D32F /* AnyEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncoder.swift; sourceTree = "<group>"; };
 		3DA8B6FC2385E92E0011D32F /* AnyDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecoder.swift; sourceTree = "<group>"; };
+		3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+ChangeEvent.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +345,7 @@
 				3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */,
 				3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */,
 				3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */,
+				3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */,
 				3D4A2CCA239BA8B200D34148 /* CodableStore+Observe.swift */,
 				3D4AF9F223B60F2300D07AF8 /* CodableStore+Encryption.swift */,
 				3D4A2CB6239BA5FA00D34148 /* CodableStore+Error.swift */,
@@ -748,6 +754,7 @@
 				3D9C42A222745900000A6585 /* CodableStoreKit.swift in Sources */,
 				3DA8B6F82385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D480CD823866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
+				3DB334522401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6FD2385E92E0011D32F /* AnyDecoder.swift in Sources */,
 				3D4A2CC6239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6F22385DFFC0011D32F /* CodableStore.swift in Sources */,
@@ -768,6 +775,7 @@
 				3DA8B6EE2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
 				3D9C42B1227459C1000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CD923866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
+				3DB334532401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6F92385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D4A2CC7239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6FE2385E92E0011D32F /* AnyDecoder.swift in Sources */,
@@ -788,6 +796,7 @@
 				3DA8B6EF2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
 				3D9C42BF227459F6000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CDA23866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
+				3DB334542401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6FA2385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D4A2CC8239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6FF2385E92E0011D32F /* AnyDecoder.swift in Sources */,
@@ -808,6 +817,7 @@
 				3DA8B6F02385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
 				3D9C42CD22745A28000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CDB23866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
+				3DB334552401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6FB2385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D4A2CC9239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B7002385E92E0011D32F /* AnyDecoder.swift in Sources */,

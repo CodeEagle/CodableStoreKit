@@ -12,14 +12,6 @@ import Foundation
 
 public extension CodableStore {
     
-    /// The CodableStore ChangeEvent
-    enum ChangeEvent: Equatable, Hashable {
-        /// Saved CodableStorable in CodableStoreContainer
-        case saved(container: CodableStoreContainer)
-        /// Deleted CodableStorable in CodableStoreContainer
-        case deleted(container: CodableStoreContainer)
-    }
-    
     /// Observe CodableStore ChangeEvent
     /// - Parameters:
     ///   - object: The Object to observe on

@@ -41,7 +41,11 @@ public extension CodableStore {
         self.clearDirectoriesIfNeeded()
         // Emit deleted event
         self.notificationCenter.emit(
-            Self.ChangeEvent.deleted(container: self.container)
+            storableType: Storable.self,
+            .deleted(
+                identifier: identifier,
+                container: self.container
+            )
         )
         // Return success
         return .success(())
@@ -70,7 +74,10 @@ public extension CodableStore {
         self.clearDirectoriesIfNeeded()
         // Emit deleted event
         self.notificationCenter.emit(
-            Self.ChangeEvent.deleted(container: self.container)
+            storableType: Storable.self,
+            .deletedAll(
+                container: self.container
+            )
         )
         // Return success
         return .success(())

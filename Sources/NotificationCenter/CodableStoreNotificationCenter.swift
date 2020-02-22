@@ -21,7 +21,7 @@ open class CodableStoreNotificationCenter {
     // MARK: Properties
     
     /// The Observations
-    var observations: [(Any) -> Bool] = .init()
+    open var observations: [(Any) -> Bool] = .init()
     
     // MARK: Initializer
     
@@ -30,7 +30,7 @@ open class CodableStoreNotificationCenter {
     
     // MARK: Observe
     
-    /// Observe all ChangeEvents to any CodableStore
+    /// Observe all ChangeEvents on any CodableStore
     /// - Parameters:
     ///   - object: The Object to observe on
     ///   - observer: The Observer
@@ -56,9 +56,13 @@ open class CodableStoreNotificationCenter {
     /// Observe CodableStore ChangeEvent
     /// - Parameters:
     ///   - object: The Object to observe on
+    ///   - storableType: The Storable Type. Default value `Storable.self`
+    ///   - container: The optional CodableStoreContainer that should match. Default value `nil`
     ///   - observer: The Observer
     open func observe<Object: AnyObject, Storable: CodableStorable>(
         on object: Object,
+        storableType: Storable.Type = Storable.self,
+        in container: CodableStoreContainer? = nil,
         _ observer: @escaping (CodableStore<Storable>.ChangeEvent) -> Void
     ) {
         // Append Observation
@@ -75,6 +79,11 @@ open class CodableStoreNotificationCenter {
                 // doesn't match the current one
                 return true
             }
+            // Check if a Container is available and the ChangeEvent Container is not equal to it
+            if let container = container, changeEvent.container != container {
+                // Return true as the Containers doesn't match
+                return true
+            }
             // Invoke Observer with ChangeEvent
             observer(changeEvent)
             // Return true
@@ -85,8 +94,13 @@ open class CodableStoreNotificationCenter {
     // MARK: Emit
     
     /// Emit CodableStore  ChangeEvent
-    /// - Parameter changeEvent: The CodableStore  ChangeEvent that should be emitted
-    open func emit<Storable: CodableStorable>(_ changeEvent: CodableStore<Storable>.ChangeEvent) {
+    /// - Parameters:
+    ///   - storableType: The Storable Type. Default value `Storable.self`
+    ///   - changeEvent: The CodableStore  ChangeEvent that should be emitted
+    open func emit<Storable: CodableStorable>(
+        storableType: Storable.Type = Storable.self,
+        _ changeEvent: CodableStore<Storable>.ChangeEvent
+    ) {
         // Invoke observations and filter out any deallocated observer
          self.observations = self.observations.filter { $0(changeEvent) }
     }

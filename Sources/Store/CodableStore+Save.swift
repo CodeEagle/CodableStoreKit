@@ -50,7 +50,10 @@ public extension CodableStore {
         }
         // Emit saved event
         self.notificationCenter.emit(
-            Self.ChangeEvent.saved(container: self.container)
+            .saved(
+                storable: storable,
+                container: self.container
+            )
         )
         // Return success
         return .success(storable)

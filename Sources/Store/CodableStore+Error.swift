@@ -41,7 +41,7 @@ public extension CodableStore {
     
 }
 
-// MARK: - Defaults
+// MARK: - Error+Defaults
 
 extension CodableStore.Error {
     

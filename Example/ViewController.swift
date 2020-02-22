@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         let codableStore = CodableStore<User>()
+        print(codableStore)
         switch codableStore.delete("1") {
         case .success:
             break

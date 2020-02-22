@@ -60,6 +60,25 @@ public struct CodableStore<Storable: CodableStorable> {
     
 }
 
+// MARK: - CustomStringConvertible
+
+extension CodableStore: CustomStringConvertible {
+    
+    /// A textual representation of this instance
+    public var description: String {
+        let storableType = String(
+            describing: Mirror(reflecting: Storable.self).subjectType
+        ).replacingOccurrences(of: ".Type", with: "")
+        return """
+        CodableStore<\(storableType)>
+        Container: \(self.container.name)
+        Collection: \(Storable.codableStoreCollectionName)
+        FileSystemURL: \(self.fileSystemURL?.absoluteString ?? "n.a.")
+        """
+    }
+    
+}
+
 // MARK: - Equatable
 
 extension CodableStore: Equatable {
