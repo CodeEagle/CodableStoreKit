@@ -37,13 +37,6 @@ CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, w
 It allows you to simply persist, retrieve and observe your Codable structs and classes.
 </p>
 
-<br/>
-
-<p align="center">
-   <img width="70%" src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableTyping.gif" alt="CodableTyping" />
-   <br/><br/>
-</p>
-
 ## Features
 
 - [x] Easily persist and retrieve Codable types 💾
@@ -107,10 +100,7 @@ struct User: Codable {
 extension User: CodableStorable {
 
     /// The CodableStore unique identifier KeyPath
-    static var codableStoreIdentifier: KeyPath<User, String> {
-        // Return a KeyPath to a property which uniquely identifies an User
-        return \.id
-    }
+    static var codableStoreIdentifier: KeyPath<Self, String> = \.id
     
 }
 ```
@@ -153,9 +143,11 @@ codableStore.deleteAll()
 // Observe
 codableStore.observe(on: self) { event in
     switch event {
-    case .saved:
+    case .saved(let storable, let container):
         break
-    case .deleted:
+    case .deleted(let identifier, let container):
+        break
+    case .deletedAll(let container):
         break
     }
 }
