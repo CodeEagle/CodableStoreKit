@@ -15,6 +15,12 @@ public struct CodableStore<Storable: CodableStorable> {
     
     // MARK: Properties
     
+    /// The Container
+    public let container: CodableStoreContainer
+    
+    /// The CodableStoreNotificationCenter
+    let notificationCenter: CodableStoreNotificationCenter
+    
     /// The FileManager
     let fileManager: FileManager
     
@@ -23,17 +29,6 @@ public struct CodableStore<Storable: CodableStorable> {
     
     /// The Decoder
     let decoder: AnyDecoder
-    
-    /// The CodableStoreNotificationCenter
-    let notificationCenter: CodableStoreNotificationCenter
-    
-    /// The Container
-    public let container: CodableStoreContainer
-    
-    /// The FileSystem URL
-    public var fileSystemURL: URL? {
-        try? self.makeCollectionURL()
-    }
     
     // MARK: Initializer
     
@@ -56,6 +51,17 @@ public struct CodableStore<Storable: CodableStorable> {
         self.decoder = decoder
         self.notificationCenter = notificationCenter
         self.container = container
+    }
+    
+}
+
+// MARK: - File System URL
+
+public extension CodableStore {
+    
+    /// The FileSystem URL
+    var fileSystemURL: URL? {
+        try? self.makeCollectionURL()
     }
     
 }
