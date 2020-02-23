@@ -34,11 +34,11 @@ public extension CodableStore {
 
 // MARK: - ChangeEvent+Equatable
 
-extension CodableStore.ChangeEvent: Equatable where Storable: Equatable {}
+extension CodableStore.ChangeEvent: Equatable where Storable: Equatable, Storable.Identifier: Equatable {}
 
 // MARK: - ChangeEvent+Hashable
 
-extension CodableStore.ChangeEvent: Hashable where Storable: Hashable {}
+extension CodableStore.ChangeEvent: Hashable where Storable: Hashable, Storable.Identifier: Hashable {}
 
 // MARK: - ChangeEvent+Container
 

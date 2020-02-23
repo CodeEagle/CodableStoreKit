@@ -65,10 +65,17 @@ extension CodableStore.Error {
         )
     }
     
-    static func notFound(_ identifier: Storable.Identifier) -> Self {
-        .init(
-            failureReason: "Storable for identifier: \(identifier) doesn't exists"
-        )
+    static func notFound(_ identifier: Storable.Identifier? = nil) -> Self {
+        if let identifier = identifier {
+            return .init(
+                failureReason: "CodableStorable for identifier: \(identifier) doesn't exists"
+            )
+        } else {
+            return .init(
+                failureReason: "CodableStorable not found"
+            )
+        }
+        
     }
     
     static func fileDeletionFailed(_ url: URL, _ error: Error) -> Self {

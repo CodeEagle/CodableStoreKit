@@ -101,7 +101,7 @@ public extension CodableStore {
     /// Delete CodableStorables
     /// - Parameter identifiers: The CodableStorable identifiers that should be deleted
     @discardableResult
-    func delete(_ identifiers: [String]) -> [Result<Void, Error>] {
+    func delete(_ identifiers: [Storable.Identifier]) -> [Result<Void, Error>] {
         // Delete identifiers
         identifiers.map(self.delete)
     }

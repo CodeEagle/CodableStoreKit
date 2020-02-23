@@ -49,6 +49,29 @@ public extension CodableStore {
         self.get(storable.identifier)
     }
     
+    /// Retrieve first CodableStorable that satisfy the given predicate
+    /// - Parameter predicate: The predicate
+    func first(where predicate: (Storable) -> Bool) -> Result<Storable, Error> {
+        // Retrieve all with predicate
+        self.getAll(where: predicate)
+            // FlatMap Result
+            .flatMap { storables in
+                // Verify first Storable is available
+                guard let storable = storables.first else {
+                    // Otherwise return failure
+                    return .failure(.notFound())
+                }
+                // Return success
+                return .success(storable)
+            }
+    }
+    
+}
+
+// MARK: - Get All
+
+public extension CodableStore {
+    
     /// Retrieve all CodableStorables
     func getAll() -> Result<[Storable], Error> {
         // Declare URL
@@ -92,24 +115,11 @@ public extension CodableStore {
         self.getAll().map { $0.filter(predicate) }
     }
     
-    /// Retrieve first CodableStorable that satisfy the given predicate
-    /// - Parameter predicate: The predicate
-    func first(where predicate: (Storable) -> Bool) -> Result<Storable, Error> {
-        // Switch on get all with predicate
-        switch self.getAll(where: predicate) {
-        case .success(let storables):
-            // Verify first Storable is available
-            guard let storable = storables.first else {
-                // Otherwise return failure
-                return .failure(.nonMatchingPredicate())
-            }
-            // Return success
-            return .success(storable)
-        case .failure(let error):
-            // Return failure
-            return .failure(error)
-        }
-    }
+}
+
+// MARK: - Exists
+
+public extension CodableStore {
     
     /// Retrieve Bool value if a CodableStorable exists for a given identifier
     /// - Parameter identifier: The identifier to check for existence
@@ -129,6 +139,12 @@ public extension CodableStore {
         // Check for existence by identifier
         self.exists(storable.identifier)
     }
+    
+}
+
+// MARK: - Creation/Modification Date
+
+public extension CodableStore {
     
     /// Retrieve creation Date for CodableStorable Identifier
     /// - Parameter identifier: The Identifier to retrieve creation Date
@@ -165,15 +181,13 @@ extension CodableStore {
     ///   - identifier: The CodableStorable Identifier to retrieve FileAttributeKey Value
     ///   - key: The FileAttributeKey
     func getAttribute<T>(for identifier: Storable.Identifier, key: FileAttributeKey) -> T? {
-        // Verify Collection URL is available
-        guard let url = try? self.makeCollectionURL() else {
+        // Verify CodableStorable URL is available
+        guard let url = try? self.makeStorableURL(identifier: identifier) else {
             // Otheriwse return nil
             return nil
         }
-        // Initialize path by appending identifier to collection url
-        let path = url.appendingPathComponent(identifier).path
         // Verify Attributes at path are available
-        guard let attributes = try? self.fileManager.attributesOfItem(atPath: path) else {
+        guard let attributes = try? self.fileManager.attributesOfItem(atPath: url.path) else {
             // Otherwise return nil
             return nil
         }

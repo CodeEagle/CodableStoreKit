@@ -15,8 +15,19 @@ extension CodableStore {
     /// Make Storable URL with identifier
     /// - Parameter identifier: The identifier value
     func makeStorableURL(identifier: Storable.Identifier) throws -> URL {
+        // Declare the Identifier String representation
+        let identifierStringRepresentation: String
+        // Check if the Identifier is a String
+        if let identifier = identifier as? String {
+            // Initialize String representation
+            identifierStringRepresentation = identifier
+        } else {
+            // Otherwise convert Identifier via String Interpolation to a String
+            identifierStringRepresentation = "\(identifier)"
+        }
         // Make collection url and append sanitized identifier
-        try self.makeCollectionURL().appendingPathComponent(identifier.sanitized())
+        return try self.makeCollectionURL()
+            .appendingPathComponent(identifierStringRepresentation.sanitized())
     }
     
     /// Make Collection URL
