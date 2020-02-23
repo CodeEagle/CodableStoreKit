@@ -101,8 +101,24 @@ open class CodableStoreNotificationCenter {
         storableType: Storable.Type = Storable.self,
         _ changeEvent: CodableStore<Storable>.ChangeEvent
     ) {
-        // Invoke observations and filter out any deallocated observer
-         self.observations = self.observations.filter { $0(changeEvent) }
+        // Initialize the Emit closure
+        let emit: () -> Void = { [weak self] in
+            // Verify self is available
+            guard let self = self else {
+                // Otherwise return out of function
+                return
+            }
+            // Invoke observations and filter out any deallocated observer
+            self.observations = self.observations.filter { $0(changeEvent) }
+        }
+        // Check if the current Thread is the main thread
+        if Thread.isMainThread {
+            // Execture the emit closure
+            emit()
+        } else {
+            // Otherwise dispatch on main queue and execute emit
+            DispatchQueue.main.async(execute: emit)
+        }
     }
     
 }
