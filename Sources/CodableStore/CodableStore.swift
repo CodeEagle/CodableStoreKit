@@ -39,17 +39,17 @@ public struct CodableStore<Storable: CodableStorable> {
     
     /// Designated Initializer
     /// - Parameters:
+    ///   - container: The Container. Default value `.default`
+    ///   - notificationCenter: The CodableStoreNotificationCenter. Default value `.default`
     ///   - fileManager: The FileManager. Default value `.default`
     ///   - encoder: The Encoder. Default value `JSONEncoder()`
     ///   - decoder: The Decoder. Default value `JSONDecoder()`
-    ///   - notificationCenter: The CodableStoreNotificationCenter. Default value `.default`
-    ///   - container: The Container. Default value `.default`
     public init(
+        container: CodableStoreContainer = .default,
+        notificationCenter: CodableStoreNotificationCenter = .default,
         fileManager: FileManager = .default,
         encoder: AnyEncoder = JSONEncoder(),
-        decoder: AnyDecoder = JSONDecoder(),
-        notificationCenter: CodableStoreNotificationCenter = .default,
-        container: CodableStoreContainer = .default
+        decoder: AnyDecoder = JSONDecoder()
     ) {
         self.fileManager = fileManager
         self.encoder = encoder
