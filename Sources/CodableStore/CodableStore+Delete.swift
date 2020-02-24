@@ -23,12 +23,14 @@ public extension CodableStore {
         }
         // Declare URL
         let url: URL
-        do {
-            // Try to retrieve the Storable URL for identifier
-            url = try self.url(for: identifier)
-        } catch {
+        // Switch on Result of URL for Identifier
+        switch self.url(for: identifier) {
+        case .success(let storableURL):
+            // Initialize URL
+            url = storableURL
+        case .failure(let error):
             // Return failure
-            return .failure(.constructingURLFailed(error))
+            return .failure(error)
         }
         do {
             // Try to remove item at url
@@ -56,12 +58,14 @@ public extension CodableStore {
     func deleteAll() -> Result<Void, Error> {
         // Declare URL
         let url: URL
-        do {
-            // Try to retrieve the collection url
-            url = try self.collectionURL()
-        } catch {
+        // Switch on Result of Collection URL
+        switch self.collectionURL() {
+        case .success(let collectionURL):
+            // Initialize URL
+            url = collectionURL
+        case .failure(let error):
             // Return failure
-            return .failure(.constructingURLFailed(error))
+            return .failure(error)
         }
         do {
             // Try to remove item at url
@@ -142,9 +146,9 @@ private extension CodableStore {
             try? self.fileManager.removeItem(at: url)
         }
         // Delete Collection-Directory if Empty
-        (try? self.collectionURL()).flatMap(deleteIfEmpty)
+        (try? self.collectionURL().get()).flatMap(deleteIfEmpty)
         // Delete Container-Directory if Empty
-        (try? self.containerURL()).flatMap(deleteIfEmpty)
+        (try? self.containerURL().get()).flatMap(deleteIfEmpty)
     }
     
 }

@@ -17,12 +17,14 @@ public extension CodableStore {
     func get(_ identifier: Storable.Identifier) -> Result<Storable, Error> {
         // Declare URL
         let url: URL
-        do {
-            // Try to retrieve the Storable URL
-            url = try self.url(for: identifier)
-        } catch {
+        // Switch on Result of URL for Identifier
+        switch self.url(for: identifier) {
+        case .success(let storableURL):
+            // Initialize URL
+            url = storableURL
+        case .failure(let error):
             // Return failure
-            return .failure(.constructingURLFailed(error))
+            return .failure(error)
         }
         // Verify Data for URL is available
         guard let data = self.fileManager.contents(atPath: url.path) else {
@@ -76,12 +78,14 @@ public extension CodableStore {
     func getAll() -> Result<[Storable], Error> {
         // Declare URL
         let url: URL
-        do {
-            // Try to retrieve the collection url
-            url = try self.collectionURL()
-        } catch {
+        // Switch on Result of Collection URL
+        switch self.collectionURL() {
+        case .success(let collectionURL):
+            // Initialize URL
+            url = collectionURL
+        case .failure(let error):
             // Return failure
-            return .failure(.constructingURLFailed(error))
+            return .failure(error)
         }
         // Declare paths String Array
         let paths: [String]
@@ -125,7 +129,7 @@ public extension CodableStore {
     /// - Parameter identifier: The identifier to check for existence
     func exists(_ identifier: Storable.Identifier) -> Bool {
         // Verfy Storable URL is available
-        guard let url = try? self.url(for: identifier) else {
+        guard let url = try? self.url(for: identifier).get() else {
             // Otherwise return false
             return false
         }

@@ -26,12 +26,14 @@ public extension CodableStore {
     ) -> [Result<Void, Error>] {
         // Declare URL
         let url: URL
-        do {
-            // Try to retrieve the collection url
-            url = try self.collectionURL()
-        } catch {
+        // Switch on Result of Collection URL
+        switch self.collectionURL() {
+        case .success(let collectionURL):
+            // Initialize URL
+            url = collectionURL
+        case .failure(let error):
             // Return failure
-            return [.failure(.constructingURLFailed(error))]
+            return [.failure(error)]
         }
         // Declare paths String Array
         var paths: [String]

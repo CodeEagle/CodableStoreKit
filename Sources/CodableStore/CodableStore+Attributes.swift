@@ -53,18 +53,15 @@ extension CodableStore {
     ///   - identifier: The CodableStorable Identifier to retrieve FileAttributeKey Value
     ///   - key: The FileAttributeKey
     func attribute<T>(for identifier: Storable.Identifier, key: FileAttributeKey) -> T? {
-        // Verify URL for CodableStorable Identifier is available
-        guard let url = try? self.url(for: identifier) else {
-            // Otheriwse return nil
-            return nil
-        }
-        // Verify Attributes at path are available
-        guard let attributes = try? self.fileManager.attributesOfItem(atPath: url.path) else {
+        // Switch on Result
+        switch self.url(for: identifier) {
+        case .success(let url):
+            // Return Attribute for Key at URL
+            return (try? self.fileManager.attributesOfItem(atPath: url.path))?[key] as? T
+        case .failure:
             // Otherwise return nil
             return nil
         }
-        // Return creation Date
-        return attributes[key] as? T
     }
     
 }

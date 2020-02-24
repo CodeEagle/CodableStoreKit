@@ -68,7 +68,7 @@ extension CodableStore: CustomStringConvertible {
         CodableStore<\(storableType)>
         Container: \(self.container.name)
         Collection: \(Storable.codableStoreCollectionName)
-        FileSystemURL: \((try? self.collectionURL())?.absoluteString ?? "n.a.")
+        File-System-URL: \((try? self.collectionURL().get())?.absoluteString ?? "n.a.")
         """
     }
     

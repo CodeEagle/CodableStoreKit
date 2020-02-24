@@ -18,12 +18,14 @@ public extension CodableStore {
     func save(_ storable: Storable) -> Result<Storable, Error> {
         // Declare URL
         let url: URL
-        do {
-            // Try to retrieve the Storable URL
-            url = try self.url(for: storable)
-        } catch {
+        // Switch on Result of URL for Storable
+        switch self.url(for: storable) {
+        case .success(let storableURL):
+            // Initialize URL
+            url = storableURL
+        case .failure(let error):
             // Return failure
-            return .failure(.constructingURLFailed(error))
+            return .failure(error)
         }
         // Declare Data
         let data: Data

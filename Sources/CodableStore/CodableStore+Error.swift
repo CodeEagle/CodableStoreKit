@@ -45,6 +45,8 @@ public extension CodableStore {
 
 extension CodableStore.Error {
     
+    /// Constructing URL failed Error
+    /// - Parameter error: The Error
     static func constructingURLFailed(_ error: Error) -> Self {
         .init(
             failureReason: "Constructing URL for CodableStorable failed",
@@ -52,6 +54,8 @@ extension CodableStore.Error {
         )
     }
     
+    /// Encoding failed Error
+    /// - Parameter error: The Error
     static func encodingFailed(_ error: Error) -> Self {
         .init(
             failureReason: "Encoding CodableStorable failed",
@@ -59,12 +63,16 @@ extension CodableStore.Error {
         )
     }
     
+    /// File creation failed Error
+    /// - Parameter url: The URL
     static func fileCreationFailed(_ url: URL) -> Self {
         .init(
             failureReason: "Creating File for CodableStorable Data representation failed: \(url)"
         )
     }
     
+    /// Not found Error
+    /// - Parameter identifier: The optional Identifier
     static func notFound(_ identifier: Storable.Identifier? = nil) -> Self {
         if let identifier = identifier {
             return .init(
@@ -75,9 +83,12 @@ extension CodableStore.Error {
                 failureReason: "CodableStorable not found"
             )
         }
-        
     }
     
+    /// File deletion failed Error
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - error: The Error
     static func fileDeletionFailed(_ url: URL, _ error: Error) -> Self {
         .init(
             failureReason: "Removing CodableStorable failed \(url)",
@@ -85,6 +96,10 @@ extension CodableStore.Error {
         )
     }
     
+    /// Collection deletion failed Error
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - error: The Error
     static func collectionDeletionFailed(_ url: URL, _ error: Error) -> Self {
         .init(
             failureReason: "Removing Collection failed \(url)",
@@ -92,12 +107,16 @@ extension CodableStore.Error {
         )
     }
     
+    /// File data unavailable Error
+    /// - Parameter identifier: The Identifier
     static func fileDataUnavailable(_ identifier: Storable.Identifier) -> Self {
         .init(
             failureReason: "Data for CodableStorable is not available \(identifier)"
         )
     }
     
+    /// Decoding failed Error
+    /// - Parameter error: The Error
     static func decodingFailed(_ error: Error) -> Self {
         .init(
             failureReason: "Decoding CodableStorable failed",
@@ -105,6 +124,10 @@ extension CodableStore.Error {
         )
     }
     
+    /// Contents of directory unavailable Error
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - error: The Error
     static func contentsOfDirectoryUnavailable(_ url: URL, _ error: Error) -> Self {
         .init(
             failureReason: "Contents of Directory is not available \(url)",
@@ -112,12 +135,17 @@ extension CodableStore.Error {
         )
     }
     
+    /// Non matching predicate Error
     static func nonMatchingPredicate() -> Self {
         .init(
             failureReason: "No CodableStorable found for the given predicate"
         )
     }
     
+    /// Encryption failed Error
+    /// - Parameters:
+    ///   - url: The URL
+    ///   - error: The Error
     static func encryptionFailed(_ url: URL, _ error: Error) -> Self {
         .init(
             failureReason: "Unable to encrypt file: \(url)",
