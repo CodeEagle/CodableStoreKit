@@ -12,13 +12,13 @@ import Foundation
 
 public extension CodableStore {
     
-    /// Observe CodableStore ChangeEvent
+    /// Observe CodableStore Event
     /// - Parameters:
     ///   - object: The Object to observe on
     ///   - observer: The Observer
     func observe<Object: AnyObject>(
         on object: Object,
-        _ observer: @escaping (ChangeEvent) -> Void
+        _ observer: @escaping (Event) -> Void
     ) {
         // Observe on NotificationCenter
         self.notificationCenter.observe(on: object, observer)

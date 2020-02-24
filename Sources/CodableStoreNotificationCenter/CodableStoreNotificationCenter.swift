@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - CodableStoreNotificationCenter
 
@@ -30,7 +31,7 @@ open class CodableStoreNotificationCenter {
     
     // MARK: Observe
     
-    /// Observe all ChangeEvents on any CodableStore
+    /// Observe all Events on any CodableStore
     /// - Parameters:
     ///   - object: The Object to observe on
     ///   - observer: The Observer
@@ -53,7 +54,7 @@ open class CodableStoreNotificationCenter {
         }
     }
     
-    /// Observe CodableStore ChangeEvent
+    /// Observe CodableStore Event
     /// - Parameters:
     ///   - object: The Object to observe on
     ///   - storableType: The Storable Type. Default value `Storable.self`
@@ -63,29 +64,29 @@ open class CodableStoreNotificationCenter {
         on object: Object,
         storableType: Storable.Type = Storable.self,
         in container: CodableStoreContainer? = nil,
-        _ observer: @escaping (CodableStore<Storable>.ChangeEvent) -> Void
+        _ observer: @escaping (CodableStore<Storable>.Event) -> Void
     ) {
         // Append Observation
-        self.observations.append { [weak object] changeEvent in
+        self.observations.append { [weak object] event in
             // Verify Object is still available
             guard object != nil else {
                 // Object isn't available return false
                 // To indicate that the observation can be removed
                 return false
             }
-            // Verify ChangeEvent matches the Storable type
-            guard let changeEvent = changeEvent as? CodableStore<Storable>.ChangeEvent else {
+            // Verify Event matches the Storable type
+            guard let event = event as? CodableStore<Storable>.Event else {
                 // Otherwise return true as the Storable type
                 // doesn't match the current one
                 return true
             }
-            // Check if a Container is available and the ChangeEvent Container is not equal to it
-            if let container = container, changeEvent.container != container {
+            // Check if a Container is available and the Event Container is not equal to it
+            if let container = container, event.container != container {
                 // Return true as the Containers doesn't match
                 return true
             }
-            // Invoke Observer with ChangeEvent
-            observer(changeEvent)
+            // Invoke Observer with Event
+            observer(event)
             // Return true
             return true
         }
@@ -93,13 +94,13 @@ open class CodableStoreNotificationCenter {
     
     // MARK: Emit
     
-    /// Emit CodableStore  ChangeEvent
+    /// Emit CodableStore  Event
     /// - Parameters:
     ///   - storableType: The Storable Type. Default value `Storable.self`
-    ///   - changeEvent: The CodableStore  ChangeEvent that should be emitted
+    ///   - event: The CodableStore  Event that should be emitted
     open func emit<Storable: CodableStorable>(
         storableType: Storable.Type = Storable.self,
-        _ changeEvent: CodableStore<Storable>.ChangeEvent
+        _ event: CodableStore<Storable>.Event
     ) {
         // Initialize the Emit closure
         let emit: () -> Void = { [weak self] in
@@ -109,7 +110,7 @@ open class CodableStoreNotificationCenter {
                 return
             }
             // Invoke observations and filter out any deallocated observer
-            self.observations = self.observations.filter { $0(changeEvent) }
+            self.observations = self.observations.filter { $0(event) }
         }
         // Check if the current Thread is the main thread
         if Thread.isMainThread {

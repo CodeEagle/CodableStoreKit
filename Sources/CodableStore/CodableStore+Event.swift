@@ -1,5 +1,5 @@
 //
-//  CodableStore+ChangeEvent.swift
+//  CodableStore+Event.swift
 //  CodableStoreKit
 //
 //  Created by Sven Tiigi on 22.02.20.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-// MARK: - ChangeEvent
+// MARK: - Event
 
 public extension CodableStore {
     
-    /// The CodableStore ChangeEvent
-    enum ChangeEvent {
+    /// The CodableStore Event
+    enum Event {
         /// Saved CodableStorable in CodableStoreContainer
         case saved(
             storable: Storable,
@@ -32,20 +32,20 @@ public extension CodableStore {
     
 }
 
-// MARK: - ChangeEvent+Equatable
+// MARK: - Event+Equatable
 
-extension CodableStore.ChangeEvent: Equatable where Storable: Equatable, Storable.Identifier: Equatable {}
+extension CodableStore.Event: Equatable where Storable: Equatable, Storable.Identifier: Equatable {}
 
-// MARK: - ChangeEvent+Hashable
+// MARK: - Event+Hashable
 
-extension CodableStore.ChangeEvent: Hashable where Storable: Hashable, Storable.Identifier: Hashable {}
+extension CodableStore.Event: Hashable where Storable: Hashable, Storable.Identifier: Hashable {}
 
-// MARK: - ChangeEvent+Container
+// MARK: - Event+Container
 
-public extension CodableStore.ChangeEvent {
+public extension CodableStore.Event {
     
-    /// The CodableStoreContainer
-    var container: CodableStoreContainer {
+    /// The optional CodableStoreContainer
+    var container: CodableStoreContainer? {
         switch self {
         case .saved(_, let container):
             return container
