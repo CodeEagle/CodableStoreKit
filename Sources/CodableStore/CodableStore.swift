@@ -55,17 +55,6 @@ public struct CodableStore<Storable: CodableStorable> {
     
 }
 
-// MARK: - File System URL
-
-public extension CodableStore {
-    
-    /// The FileSystem URL
-    var fileSystemURL: URL? {
-        try? self.makeCollectionURL()
-    }
-    
-}
-
 // MARK: - CustomStringConvertible
 
 extension CodableStore: CustomStringConvertible {
@@ -79,7 +68,7 @@ extension CodableStore: CustomStringConvertible {
         CodableStore<\(storableType)>
         Container: \(self.container.name)
         Collection: \(Storable.codableStoreCollectionName)
-        FileSystemURL: \(self.fileSystemURL?.absoluteString ?? "n.a.")
+        FileSystemURL: \((try? self.collectionURL())?.absoluteString ?? "n.a.")
         """
     }
     

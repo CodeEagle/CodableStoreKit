@@ -1,5 +1,5 @@
 //
-//  CodableStore+URL.swift
+//  CodableStore+URLs.swift
 //  CodableStoreKit
 //
 //  Created by Sven Tiigi on 22.02.20.
@@ -10,11 +10,17 @@ import Foundation
 
 // MARK: - Make URL
 
-extension CodableStore {
+public extension CodableStore {
     
-    /// Make Storable URL with identifier
-    /// - Parameter identifier: The identifier value
-    func makeStorableURL(identifier: Storable.Identifier) throws -> URL {
+    /// Retrieve URL for CodableStorable
+    /// - Parameter storable: The CodableStorable
+    func url(for storable: Storable) throws -> URL {
+        try self.url(for: storable.identifier)
+    }
+    
+    /// Retrieve URL for CodableStorable by its identifier
+    /// - Parameter identifier: The CodableStorable Identifier
+    func url(for identifier: Storable.Identifier) throws -> URL {
         // Declare the Identifier String representation
         let identifierStringRepresentation: String
         // Check if the Identifier is a String
@@ -26,14 +32,14 @@ extension CodableStore {
             identifierStringRepresentation = "\(identifier)"
         }
         // Make collection url and append sanitized identifier
-        return try self.makeCollectionURL()
+        return try self.collectionURL()
             .appendingPathComponent(identifierStringRepresentation.sanitized())
     }
     
-    /// Make Collection URL
-    func makeCollectionURL() throws -> URL {
+    /// The CodableStorable Collection URL
+    func collectionURL() throws -> URL {
         // Initialize URL via appending collection name to sanitized container url
-        let url = try self.makeContainerURL()
+        let url = try self.containerURL()
             .appendingPathComponent(Storable.codableStoreCollectionName.sanitized())
         // Check if Directory doesn't exists
         if !self.fileManager.fileExists(atPath: url.path) {
@@ -48,8 +54,8 @@ extension CodableStore {
         return url
     }
     
-    /// Make Container URL
-    func makeContainerURL() throws -> URL {
+    /// The CodableStore Container URL
+    func containerURL() throws -> URL {
         // Declare searchPathDirectory
         let searchPathDirectory: FileManager.SearchPathDirectory
         #if os(tvOS)
@@ -68,35 +74,6 @@ extension CodableStore {
         )
         // Return Container URL
         return url.appendingPathComponent(self.container.name.sanitized())
-    }
-    
-}
-
-// MARK: - Clear Directories if needed
-
-extension CodableStore {
-    
-    /// Clear directories if needed
-    func clearDirectoriesIfNeeded() {
-        // Initialize delete if empty closure
-        let deleteIfEmpty: (URL) -> Void = { url in
-            // Verfy content of directory is available for url
-            guard let paths = try? self.fileManager.contentsOfDirectory(atPath: url.path) else {
-                // Otherwise return
-                return
-            }
-            // Verify paths are empty
-            guard paths.isEmpty else {
-                // Otherwise return
-                return
-            }
-            // Remove item at url
-            try? self.fileManager.removeItem(at: url)
-        }
-        // Delete Collection-Directory if Empty
-        (try? self.makeCollectionURL()).flatMap(deleteIfEmpty)
-        // Delete Container-Directory if Empty
-        (try? self.makeContainerURL()).flatMap(deleteIfEmpty)
     }
     
 }

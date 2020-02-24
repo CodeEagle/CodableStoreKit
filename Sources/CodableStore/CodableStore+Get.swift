@@ -18,8 +18,8 @@ public extension CodableStore {
         // Declare URL
         let url: URL
         do {
-            // Try to make Storable URL with identifier
-            url = try self.makeStorableURL(identifier: identifier)
+            // Try to retrieve the Storable URL
+            url = try self.url(for: identifier)
         } catch {
             // Return failure
             return .failure(.constructingURLFailed(error))
@@ -77,8 +77,8 @@ public extension CodableStore {
         // Declare URL
         let url: URL
         do {
-            // Try to make collection url
-            url = try self.makeCollectionURL()
+            // Try to retrieve the collection url
+            url = try self.collectionURL()
         } catch {
             // Return failure
             return .failure(.constructingURLFailed(error))
@@ -124,8 +124,8 @@ public extension CodableStore {
     /// Retrieve Bool value if a CodableStorable exists for a given identifier
     /// - Parameter identifier: The identifier to check for existence
     func exists(_ identifier: Storable.Identifier) -> Bool {
-        // Verfy Storable URL with identifier is available
-        guard let url = try? self.makeStorableURL(identifier: identifier) else {
+        // Verfy Storable URL is available
+        guard let url = try? self.url(for: identifier) else {
             // Otherwise return false
             return false
         }
@@ -138,61 +138,6 @@ public extension CodableStore {
     func exists(_ storable: Storable) -> Bool {
         // Check for existence by identifier
         self.exists(storable.identifier)
-    }
-    
-}
-
-// MARK: - Creation/Modification Date
-
-public extension CodableStore {
-    
-    /// Retrieve creation Date for CodableStorable Identifier
-    /// - Parameter identifier: The Identifier to retrieve creation Date
-    func getCreationDate(_ identifier: Storable.Identifier) -> Date? {
-        self.getAttribute(for: identifier, key: .creationDate)
-    }
-    
-    /// Retrieve creation Date for CodableStorable
-    /// - Parameter storable: The CodableStorable to retrieve creation Date
-    func getCreationDate(_ storable: Storable) -> Date? {
-        self.getCreationDate(storable.identifier)
-    }
-    
-    /// Retrieve modification Date for CodableStorable Identifier
-    /// - Parameter identifier: The Identifier to retrieve modification Date
-    func getModificationDate(_ identifier: Storable.Identifier) -> Date? {
-        self.getAttribute(for: identifier, key: .modificationDate)
-    }
-    
-    /// Retrieve modification Date for CodableStorable
-    /// - Parameter storable: The CodableStorable to retrieve modification Date
-    func getModificationDate(_ storable: Storable) -> Date? {
-        self.getModificationDate(storable.identifier)
-    }
-    
-}
-
-// MARK: - (Internal) Get File Attribute
-
-extension CodableStore {
-    
-    /// Retrieve FileAttributeKey Value for a given CodableStorable Identifier
-    /// - Parameters:
-    ///   - identifier: The CodableStorable Identifier to retrieve FileAttributeKey Value
-    ///   - key: The FileAttributeKey
-    func getAttribute<T>(for identifier: Storable.Identifier, key: FileAttributeKey) -> T? {
-        // Verify CodableStorable URL is available
-        guard let url = try? self.makeStorableURL(identifier: identifier) else {
-            // Otheriwse return nil
-            return nil
-        }
-        // Verify Attributes at path are available
-        guard let attributes = try? self.fileManager.attributesOfItem(atPath: url.path) else {
-            // Otherwise return nil
-            return nil
-        }
-        // Return creation Date
-        return attributes[key] as? T
     }
     
 }

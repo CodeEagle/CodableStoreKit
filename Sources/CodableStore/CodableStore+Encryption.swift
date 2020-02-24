@@ -27,8 +27,8 @@ public extension CodableStore {
         // Declare URL
         let url: URL
         do {
-            // Try to make collection url
-            url = try self.makeCollectionURL()
+            // Try to retrieve the collection url
+            url = try self.collectionURL()
         } catch {
             // Return failure
             return [.failure(.constructingURLFailed(error))]

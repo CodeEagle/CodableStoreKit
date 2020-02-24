@@ -24,8 +24,8 @@ public extension CodableStore {
         // Declare URL
         let url: URL
         do {
-            // Try to make Storable URL with identifier
-            url = try self.makeStorableURL(identifier: identifier)
+            // Try to retrieve the Storable URL for identifier
+            url = try self.url(for: identifier)
         } catch {
             // Return failure
             return .failure(.constructingURLFailed(error))
@@ -57,8 +57,8 @@ public extension CodableStore {
         // Declare URL
         let url: URL
         do {
-            // Try to make collection url
-            url = try self.makeCollectionURL()
+            // Try to retrieve the collection url
+            url = try self.collectionURL()
         } catch {
             // Return failure
             return .failure(.constructingURLFailed(error))
@@ -120,6 +120,31 @@ public extension CodableStore {
     func delete(_ storables: [Storable]) -> [Result<Void, Error>] {
         // Delete Storables
         storables.map(self.delete)
+    }
+    
+}
+
+// MARK: - Clear Directories if needed
+
+private extension CodableStore {
+    
+    /// Clear directories if needed
+    func clearDirectoriesIfNeeded() {
+        // Initialize delete if empty closure
+        let deleteIfEmpty: (URL) -> Void = { url in
+            // Verfy content of directory is available for URL and paths are empty
+            guard let paths = try? self.fileManager.contentsOfDirectory(atPath: url.path),
+                paths.isEmpty else {
+                    // Otherwise return
+                    return
+            }
+            // Remove item at url
+            try? self.fileManager.removeItem(at: url)
+        }
+        // Delete Collection-Directory if Empty
+        (try? self.collectionURL()).flatMap(deleteIfEmpty)
+        // Delete Container-Directory if Empty
+        (try? self.containerURL()).flatMap(deleteIfEmpty)
     }
     
 }

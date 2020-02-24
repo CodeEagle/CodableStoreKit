@@ -19,8 +19,8 @@ public extension CodableStore {
         // Declare URL
         let url: URL
         do {
-            // Try to make Storable URL with identifier
-            url = try self.makeStorableURL(identifier: storable.identifier)
+            // Try to retrieve the Storable URL
+            url = try self.url(for: storable)
         } catch {
             // Return failure
             return .failure(.constructingURLFailed(error))
@@ -39,7 +39,7 @@ public extension CodableStore {
             atPath: url.path,
             contents: data,
             attributes: [
-                .creationDate: self.getCreationDate(storable) ?? .init(),
+                .creationDate: self.creationDate(storable) ?? .init(),
                 .modificationDate: Date()
             ]
         )

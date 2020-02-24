@@ -79,18 +79,18 @@
 		3DB334582401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */; };
 		3DB334592401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */; };
 		3DB3345A2401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */; };
-		3DB3345C2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URL.swift */; };
-		3DB3345D2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URL.swift */; };
-		3DB3345E2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URL.swift */; };
-		3DB3345F2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URL.swift */; };
+		3DB3345C2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */; };
+		3DB3345D2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */; };
+		3DB3345E2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */; };
+		3DB3345F2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */; };
+		3DC96AF224044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
+		3DC96AF324044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
+		3DC96AF424044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
+		3DC96AF524044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
 		3DED1064240283E6000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
 		3DED1065240283EA000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
 		3DED1066240283EB000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
 		3DED1067240283EB000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
-		3DED106924028663000D8356 /* CodableStore+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED106824028663000D8356 /* CodableStore+Async.swift */; };
-		3DED106A24028663000D8356 /* CodableStore+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED106824028663000D8356 /* CodableStore+Async.swift */; };
-		3DED106B24028663000D8356 /* CodableStore+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED106824028663000D8356 /* CodableStore+Async.swift */; };
-		3DED106C24028663000D8356 /* CodableStore+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED106824028663000D8356 /* CodableStore+Async.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,9 +179,9 @@
 		3DA8B6FC2385E92E0011D32F /* AnyDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecoder.swift; sourceTree = "<group>"; };
 		3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+ChangeEvent.swift"; sourceTree = "<group>"; };
 		3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Update.swift"; sourceTree = "<group>"; };
-		3DB3345B2401AAF5005DCEB4 /* CodableStore+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+URL.swift"; sourceTree = "<group>"; };
+		3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+URLs.swift"; sourceTree = "<group>"; };
+		3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Attributes.swift"; sourceTree = "<group>"; };
 		3DED1063240283E6000D8356 /* AsyncCodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCodableStore.swift; sourceTree = "<group>"; };
-		3DED106824028663000D8356 /* CodableStore+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Async.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,15 +371,15 @@
 			isa = PBXGroup;
 			children = (
 				3DA8B6F12385DFFC0011D32F /* CodableStore.swift */,
-				3DB3345B2401AAF5005DCEB4 /* CodableStore+URL.swift */,
+				3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */,
 				3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */,
 				3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */,
 				3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */,
 				3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */,
+				3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */,
 				3DB334512401A54C005DCEB4 /* CodableStore+ChangeEvent.swift */,
 				3D4A2CCA239BA8B200D34148 /* CodableStore+Observe.swift */,
 				3D4AF9F223B60F2300D07AF8 /* CodableStore+Encryption.swift */,
-				3DED106824028663000D8356 /* CodableStore+Async.swift */,
 				3D4A2CB6239BA5FA00D34148 /* CodableStore+Error.swift */,
 			);
 			path = CodableStore;
@@ -782,17 +782,17 @@
 				3D4AF9F323B60F2300D07AF8 /* CodableStore+Encryption.swift in Sources */,
 				3DA8B6E82385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3D4A2CCB239BA8B200D34148 /* CodableStore+Observe.swift in Sources */,
-				3DED106924028663000D8356 /* CodableStore+Async.swift in Sources */,
 				3DB334572401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6ED2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
 				3D9C42A222745900000A6585 /* CodableStoreKit.swift in Sources */,
-				3DB3345C2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */,
+				3DB3345C2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3DA8B6F82385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D480CD823866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
 				3DB334522401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6FD2385E92E0011D32F /* AnyDecoder.swift in Sources */,
 				3D4A2CC6239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6F22385DFFC0011D32F /* CodableStore.swift in Sources */,
+				3DC96AF224044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
 				3D4A2CC1239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
 				3DED1064240283E6000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CB7239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
@@ -807,17 +807,17 @@
 				3D4AF9F423B60F2300D07AF8 /* CodableStore+Encryption.swift in Sources */,
 				3DA8B6F32385DFFC0011D32F /* CodableStore.swift in Sources */,
 				3D4A2CCC239BA8B200D34148 /* CodableStore+Observe.swift in Sources */,
-				3DED106A24028663000D8356 /* CodableStore+Async.swift in Sources */,
 				3DB334582401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6E92385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3DA8B6EE2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
-				3DB3345D2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */,
+				3DB3345D2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3D9C42B1227459C1000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CD923866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
 				3DB334532401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6F92385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D4A2CC7239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6FE2385E92E0011D32F /* AnyDecoder.swift in Sources */,
+				3DC96AF324044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
 				3D4A2CC2239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
 				3DED1065240283EA000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CB8239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
@@ -832,17 +832,17 @@
 				3D4AF9F523B60F2300D07AF8 /* CodableStore+Encryption.swift in Sources */,
 				3DA8B6F42385DFFC0011D32F /* CodableStore.swift in Sources */,
 				3D4A2CCD239BA8B200D34148 /* CodableStore+Observe.swift in Sources */,
-				3DED106B24028663000D8356 /* CodableStore+Async.swift in Sources */,
 				3DB334592401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6EA2385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3DA8B6EF2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
-				3DB3345E2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */,
+				3DB3345E2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3D9C42BF227459F6000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CDA23866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
 				3DB334542401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6FA2385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D4A2CC8239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6FF2385E92E0011D32F /* AnyDecoder.swift in Sources */,
+				3DC96AF424044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
 				3D4A2CC3239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
 				3DED1066240283EB000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CB9239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
@@ -857,17 +857,17 @@
 				3D4AF9F623B60F2300D07AF8 /* CodableStore+Encryption.swift in Sources */,
 				3DA8B6F52385DFFC0011D32F /* CodableStore.swift in Sources */,
 				3D4A2CCE239BA8B200D34148 /* CodableStore+Observe.swift in Sources */,
-				3DED106C24028663000D8356 /* CodableStore+Async.swift in Sources */,
 				3DB3345A2401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6EB2385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3DA8B6F02385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
-				3DB3345F2401AAF5005DCEB4 /* CodableStore+URL.swift in Sources */,
+				3DB3345F2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3D9C42CD22745A28000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CDB23866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
 				3DB334552401A54C005DCEB4 /* CodableStore+ChangeEvent.swift in Sources */,
 				3DA8B6FB2385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D4A2CC9239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B7002385E92E0011D32F /* AnyDecoder.swift in Sources */,
+				3DC96AF524044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
 				3D4A2CC4239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
 				3DED1067240283EB000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CBA239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
