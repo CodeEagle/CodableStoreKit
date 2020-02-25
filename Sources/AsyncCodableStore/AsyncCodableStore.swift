@@ -19,7 +19,7 @@ public struct AsyncCodableStore<Storable: CodableStorable>: Equatable {
     public var queue: DispatchQueue
     
     /// The CodableStore
-    let codableStore: CodableStore<Storable>
+    public let codableStore: CodableStore<Storable>
     
     // MARK: Initializer
     

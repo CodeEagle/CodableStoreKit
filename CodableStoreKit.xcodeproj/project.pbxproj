@@ -19,10 +19,10 @@
 		3D4A2CBD239BA85F00D34148 /* CodableStore+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */; };
 		3D4A2CBE239BA85F00D34148 /* CodableStore+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */; };
 		3D4A2CBF239BA85F00D34148 /* CodableStore+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */; };
-		3D4A2CC1239BA88500D34148 /* CodableStore+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */; };
-		3D4A2CC2239BA88500D34148 /* CodableStore+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */; };
-		3D4A2CC3239BA88500D34148 /* CodableStore+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */; };
-		3D4A2CC4239BA88500D34148 /* CodableStore+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */; };
+		3D4A2CC1239BA88500D34148 /* CodableStore+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Remove.swift */; };
+		3D4A2CC2239BA88500D34148 /* CodableStore+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Remove.swift */; };
+		3D4A2CC3239BA88500D34148 /* CodableStore+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Remove.swift */; };
+		3D4A2CC4239BA88500D34148 /* CodableStore+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC0239BA88500D34148 /* CodableStore+Remove.swift */; };
 		3D4A2CC6239BA89C00D34148 /* CodableStore+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */; };
 		3D4A2CC7239BA89C00D34148 /* CodableStore+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */; };
 		3D4A2CC8239BA89C00D34148 /* CodableStore+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */; };
@@ -46,7 +46,7 @@
 		3D9C431622746198000A6585 /* CodableStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C42C522745A07000A6585 /* CodableStoreKit.framework */; };
 		3D9C431C227461AF000A6585 /* CodableStoreKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C42D722745CDE000A6585 /* CodableStoreKitTests.swift */; };
 		3D9C43242274629B000A6585 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C43232274629B000A6585 /* AppDelegate.swift */; };
-		3D9C43262274629B000A6585 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C43252274629B000A6585 /* ViewController.swift */; };
+		3D9C43262274629B000A6585 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9C43252274629B000A6585 /* NoteListViewController.swift */; };
 		3D9C432B2274629C000A6585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432A2274629C000A6585 /* Assets.xcassets */; };
 		3D9C432E2274629C000A6585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9C432C2274629C000A6585 /* LaunchScreen.storyboard */; };
 		3D9C433422746323000A6585 /* CodableStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9C429022745894000A6585 /* CodableStoreKit.framework */; };
@@ -87,10 +87,15 @@
 		3DC96AF324044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
 		3DC96AF424044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
 		3DC96AF524044DDD00E99239 /* CodableStore+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */; };
+		3DC96AF724045C9B00E99239 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC96AF624045C9B00E99239 /* Note.swift */; };
 		3DED1064240283E6000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
 		3DED1065240283EA000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
 		3DED1066240283EB000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
 		3DED1067240283EB000D8356 /* AsyncCodableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED1063240283E6000D8356 /* AsyncCodableStore.swift */; };
+		3DFBABDD240536A0005207C5 /* CodableStore+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBABDC240536A0005207C5 /* CodableStore+Contains.swift */; };
+		3DFBABDE240536A0005207C5 /* CodableStore+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBABDC240536A0005207C5 /* CodableStore+Contains.swift */; };
+		3DFBABDF240536A0005207C5 /* CodableStore+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBABDC240536A0005207C5 /* CodableStore+Contains.swift */; };
+		3DFBABE0240536A0005207C5 /* CodableStore+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBABDC240536A0005207C5 /* CodableStore+Contains.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,7 +147,7 @@
 		3D480CD723866E7F00962CAC /* CodableStoreNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStoreNotificationCenter.swift; sourceTree = "<group>"; };
 		3D4A2CB6239BA5FA00D34148 /* CodableStore+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Error.swift"; sourceTree = "<group>"; };
 		3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Save.swift"; sourceTree = "<group>"; };
-		3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Delete.swift"; sourceTree = "<group>"; };
+		3D4A2CC0239BA88500D34148 /* CodableStore+Remove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Remove.swift"; sourceTree = "<group>"; };
 		3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Get.swift"; sourceTree = "<group>"; };
 		3D4A2CCA239BA8B200D34148 /* CodableStore+Observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Observe.swift"; sourceTree = "<group>"; };
 		3D4AF9F223B60F2300D07AF8 /* CodableStore+Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Encryption.swift"; sourceTree = "<group>"; };
@@ -168,7 +173,7 @@
 		3D9C431122746198000A6585 /* CodableStoreKit-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CodableStoreKit-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C43212274629B000A6585 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9C43232274629B000A6585 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D9C43252274629B000A6585 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3D9C43252274629B000A6585 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
 		3D9C432A2274629C000A6585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D9C432D2274629C000A6585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D9C432F2274629C000A6585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,7 +186,9 @@
 		3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Update.swift"; sourceTree = "<group>"; };
 		3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+URLs.swift"; sourceTree = "<group>"; };
 		3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Attributes.swift"; sourceTree = "<group>"; };
+		3DC96AF624045C9B00E99239 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		3DED1063240283E6000D8356 /* AsyncCodableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCodableStore.swift; sourceTree = "<group>"; };
+		3DFBABDC240536A0005207C5 /* CodableStore+Contains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodableStore+Contains.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,7 +325,8 @@
 			isa = PBXGroup;
 			children = (
 				3D9C43232274629B000A6585 /* AppDelegate.swift */,
-				3D9C43252274629B000A6585 /* ViewController.swift */,
+				3D9C43252274629B000A6585 /* NoteListViewController.swift */,
+				3DC96AF624045C9B00E99239 /* Note.swift */,
 				3D9C4333227462B9000A6585 /* Resources */,
 			);
 			path = Example;
@@ -374,8 +382,9 @@
 				3DB3345B2401AAF5005DCEB4 /* CodableStore+URLs.swift */,
 				3D4A2CBB239BA85F00D34148 /* CodableStore+Save.swift */,
 				3DB334562401A8A1005DCEB4 /* CodableStore+Update.swift */,
-				3D4A2CC0239BA88500D34148 /* CodableStore+Delete.swift */,
+				3D4A2CC0239BA88500D34148 /* CodableStore+Remove.swift */,
 				3D4A2CC5239BA89C00D34148 /* CodableStore+Get.swift */,
+				3DFBABDC240536A0005207C5 /* CodableStore+Contains.swift */,
 				3DC96AF124044DDD00E99239 /* CodableStore+Attributes.swift */,
 				3DB334512401A54C005DCEB4 /* CodableStore+Event.swift */,
 				3D4A2CCA239BA8B200D34148 /* CodableStore+Observe.swift */,
@@ -785,6 +794,7 @@
 				3DB334572401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6ED2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
 				3D9C42A222745900000A6585 /* CodableStoreKit.swift in Sources */,
+				3DFBABDD240536A0005207C5 /* CodableStore+Contains.swift in Sources */,
 				3DB3345C2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3DA8B6F82385E92A0011D32F /* AnyEncoder.swift in Sources */,
 				3D480CD823866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
@@ -793,7 +803,7 @@
 				3D4A2CC6239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6F22385DFFC0011D32F /* CodableStore.swift in Sources */,
 				3DC96AF224044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
-				3D4A2CC1239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
+				3D4A2CC1239BA88500D34148 /* CodableStore+Remove.swift in Sources */,
 				3DED1064240283E6000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CB7239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
 				3D4A2CBC239BA85F00D34148 /* CodableStore+Save.swift in Sources */,
@@ -810,6 +820,7 @@
 				3DB334582401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6E92385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3DA8B6EE2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
+				3DFBABDE240536A0005207C5 /* CodableStore+Contains.swift in Sources */,
 				3DB3345D2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3D9C42B1227459C1000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CD923866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
@@ -818,7 +829,7 @@
 				3D4A2CC7239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6FE2385E92E0011D32F /* AnyDecoder.swift in Sources */,
 				3DC96AF324044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
-				3D4A2CC2239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
+				3D4A2CC2239BA88500D34148 /* CodableStore+Remove.swift in Sources */,
 				3DED1065240283EA000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CB8239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
 				3D4A2CBD239BA85F00D34148 /* CodableStore+Save.swift in Sources */,
@@ -835,6 +846,7 @@
 				3DB334592401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6EA2385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3DA8B6EF2385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
+				3DFBABDF240536A0005207C5 /* CodableStore+Contains.swift in Sources */,
 				3DB3345E2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3D9C42BF227459F6000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CDA23866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
@@ -843,7 +855,7 @@
 				3D4A2CC8239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B6FF2385E92E0011D32F /* AnyDecoder.swift in Sources */,
 				3DC96AF424044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
-				3D4A2CC3239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
+				3D4A2CC3239BA88500D34148 /* CodableStore+Remove.swift in Sources */,
 				3DED1066240283EB000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CB9239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
 				3D4A2CBE239BA85F00D34148 /* CodableStore+Save.swift in Sources */,
@@ -860,6 +872,7 @@
 				3DB3345A2401A8A1005DCEB4 /* CodableStore+Update.swift in Sources */,
 				3DA8B6EB2385DFB90011D32F /* CodableStorable.swift in Sources */,
 				3DA8B6F02385DFE70011D32F /* CodableStoreContainer.swift in Sources */,
+				3DFBABE0240536A0005207C5 /* CodableStore+Contains.swift in Sources */,
 				3DB3345F2401AAF5005DCEB4 /* CodableStore+URLs.swift in Sources */,
 				3D9C42CD22745A28000A6585 /* CodableStoreKit.swift in Sources */,
 				3D480CDB23866E7F00962CAC /* CodableStoreNotificationCenter.swift in Sources */,
@@ -868,7 +881,7 @@
 				3D4A2CC9239BA89C00D34148 /* CodableStore+Get.swift in Sources */,
 				3DA8B7002385E92E0011D32F /* AnyDecoder.swift in Sources */,
 				3DC96AF524044DDD00E99239 /* CodableStore+Attributes.swift in Sources */,
-				3D4A2CC4239BA88500D34148 /* CodableStore+Delete.swift in Sources */,
+				3D4A2CC4239BA88500D34148 /* CodableStore+Remove.swift in Sources */,
 				3DED1067240283EB000D8356 /* AsyncCodableStore.swift in Sources */,
 				3D4A2CBA239BA5FA00D34148 /* CodableStore+Error.swift in Sources */,
 				3D4A2CBF239BA85F00D34148 /* CodableStore+Save.swift in Sources */,
@@ -903,8 +916,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D9C43262274629B000A6585 /* ViewController.swift in Sources */,
+				3D9C43262274629B000A6585 /* NoteListViewController.swift in Sources */,
 				3D9C43242274629B000A6585 /* AppDelegate.swift in Sources */,
+				3DC96AF724045C9B00E99239 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1434,7 +1448,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Example/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1455,7 +1469,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Example/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

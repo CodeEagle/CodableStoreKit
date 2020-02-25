@@ -19,13 +19,13 @@ public extension CodableStore {
             storable: Storable,
             container: CodableStoreContainer
         )
-        /// Deleted CodableStorable in CodableStoreContainer
-        case deleted(
+        /// Removed CodableStorable in CodableStoreContainer
+        case removed(
             identifier: Storable.Identifier,
             container: CodableStoreContainer
         )
-        /// Deleted all CodableStorables in CodableStoreContainer
-        case deletedAll(
+        /// Removed all CodableStorables in CodableStoreContainer
+        case removedAll(
             container: CodableStoreContainer
         )
     }
@@ -49,9 +49,9 @@ public extension CodableStore.Event {
         switch self {
         case .saved(_, let container):
             return container
-        case .deleted(_, let container):
+        case .removed(_, let container):
             return container
-        case .deletedAll(let container):
+        case .removedAll(let container):
             return container
         }
     }

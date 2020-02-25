@@ -96,18 +96,37 @@ public extension CodableStore {
             // Return failure
             return .failure(.contentsOfDirectoryUnavailable(url, error))
         }
-        // Compact Map Paths to Storable
-        let storables: [Storable] = paths.compactMap { path in
-            // Initialize URL by appending path component
-            let url = url.appendingPathComponent(path)
-            // Verify Data for URL is available
-            guard let data = self.fileManager.contents(atPath: url.path) else {
-                // Otherwise return nil
-                return nil
+        // Initialize Storables
+        let storables: [Storable] = paths
+            // CompactMap path to Files
+            .compactMap { path -> (data: Data, modificationDate: Date?)? in
+                // Initialize URL by appending path component
+                let url = url.appendingPathComponent(path)
+                // Verify Data for URL is available
+                guard let data = self.fileManager.contents(atPath: url.path) else {
+                    // Otherwise return nil
+                    return nil
+                }
+                // Retrieve Attributes for URL
+                let attributes = try? self.fileManager.attributesOfItem(atPath: url.path)
+                // Return file with Data and optional Modification Date
+                return (data, attributes?[.modificationDate] as? Date)
             }
-            // Try to decode Storable from Data
-            return try? self.decoder.decode(Storable.self, from: data)
-        }
+            // Sort Files based on modification Date
+            .sorted { lhs, rhs in
+                // Verify both modification Dates are available
+                guard let lhsDate = lhs.modificationDate, let rhsDate = rhs.modificationDate else {
+                    // Otherwise return false
+                    return false
+                }
+                // Return descending order
+                return lhsDate > rhsDate
+            }
+            // CompactMap by decoding File Data
+            .compactMap { file in
+                // Try to Decode File Data
+                try? self.decoder.decode(Storable.self, from: file.data)
+            }
         // Return success
         return .success(storables)
     }
@@ -117,31 +136,6 @@ public extension CodableStore {
     func getAll(where predicate: (Storable) -> Bool) -> Result<[Storable], Error> {
         // Retrieve all and apply filter
         self.getAll().map { $0.filter(predicate) }
-    }
-    
-}
-
-// MARK: - Exists
-
-public extension CodableStore {
-    
-    /// Retrieve Bool value if a CodableStorable exists for a given identifier
-    /// - Parameter identifier: The identifier to check for existence
-    func exists(_ identifier: Storable.Identifier) -> Bool {
-        // Verfy Storable URL is available
-        guard let url = try? self.url(for: identifier).get() else {
-            // Otherwise return false
-            return false
-        }
-        // Return if Storable exists at URL
-        return self.fileManager.fileExists(atPath: url.path)
-    }
-    
-    /// Retrieve Bool value if the CodableStorable exists
-    /// - Parameter storable: The CodableStorable to check for existence
-    func exists(_ storable: Storable) -> Bool {
-        // Check for existence by identifier
-        self.exists(storable.identifier)
     }
     
 }

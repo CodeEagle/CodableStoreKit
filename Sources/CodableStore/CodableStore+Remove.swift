@@ -1,5 +1,5 @@
 //
-//  CodableStore+Delete.swift
+//  CodableStore+Remove.swift
 //  CodableStoreKit
 //
 //  Created by Sven Tiigi on 07.12.19.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-// MARK: - Delete
+// MARK: - Remove
 
 public extension CodableStore {
     
-    /// Delete CodableStorable by identifier
-    /// - Parameter identifier: The CodableStorable identifier that should be deleted
+    /// Remove CodableStorable by identifier
+    /// - Parameter identifier: The CodableStorable identifier that should be removed
     @discardableResult
-    func delete(_ identifier: Storable.Identifier) -> Result<Void, Error> {
+    func remove(_ identifier: Storable.Identifier) -> Result<Void, Error> {
         // Verify Storable exists for identifier
-        guard self.exists(identifier) else {
+        guard self.contains(identifier) else {
             // Otherwise return failure
             return .failure(.notFound(identifier))
         }
@@ -41,10 +41,10 @@ public extension CodableStore {
         }
         // Clear directories if needed
         self.clearDirectoriesIfNeeded()
-        // Emit deleted event
+        // Emit removed event
         self.notificationCenter.emit(
             storableType: Storable.self,
-            .deleted(
+            .removed(
                 identifier: identifier,
                 container: self.container
             )
@@ -53,9 +53,9 @@ public extension CodableStore {
         return .success(())
     }
     
-    /// Delete all saved CodableStorables
+    /// Remove all saved CodableStorables
     @discardableResult
-    func deleteAll() -> Result<Void, Error> {
+    func removeAll() -> Result<Void, Error> {
         // Declare URL
         let url: URL
         // Switch on Result of Collection URL
@@ -76,10 +76,10 @@ public extension CodableStore {
         }
         // Clear directories if needed
         self.clearDirectoriesIfNeeded()
-        // Emit deleted event
+        // Emit removed event
         self.notificationCenter.emit(
             storableType: Storable.self,
-            .deletedAll(
+            .removedAll(
                 container: self.container
             )
         )
@@ -87,43 +87,43 @@ public extension CodableStore {
         return .success(())
     }
     
-    /// Delete all CodableStorables that satisfy the given predicate
+    /// Remove all CodableStorables that satisfy the given predicate
     /// - Parameter predicate: The predicate
     @discardableResult
-    func deleteAll(where predicate: (Storable) -> Bool) -> [Result<Void, Error>] {
+    func removeAll(where predicate: (Storable) -> Bool) -> [Result<Void, Error>] {
         // Retrieve all with predicate
         switch self.getAll(where: predicate) {
         case .success(let storables):
-            // Delete Storables
-            return self.delete(storables)
+            // Remove Storables
+            return self.remove(storables)
         case .failure(let error):
             // Return failure
             return [.failure(error)]
         }
     }
     
-    /// Delete CodableStorables
-    /// - Parameter identifiers: The CodableStorable identifiers that should be deleted
+    /// Remove CodableStorables
+    /// - Parameter identifiers: The CodableStorable identifiers that should be removed
     @discardableResult
-    func delete(_ identifiers: [Storable.Identifier]) -> [Result<Void, Error>] {
-        // Delete identifiers
-        identifiers.map(self.delete)
+    func remove<S: Sequence>(_ identifiers: S) -> [Result<Void, Error>] where S.Element == Storable.Identifier {
+        // Remove identifiers
+        identifiers.map(self.remove)
     }
     
-    /// Delete CodableStorable
-    /// - Parameter storable: The CodableStorable that should be deleted
+    /// Remove CodableStorable
+    /// - Parameter storable: The CodableStorable that should be removed
     @discardableResult
-    func delete(_ storable: Storable) -> Result<Void, Error> {
-        // Delete by identifier
-        self.delete(storable.identifier)
+    func remove(_ storable: Storable) -> Result<Void, Error> {
+        // Remove by identifier
+        self.remove(storable.identifier)
     }
     
-    /// Delete CodableStorables
-    /// - Parameter storables: The Array of CodableStorables that should be deleted
+    /// Remove CodableStorables
+    /// - Parameter storables: The Sequence of CodableStorables that should be removed
     @discardableResult
-    func delete(_ storables: [Storable]) -> [Result<Void, Error>] {
-        // Delete Storables
-        storables.map(self.delete)
+    func remove<S: Sequence>(_ storables: S) -> [Result<Void, Error>] where S.Element == Storable {
+        // Remove Storables
+        storables.map(self.remove)
     }
     
 }
@@ -134,8 +134,8 @@ private extension CodableStore {
     
     /// Clear directories if needed
     func clearDirectoriesIfNeeded() {
-        // Initialize delete if empty closure
-        let deleteIfEmpty: (URL) -> Void = { url in
+        // Initialize remove if empty closure
+        let removeIfEmpty: (URL) -> Void = { url in
             // Verfy content of directory is available for URL and paths are empty
             guard let paths = try? self.fileManager.contentsOfDirectory(atPath: url.path),
                 paths.isEmpty else {
@@ -145,10 +145,10 @@ private extension CodableStore {
             // Remove item at url
             try? self.fileManager.removeItem(at: url)
         }
-        // Delete Collection-Directory if Empty
-        (try? self.collectionURL().get()).flatMap(deleteIfEmpty)
-        // Delete Container-Directory if Empty
-        (try? self.containerURL().get()).flatMap(deleteIfEmpty)
+        // Remove Collection-Directory if Empty
+        (try? self.collectionURL().get()).flatMap(removeIfEmpty)
+        // Remove Container-Directory if Empty
+        (try? self.containerURL().get()).flatMap(removeIfEmpty)
     }
     
 }

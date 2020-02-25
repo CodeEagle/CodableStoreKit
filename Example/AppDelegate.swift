@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// The RootViewController
     var rootViewController: UIViewController {
-        return ViewController()
+        return NoteListViewController()
     }
 
     /// Application did finish launching with options
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize UIWindow
         self.window = .init(frame: UIScreen.main.bounds)
         // Set RootViewController
-        self.window?.rootViewController = self.rootViewController
+        self.window?.rootViewController = UINavigationController(rootViewController: self.rootViewController)
         // Make Key and Visible
         self.window?.makeKeyAndVisible()
         // Return positive launch

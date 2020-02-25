@@ -134,20 +134,20 @@ let result = codableStore.getAll()
 // Exists
 let result = codableStore.exists(user)
 
-// Delete
-codableStore.delete(user)
+// Remove
+codableStore.remove(user)
 
-// Delete all
-codableStore.deleteAll()
+// Remove all
+codableStore.removeAll()
 
 // Observe
 codableStore.observe(on: self) { event in
     switch event {
     case .saved(let storable, let container):
         break
-    case .deleted(let identifier, let container):
+    case .removed(let identifier, let container):
         break
-    case .deletedAll(let container):
+    case .removedAll(let container):
         break
     }
 }
