@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Make URL
+// MARK: - CodableStorable URL
 
 public extension CodableStore {
     
@@ -39,6 +39,12 @@ public extension CodableStore {
             }
     }
     
+}
+
+// MARK: - CodableStorable Collection URL
+
+public extension CodableStore {
+    
     /// The CodableStorable Collection URL
     func collectionURL() -> Result<URL, Error> {
         // Retrieve Container URL
@@ -65,6 +71,12 @@ public extension CodableStore {
                 return .success(url)
             }
     }
+    
+}
+
+// MARK: - CodableStore Container URL
+
+public extension CodableStore {
     
     /// The CodableStore Container URL
     func containerURL() -> Result<URL, Error> {

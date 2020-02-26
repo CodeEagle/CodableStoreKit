@@ -18,6 +18,8 @@ class NoteListViewController: UIViewController {
     
     var notes: [Note] = .init()
     
+    var mainNote: Note?
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")

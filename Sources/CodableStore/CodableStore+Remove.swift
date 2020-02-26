@@ -44,9 +44,9 @@ public extension CodableStore {
         // Emit removed event
         self.notificationCenter.emit(
             storableType: Storable.self,
-            .removed(
-                identifier: identifier,
-                container: self.container
+            .init(
+                container: self.container,
+                event: .removed(identifier: identifier)
             )
         )
         // Return success
@@ -79,8 +79,9 @@ public extension CodableStore {
         // Emit removed event
         self.notificationCenter.emit(
             storableType: Storable.self,
-            .removedAll(
-                container: self.container
+            .init(
+                container: self.container,
+                event: .removedAll
             )
         )
         // Return success

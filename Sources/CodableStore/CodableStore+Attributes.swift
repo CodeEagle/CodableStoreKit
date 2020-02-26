@@ -14,14 +14,14 @@ public extension CodableStore {
     
     /// Retrieve creation Date for CodableStorable Identifier
     /// - Parameter identifier: The Identifier to retrieve creation Date
-    func creationDate(_ identifier: Storable.Identifier) -> Date? {
+    func creationDate(for identifier: Storable.Identifier) -> Date? {
         self.attribute(for: identifier, key: .creationDate)
     }
     
     /// Retrieve creation Date for CodableStorable
     /// - Parameter storable: The CodableStorable to retrieve creation Date
-    func creationDate(_ storable: Storable) -> Date? {
-        self.creationDate(storable.identifier)
+    func creationDate(for storable: Storable) -> Date? {
+        self.creationDate(for: storable.identifier)
     }
     
 }
@@ -32,14 +32,14 @@ public extension CodableStore {
     
     /// Retrieve modification Date for CodableStorable Identifier
     /// - Parameter identifier: The Identifier to retrieve modification Date
-    func modificationDate(_ identifier: Storable.Identifier) -> Date? {
+    func modificationDate(for identifier: Storable.Identifier) -> Date? {
         self.attribute(for: identifier, key: .modificationDate)
     }
     
     /// Retrieve modification Date for CodableStorable
     /// - Parameter storable: The CodableStorable to retrieve modification Date
-    func modificationDate(_ storable: Storable) -> Date? {
-        self.modificationDate(storable.identifier)
+    func modificationDate(for storable: Storable) -> Date? {
+        self.modificationDate(for: storable.identifier)
     }
     
 }

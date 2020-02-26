@@ -41,7 +41,7 @@ public extension CodableStore {
             atPath: url.path,
             contents: data,
             attributes: [
-                .creationDate: self.creationDate(storable) ?? .init(),
+                .creationDate: self.creationDate(for: storable) ?? .init(),
                 .modificationDate: Date()
             ]
         )
@@ -52,9 +52,9 @@ public extension CodableStore {
         }
         // Emit saved event
         self.notificationCenter.emit(
-            .saved(
-                storable: storable,
-                container: self.container
+            .init(
+                container: self.container,
+                event: .saved(storable: storable)
             )
         )
         // Return success
