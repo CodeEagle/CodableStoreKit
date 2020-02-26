@@ -74,8 +74,21 @@ public extension CodableStore {
 
 public extension CodableStore {
     
+    /// The SortMode
+    enum SortMode {
+        /// Ascending order by modification date
+        case ascending
+        /// Descending order by modification date
+        case descending
+        /// Custom order by predicate
+        case custom((Storable, Storable) -> Bool)
+    }
+    
     /// Retrieve all CodableStorables
-    func getAll() -> Result<[Storable], Error> {
+    /// - Parameter sortMode: The SortMode. Default value `.descending`
+    func getAll(
+        sortMode: SortMode = .descending
+    ) -> Result<[Storable], Error> {
         // Declare URL
         let url: URL
         // Switch on Result of Collection URL
@@ -96,10 +109,9 @@ public extension CodableStore {
             // Return failure
             return .failure(.contentsOfDirectoryUnavailable(url, error))
         }
-        // Initialize Storables
-        let storables: [Storable] = paths
-            // CompactMap path to Files
-            .compactMap { path -> (data: Data, modificationDate: Date?)? in
+        // CompactMap Paths to Files
+        var files: [(data: Data, modificationDate: Date?)] = paths
+            .compactMap { path in
                 // Initialize URL by appending path component
                 let url = url.appendingPathComponent(path)
                 // Verify Data for URL is available
@@ -112,28 +124,54 @@ public extension CodableStore {
                 // Return file with Data and optional Modification Date
                 return (data, attributes?[.modificationDate] as? Date)
             }
-            // Sort Files based on modification Date
-            .sorted { lhs, rhs in
+        // Switch on SortMode
+        switch sortMode {
+        case .ascending, .descending:
+            // Sort Files
+            files.sort { lhs, rhs in
                 // Verify both modification Dates are available
                 guard let lhsDate = lhs.modificationDate, let rhsDate = rhs.modificationDate else {
                     // Otherwise return false
                     return false
                 }
-                // Return descending order
-                return lhsDate > rhsDate
+                // Switch on SortMode
+                switch sortMode {
+                case .ascending:
+                    // Return descending order
+                    return lhsDate > rhsDate
+                case .descending:
+                    // Return descending order
+                    return lhsDate > rhsDate
+                case .custom:
+                    return false
+                }
             }
-            // CompactMap by decoding File Data
+        case .custom:
+            break
+        }
+        // CompactMap Files to Storables
+        var storables: [Storable] = files
             .compactMap { file in
                 // Try to Decode File Data
                 try? self.decoder.decode(Storable.self, from: file.data)
             }
+        // Check if SortMode is custom
+        if case .custom(let predicate) = sortMode {
+            // Sort by custom predicate
+            storables.sort(by: predicate)
+        }
         // Return success
         return .success(storables)
     }
     
     /// Retrieve all CodableStorable that satisfy the given predicate
-    /// - Parameter predicate: The predicate
-    func getAll(where predicate: (Storable) -> Bool) -> Result<[Storable], Error> {
+    /// - Parameters:
+    ///   - sortMode: The SortMode. Default value `.descending`
+    ///   - predicate: The predicate
+    func getAll(
+        sortMode: SortMode = .descending,
+        where predicate: (Storable) -> Bool
+    ) -> Result<[Storable], Error> {
         // Retrieve all and apply filter
         self.getAll().map { $0.filter(predicate) }
     }
