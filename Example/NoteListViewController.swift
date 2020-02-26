@@ -16,9 +16,12 @@ class NoteListViewController: UIViewController {
 
     // MARK: Properties
     
-    var notes: [Note] = .init()
-    
-    var mainNote: Note?
+    @CodableStoredArray
+    var notes: [Note] = .init() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
