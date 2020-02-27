@@ -16,12 +16,13 @@ class NoteListViewController: UIViewController {
 
     // MARK: Properties
     
-    @CodableStoredArray
     var notes: [Note] = .init() {
         didSet {
             self.tableView.reloadData()
         }
     }
+    
+    let codableStore = CodableStore<Note>()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -41,6 +42,12 @@ class NoteListViewController: UIViewController {
             target: self,
             action: #selector(self.onAddNoteBarButtonTap)
         )
+        self.codableStore.observe(on: self) { _ in
+            guard let notes = try? self.codableStore.getAll().get() else {
+                return
+            }
+            self.notes = notes
+        }
     }
     
     /// LoadView
@@ -69,7 +76,7 @@ extension NoteListViewController {
                     return
                 }
                 let note = Note(content: content)
-                self.notes.append(note)
+                self.codableStore.save(note)
             }
         ))
         alertController.addAction(.init(title: "Cancel", style: .cancel))
@@ -106,7 +113,7 @@ extension NoteListViewController: UITableViewDataSource {
             return
         }
         let note = self.notes[indexPath.section]
-        self.notes.removeAll(where: { $0.id == note.id })
+        self.codableStore.remove(note)
     }
     
 }

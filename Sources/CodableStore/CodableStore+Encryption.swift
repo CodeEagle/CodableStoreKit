@@ -10,17 +10,17 @@ import Foundation
 
 #if !os(macOS)
 
-// MARK: - Encrypt
+// MARK: - Encrypt all
 
 public extension CodableStore {
     
-    /// Encrypt saved CodableStorables
+    /// Encrypt all saved CodableStorables
     /// - Parameters:
     ///   - protectionLevel: The encryption URLFileProtection Level
     ///   - predicate: The optional filter predicate closure. Default value `nil`
     @available(iOS 9.0, *)
     @discardableResult
-    func encrypt(
+    func encryptAll(
         protectionLevel: URLFileProtection,
         where predicate: ((Storable) -> Bool)? = nil
     ) -> [Result<Void, Error>] {
