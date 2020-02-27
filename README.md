@@ -1,8 +1,4 @@
-# Work in Progress 👷‍♂️
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/SvenTiigi/CodableStoreKit/gh-pages/readMeAssets/CodableStoreKitLogo.jpg" alt="CodableStoreKitLogo">
-</p>
+# CodableStoreKit (Work in Progress 👷‍♂️)
 
 <p align="center">
    <a href="https://developer.apple.com/swift/">
@@ -34,7 +30,7 @@
 <p align="center">
 CodableStoreKit is a lightweight Codable Persistence Framework for iOS, macOS, watchOS and tvOS.
 <br/>
-It allows you to simply persist, retrieve and observe your Codable structs and classes.
+It allows you to simply save, update, remove, retrieve and observe your Codable structs and classes.
 </p>
 
 ## Features
@@ -88,7 +84,7 @@ If you prefer not to use any of the aforementioned dependency managers, you can 
 Make your Codable structs or classes conform to the `CodableStorable` protocol.
 
 ```swift
-/// The User Struct
+/// A User
 struct User: Codable {
     let id: String
     let firstName: String
@@ -116,40 +112,30 @@ let codableStore = CodableStore<User>()
 
 ### Step 3
 
-Now you are good to go to persist, retrieve and observe your CodableStoreable 😎
+Now you are good to go to save, update, remove, retrieve and observe your CodableStorable 😎
 
 ```swift
-// Initialize an User
-let user = User(id: "42", firstName: "Mr.", lastName: "Robot")
+// Initialize a User
+let user = User(
+   id: "42", 
+   firstName: "Mr.", 
+   lastName: "Robot"
+)
 
-// Save
-codableStore.save(user)
+// Save a new User
+switch codableStore.save(user) {
+   case .success:
+      print("Successfully saved User")
+   case .failure(let error):
+      print("Saving User failed", error)
+}
 
-// Retrieve by Identifier
-let result = codableStore.get("42")
-
-// Retrieve all
-let result = codableStore.getAll()
-
-// Exists
-let result = codableStore.exists(user)
-
-// Remove
-codableStore.remove(user)
-
-// Remove all
-codableStore.removeAll()
-
-// Observe
-codableStore.observe(on: self) { event in
-    switch event {
-    case .saved(let storable, let container):
-        break
-    case .removed(let identifier, let container):
-        break
-    case .removedAll(let container):
-        break
-    }
+// Retrieve all Users
+switch codableStore.getAll() {
+   case .success(let users):
+      print("Retrieved Users", users)
+   case .failure(let error):
+      print("Failed to retrieve all users", error)
 }
 ```
 

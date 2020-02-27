@@ -91,7 +91,9 @@ public extension CodableStore {
     /// Remove all CodableStorables that satisfy the given predicate
     /// - Parameter predicate: The predicate
     @discardableResult
-    func removeAll(where predicate: (Storable) -> Bool) -> [Result<Void, Error>] {
+    func removeAll(
+        where predicate: (Storable) -> Bool
+    ) -> [Result<Void, Error>] {
         // Retrieve all with predicate
         switch self.getAll(where: predicate) {
         case .success(let storables):
@@ -106,7 +108,9 @@ public extension CodableStore {
     /// Remove CodableStorables
     /// - Parameter identifiers: The CodableStorable identifiers that should be removed
     @discardableResult
-    func remove<S: Sequence>(_ identifiers: S) -> [Result<Void, Error>] where S.Element == Storable.Identifier {
+    func remove<S: Sequence>(
+        _ identifiers: S
+    ) -> [Result<Void, Error>] where S.Element == Storable.Identifier {
         // Remove identifiers
         identifiers.map(self.remove)
     }
@@ -122,7 +126,9 @@ public extension CodableStore {
     /// Remove CodableStorables
     /// - Parameter storables: The Sequence of CodableStorables that should be removed
     @discardableResult
-    func remove<S: Sequence>(_ storables: S) -> [Result<Void, Error>] where S.Element == Storable {
+    func remove<S: Sequence>(
+        _ storables: S
+    ) -> [Result<Void, Error>] where S.Element == Storable {
         // Remove Storables
         storables.map(self.remove)
     }

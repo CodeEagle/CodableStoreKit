@@ -64,7 +64,9 @@ public extension CodableStore {
     /// Save CodableStorables
     /// - Parameter storables: The Sequence of CodableStorables that should be saved
     @discardableResult
-    func save<S: Sequence>(_ storables: S) -> [Result<Storable, Error>] where S.Element == Storable {
+    func save<S: Sequence>(
+        _ storables: S
+    ) -> [Result<Storable, Error>] where S.Element == Storable {
         // Save Storables
         storables.map(self.save)
     }

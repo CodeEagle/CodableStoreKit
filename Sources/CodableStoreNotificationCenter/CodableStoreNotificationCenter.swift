@@ -57,7 +57,7 @@ open class CodableStoreNotificationCenter {
             return true
         }
         // Dispatch on main if needed
-        DispatchQueue.dispatchOnMainIfNeed { [weak self] in
+        DispatchQueue.dispatchOnMainIfNeeded { [weak self] in
             // Append Observation
             self?.observations.append(observation)
         }
@@ -100,7 +100,7 @@ open class CodableStoreNotificationCenter {
             return true
         }
         // Dispatch on main if needed
-        DispatchQueue.dispatchOnMainIfNeed { [weak self] in
+        DispatchQueue.dispatchOnMainIfNeeded { [weak self] in
             // Append Observation
             self?.observations.append(observation)
         }
@@ -117,7 +117,7 @@ open class CodableStoreNotificationCenter {
         _ notification: CodableStore<Storable>.Notification
     ) {
         // Dispatch on Main if needed
-        DispatchQueue.dispatchOnMainIfNeed { [weak self] in
+        DispatchQueue.dispatchOnMainIfNeeded { [weak self] in
             // Verify self is available
             guard let self = self else {
                 // Otherwise return out of function
@@ -136,7 +136,7 @@ private extension DispatchQueue {
     
     /// Dispatch on Main Queue if needed
     /// - Parameter work: The work that should be executed
-    static func dispatchOnMainIfNeed(execute work: @escaping () -> Void) {
+    static func dispatchOnMainIfNeeded(execute work: @escaping () -> Void) {
         // Verify is not main thread
         guard !Thread.isMainThread else {
             // Otherwise execute the work
