@@ -13,7 +13,7 @@ import Foundation
 extension CodableStorable {
     
     /// The Identifier
-    var identifier: Identifier {
+    public var identifier: Identifier {
         return self[keyPath: Self.codableStoreIdentifier]
     }
     

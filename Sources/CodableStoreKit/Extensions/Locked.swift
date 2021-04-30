@@ -9,7 +9,7 @@
 import Foundation
 
 /// ThreadSafe Locked Value
-final class Locked<Value> {
+public final class Locked<Value> {
     
     /// The Lock fastest option (https://gist.github.com/steipete/36350a8a60693d440954b95ea6cbbafc)
     private var lock = os_unfair_lock()
@@ -18,7 +18,7 @@ final class Locked<Value> {
     private var internalValue: Value
     
     /// The Value
-    var value: Value {
+    public var value: Value {
         get {
             os_unfair_lock_lock(&self.lock)
             defer {
@@ -38,14 +38,14 @@ final class Locked<Value> {
     /// Default initializer with Value
     ///
     /// - Parameter value: The Value
-    init(_ value: Value) {
+    public init(_ value: Value) {
         self.internalValue = value
     }
     
     /// Mutate value
     ///
     /// - Parameter changes: The changes closure
-    func mutate(_ changes: (inout Value) -> Void) {
+    public func mutate(_ changes: (inout Value) -> Void) {
         os_unfair_lock_lock(&self.lock)
         defer {
             os_unfair_lock_unlock(&self.lock)
